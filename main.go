@@ -40,25 +40,27 @@ func cleanForMatch(in map[string]map[string]types.Event) map[string]map[string]t
 	return in
 }
 
-func parseMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parserNodes []parser.Node) (bool, error) {
+//ret : test_ok, parsed_ok, error
+func parseMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parserNodes []parser.Node) (bool, bool, error) {
 	oneResult := LineParseResult{}
 	h := sha256.New()
 
 	if event.Line.Raw == "" {
 		log.Warningf("discarding empty line")
-		return true, nil
+		return true, false, nil
 	}
 	h.Write([]byte(event.Line.Raw))
-	log.Printf("processing '%s'", event.Line.Raw)
+	//log.Printf("processing '%s'", event.Line.Raw)
 
 	//parse
 	parsed, err := parser.Parse(*parserCTX, event, parserNodes)
 	if err != nil {
-		return false, fmt.Errorf("failed parsing : %v\n", err)
+		return false, false, fmt.Errorf("failed parsing : %v\n", err)
 	}
 
 	if !parsed.Process {
-		log.Warningf("Unparsed: %s", parsed.Line.Raw)
+		//log.Warningf("Unparsed: %s", parsed.Line.Raw)
+		return true, false, fmt.Errorf("unparsed line %s", parsed.Line.Raw)
 	}
 	//marshal current result
 	oneResult.Line = parsed.Line.Raw
@@ -90,20 +92,20 @@ func parseMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parserNo
 		if cmp.Equal(candidate, oneResult, opt) {
 			matched = true
 			//we go an exact match
-			log.Printf("Found exact match (idx:%d)", idx)
+			//log.Printf("Found exact match (idx:%d)", idx)
 			//cleanup
 			AllExpected = append(AllExpected[:idx], AllExpected[idx+1:]...)
 		} else {
 			// log.Printf("Mismatch for line :")
 			// log.Printf("%s", )
-			return false, fmt.Errorf("mismatch diff: %s", cmp.Diff(candidate, oneResult, opt))
+			return false, true, fmt.Errorf("mismatch diff: %s", cmp.Diff(candidate, oneResult, opt))
 		}
 		break
 	}
 	if !matched && len(AllExpected) != 0 {
-		return false, fmt.Errorf("Result is not in the %d expected results", len(AllExpected))
+		return false, true, fmt.Errorf("Result is not in the %d expected results", len(AllExpected))
 	}
-	return matched, nil
+	return matched, true, nil
 }
 
 func testOneDir(target_dir string, parserCTX *parser.UnixParserCtx) (bool, error) {
@@ -113,6 +115,7 @@ func testOneDir(target_dir string, parserCTX *parser.UnixParserCtx) (bool, error
 	var acquisitionCTX *acquisition.FileAcquisCtx
 	var inputLineChan = make(chan types.Event)
 	var failure bool
+	var OrigExpectedLen int
 
 	cConfig = csconfig.NewCrowdSecConfig()
 	cConfig.AcquisitionFile = target_dir + "/acquis.yaml"
@@ -138,20 +141,33 @@ func testOneDir(target_dir string, parserCTX *parser.UnixParserCtx) (bool, error
 			return false, fmt.Errorf("file %s can't be unmarshaled : %s", expectedResultsFile, err)
 		} else {
 			ExpectedPresent = true
+			OrigExpectedLen = len(AllExpected)
 		}
 	}
 	//start reading in the background
 	acquisition.AcquisStartReading(acquisitionCTX, inputLineChan, &acquisTomb)
 
+	linesRead := 0
+	linesUnparsed := 0
+	testsFailed := 0
+
 	go func() {
 		log.Printf("Processing lines")
 		parser.ParseDump = true
 		for event := range inputLineChan {
-			ok, err := parseMatchLine(event, parserCTX, parserNodes)
-			if !ok {
-				fmt.Printf("while parsing:\n%s\n", event.Line.Raw)
-				fmt.Printf("%s", err)
-				failure = true
+			linesRead++
+			test_ok, parsed_ok, err := parseMatchLine(event, parserCTX, parserNodes)
+			if !parsed_ok {
+				if err != nil {
+					log.Warningf("parser error : %s", err)
+				}
+				linesUnparsed++
+			}
+			if !test_ok {
+				testsFailed++
+				log.Errorf("test failure : %s", err)
+				log.Errorf("stop tests.")
+				break
 			}
 		}
 	}()
@@ -162,6 +178,16 @@ func testOneDir(target_dir string, parserCTX *parser.UnixParserCtx) (bool, error
 
 	time.Sleep(1 * time.Second)
 	/*now let's check the results*/
+
+	log.Infof("%d lines read", linesRead)
+	log.Infof("%d parser results, %d UNPARSED", len(AllResults), linesUnparsed)
+	if linesRead != len(AllResults) {
+		log.Warningf("%d out of %d lines didn't yeld result", linesRead-len(AllResults), linesRead)
+	}
+	log.Infof("%d/%d matched results", OrigExpectedLen-len(AllExpected), OrigExpectedLen)
+	if len(AllExpected) > 0 {
+		log.Warningf("%d out of %d expected results unmatched", len(AllExpected), OrigExpectedLen)
+	}
 
 	//there was no data present, just dump
 	if !ExpectedPresent {
@@ -194,7 +220,7 @@ func main() {
 		cConfig *csconfig.CrowdSec
 	)
 	log.SetLevel(log.InfoLevel)
-
+	cConfig = csconfig.NewCrowdSecConfig()
 	/* load base regexps for two grok parsers */
 	parserCTX, err = p.Init(map[string]interface{}{"patterns": cConfig.ConfigFolder + string("/patterns/"), "data": cConfig.DataFolder})
 	if err != nil {
