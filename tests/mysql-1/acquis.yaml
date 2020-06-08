@@ -1,0 +1,6 @@
+mode: cat
+filenames:
+ - ./tests/mysql-1/mysql.log
+labels:
+  type: syslog
+  
