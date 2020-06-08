@@ -220,6 +220,7 @@ func testOneDir(target_dir string, parserCTX *parser.UnixParserCtx) (bool, error
 			log.Fatalf("failed to dump data to %s : %s", expectedResultsFile, err)
 		}
 		log.Printf("done")
+		os.Exit(1)
 	}
 	log.Infof("tests are finished.")
 	return true, nil
