@@ -1,0 +1,5 @@
+mode: cat
+filenames:
+ - ./tests/nginx-1/nginx.log
+labels:
+  type: nginx
