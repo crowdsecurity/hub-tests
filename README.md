@@ -12,12 +12,15 @@ cd crowdsec-vXXX
 cd tests
 #build CI
 git clone git@github.com:crowdsecurity/hub-tests.git
-cd hub-tests
-go build main.go
-cp ./main ../
-cp -R ./tests ../
+cd hub-tests && bash prep_tests.sh
 #run the tests
 cd ..
 ./main ./tests/nginx-1
 ```
+
+The "prep_tests.sh" script :
+ - copies the `tests` dir
+ - copies the binary file
+ - install all the parsers with `cscli`
+ 
 

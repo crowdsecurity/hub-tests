@@ -29,7 +29,23 @@ type LineParseResult struct {
 	ParserResults map[string]map[string]types.Event
 }
 
-//cleanForMatch : cleanup results from items that might change every run
+func getCmpOptions() cmp.Option {
+	/*
+	** we are using cmp's feature to match structures.
+	** because of the way marshal/unmarshal works we want to make nil == empty
+	 */
+	// This option handles slices and maps of any type.
+	alwaysEqual := cmp.Comparer(func(_, _ interface{}) bool { return true })
+	opt := cmp.FilterValues(func(x, y interface{}) bool {
+		vx, vy := reflect.ValueOf(x), reflect.ValueOf(y)
+		return (vx.IsValid() && vy.IsValid() && vx.Type() == vy.Type()) &&
+			(vx.Kind() == reflect.Slice || vx.Kind() == reflect.Map) &&
+			(vx.Len() == 0 && vy.Len() == 0)
+	}, alwaysEqual)
+	return opt
+}
+
+//cleanForMatch : cleanup results from items that might change every run. We strip as well strictly equal results
 func cleanForMatch(in map[string]map[string]types.Event) map[string]map[string]types.Event {
 	for stage, val := range in {
 		for parser, evt := range val {
@@ -50,8 +66,6 @@ func parseMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parserNo
 		return true, false, nil
 	}
 	h.Write([]byte(event.Line.Raw))
-	//log.Printf("processing '%s'", event.Line.Raw)
-
 	//parse
 	parsed, err := parser.Parse(*parserCTX, event, parserNodes)
 	if err != nil {
@@ -59,26 +73,14 @@ func parseMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parserNo
 	}
 
 	if !parsed.Process {
-		//log.Warningf("Unparsed: %s", parsed.Line.Raw)
 		return true, false, fmt.Errorf("unparsed line %s", parsed.Line.Raw)
 	}
 	//marshal current result
 	oneResult.Line = parsed.Line.Raw
 	//we need to clean Line's timestamp
 	oneResult.ParserResults = cleanForMatch(parser.StageParseCache)
-	/*
-	** we are using cmp's feature to match structures.
-	** because of the way marshal/unmarshal works we want to make nil == empty
-	 */
-	// This option handles slices and maps of any type.
-	alwaysEqual := cmp.Comparer(func(_, _ interface{}) bool { return true })
-	opt := cmp.FilterValues(func(x, y interface{}) bool {
-		vx, vy := reflect.ValueOf(x), reflect.ValueOf(y)
-		return (vx.IsValid() && vy.IsValid() && vx.Type() == vy.Type()) &&
-			(vx.Kind() == reflect.Slice || vx.Kind() == reflect.Map) &&
-			(vx.Len() == 0 && vy.Len() == 0)
-	}, alwaysEqual)
 
+	opt := getCmpOptions()
 	/*
 		Iterate over the list of expected results and try to find back
 	*/
@@ -92,12 +94,8 @@ func parseMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parserNo
 		if cmp.Equal(candidate, oneResult, opt) {
 			matched = true
 			//we go an exact match
-			//log.Printf("Found exact match (idx:%d)", idx)
-			//cleanup
 			AllExpected = append(AllExpected[:idx], AllExpected[idx+1:]...)
 		} else {
-			// log.Printf("Mismatch for line :")
-			// log.Printf("%s", )
 			return false, true, fmt.Errorf("mismatch diff: %s", cmp.Diff(candidate, oneResult, opt))
 		}
 		break
@@ -152,7 +150,8 @@ func testOneDir(target_dir string, parserCTX *parser.UnixParserCtx) (bool, error
 	testsFailed := 0
 
 	go func() {
-		log.Printf("Processing lines")
+		//log.Printf("Processing lines")
+		defer log.Printf("processing loop over")
 		parser.ParseDump = true
 		for event := range inputLineChan {
 			linesRead++
@@ -164,14 +163,20 @@ func testOneDir(target_dir string, parserCTX *parser.UnixParserCtx) (bool, error
 				linesUnparsed++
 			}
 			if !test_ok {
+				failure = true
 				testsFailed++
-				log.Errorf("test failure : %s", err)
-				log.Errorf("stop tests.")
-				break
+				log.Errorf("test failed.")
+				if err != nil {
+					log.Errorf("test failure : %s", err)
+				}
+				//log.Errorf("stop tests.")
+				continue
 			}
 		}
+
 	}()
 
+	log.Printf("waiting for acquis tomb to die")
 	if err := acquisTomb.Wait(); err != nil {
 		log.Warningf("acquisition returned error : %s", err)
 	}
@@ -205,7 +210,16 @@ func testOneDir(target_dir string, parserCTX *parser.UnixParserCtx) (bool, error
 		}
 	}
 	if failure {
-		log.Fatalf("tests failed")
+		expectedResultsFile = expectedResultsFile + ".fail"
+		log.Errorf("tests failed, writting results to %s", expectedResultsFile)
+		dump_bytes, err := json.MarshalIndent(AllResults, "", " ")
+		if err != nil {
+			log.Fatalf("failed to marshal results : %s", err)
+		}
+		if err := ioutil.WriteFile(expectedResultsFile, dump_bytes, 0644); err != nil {
+			log.Fatalf("failed to dump data to %s : %s", expectedResultsFile, err)
+		}
+		log.Printf("done")
 	}
 	log.Infof("tests are finished.")
 	return true, nil
