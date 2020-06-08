@@ -1,0 +1,6 @@
+mode: cat
+filenames:
+ - ./tests/apache2-1/apache2.log
+labels:
+  type: apache2
+  
