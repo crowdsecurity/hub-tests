@@ -8,20 +8,21 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
-     "Line": {
-      "Raw": "93.43.209.58 - - [08/Jun/2020:06:49:01 +0000] \"GET / HTTP/1.0\" 500 803 \"-\" \"-\"",
-      "Src": "./tests/apache2-1/apache2.log",
-      "Time": "0001-01-01T00:00:00Z",
-      "Labels": {
-       "type": "apache2"
-      },
-      "Process": true
+     "Overflow": {
+      "MapKey": "",
+      "start_at": "0001-01-01T00:00:00Z",
+      "stop_at": "0001-01-01T00:00:00Z",
+      "source": null,
+      "Source_ip": "",
+      "Source_range": "",
+      "Source_AutonomousSystemNumber": "",
+      "Source_AutonomousSystemOrganization": "",
+      "Source_Country": "",
+      "Source_Latitude": 0,
+      "Source_Longitude": 0,
+      "Reprocess": false,
+      "Labels": null
      },
-     "Parsed": {
-      "message": "93.43.209.58 - - [08/Jun/2020:06:49:01 +0000] \"GET / HTTP/1.0\" 500 803 \"-\" \"-\"",
-      "program": "apache2"
-     },
-     "Overflow": null,
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "",
      "MarshaledTime": "",
@@ -34,32 +35,21 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
-     "Line": {
-      "Raw": "93.43.209.58 - - [08/Jun/2020:06:49:01 +0000] \"GET / HTTP/1.0\" 500 803 \"-\" \"-\"",
-      "Src": "./tests/apache2-1/apache2.log",
-      "Time": "0001-01-01T00:00:00Z",
-      "Labels": {
-       "type": "apache2"
-      },
-      "Process": true
+     "Overflow": {
+      "MapKey": "",
+      "start_at": "0001-01-01T00:00:00Z",
+      "stop_at": "0001-01-01T00:00:00Z",
+      "source": null,
+      "Source_ip": "",
+      "Source_range": "",
+      "Source_AutonomousSystemNumber": "",
+      "Source_AutonomousSystemOrganization": "",
+      "Source_Country": "",
+      "Source_Latitude": 0,
+      "Source_Longitude": 0,
+      "Reprocess": false,
+      "Labels": null
      },
-     "Parsed": {
-      "agent": "\"-\"",
-      "auth": "-",
-      "bytes": "803",
-      "clientip": "93.43.209.58",
-      "httpversion": "1.0",
-      "ident": "-",
-      "message": "93.43.209.58 - - [08/Jun/2020:06:49:01 +0000] \"GET / HTTP/1.0\" 500 803 \"-\" \"-\"",
-      "program": "apache2",
-      "rawrequest": "",
-      "referrer": "\"-\"",
-      "request": "/",
-      "response": "500",
-      "timestamp": "08/Jun/2020:06:49:01 +0000",
-      "verb": "GET"
-     },
-     "Overflow": null,
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "08/Jun/2020:06:49:01 +0000",
      "MarshaledTime": "",
@@ -79,35 +69,24 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
-     "Line": {
-      "Raw": "93.43.209.58 - - [08/Jun/2020:06:49:01 +0000] \"GET / HTTP/1.0\" 500 803 \"-\" \"-\"",
-      "Src": "./tests/apache2-1/apache2.log",
-      "Time": "0001-01-01T00:00:00Z",
-      "Labels": {
-       "type": "apache2"
-      },
-      "Process": true
-     },
-     "Parsed": {
-      "agent": "\"-\"",
-      "auth": "-",
-      "bytes": "803",
-      "clientip": "93.43.209.58",
-      "httpversion": "1.0",
-      "ident": "-",
-      "message": "93.43.209.58 - - [08/Jun/2020:06:49:01 +0000] \"GET / HTTP/1.0\" 500 803 \"-\" \"-\"",
-      "program": "apache2",
-      "rawrequest": "",
-      "referrer": "\"-\"",
-      "request": "/",
-      "response": "500",
-      "timestamp": "08/Jun/2020:06:49:01 +0000",
-      "verb": "GET"
-     },
      "Enriched": {
       "MarshaledTime": "2020-06-08T06:49:01Z"
      },
-     "Overflow": null,
+     "Overflow": {
+      "MapKey": "",
+      "start_at": "0001-01-01T00:00:00Z",
+      "stop_at": "0001-01-01T00:00:00Z",
+      "source": null,
+      "Source_ip": "",
+      "Source_range": "",
+      "Source_AutonomousSystemNumber": "",
+      "Source_AutonomousSystemOrganization": "",
+      "Source_Country": "",
+      "Source_Latitude": 0,
+      "Source_Longitude": 0,
+      "Reprocess": false,
+      "Labels": null
+     },
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "08/Jun/2020:06:49:01 +0000",
      "MarshaledTime": "2020-06-08T06:49:01Z",
@@ -125,31 +104,6 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
-     "Line": {
-      "Raw": "93.43.209.58 - - [08/Jun/2020:06:49:01 +0000] \"GET / HTTP/1.0\" 500 803 \"-\" \"-\"",
-      "Src": "./tests/apache2-1/apache2.log",
-      "Time": "0001-01-01T00:00:00Z",
-      "Labels": {
-       "type": "apache2"
-      },
-      "Process": true
-     },
-     "Parsed": {
-      "agent": "\"-\"",
-      "auth": "-",
-      "bytes": "803",
-      "clientip": "93.43.209.58",
-      "httpversion": "1.0",
-      "ident": "-",
-      "message": "93.43.209.58 - - [08/Jun/2020:06:49:01 +0000] \"GET / HTTP/1.0\" 500 803 \"-\" \"-\"",
-      "program": "apache2",
-      "rawrequest": "",
-      "referrer": "\"-\"",
-      "request": "/",
-      "response": "500",
-      "timestamp": "08/Jun/2020:06:49:01 +0000",
-      "verb": "GET"
-     },
      "Enriched": {
       "ASNNumber": "12874",
       "ASNOrg": "Fastweb",
@@ -160,7 +114,21 @@
       "MarshaledTime": "2020-06-08T06:49:01Z",
       "SourceRange": "93.32.0.0/11"
      },
-     "Overflow": null,
+     "Overflow": {
+      "MapKey": "",
+      "start_at": "0001-01-01T00:00:00Z",
+      "stop_at": "0001-01-01T00:00:00Z",
+      "source": null,
+      "Source_ip": "",
+      "Source_range": "",
+      "Source_AutonomousSystemNumber": "",
+      "Source_AutonomousSystemOrganization": "",
+      "Source_Country": "",
+      "Source_Latitude": 0,
+      "Source_Longitude": 0,
+      "Reprocess": false,
+      "Labels": null
+     },
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "08/Jun/2020:06:49:01 +0000",
      "MarshaledTime": "2020-06-08T06:49:01Z",
@@ -183,32 +151,6 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
-     "Line": {
-      "Raw": "93.43.209.58 - - [08/Jun/2020:06:49:01 +0000] \"GET / HTTP/1.0\" 500 803 \"-\" \"-\"",
-      "Src": "./tests/apache2-1/apache2.log",
-      "Time": "0001-01-01T00:00:00Z",
-      "Labels": {
-       "type": "apache2"
-      },
-      "Process": true
-     },
-     "Parsed": {
-      "agent": "\"-\"",
-      "auth": "-",
-      "bytes": "803",
-      "clientip": "93.43.209.58",
-      "httpversion": "1.0",
-      "ident": "-",
-      "impact_completion": "true",
-      "message": "93.43.209.58 - - [08/Jun/2020:06:49:01 +0000] \"GET / HTTP/1.0\" 500 803 \"-\" \"-\"",
-      "program": "apache2",
-      "rawrequest": "",
-      "referrer": "\"-\"",
-      "request": "/",
-      "response": "500",
-      "timestamp": "08/Jun/2020:06:49:01 +0000",
-      "verb": "GET"
-     },
      "Enriched": {
       "ASNNumber": "12874",
       "ASNOrg": "Fastweb",
@@ -219,7 +161,21 @@
       "MarshaledTime": "2020-06-08T06:49:01Z",
       "SourceRange": "93.32.0.0/11"
      },
-     "Overflow": null,
+     "Overflow": {
+      "MapKey": "",
+      "start_at": "0001-01-01T00:00:00Z",
+      "stop_at": "0001-01-01T00:00:00Z",
+      "source": null,
+      "Source_ip": "",
+      "Source_range": "",
+      "Source_AutonomousSystemNumber": "",
+      "Source_AutonomousSystemOrganization": "",
+      "Source_Country": "",
+      "Source_Latitude": 0,
+      "Source_Longitude": 0,
+      "Reprocess": false,
+      "Labels": null
+     },
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "08/Jun/2020:06:49:01 +0000",
      "MarshaledTime": "2020-06-08T06:49:01Z",
@@ -249,20 +205,21 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
-     "Line": {
-      "Raw": "164.68.112.178 - - [08/Jun/2020:07:01:28 +0000] \"GET / HTTP/1.0\" 500 799 \"-\" \"masscan/1.0 (https://github.com/robertdavidgraham/masscan)\"",
-      "Src": "./tests/apache2-1/apache2.log",
-      "Time": "0001-01-01T00:00:00Z",
-      "Labels": {
-       "type": "apache2"
-      },
-      "Process": true
+     "Overflow": {
+      "MapKey": "",
+      "start_at": "0001-01-01T00:00:00Z",
+      "stop_at": "0001-01-01T00:00:00Z",
+      "source": null,
+      "Source_ip": "",
+      "Source_range": "",
+      "Source_AutonomousSystemNumber": "",
+      "Source_AutonomousSystemOrganization": "",
+      "Source_Country": "",
+      "Source_Latitude": 0,
+      "Source_Longitude": 0,
+      "Reprocess": false,
+      "Labels": null
      },
-     "Parsed": {
-      "message": "164.68.112.178 - - [08/Jun/2020:07:01:28 +0000] \"GET / HTTP/1.0\" 500 799 \"-\" \"masscan/1.0 (https://github.com/robertdavidgraham/masscan)\"",
-      "program": "apache2"
-     },
-     "Overflow": null,
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "",
      "MarshaledTime": "",
@@ -275,32 +232,21 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
-     "Line": {
-      "Raw": "164.68.112.178 - - [08/Jun/2020:07:01:28 +0000] \"GET / HTTP/1.0\" 500 799 \"-\" \"masscan/1.0 (https://github.com/robertdavidgraham/masscan)\"",
-      "Src": "./tests/apache2-1/apache2.log",
-      "Time": "0001-01-01T00:00:00Z",
-      "Labels": {
-       "type": "apache2"
-      },
-      "Process": true
+     "Overflow": {
+      "MapKey": "",
+      "start_at": "0001-01-01T00:00:00Z",
+      "stop_at": "0001-01-01T00:00:00Z",
+      "source": null,
+      "Source_ip": "",
+      "Source_range": "",
+      "Source_AutonomousSystemNumber": "",
+      "Source_AutonomousSystemOrganization": "",
+      "Source_Country": "",
+      "Source_Latitude": 0,
+      "Source_Longitude": 0,
+      "Reprocess": false,
+      "Labels": null
      },
-     "Parsed": {
-      "agent": "\"masscan/1.0 (https://github.com/robertdavidgraham/masscan)\"",
-      "auth": "-",
-      "bytes": "799",
-      "clientip": "164.68.112.178",
-      "httpversion": "1.0",
-      "ident": "-",
-      "message": "164.68.112.178 - - [08/Jun/2020:07:01:28 +0000] \"GET / HTTP/1.0\" 500 799 \"-\" \"masscan/1.0 (https://github.com/robertdavidgraham/masscan)\"",
-      "program": "apache2",
-      "rawrequest": "",
-      "referrer": "\"-\"",
-      "request": "/",
-      "response": "500",
-      "timestamp": "08/Jun/2020:07:01:28 +0000",
-      "verb": "GET"
-     },
-     "Overflow": null,
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "08/Jun/2020:07:01:28 +0000",
      "MarshaledTime": "",
@@ -320,35 +266,24 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
-     "Line": {
-      "Raw": "164.68.112.178 - - [08/Jun/2020:07:01:28 +0000] \"GET / HTTP/1.0\" 500 799 \"-\" \"masscan/1.0 (https://github.com/robertdavidgraham/masscan)\"",
-      "Src": "./tests/apache2-1/apache2.log",
-      "Time": "0001-01-01T00:00:00Z",
-      "Labels": {
-       "type": "apache2"
-      },
-      "Process": true
-     },
-     "Parsed": {
-      "agent": "\"masscan/1.0 (https://github.com/robertdavidgraham/masscan)\"",
-      "auth": "-",
-      "bytes": "799",
-      "clientip": "164.68.112.178",
-      "httpversion": "1.0",
-      "ident": "-",
-      "message": "164.68.112.178 - - [08/Jun/2020:07:01:28 +0000] \"GET / HTTP/1.0\" 500 799 \"-\" \"masscan/1.0 (https://github.com/robertdavidgraham/masscan)\"",
-      "program": "apache2",
-      "rawrequest": "",
-      "referrer": "\"-\"",
-      "request": "/",
-      "response": "500",
-      "timestamp": "08/Jun/2020:07:01:28 +0000",
-      "verb": "GET"
-     },
      "Enriched": {
       "MarshaledTime": "2020-06-08T07:01:28Z"
      },
-     "Overflow": null,
+     "Overflow": {
+      "MapKey": "",
+      "start_at": "0001-01-01T00:00:00Z",
+      "stop_at": "0001-01-01T00:00:00Z",
+      "source": null,
+      "Source_ip": "",
+      "Source_range": "",
+      "Source_AutonomousSystemNumber": "",
+      "Source_AutonomousSystemOrganization": "",
+      "Source_Country": "",
+      "Source_Latitude": 0,
+      "Source_Longitude": 0,
+      "Reprocess": false,
+      "Labels": null
+     },
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "08/Jun/2020:07:01:28 +0000",
      "MarshaledTime": "2020-06-08T07:01:28Z",
@@ -366,31 +301,6 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
-     "Line": {
-      "Raw": "164.68.112.178 - - [08/Jun/2020:07:01:28 +0000] \"GET / HTTP/1.0\" 500 799 \"-\" \"masscan/1.0 (https://github.com/robertdavidgraham/masscan)\"",
-      "Src": "./tests/apache2-1/apache2.log",
-      "Time": "0001-01-01T00:00:00Z",
-      "Labels": {
-       "type": "apache2"
-      },
-      "Process": true
-     },
-     "Parsed": {
-      "agent": "\"masscan/1.0 (https://github.com/robertdavidgraham/masscan)\"",
-      "auth": "-",
-      "bytes": "799",
-      "clientip": "164.68.112.178",
-      "httpversion": "1.0",
-      "ident": "-",
-      "message": "164.68.112.178 - - [08/Jun/2020:07:01:28 +0000] \"GET / HTTP/1.0\" 500 799 \"-\" \"masscan/1.0 (https://github.com/robertdavidgraham/masscan)\"",
-      "program": "apache2",
-      "rawrequest": "",
-      "referrer": "\"-\"",
-      "request": "/",
-      "response": "500",
-      "timestamp": "08/Jun/2020:07:01:28 +0000",
-      "verb": "GET"
-     },
      "Enriched": {
       "ASNNumber": "33491",
       "ASNOrg": "Comcast Cable Communications, LLC",
@@ -401,7 +311,21 @@
       "MarshaledTime": "2020-06-08T07:01:28Z",
       "SourceRange": "164.68.64.0/18"
      },
-     "Overflow": null,
+     "Overflow": {
+      "MapKey": "",
+      "start_at": "0001-01-01T00:00:00Z",
+      "stop_at": "0001-01-01T00:00:00Z",
+      "source": null,
+      "Source_ip": "",
+      "Source_range": "",
+      "Source_AutonomousSystemNumber": "",
+      "Source_AutonomousSystemOrganization": "",
+      "Source_Country": "",
+      "Source_Latitude": 0,
+      "Source_Longitude": 0,
+      "Reprocess": false,
+      "Labels": null
+     },
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "08/Jun/2020:07:01:28 +0000",
      "MarshaledTime": "2020-06-08T07:01:28Z",
@@ -424,32 +348,6 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
-     "Line": {
-      "Raw": "164.68.112.178 - - [08/Jun/2020:07:01:28 +0000] \"GET / HTTP/1.0\" 500 799 \"-\" \"masscan/1.0 (https://github.com/robertdavidgraham/masscan)\"",
-      "Src": "./tests/apache2-1/apache2.log",
-      "Time": "0001-01-01T00:00:00Z",
-      "Labels": {
-       "type": "apache2"
-      },
-      "Process": true
-     },
-     "Parsed": {
-      "agent": "\"masscan/1.0 (https://github.com/robertdavidgraham/masscan)\"",
-      "auth": "-",
-      "bytes": "799",
-      "clientip": "164.68.112.178",
-      "httpversion": "1.0",
-      "ident": "-",
-      "impact_completion": "true",
-      "message": "164.68.112.178 - - [08/Jun/2020:07:01:28 +0000] \"GET / HTTP/1.0\" 500 799 \"-\" \"masscan/1.0 (https://github.com/robertdavidgraham/masscan)\"",
-      "program": "apache2",
-      "rawrequest": "",
-      "referrer": "\"-\"",
-      "request": "/",
-      "response": "500",
-      "timestamp": "08/Jun/2020:07:01:28 +0000",
-      "verb": "GET"
-     },
      "Enriched": {
       "ASNNumber": "33491",
       "ASNOrg": "Comcast Cable Communications, LLC",
@@ -460,7 +358,21 @@
       "MarshaledTime": "2020-06-08T07:01:28Z",
       "SourceRange": "164.68.64.0/18"
      },
-     "Overflow": null,
+     "Overflow": {
+      "MapKey": "",
+      "start_at": "0001-01-01T00:00:00Z",
+      "stop_at": "0001-01-01T00:00:00Z",
+      "source": null,
+      "Source_ip": "",
+      "Source_range": "",
+      "Source_AutonomousSystemNumber": "",
+      "Source_AutonomousSystemOrganization": "",
+      "Source_Country": "",
+      "Source_Latitude": 0,
+      "Source_Longitude": 0,
+      "Reprocess": false,
+      "Labels": null
+     },
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "08/Jun/2020:07:01:28 +0000",
      "MarshaledTime": "2020-06-08T07:01:28Z",
@@ -490,20 +402,21 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
-     "Line": {
-      "Raw": "185.164.136.111 - - [08/Jun/2020:07:03:37 +0000] \"GET / HTTP/1.1\" 500 798 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:75.0) Gecko/20100101 Firefox/75.0\"",
-      "Src": "./tests/apache2-1/apache2.log",
-      "Time": "0001-01-01T00:00:00Z",
-      "Labels": {
-       "type": "apache2"
-      },
-      "Process": true
+     "Overflow": {
+      "MapKey": "",
+      "start_at": "0001-01-01T00:00:00Z",
+      "stop_at": "0001-01-01T00:00:00Z",
+      "source": null,
+      "Source_ip": "",
+      "Source_range": "",
+      "Source_AutonomousSystemNumber": "",
+      "Source_AutonomousSystemOrganization": "",
+      "Source_Country": "",
+      "Source_Latitude": 0,
+      "Source_Longitude": 0,
+      "Reprocess": false,
+      "Labels": null
      },
-     "Parsed": {
-      "message": "185.164.136.111 - - [08/Jun/2020:07:03:37 +0000] \"GET / HTTP/1.1\" 500 798 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:75.0) Gecko/20100101 Firefox/75.0\"",
-      "program": "apache2"
-     },
-     "Overflow": null,
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "",
      "MarshaledTime": "",
@@ -516,32 +429,21 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
-     "Line": {
-      "Raw": "185.164.136.111 - - [08/Jun/2020:07:03:37 +0000] \"GET / HTTP/1.1\" 500 798 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:75.0) Gecko/20100101 Firefox/75.0\"",
-      "Src": "./tests/apache2-1/apache2.log",
-      "Time": "0001-01-01T00:00:00Z",
-      "Labels": {
-       "type": "apache2"
-      },
-      "Process": true
+     "Overflow": {
+      "MapKey": "",
+      "start_at": "0001-01-01T00:00:00Z",
+      "stop_at": "0001-01-01T00:00:00Z",
+      "source": null,
+      "Source_ip": "",
+      "Source_range": "",
+      "Source_AutonomousSystemNumber": "",
+      "Source_AutonomousSystemOrganization": "",
+      "Source_Country": "",
+      "Source_Latitude": 0,
+      "Source_Longitude": 0,
+      "Reprocess": false,
+      "Labels": null
      },
-     "Parsed": {
-      "agent": "\"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:75.0) Gecko/20100101 Firefox/75.0\"",
-      "auth": "-",
-      "bytes": "798",
-      "clientip": "185.164.136.111",
-      "httpversion": "1.1",
-      "ident": "-",
-      "message": "185.164.136.111 - - [08/Jun/2020:07:03:37 +0000] \"GET / HTTP/1.1\" 500 798 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:75.0) Gecko/20100101 Firefox/75.0\"",
-      "program": "apache2",
-      "rawrequest": "",
-      "referrer": "\"-\"",
-      "request": "/",
-      "response": "500",
-      "timestamp": "08/Jun/2020:07:03:37 +0000",
-      "verb": "GET"
-     },
-     "Overflow": null,
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "08/Jun/2020:07:03:37 +0000",
      "MarshaledTime": "",
@@ -561,35 +463,24 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
-     "Line": {
-      "Raw": "185.164.136.111 - - [08/Jun/2020:07:03:37 +0000] \"GET / HTTP/1.1\" 500 798 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:75.0) Gecko/20100101 Firefox/75.0\"",
-      "Src": "./tests/apache2-1/apache2.log",
-      "Time": "0001-01-01T00:00:00Z",
-      "Labels": {
-       "type": "apache2"
-      },
-      "Process": true
-     },
-     "Parsed": {
-      "agent": "\"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:75.0) Gecko/20100101 Firefox/75.0\"",
-      "auth": "-",
-      "bytes": "798",
-      "clientip": "185.164.136.111",
-      "httpversion": "1.1",
-      "ident": "-",
-      "message": "185.164.136.111 - - [08/Jun/2020:07:03:37 +0000] \"GET / HTTP/1.1\" 500 798 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:75.0) Gecko/20100101 Firefox/75.0\"",
-      "program": "apache2",
-      "rawrequest": "",
-      "referrer": "\"-\"",
-      "request": "/",
-      "response": "500",
-      "timestamp": "08/Jun/2020:07:03:37 +0000",
-      "verb": "GET"
-     },
      "Enriched": {
       "MarshaledTime": "2020-06-08T07:03:37Z"
      },
-     "Overflow": null,
+     "Overflow": {
+      "MapKey": "",
+      "start_at": "0001-01-01T00:00:00Z",
+      "stop_at": "0001-01-01T00:00:00Z",
+      "source": null,
+      "Source_ip": "",
+      "Source_range": "",
+      "Source_AutonomousSystemNumber": "",
+      "Source_AutonomousSystemOrganization": "",
+      "Source_Country": "",
+      "Source_Latitude": 0,
+      "Source_Longitude": 0,
+      "Reprocess": false,
+      "Labels": null
+     },
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "08/Jun/2020:07:03:37 +0000",
      "MarshaledTime": "2020-06-08T07:03:37Z",
@@ -607,31 +498,6 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
-     "Line": {
-      "Raw": "185.164.136.111 - - [08/Jun/2020:07:03:37 +0000] \"GET / HTTP/1.1\" 500 798 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:75.0) Gecko/20100101 Firefox/75.0\"",
-      "Src": "./tests/apache2-1/apache2.log",
-      "Time": "0001-01-01T00:00:00Z",
-      "Labels": {
-       "type": "apache2"
-      },
-      "Process": true
-     },
-     "Parsed": {
-      "agent": "\"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:75.0) Gecko/20100101 Firefox/75.0\"",
-      "auth": "-",
-      "bytes": "798",
-      "clientip": "185.164.136.111",
-      "httpversion": "1.1",
-      "ident": "-",
-      "message": "185.164.136.111 - - [08/Jun/2020:07:03:37 +0000] \"GET / HTTP/1.1\" 500 798 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:75.0) Gecko/20100101 Firefox/75.0\"",
-      "program": "apache2",
-      "rawrequest": "",
-      "referrer": "\"-\"",
-      "request": "/",
-      "response": "500",
-      "timestamp": "08/Jun/2020:07:03:37 +0000",
-      "verb": "GET"
-     },
      "Enriched": {
       "ASNNumber": "62240",
       "ASNOrg": "Clouvider Limited",
@@ -642,7 +508,21 @@
       "MarshaledTime": "2020-06-08T07:03:37Z",
       "SourceRange": "185.164.136.0/22"
      },
-     "Overflow": null,
+     "Overflow": {
+      "MapKey": "",
+      "start_at": "0001-01-01T00:00:00Z",
+      "stop_at": "0001-01-01T00:00:00Z",
+      "source": null,
+      "Source_ip": "",
+      "Source_range": "",
+      "Source_AutonomousSystemNumber": "",
+      "Source_AutonomousSystemOrganization": "",
+      "Source_Country": "",
+      "Source_Latitude": 0,
+      "Source_Longitude": 0,
+      "Reprocess": false,
+      "Labels": null
+     },
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "08/Jun/2020:07:03:37 +0000",
      "MarshaledTime": "2020-06-08T07:03:37Z",
@@ -665,32 +545,6 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
-     "Line": {
-      "Raw": "185.164.136.111 - - [08/Jun/2020:07:03:37 +0000] \"GET / HTTP/1.1\" 500 798 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:75.0) Gecko/20100101 Firefox/75.0\"",
-      "Src": "./tests/apache2-1/apache2.log",
-      "Time": "0001-01-01T00:00:00Z",
-      "Labels": {
-       "type": "apache2"
-      },
-      "Process": true
-     },
-     "Parsed": {
-      "agent": "\"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:75.0) Gecko/20100101 Firefox/75.0\"",
-      "auth": "-",
-      "bytes": "798",
-      "clientip": "185.164.136.111",
-      "httpversion": "1.1",
-      "ident": "-",
-      "impact_completion": "true",
-      "message": "185.164.136.111 - - [08/Jun/2020:07:03:37 +0000] \"GET / HTTP/1.1\" 500 798 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:75.0) Gecko/20100101 Firefox/75.0\"",
-      "program": "apache2",
-      "rawrequest": "",
-      "referrer": "\"-\"",
-      "request": "/",
-      "response": "500",
-      "timestamp": "08/Jun/2020:07:03:37 +0000",
-      "verb": "GET"
-     },
      "Enriched": {
       "ASNNumber": "62240",
       "ASNOrg": "Clouvider Limited",
@@ -701,7 +555,21 @@
       "MarshaledTime": "2020-06-08T07:03:37Z",
       "SourceRange": "185.164.136.0/22"
      },
-     "Overflow": null,
+     "Overflow": {
+      "MapKey": "",
+      "start_at": "0001-01-01T00:00:00Z",
+      "stop_at": "0001-01-01T00:00:00Z",
+      "source": null,
+      "Source_ip": "",
+      "Source_range": "",
+      "Source_AutonomousSystemNumber": "",
+      "Source_AutonomousSystemOrganization": "",
+      "Source_Country": "",
+      "Source_Latitude": 0,
+      "Source_Longitude": 0,
+      "Reprocess": false,
+      "Labels": null
+     },
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "08/Jun/2020:07:03:37 +0000",
      "MarshaledTime": "2020-06-08T07:03:37Z",
@@ -731,20 +599,21 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
-     "Line": {
-      "Raw": "195.54.160.135 - - [08/Jun/2020:08:04:43 +0000] \"GET /solr/admin/info/system?wt=json HTTP/1.1\" 500 803 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
-      "Src": "./tests/apache2-1/apache2.log",
-      "Time": "0001-01-01T00:00:00Z",
-      "Labels": {
-       "type": "apache2"
-      },
-      "Process": true
+     "Overflow": {
+      "MapKey": "",
+      "start_at": "0001-01-01T00:00:00Z",
+      "stop_at": "0001-01-01T00:00:00Z",
+      "source": null,
+      "Source_ip": "",
+      "Source_range": "",
+      "Source_AutonomousSystemNumber": "",
+      "Source_AutonomousSystemOrganization": "",
+      "Source_Country": "",
+      "Source_Latitude": 0,
+      "Source_Longitude": 0,
+      "Reprocess": false,
+      "Labels": null
      },
-     "Parsed": {
-      "message": "195.54.160.135 - - [08/Jun/2020:08:04:43 +0000] \"GET /solr/admin/info/system?wt=json HTTP/1.1\" 500 803 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
-      "program": "apache2"
-     },
-     "Overflow": null,
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "",
      "MarshaledTime": "",
@@ -757,32 +626,21 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
-     "Line": {
-      "Raw": "195.54.160.135 - - [08/Jun/2020:08:04:43 +0000] \"GET /solr/admin/info/system?wt=json HTTP/1.1\" 500 803 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
-      "Src": "./tests/apache2-1/apache2.log",
-      "Time": "0001-01-01T00:00:00Z",
-      "Labels": {
-       "type": "apache2"
-      },
-      "Process": true
+     "Overflow": {
+      "MapKey": "",
+      "start_at": "0001-01-01T00:00:00Z",
+      "stop_at": "0001-01-01T00:00:00Z",
+      "source": null,
+      "Source_ip": "",
+      "Source_range": "",
+      "Source_AutonomousSystemNumber": "",
+      "Source_AutonomousSystemOrganization": "",
+      "Source_Country": "",
+      "Source_Latitude": 0,
+      "Source_Longitude": 0,
+      "Reprocess": false,
+      "Labels": null
      },
-     "Parsed": {
-      "agent": "\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
-      "auth": "-",
-      "bytes": "803",
-      "clientip": "195.54.160.135",
-      "httpversion": "1.1",
-      "ident": "-",
-      "message": "195.54.160.135 - - [08/Jun/2020:08:04:43 +0000] \"GET /solr/admin/info/system?wt=json HTTP/1.1\" 500 803 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
-      "program": "apache2",
-      "rawrequest": "",
-      "referrer": "\"-\"",
-      "request": "/solr/admin/info/system?wt=json",
-      "response": "500",
-      "timestamp": "08/Jun/2020:08:04:43 +0000",
-      "verb": "GET"
-     },
-     "Overflow": null,
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "08/Jun/2020:08:04:43 +0000",
      "MarshaledTime": "",
@@ -802,35 +660,24 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
-     "Line": {
-      "Raw": "195.54.160.135 - - [08/Jun/2020:08:04:43 +0000] \"GET /solr/admin/info/system?wt=json HTTP/1.1\" 500 803 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
-      "Src": "./tests/apache2-1/apache2.log",
-      "Time": "0001-01-01T00:00:00Z",
-      "Labels": {
-       "type": "apache2"
-      },
-      "Process": true
-     },
-     "Parsed": {
-      "agent": "\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
-      "auth": "-",
-      "bytes": "803",
-      "clientip": "195.54.160.135",
-      "httpversion": "1.1",
-      "ident": "-",
-      "message": "195.54.160.135 - - [08/Jun/2020:08:04:43 +0000] \"GET /solr/admin/info/system?wt=json HTTP/1.1\" 500 803 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
-      "program": "apache2",
-      "rawrequest": "",
-      "referrer": "\"-\"",
-      "request": "/solr/admin/info/system?wt=json",
-      "response": "500",
-      "timestamp": "08/Jun/2020:08:04:43 +0000",
-      "verb": "GET"
-     },
      "Enriched": {
       "MarshaledTime": "2020-06-08T08:04:43Z"
      },
-     "Overflow": null,
+     "Overflow": {
+      "MapKey": "",
+      "start_at": "0001-01-01T00:00:00Z",
+      "stop_at": "0001-01-01T00:00:00Z",
+      "source": null,
+      "Source_ip": "",
+      "Source_range": "",
+      "Source_AutonomousSystemNumber": "",
+      "Source_AutonomousSystemOrganization": "",
+      "Source_Country": "",
+      "Source_Latitude": 0,
+      "Source_Longitude": 0,
+      "Reprocess": false,
+      "Labels": null
+     },
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "08/Jun/2020:08:04:43 +0000",
      "MarshaledTime": "2020-06-08T08:04:43Z",
@@ -848,31 +695,6 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
-     "Line": {
-      "Raw": "195.54.160.135 - - [08/Jun/2020:08:04:43 +0000] \"GET /solr/admin/info/system?wt=json HTTP/1.1\" 500 803 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
-      "Src": "./tests/apache2-1/apache2.log",
-      "Time": "0001-01-01T00:00:00Z",
-      "Labels": {
-       "type": "apache2"
-      },
-      "Process": true
-     },
-     "Parsed": {
-      "agent": "\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
-      "auth": "-",
-      "bytes": "803",
-      "clientip": "195.54.160.135",
-      "httpversion": "1.1",
-      "ident": "-",
-      "message": "195.54.160.135 - - [08/Jun/2020:08:04:43 +0000] \"GET /solr/admin/info/system?wt=json HTTP/1.1\" 500 803 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
-      "program": "apache2",
-      "rawrequest": "",
-      "referrer": "\"-\"",
-      "request": "/solr/admin/info/system?wt=json",
-      "response": "500",
-      "timestamp": "08/Jun/2020:08:04:43 +0000",
-      "verb": "GET"
-     },
      "Enriched": {
       "ASNNumber": "0",
       "ASNOrg": "",
@@ -882,7 +704,21 @@
       "Longitude": "0.000000",
       "MarshaledTime": "2020-06-08T08:04:43Z"
      },
-     "Overflow": null,
+     "Overflow": {
+      "MapKey": "",
+      "start_at": "0001-01-01T00:00:00Z",
+      "stop_at": "0001-01-01T00:00:00Z",
+      "source": null,
+      "Source_ip": "",
+      "Source_range": "",
+      "Source_AutonomousSystemNumber": "",
+      "Source_AutonomousSystemOrganization": "",
+      "Source_Country": "",
+      "Source_Latitude": 0,
+      "Source_Longitude": 0,
+      "Reprocess": false,
+      "Labels": null
+     },
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "08/Jun/2020:08:04:43 +0000",
      "MarshaledTime": "2020-06-08T08:04:43Z",
@@ -902,38 +738,6 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
-     "Line": {
-      "Raw": "195.54.160.135 - - [08/Jun/2020:08:04:43 +0000] \"GET /solr/admin/info/system?wt=json HTTP/1.1\" 500 803 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
-      "Src": "./tests/apache2-1/apache2.log",
-      "Time": "0001-01-01T00:00:00Z",
-      "Labels": {
-       "type": "apache2"
-      },
-      "Process": true
-     },
-     "Parsed": {
-      "agent": "\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
-      "auth": "-",
-      "bytes": "803",
-      "clientip": "195.54.160.135",
-      "file_dir": "/solr/admin/info/",
-      "file_ext": "",
-      "file_frag": "system",
-      "file_name": "system",
-      "http_args": "wt=json",
-      "httpversion": "1.1",
-      "ident": "-",
-      "impact_completion": "true",
-      "message": "195.54.160.135 - - [08/Jun/2020:08:04:43 +0000] \"GET /solr/admin/info/system?wt=json HTTP/1.1\" 500 803 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
-      "program": "apache2",
-      "rawrequest": "",
-      "referrer": "\"-\"",
-      "request": "/solr/admin/info/system",
-      "response": "500",
-      "static_ressource": "false",
-      "timestamp": "08/Jun/2020:08:04:43 +0000",
-      "verb": "GET"
-     },
      "Enriched": {
       "ASNNumber": "0",
       "ASNOrg": "",
@@ -943,7 +747,21 @@
       "Longitude": "0.000000",
       "MarshaledTime": "2020-06-08T08:04:43Z"
      },
-     "Overflow": null,
+     "Overflow": {
+      "MapKey": "",
+      "start_at": "0001-01-01T00:00:00Z",
+      "stop_at": "0001-01-01T00:00:00Z",
+      "source": null,
+      "Source_ip": "",
+      "Source_range": "",
+      "Source_AutonomousSystemNumber": "",
+      "Source_AutonomousSystemOrganization": "",
+      "Source_Country": "",
+      "Source_Latitude": 0,
+      "Source_Longitude": 0,
+      "Reprocess": false,
+      "Labels": null
+     },
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "08/Jun/2020:08:04:43 +0000",
      "MarshaledTime": "2020-06-08T08:04:43Z",
@@ -964,38 +782,6 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
-     "Line": {
-      "Raw": "195.54.160.135 - - [08/Jun/2020:08:04:43 +0000] \"GET /solr/admin/info/system?wt=json HTTP/1.1\" 500 803 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
-      "Src": "./tests/apache2-1/apache2.log",
-      "Time": "0001-01-01T00:00:00Z",
-      "Labels": {
-       "type": "apache2"
-      },
-      "Process": true
-     },
-     "Parsed": {
-      "agent": "\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
-      "auth": "-",
-      "bytes": "803",
-      "clientip": "195.54.160.135",
-      "file_dir": "/solr/admin/info/",
-      "file_ext": "",
-      "file_frag": "system",
-      "file_name": "system",
-      "http_args": "wt=json",
-      "httpversion": "1.1",
-      "ident": "-",
-      "impact_completion": "true",
-      "message": "195.54.160.135 - - [08/Jun/2020:08:04:43 +0000] \"GET /solr/admin/info/system?wt=json HTTP/1.1\" 500 803 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
-      "program": "apache2",
-      "rawrequest": "",
-      "referrer": "\"-\"",
-      "request": "/solr/admin/info/system",
-      "response": "500",
-      "static_ressource": "false",
-      "timestamp": "08/Jun/2020:08:04:43 +0000",
-      "verb": "GET"
-     },
      "Enriched": {
       "ASNNumber": "0",
       "ASNOrg": "",
@@ -1005,7 +791,21 @@
       "Longitude": "0.000000",
       "MarshaledTime": "2020-06-08T08:04:43Z"
      },
-     "Overflow": null,
+     "Overflow": {
+      "MapKey": "",
+      "start_at": "0001-01-01T00:00:00Z",
+      "stop_at": "0001-01-01T00:00:00Z",
+      "source": null,
+      "Source_ip": "",
+      "Source_range": "",
+      "Source_AutonomousSystemNumber": "",
+      "Source_AutonomousSystemOrganization": "",
+      "Source_Country": "",
+      "Source_Latitude": 0,
+      "Source_Longitude": 0,
+      "Reprocess": false,
+      "Labels": null
+     },
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "08/Jun/2020:08:04:43 +0000",
      "MarshaledTime": "2020-06-08T08:04:43Z",
@@ -1033,20 +833,21 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
-     "Line": {
-      "Raw": "195.54.160.135 - - [08/Jun/2020:08:06:35 +0000] \"GET /?a=fetch\u0026content=\u003cphp\u003edie(@md5(HelloThinkCMF))\u003c/php\u003e HTTP/1.1\" 500 803 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
-      "Src": "./tests/apache2-1/apache2.log",
-      "Time": "0001-01-01T00:00:00Z",
-      "Labels": {
-       "type": "apache2"
-      },
-      "Process": true
+     "Overflow": {
+      "MapKey": "",
+      "start_at": "0001-01-01T00:00:00Z",
+      "stop_at": "0001-01-01T00:00:00Z",
+      "source": null,
+      "Source_ip": "",
+      "Source_range": "",
+      "Source_AutonomousSystemNumber": "",
+      "Source_AutonomousSystemOrganization": "",
+      "Source_Country": "",
+      "Source_Latitude": 0,
+      "Source_Longitude": 0,
+      "Reprocess": false,
+      "Labels": null
      },
-     "Parsed": {
-      "message": "195.54.160.135 - - [08/Jun/2020:08:06:35 +0000] \"GET /?a=fetch\u0026content=\u003cphp\u003edie(@md5(HelloThinkCMF))\u003c/php\u003e HTTP/1.1\" 500 803 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
-      "program": "apache2"
-     },
-     "Overflow": null,
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "",
      "MarshaledTime": "",
@@ -1059,32 +860,21 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
-     "Line": {
-      "Raw": "195.54.160.135 - - [08/Jun/2020:08:06:35 +0000] \"GET /?a=fetch\u0026content=\u003cphp\u003edie(@md5(HelloThinkCMF))\u003c/php\u003e HTTP/1.1\" 500 803 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
-      "Src": "./tests/apache2-1/apache2.log",
-      "Time": "0001-01-01T00:00:00Z",
-      "Labels": {
-       "type": "apache2"
-      },
-      "Process": true
+     "Overflow": {
+      "MapKey": "",
+      "start_at": "0001-01-01T00:00:00Z",
+      "stop_at": "0001-01-01T00:00:00Z",
+      "source": null,
+      "Source_ip": "",
+      "Source_range": "",
+      "Source_AutonomousSystemNumber": "",
+      "Source_AutonomousSystemOrganization": "",
+      "Source_Country": "",
+      "Source_Latitude": 0,
+      "Source_Longitude": 0,
+      "Reprocess": false,
+      "Labels": null
      },
-     "Parsed": {
-      "agent": "\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
-      "auth": "-",
-      "bytes": "803",
-      "clientip": "195.54.160.135",
-      "httpversion": "1.1",
-      "ident": "-",
-      "message": "195.54.160.135 - - [08/Jun/2020:08:06:35 +0000] \"GET /?a=fetch\u0026content=\u003cphp\u003edie(@md5(HelloThinkCMF))\u003c/php\u003e HTTP/1.1\" 500 803 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
-      "program": "apache2",
-      "rawrequest": "",
-      "referrer": "\"-\"",
-      "request": "/?a=fetch\u0026content=\u003cphp\u003edie(@md5(HelloThinkCMF))\u003c/php\u003e",
-      "response": "500",
-      "timestamp": "08/Jun/2020:08:06:35 +0000",
-      "verb": "GET"
-     },
-     "Overflow": null,
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "08/Jun/2020:08:06:35 +0000",
      "MarshaledTime": "",
@@ -1104,35 +894,24 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
-     "Line": {
-      "Raw": "195.54.160.135 - - [08/Jun/2020:08:06:35 +0000] \"GET /?a=fetch\u0026content=\u003cphp\u003edie(@md5(HelloThinkCMF))\u003c/php\u003e HTTP/1.1\" 500 803 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
-      "Src": "./tests/apache2-1/apache2.log",
-      "Time": "0001-01-01T00:00:00Z",
-      "Labels": {
-       "type": "apache2"
-      },
-      "Process": true
-     },
-     "Parsed": {
-      "agent": "\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
-      "auth": "-",
-      "bytes": "803",
-      "clientip": "195.54.160.135",
-      "httpversion": "1.1",
-      "ident": "-",
-      "message": "195.54.160.135 - - [08/Jun/2020:08:06:35 +0000] \"GET /?a=fetch\u0026content=\u003cphp\u003edie(@md5(HelloThinkCMF))\u003c/php\u003e HTTP/1.1\" 500 803 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
-      "program": "apache2",
-      "rawrequest": "",
-      "referrer": "\"-\"",
-      "request": "/?a=fetch\u0026content=\u003cphp\u003edie(@md5(HelloThinkCMF))\u003c/php\u003e",
-      "response": "500",
-      "timestamp": "08/Jun/2020:08:06:35 +0000",
-      "verb": "GET"
-     },
      "Enriched": {
       "MarshaledTime": "2020-06-08T08:06:35Z"
      },
-     "Overflow": null,
+     "Overflow": {
+      "MapKey": "",
+      "start_at": "0001-01-01T00:00:00Z",
+      "stop_at": "0001-01-01T00:00:00Z",
+      "source": null,
+      "Source_ip": "",
+      "Source_range": "",
+      "Source_AutonomousSystemNumber": "",
+      "Source_AutonomousSystemOrganization": "",
+      "Source_Country": "",
+      "Source_Latitude": 0,
+      "Source_Longitude": 0,
+      "Reprocess": false,
+      "Labels": null
+     },
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "08/Jun/2020:08:06:35 +0000",
      "MarshaledTime": "2020-06-08T08:06:35Z",
@@ -1150,31 +929,6 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
-     "Line": {
-      "Raw": "195.54.160.135 - - [08/Jun/2020:08:06:35 +0000] \"GET /?a=fetch\u0026content=\u003cphp\u003edie(@md5(HelloThinkCMF))\u003c/php\u003e HTTP/1.1\" 500 803 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
-      "Src": "./tests/apache2-1/apache2.log",
-      "Time": "0001-01-01T00:00:00Z",
-      "Labels": {
-       "type": "apache2"
-      },
-      "Process": true
-     },
-     "Parsed": {
-      "agent": "\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
-      "auth": "-",
-      "bytes": "803",
-      "clientip": "195.54.160.135",
-      "httpversion": "1.1",
-      "ident": "-",
-      "message": "195.54.160.135 - - [08/Jun/2020:08:06:35 +0000] \"GET /?a=fetch\u0026content=\u003cphp\u003edie(@md5(HelloThinkCMF))\u003c/php\u003e HTTP/1.1\" 500 803 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
-      "program": "apache2",
-      "rawrequest": "",
-      "referrer": "\"-\"",
-      "request": "/?a=fetch\u0026content=\u003cphp\u003edie(@md5(HelloThinkCMF))\u003c/php\u003e",
-      "response": "500",
-      "timestamp": "08/Jun/2020:08:06:35 +0000",
-      "verb": "GET"
-     },
      "Enriched": {
       "ASNNumber": "0",
       "ASNOrg": "",
@@ -1184,7 +938,21 @@
       "Longitude": "0.000000",
       "MarshaledTime": "2020-06-08T08:06:35Z"
      },
-     "Overflow": null,
+     "Overflow": {
+      "MapKey": "",
+      "start_at": "0001-01-01T00:00:00Z",
+      "stop_at": "0001-01-01T00:00:00Z",
+      "source": null,
+      "Source_ip": "",
+      "Source_range": "",
+      "Source_AutonomousSystemNumber": "",
+      "Source_AutonomousSystemOrganization": "",
+      "Source_Country": "",
+      "Source_Latitude": 0,
+      "Source_Longitude": 0,
+      "Reprocess": false,
+      "Labels": null
+     },
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "08/Jun/2020:08:06:35 +0000",
      "MarshaledTime": "2020-06-08T08:06:35Z",
@@ -1204,33 +972,6 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
-     "Line": {
-      "Raw": "195.54.160.135 - - [08/Jun/2020:08:06:35 +0000] \"GET /?a=fetch\u0026content=\u003cphp\u003edie(@md5(HelloThinkCMF))\u003c/php\u003e HTTP/1.1\" 500 803 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
-      "Src": "./tests/apache2-1/apache2.log",
-      "Time": "0001-01-01T00:00:00Z",
-      "Labels": {
-       "type": "apache2"
-      },
-      "Process": true
-     },
-     "Parsed": {
-      "agent": "\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
-      "auth": "-",
-      "bytes": "803",
-      "clientip": "195.54.160.135",
-      "http_args": "a=fetch\u0026content=\u003cphp\u003edie(@md5(HelloThinkCMF))\u003c/php\u003e",
-      "httpversion": "1.1",
-      "ident": "-",
-      "impact_completion": "true",
-      "message": "195.54.160.135 - - [08/Jun/2020:08:06:35 +0000] \"GET /?a=fetch\u0026content=\u003cphp\u003edie(@md5(HelloThinkCMF))\u003c/php\u003e HTTP/1.1\" 500 803 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
-      "program": "apache2",
-      "rawrequest": "",
-      "referrer": "\"-\"",
-      "request": "/",
-      "response": "500",
-      "timestamp": "08/Jun/2020:08:06:35 +0000",
-      "verb": "GET"
-     },
      "Enriched": {
       "ASNNumber": "0",
       "ASNOrg": "",
@@ -1240,7 +981,21 @@
       "Longitude": "0.000000",
       "MarshaledTime": "2020-06-08T08:06:35Z"
      },
-     "Overflow": null,
+     "Overflow": {
+      "MapKey": "",
+      "start_at": "0001-01-01T00:00:00Z",
+      "stop_at": "0001-01-01T00:00:00Z",
+      "source": null,
+      "Source_ip": "",
+      "Source_range": "",
+      "Source_AutonomousSystemNumber": "",
+      "Source_AutonomousSystemOrganization": "",
+      "Source_Country": "",
+      "Source_Latitude": 0,
+      "Source_Longitude": 0,
+      "Reprocess": false,
+      "Labels": null
+     },
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "08/Jun/2020:08:06:35 +0000",
      "MarshaledTime": "2020-06-08T08:06:35Z",
