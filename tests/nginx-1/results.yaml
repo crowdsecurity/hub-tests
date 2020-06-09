@@ -7,7 +7,7 @@
      "Type": 0,
      "ExpectMode": 1,
      "Whitelisted": false,
-     "Stage": "s01-parse-fail",
+     "Stage": "s01-parse",
      "Line": {
       "Raw": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
       "Src": "./tests/nginx-1/nginx.log",
