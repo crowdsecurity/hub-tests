@@ -8,6 +8,19 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "message": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
+      "program": "nginx"
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -35,6 +48,29 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "522",
+      "http_referer": "-",
+      "http_user_agent": "Go-http-client/1.1",
+      "http_version": "1.1",
+      "message": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "5.5.8.5",
+      "remote_user": "-",
+      "request": "/.well-known/acme-challenge/FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo",
+      "status": "404",
+      "time_local": "04/Jan/2020:07:25:02 +0000"
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -69,6 +105,29 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "522",
+      "http_referer": "-",
+      "http_user_agent": "Go-http-client/1.1",
+      "http_version": "1.1",
+      "message": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "5.5.8.5",
+      "remote_user": "-",
+      "request": "/.well-known/acme-challenge/FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo",
+      "status": "404",
+      "time_local": "04/Jan/2020:07:25:02 +0000"
+     },
      "Enriched": {
       "MarshaledTime": "2020-01-04T07:25:02Z"
      },
@@ -104,6 +163,29 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "522",
+      "http_referer": "-",
+      "http_user_agent": "Go-http-client/1.1",
+      "http_version": "1.1",
+      "message": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "5.5.8.5",
+      "remote_user": "-",
+      "request": "/.well-known/acme-challenge/FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo",
+      "status": "404",
+      "time_local": "04/Jan/2020:07:25:02 +0000"
+     },
      "Enriched": {
       "ASNNumber": "12638",
       "ASNOrg": "E-Plus Service GmbH",
@@ -151,6 +233,35 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "522",
+      "file_dir": "/.well-known/acme-challenge/",
+      "file_ext": "",
+      "file_frag": "FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo",
+      "file_name": "FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo",
+      "http_referer": "-",
+      "http_user_agent": "Go-http-client/1.1",
+      "http_version": "1.1",
+      "impact_completion": "false",
+      "message": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "5.5.8.5",
+      "remote_user": "-",
+      "request": "/.well-known/acme-challenge/FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo",
+      "static_ressource": "false",
+      "status": "404",
+      "time_local": "04/Jan/2020:07:25:02 +0000"
+     },
      "Enriched": {
       "ASNNumber": "12638",
       "ASNOrg": "E-Plus Service GmbH",
@@ -199,6 +310,35 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "522",
+      "file_dir": "/.well-known/acme-challenge/",
+      "file_ext": "",
+      "file_frag": "FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo",
+      "file_name": "FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo",
+      "http_referer": "-",
+      "http_user_agent": "Go-http-client/1.1",
+      "http_version": "1.1",
+      "impact_completion": "false",
+      "message": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "5.5.8.5",
+      "remote_user": "-",
+      "request": "/.well-known/acme-challenge/FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo",
+      "static_ressource": "false",
+      "status": "404",
+      "time_local": "04/Jan/2020:07:25:02 +0000"
+     },
      "Enriched": {
       "ASNNumber": "12638",
       "ASNOrg": "E-Plus Service GmbH",
@@ -254,6 +394,19 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "8.4.18.9 - - [04/Jan/2020:07:42:05 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "message": "8.4.18.9 - - [04/Jan/2020:07:42:05 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36\"",
+      "program": "nginx"
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -281,6 +434,29 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "8.4.18.9 - - [04/Jan/2020:07:42:05 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "550",
+      "http_referer": "-",
+      "http_user_agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36",
+      "http_version": "1.1",
+      "message": "8.4.18.9 - - [04/Jan/2020:07:42:05 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "8.4.18.9",
+      "remote_user": "-",
+      "request": "/",
+      "status": "500",
+      "time_local": "04/Jan/2020:07:42:05 +0000"
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -315,6 +491,29 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "8.4.18.9 - - [04/Jan/2020:07:42:05 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "550",
+      "http_referer": "-",
+      "http_user_agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36",
+      "http_version": "1.1",
+      "message": "8.4.18.9 - - [04/Jan/2020:07:42:05 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "8.4.18.9",
+      "remote_user": "-",
+      "request": "/",
+      "status": "500",
+      "time_local": "04/Jan/2020:07:42:05 +0000"
+     },
      "Enriched": {
       "MarshaledTime": "2020-01-04T07:42:05Z"
      },
@@ -350,6 +549,29 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "8.4.18.9 - - [04/Jan/2020:07:42:05 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "550",
+      "http_referer": "-",
+      "http_user_agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36",
+      "http_version": "1.1",
+      "message": "8.4.18.9 - - [04/Jan/2020:07:42:05 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "8.4.18.9",
+      "remote_user": "-",
+      "request": "/",
+      "status": "500",
+      "time_local": "04/Jan/2020:07:42:05 +0000"
+     },
      "Enriched": {
       "ASNNumber": "3356",
       "ASNOrg": "Level 3 Parent, LLC",
@@ -397,6 +619,30 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "8.4.18.9 - - [04/Jan/2020:07:42:05 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "550",
+      "http_referer": "-",
+      "http_user_agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36",
+      "http_version": "1.1",
+      "impact_completion": "true",
+      "message": "8.4.18.9 - - [04/Jan/2020:07:42:05 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "8.4.18.9",
+      "remote_user": "-",
+      "request": "/",
+      "status": "500",
+      "time_local": "04/Jan/2020:07:42:05 +0000"
+     },
      "Enriched": {
       "ASNNumber": "3356",
       "ASNOrg": "Level 3 Parent, LLC",
@@ -451,6 +697,19 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "2.1.15.201 - - [04/Jan/2020:07:51:47 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101 Firefox/55.0\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "message": "2.1.15.201 - - [04/Jan/2020:07:51:47 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101 Firefox/55.0\"",
+      "program": "nginx"
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -478,6 +737,29 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "2.1.15.201 - - [04/Jan/2020:07:51:47 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101 Firefox/55.0\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "550",
+      "http_referer": "-",
+      "http_user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101 Firefox/55.0",
+      "http_version": "1.1",
+      "message": "2.1.15.201 - - [04/Jan/2020:07:51:47 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101 Firefox/55.0\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "2.1.15.201",
+      "remote_user": "-",
+      "request": "/",
+      "status": "500",
+      "time_local": "04/Jan/2020:07:51:47 +0000"
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -512,6 +794,29 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "2.1.15.201 - - [04/Jan/2020:07:51:47 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101 Firefox/55.0\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "550",
+      "http_referer": "-",
+      "http_user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101 Firefox/55.0",
+      "http_version": "1.1",
+      "message": "2.1.15.201 - - [04/Jan/2020:07:51:47 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101 Firefox/55.0\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "2.1.15.201",
+      "remote_user": "-",
+      "request": "/",
+      "status": "500",
+      "time_local": "04/Jan/2020:07:51:47 +0000"
+     },
      "Enriched": {
       "MarshaledTime": "2020-01-04T07:51:47Z"
      },
@@ -547,6 +852,29 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "2.1.15.201 - - [04/Jan/2020:07:51:47 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101 Firefox/55.0\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "550",
+      "http_referer": "-",
+      "http_user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101 Firefox/55.0",
+      "http_version": "1.1",
+      "message": "2.1.15.201 - - [04/Jan/2020:07:51:47 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101 Firefox/55.0\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "2.1.15.201",
+      "remote_user": "-",
+      "request": "/",
+      "status": "500",
+      "time_local": "04/Jan/2020:07:51:47 +0000"
+     },
      "Enriched": {
       "ASNNumber": "3215",
       "ASNOrg": "Orange",
@@ -594,6 +922,30 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "2.1.15.201 - - [04/Jan/2020:07:51:47 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101 Firefox/55.0\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "550",
+      "http_referer": "-",
+      "http_user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101 Firefox/55.0",
+      "http_version": "1.1",
+      "impact_completion": "true",
+      "message": "2.1.15.201 - - [04/Jan/2020:07:51:47 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101 Firefox/55.0\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "2.1.15.201",
+      "remote_user": "-",
+      "request": "/",
+      "status": "500",
+      "time_local": "04/Jan/2020:07:51:47 +0000"
+     },
      "Enriched": {
       "ASNNumber": "3215",
       "ASNOrg": "Orange",
@@ -648,6 +1000,19 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "119.22.17.28 - - [04/Jan/2020:07:53:48 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "message": "119.22.17.28 - - [04/Jan/2020:07:53:48 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36\"",
+      "program": "nginx"
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -675,6 +1040,29 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "119.22.17.28 - - [04/Jan/2020:07:53:48 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "550",
+      "http_referer": "-",
+      "http_user_agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36",
+      "http_version": "1.1",
+      "message": "119.22.17.28 - - [04/Jan/2020:07:53:48 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "119.22.17.28",
+      "remote_user": "-",
+      "request": "/",
+      "status": "500",
+      "time_local": "04/Jan/2020:07:53:48 +0000"
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -709,6 +1097,29 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "119.22.17.28 - - [04/Jan/2020:07:53:48 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "550",
+      "http_referer": "-",
+      "http_user_agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36",
+      "http_version": "1.1",
+      "message": "119.22.17.28 - - [04/Jan/2020:07:53:48 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "119.22.17.28",
+      "remote_user": "-",
+      "request": "/",
+      "status": "500",
+      "time_local": "04/Jan/2020:07:53:48 +0000"
+     },
      "Enriched": {
       "MarshaledTime": "2020-01-04T07:53:48Z"
      },
@@ -744,6 +1155,29 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "119.22.17.28 - - [04/Jan/2020:07:53:48 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "550",
+      "http_referer": "-",
+      "http_user_agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36",
+      "http_version": "1.1",
+      "message": "119.22.17.28 - - [04/Jan/2020:07:53:48 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "119.22.17.28",
+      "remote_user": "-",
+      "request": "/",
+      "status": "500",
+      "time_local": "04/Jan/2020:07:53:48 +0000"
+     },
      "Enriched": {
       "ASNNumber": "0",
       "ASNOrg": "",
@@ -788,6 +1222,30 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "119.22.17.28 - - [04/Jan/2020:07:53:48 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "550",
+      "http_referer": "-",
+      "http_user_agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36",
+      "http_version": "1.1",
+      "impact_completion": "true",
+      "message": "119.22.17.28 - - [04/Jan/2020:07:53:48 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "119.22.17.28",
+      "remote_user": "-",
+      "request": "/",
+      "status": "500",
+      "time_local": "04/Jan/2020:07:53:48 +0000"
+     },
      "Enriched": {
       "ASNNumber": "0",
       "ASNOrg": "",
@@ -839,6 +1297,19 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "5.19.18.18 - - [04/Jan/2020:07:58:41 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.7 (KHTML, like Gecko) Version/9.1.2 Safari/601.7.7\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "message": "5.19.18.18 - - [04/Jan/2020:07:58:41 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.7 (KHTML, like Gecko) Version/9.1.2 Safari/601.7.7\"",
+      "program": "nginx"
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -866,6 +1337,29 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "5.19.18.18 - - [04/Jan/2020:07:58:41 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.7 (KHTML, like Gecko) Version/9.1.2 Safari/601.7.7\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "550",
+      "http_referer": "-",
+      "http_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.7 (KHTML, like Gecko) Version/9.1.2 Safari/601.7.7",
+      "http_version": "1.1",
+      "message": "5.19.18.18 - - [04/Jan/2020:07:58:41 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.7 (KHTML, like Gecko) Version/9.1.2 Safari/601.7.7\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "5.19.18.18",
+      "remote_user": "-",
+      "request": "/",
+      "status": "500",
+      "time_local": "04/Jan/2020:07:58:41 +0000"
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -900,6 +1394,29 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "5.19.18.18 - - [04/Jan/2020:07:58:41 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.7 (KHTML, like Gecko) Version/9.1.2 Safari/601.7.7\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "550",
+      "http_referer": "-",
+      "http_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.7 (KHTML, like Gecko) Version/9.1.2 Safari/601.7.7",
+      "http_version": "1.1",
+      "message": "5.19.18.18 - - [04/Jan/2020:07:58:41 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.7 (KHTML, like Gecko) Version/9.1.2 Safari/601.7.7\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "5.19.18.18",
+      "remote_user": "-",
+      "request": "/",
+      "status": "500",
+      "time_local": "04/Jan/2020:07:58:41 +0000"
+     },
      "Enriched": {
       "MarshaledTime": "2020-01-04T07:58:41Z"
      },
@@ -935,6 +1452,29 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "5.19.18.18 - - [04/Jan/2020:07:58:41 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.7 (KHTML, like Gecko) Version/9.1.2 Safari/601.7.7\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "550",
+      "http_referer": "-",
+      "http_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.7 (KHTML, like Gecko) Version/9.1.2 Safari/601.7.7",
+      "http_version": "1.1",
+      "message": "5.19.18.18 - - [04/Jan/2020:07:58:41 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.7 (KHTML, like Gecko) Version/9.1.2 Safari/601.7.7\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "5.19.18.18",
+      "remote_user": "-",
+      "request": "/",
+      "status": "500",
+      "time_local": "04/Jan/2020:07:58:41 +0000"
+     },
      "Enriched": {
       "ASNNumber": "41733",
       "ASNOrg": "Perspectiva Ltd.",
@@ -982,6 +1522,30 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "5.19.18.18 - - [04/Jan/2020:07:58:41 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.7 (KHTML, like Gecko) Version/9.1.2 Safari/601.7.7\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "550",
+      "http_referer": "-",
+      "http_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.7 (KHTML, like Gecko) Version/9.1.2 Safari/601.7.7",
+      "http_version": "1.1",
+      "impact_completion": "true",
+      "message": "5.19.18.18 - - [04/Jan/2020:07:58:41 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.7 (KHTML, like Gecko) Version/9.1.2 Safari/601.7.7\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "5.19.18.18",
+      "remote_user": "-",
+      "request": "/",
+      "status": "500",
+      "time_local": "04/Jan/2020:07:58:41 +0000"
+     },
      "Enriched": {
       "ASNNumber": "41733",
       "ASNOrg": "Perspectiva Ltd.",
@@ -1036,6 +1600,19 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "15.15.91.8 - - [04/Jan/2020:08:08:03 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "message": "15.15.91.8 - - [04/Jan/2020:08:08:03 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36\"",
+      "program": "nginx"
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -1063,6 +1640,29 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "15.15.91.8 - - [04/Jan/2020:08:08:03 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "550",
+      "http_referer": "-",
+      "http_user_agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36",
+      "http_version": "1.1",
+      "message": "15.15.91.8 - - [04/Jan/2020:08:08:03 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "15.15.91.8",
+      "remote_user": "-",
+      "request": "/",
+      "status": "500",
+      "time_local": "04/Jan/2020:08:08:03 +0000"
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -1097,6 +1697,29 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "15.15.91.8 - - [04/Jan/2020:08:08:03 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "550",
+      "http_referer": "-",
+      "http_user_agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36",
+      "http_version": "1.1",
+      "message": "15.15.91.8 - - [04/Jan/2020:08:08:03 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "15.15.91.8",
+      "remote_user": "-",
+      "request": "/",
+      "status": "500",
+      "time_local": "04/Jan/2020:08:08:03 +0000"
+     },
      "Enriched": {
       "MarshaledTime": "2020-01-04T08:08:03Z"
      },
@@ -1132,6 +1755,29 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "15.15.91.8 - - [04/Jan/2020:08:08:03 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "550",
+      "http_referer": "-",
+      "http_user_agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36",
+      "http_version": "1.1",
+      "message": "15.15.91.8 - - [04/Jan/2020:08:08:03 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "15.15.91.8",
+      "remote_user": "-",
+      "request": "/",
+      "status": "500",
+      "time_local": "04/Jan/2020:08:08:03 +0000"
+     },
      "Enriched": {
       "ASNNumber": "71",
       "ASNOrg": "Hewlett-Packard Company",
@@ -1179,6 +1825,30 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "15.15.91.8 - - [04/Jan/2020:08:08:03 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "550",
+      "http_referer": "-",
+      "http_user_agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36",
+      "http_version": "1.1",
+      "impact_completion": "true",
+      "message": "15.15.91.8 - - [04/Jan/2020:08:08:03 +0000] \"GET / HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "15.15.91.8",
+      "remote_user": "-",
+      "request": "/",
+      "status": "500",
+      "time_local": "04/Jan/2020:08:08:03 +0000"
+     },
      "Enriched": {
       "ASNNumber": "71",
       "ASNOrg": "Hewlett-Packard Company",
@@ -1233,6 +1903,19 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "92.18.10.29 - - [04/Jan/2020:08:27:36 +0000] \"GET / HTTP/1.0\" 500 511 \"-\" \"NetSystemsResearch studies the availability of various services across the internet. Our website is netsystemsresearch.com\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "message": "92.18.10.29 - - [04/Jan/2020:08:27:36 +0000] \"GET / HTTP/1.0\" 500 511 \"-\" \"NetSystemsResearch studies the availability of various services across the internet. Our website is netsystemsresearch.com\"",
+      "program": "nginx"
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -1260,6 +1943,29 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "92.18.10.29 - - [04/Jan/2020:08:27:36 +0000] \"GET / HTTP/1.0\" 500 511 \"-\" \"NetSystemsResearch studies the availability of various services across the internet. Our website is netsystemsresearch.com\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "511",
+      "http_referer": "-",
+      "http_user_agent": "NetSystemsResearch studies the availability of various services across the internet. Our website is netsystemsresearch.com",
+      "http_version": "1.0",
+      "message": "92.18.10.29 - - [04/Jan/2020:08:27:36 +0000] \"GET / HTTP/1.0\" 500 511 \"-\" \"NetSystemsResearch studies the availability of various services across the internet. Our website is netsystemsresearch.com\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "92.18.10.29",
+      "remote_user": "-",
+      "request": "/",
+      "status": "500",
+      "time_local": "04/Jan/2020:08:27:36 +0000"
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -1294,6 +2000,29 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "92.18.10.29 - - [04/Jan/2020:08:27:36 +0000] \"GET / HTTP/1.0\" 500 511 \"-\" \"NetSystemsResearch studies the availability of various services across the internet. Our website is netsystemsresearch.com\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "511",
+      "http_referer": "-",
+      "http_user_agent": "NetSystemsResearch studies the availability of various services across the internet. Our website is netsystemsresearch.com",
+      "http_version": "1.0",
+      "message": "92.18.10.29 - - [04/Jan/2020:08:27:36 +0000] \"GET / HTTP/1.0\" 500 511 \"-\" \"NetSystemsResearch studies the availability of various services across the internet. Our website is netsystemsresearch.com\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "92.18.10.29",
+      "remote_user": "-",
+      "request": "/",
+      "status": "500",
+      "time_local": "04/Jan/2020:08:27:36 +0000"
+     },
      "Enriched": {
       "MarshaledTime": "2020-01-04T08:27:36Z"
      },
@@ -1329,6 +2058,29 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "92.18.10.29 - - [04/Jan/2020:08:27:36 +0000] \"GET / HTTP/1.0\" 500 511 \"-\" \"NetSystemsResearch studies the availability of various services across the internet. Our website is netsystemsresearch.com\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "511",
+      "http_referer": "-",
+      "http_user_agent": "NetSystemsResearch studies the availability of various services across the internet. Our website is netsystemsresearch.com",
+      "http_version": "1.0",
+      "message": "92.18.10.29 - - [04/Jan/2020:08:27:36 +0000] \"GET / HTTP/1.0\" 500 511 \"-\" \"NetSystemsResearch studies the availability of various services across the internet. Our website is netsystemsresearch.com\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "92.18.10.29",
+      "remote_user": "-",
+      "request": "/",
+      "status": "500",
+      "time_local": "04/Jan/2020:08:27:36 +0000"
+     },
      "Enriched": {
       "ASNNumber": "13285",
       "ASNOrg": "TalkTalk",
@@ -1376,6 +2128,30 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "92.18.10.29 - - [04/Jan/2020:08:27:36 +0000] \"GET / HTTP/1.0\" 500 511 \"-\" \"NetSystemsResearch studies the availability of various services across the internet. Our website is netsystemsresearch.com\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "511",
+      "http_referer": "-",
+      "http_user_agent": "NetSystemsResearch studies the availability of various services across the internet. Our website is netsystemsresearch.com",
+      "http_version": "1.0",
+      "impact_completion": "true",
+      "message": "92.18.10.29 - - [04/Jan/2020:08:27:36 +0000] \"GET / HTTP/1.0\" 500 511 \"-\" \"NetSystemsResearch studies the availability of various services across the internet. Our website is netsystemsresearch.com\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "92.18.10.29",
+      "remote_user": "-",
+      "request": "/",
+      "status": "500",
+      "time_local": "04/Jan/2020:08:27:36 +0000"
+     },
      "Enriched": {
       "ASNNumber": "13285",
       "ASNOrg": "TalkTalk",
@@ -1430,6 +2206,19 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "2.30.19.10 - - [04/Jan/2020:08:29:17 +0000] \"GET / HTTP/1.1\" 400 0 \"-\" \"-\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "message": "2.30.19.10 - - [04/Jan/2020:08:29:17 +0000] \"GET / HTTP/1.1\" 400 0 \"-\" \"-\"",
+      "program": "nginx"
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -1457,6 +2246,29 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "2.30.19.10 - - [04/Jan/2020:08:29:17 +0000] \"GET / HTTP/1.1\" 400 0 \"-\" \"-\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "0",
+      "http_referer": "-",
+      "http_user_agent": "-",
+      "http_version": "1.1",
+      "message": "2.30.19.10 - - [04/Jan/2020:08:29:17 +0000] \"GET / HTTP/1.1\" 400 0 \"-\" \"-\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "2.30.19.10",
+      "remote_user": "-",
+      "request": "/",
+      "status": "400",
+      "time_local": "04/Jan/2020:08:29:17 +0000"
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -1491,6 +2303,29 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "2.30.19.10 - - [04/Jan/2020:08:29:17 +0000] \"GET / HTTP/1.1\" 400 0 \"-\" \"-\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "0",
+      "http_referer": "-",
+      "http_user_agent": "-",
+      "http_version": "1.1",
+      "message": "2.30.19.10 - - [04/Jan/2020:08:29:17 +0000] \"GET / HTTP/1.1\" 400 0 \"-\" \"-\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "2.30.19.10",
+      "remote_user": "-",
+      "request": "/",
+      "status": "400",
+      "time_local": "04/Jan/2020:08:29:17 +0000"
+     },
      "Enriched": {
       "MarshaledTime": "2020-01-04T08:29:17Z"
      },
@@ -1526,6 +2361,29 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "2.30.19.10 - - [04/Jan/2020:08:29:17 +0000] \"GET / HTTP/1.1\" 400 0 \"-\" \"-\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "0",
+      "http_referer": "-",
+      "http_user_agent": "-",
+      "http_version": "1.1",
+      "message": "2.30.19.10 - - [04/Jan/2020:08:29:17 +0000] \"GET / HTTP/1.1\" 400 0 \"-\" \"-\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "2.30.19.10",
+      "remote_user": "-",
+      "request": "/",
+      "status": "400",
+      "time_local": "04/Jan/2020:08:29:17 +0000"
+     },
      "Enriched": {
       "ASNNumber": "12576",
       "ASNOrg": "EE Limited",
@@ -1573,6 +2431,30 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "2.30.19.10 - - [04/Jan/2020:08:29:17 +0000] \"GET / HTTP/1.1\" 400 0 \"-\" \"-\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "0",
+      "http_referer": "-",
+      "http_user_agent": "-",
+      "http_version": "1.1",
+      "impact_completion": "true",
+      "message": "2.30.19.10 - - [04/Jan/2020:08:29:17 +0000] \"GET / HTTP/1.1\" 400 0 \"-\" \"-\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "2.30.19.10",
+      "remote_user": "-",
+      "request": "/",
+      "status": "400",
+      "time_local": "04/Jan/2020:08:29:17 +0000"
+     },
      "Enriched": {
       "ASNNumber": "12576",
       "ASNOrg": "EE Limited",
@@ -1627,6 +2509,19 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "61.29.6.3 - - [04/Jan/2020:08:41:42 +0000] \"GET /robots.txt HTTP/1.1\" 404 499 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "message": "61.29.6.3 - - [04/Jan/2020:08:41:42 +0000] \"GET /robots.txt HTTP/1.1\" 404 499 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
+      "program": "nginx"
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -1654,6 +2549,29 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "61.29.6.3 - - [04/Jan/2020:08:41:42 +0000] \"GET /robots.txt HTTP/1.1\" 404 499 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "499",
+      "http_referer": "-",
+      "http_user_agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+      "http_version": "1.1",
+      "message": "61.29.6.3 - - [04/Jan/2020:08:41:42 +0000] \"GET /robots.txt HTTP/1.1\" 404 499 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "61.29.6.3",
+      "remote_user": "-",
+      "request": "/robots.txt",
+      "status": "404",
+      "time_local": "04/Jan/2020:08:41:42 +0000"
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -1688,6 +2606,29 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "61.29.6.3 - - [04/Jan/2020:08:41:42 +0000] \"GET /robots.txt HTTP/1.1\" 404 499 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "499",
+      "http_referer": "-",
+      "http_user_agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+      "http_version": "1.1",
+      "message": "61.29.6.3 - - [04/Jan/2020:08:41:42 +0000] \"GET /robots.txt HTTP/1.1\" 404 499 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "61.29.6.3",
+      "remote_user": "-",
+      "request": "/robots.txt",
+      "status": "404",
+      "time_local": "04/Jan/2020:08:41:42 +0000"
+     },
      "Enriched": {
       "MarshaledTime": "2020-01-04T08:41:42Z"
      },
@@ -1723,6 +2664,29 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "61.29.6.3 - - [04/Jan/2020:08:41:42 +0000] \"GET /robots.txt HTTP/1.1\" 404 499 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "499",
+      "http_referer": "-",
+      "http_user_agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+      "http_version": "1.1",
+      "message": "61.29.6.3 - - [04/Jan/2020:08:41:42 +0000] \"GET /robots.txt HTTP/1.1\" 404 499 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "61.29.6.3",
+      "remote_user": "-",
+      "request": "/robots.txt",
+      "status": "404",
+      "time_local": "04/Jan/2020:08:41:42 +0000"
+     },
      "Enriched": {
       "ASNNumber": "2764",
       "ASNOrg": "AAPT Limited",
@@ -1770,6 +2734,35 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "61.29.6.3 - - [04/Jan/2020:08:41:42 +0000] \"GET /robots.txt HTTP/1.1\" 404 499 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "499",
+      "file_dir": "/",
+      "file_ext": ".txt",
+      "file_frag": "robots",
+      "file_name": "robots.txt",
+      "http_referer": "-",
+      "http_user_agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+      "http_version": "1.1",
+      "impact_completion": "false",
+      "message": "61.29.6.3 - - [04/Jan/2020:08:41:42 +0000] \"GET /robots.txt HTTP/1.1\" 404 499 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "61.29.6.3",
+      "remote_user": "-",
+      "request": "/robots.txt",
+      "static_ressource": "false",
+      "status": "404",
+      "time_local": "04/Jan/2020:08:41:42 +0000"
+     },
      "Enriched": {
       "ASNNumber": "2764",
       "ASNOrg": "AAPT Limited",
@@ -1818,6 +2811,35 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "61.29.6.3 - - [04/Jan/2020:08:41:42 +0000] \"GET /robots.txt HTTP/1.1\" 404 499 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "499",
+      "file_dir": "/",
+      "file_ext": ".txt",
+      "file_frag": "robots",
+      "file_name": "robots.txt",
+      "http_referer": "-",
+      "http_user_agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+      "http_version": "1.1",
+      "impact_completion": "false",
+      "message": "61.29.6.3 - - [04/Jan/2020:08:41:42 +0000] \"GET /robots.txt HTTP/1.1\" 404 499 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "61.29.6.3",
+      "remote_user": "-",
+      "request": "/robots.txt",
+      "static_ressource": "false",
+      "status": "404",
+      "time_local": "04/Jan/2020:08:41:42 +0000"
+     },
      "Enriched": {
       "ASNNumber": "2764",
       "ASNOrg": "AAPT Limited",
@@ -1873,6 +2895,19 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "52.59.61.4 - - [04/Jan/2020:08:41:43 +0000] \"GET /index.php/nous-contacter/ HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "message": "52.59.61.4 - - [04/Jan/2020:08:41:43 +0000] \"GET /index.php/nous-contacter/ HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
+      "program": "nginx"
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -1900,6 +2935,29 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "52.59.61.4 - - [04/Jan/2020:08:41:43 +0000] \"GET /index.php/nous-contacter/ HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "550",
+      "http_referer": "-",
+      "http_user_agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+      "http_version": "1.1",
+      "message": "52.59.61.4 - - [04/Jan/2020:08:41:43 +0000] \"GET /index.php/nous-contacter/ HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "52.59.61.4",
+      "remote_user": "-",
+      "request": "/index.php/nous-contacter/",
+      "status": "500",
+      "time_local": "04/Jan/2020:08:41:43 +0000"
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -1934,6 +2992,29 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "52.59.61.4 - - [04/Jan/2020:08:41:43 +0000] \"GET /index.php/nous-contacter/ HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "550",
+      "http_referer": "-",
+      "http_user_agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+      "http_version": "1.1",
+      "message": "52.59.61.4 - - [04/Jan/2020:08:41:43 +0000] \"GET /index.php/nous-contacter/ HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "52.59.61.4",
+      "remote_user": "-",
+      "request": "/index.php/nous-contacter/",
+      "status": "500",
+      "time_local": "04/Jan/2020:08:41:43 +0000"
+     },
      "Enriched": {
       "MarshaledTime": "2020-01-04T08:41:43Z"
      },
@@ -1969,6 +3050,29 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "52.59.61.4 - - [04/Jan/2020:08:41:43 +0000] \"GET /index.php/nous-contacter/ HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "550",
+      "http_referer": "-",
+      "http_user_agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+      "http_version": "1.1",
+      "message": "52.59.61.4 - - [04/Jan/2020:08:41:43 +0000] \"GET /index.php/nous-contacter/ HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "52.59.61.4",
+      "remote_user": "-",
+      "request": "/index.php/nous-contacter/",
+      "status": "500",
+      "time_local": "04/Jan/2020:08:41:43 +0000"
+     },
      "Enriched": {
       "ASNNumber": "16509",
       "ASNOrg": "Amazon.com, Inc.",
@@ -2016,6 +3120,35 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "52.59.61.4 - - [04/Jan/2020:08:41:43 +0000] \"GET /index.php/nous-contacter/ HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "550",
+      "file_dir": "/index.php/",
+      "file_ext": "",
+      "file_frag": "nous-contacter/",
+      "file_name": "nous-contacter/",
+      "http_referer": "-",
+      "http_user_agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+      "http_version": "1.1",
+      "impact_completion": "true",
+      "message": "52.59.61.4 - - [04/Jan/2020:08:41:43 +0000] \"GET /index.php/nous-contacter/ HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "52.59.61.4",
+      "remote_user": "-",
+      "request": "/index.php/nous-contacter/",
+      "static_ressource": "false",
+      "status": "500",
+      "time_local": "04/Jan/2020:08:41:43 +0000"
+     },
      "Enriched": {
       "ASNNumber": "16509",
       "ASNOrg": "Amazon.com, Inc.",
@@ -2064,6 +3197,35 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "52.59.61.4 - - [04/Jan/2020:08:41:43 +0000] \"GET /index.php/nous-contacter/ HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
+      "Src": "./tests/nginx-1/nginx.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "nginx"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "body_bytes_sent": "550",
+      "file_dir": "/index.php/",
+      "file_ext": "",
+      "file_frag": "nous-contacter/",
+      "file_name": "nous-contacter/",
+      "http_referer": "-",
+      "http_user_agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+      "http_version": "1.1",
+      "impact_completion": "true",
+      "message": "52.59.61.4 - - [04/Jan/2020:08:41:43 +0000] \"GET /index.php/nous-contacter/ HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
+      "method": "GET",
+      "program": "nginx",
+      "remote_addr": "52.59.61.4",
+      "remote_user": "-",
+      "request": "/index.php/nous-contacter/",
+      "static_ressource": "false",
+      "status": "500",
+      "time_local": "04/Jan/2020:08:41:43 +0000"
+     },
      "Enriched": {
       "ASNNumber": "16509",
       "ASNOrg": "Amazon.com, Inc.",

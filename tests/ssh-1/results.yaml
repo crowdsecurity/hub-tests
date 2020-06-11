@@ -8,6 +8,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Jun  7 11:17:17 sd-126005 sshd[7429]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 25088",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 25088",
+      "pid": "7429",
+      "priority": "",
+      "program": "sshd",
+      "timestamp": "Jun  7 11:17:17",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -35,6 +54,26 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:17:17 sd-126005 sshd[7429]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 25088",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 25088",
+      "pid": "7429",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "timestamp": "Jun  7 11:17:17",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -67,6 +106,26 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:17:17 sd-126005 sshd[7429]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 25088",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 25088",
+      "pid": "7429",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "timestamp": "Jun  7 11:17:17",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "MarshaledTime": "2020-06-07T11:17:17Z"
      },
@@ -100,6 +159,26 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:17:17 sd-126005 sshd[7429]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 25088",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 25088",
+      "pid": "7429",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "timestamp": "Jun  7 11:17:17",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -145,6 +224,26 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:17:17 sd-126005 sshd[7429]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 25088",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 25088",
+      "pid": "7429",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "timestamp": "Jun  7 11:17:17",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -197,6 +296,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Jun  7 11:17:34 sd-126005 sshd[7430]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 2560",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 2560",
+      "pid": "7430",
+      "priority": "",
+      "program": "sshd",
+      "timestamp": "Jun  7 11:17:34",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -224,6 +342,26 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:17:34 sd-126005 sshd[7430]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 2560",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 2560",
+      "pid": "7430",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "timestamp": "Jun  7 11:17:34",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -256,6 +394,26 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:17:34 sd-126005 sshd[7430]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 2560",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 2560",
+      "pid": "7430",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "timestamp": "Jun  7 11:17:34",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "MarshaledTime": "2020-06-07T11:17:34Z"
      },
@@ -289,6 +447,26 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:17:34 sd-126005 sshd[7430]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 2560",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 2560",
+      "pid": "7430",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "timestamp": "Jun  7 11:17:34",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -334,6 +512,26 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:17:34 sd-126005 sshd[7430]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 2560",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 2560",
+      "pid": "7430",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "timestamp": "Jun  7 11:17:34",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -386,6 +584,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Jun  7 11:17:51 sd-126005 sshd[7431]: Disconnected from 8.8.8.8 port 33652 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 33652 [preauth]",
+      "pid": "7431",
+      "priority": "",
+      "program": "sshd",
+      "timestamp": "Jun  7 11:17:51",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -413,6 +630,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:17:51 sd-126005 sshd[7431]: Disconnected from 8.8.8.8 port 33652 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 33652 [preauth]",
+      "pid": "7431",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "33652",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:17:51",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -445,6 +684,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:17:51 sd-126005 sshd[7431]: Disconnected from 8.8.8.8 port 33652 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 33652 [preauth]",
+      "pid": "7431",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "33652",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:17:51",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "MarshaledTime": "2020-06-07T11:17:51Z"
      },
@@ -478,6 +739,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:17:51 sd-126005 sshd[7431]: Disconnected from 8.8.8.8 port 33652 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 33652 [preauth]",
+      "pid": "7431",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "33652",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:17:51",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -523,6 +806,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:17:51 sd-126005 sshd[7431]: Disconnected from 8.8.8.8 port 33652 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 33652 [preauth]",
+      "pid": "7431",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "33652",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:17:51",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -575,6 +880,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Jun  7 11:17:57 sd-126005 sshd[7433]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 30784",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 30784",
+      "pid": "7433",
+      "priority": "",
+      "program": "sshd",
+      "timestamp": "Jun  7 11:17:57",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -602,6 +926,26 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:17:57 sd-126005 sshd[7433]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 30784",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 30784",
+      "pid": "7433",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "timestamp": "Jun  7 11:17:57",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -634,6 +978,26 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:17:57 sd-126005 sshd[7433]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 30784",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 30784",
+      "pid": "7433",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "timestamp": "Jun  7 11:17:57",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "MarshaledTime": "2020-06-07T11:17:57Z"
      },
@@ -667,6 +1031,26 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:17:57 sd-126005 sshd[7433]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 30784",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 30784",
+      "pid": "7433",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "timestamp": "Jun  7 11:17:57",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -712,6 +1096,26 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:17:57 sd-126005 sshd[7433]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 30784",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 30784",
+      "pid": "7433",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "timestamp": "Jun  7 11:17:57",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -764,6 +1168,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Jun  7 11:18:38 sd-126005 sshd[7434]: Disconnected from 8.8.8.8 port 52170 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 52170 [preauth]",
+      "pid": "7434",
+      "priority": "",
+      "program": "sshd",
+      "timestamp": "Jun  7 11:18:38",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -791,6 +1214,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:18:38 sd-126005 sshd[7434]: Disconnected from 8.8.8.8 port 52170 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 52170 [preauth]",
+      "pid": "7434",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "52170",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:18:38",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -823,6 +1268,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:18:38 sd-126005 sshd[7434]: Disconnected from 8.8.8.8 port 52170 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 52170 [preauth]",
+      "pid": "7434",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "52170",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:18:38",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "MarshaledTime": "2020-06-07T11:18:38Z"
      },
@@ -856,6 +1323,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:18:38 sd-126005 sshd[7434]: Disconnected from 8.8.8.8 port 52170 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 52170 [preauth]",
+      "pid": "7434",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "52170",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:18:38",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -901,6 +1390,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:18:38 sd-126005 sshd[7434]: Disconnected from 8.8.8.8 port 52170 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 52170 [preauth]",
+      "pid": "7434",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "52170",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:18:38",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -953,6 +1464,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Jun  7 11:18:47 sd-126005 sshd[7437]: Disconnected from 8.8.8.8 port 60026 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 60026 [preauth]",
+      "pid": "7437",
+      "priority": "",
+      "program": "sshd",
+      "timestamp": "Jun  7 11:18:47",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -980,6 +1510,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:18:47 sd-126005 sshd[7437]: Disconnected from 8.8.8.8 port 60026 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 60026 [preauth]",
+      "pid": "7437",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "60026",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:18:47",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -1012,6 +1564,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:18:47 sd-126005 sshd[7437]: Disconnected from 8.8.8.8 port 60026 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 60026 [preauth]",
+      "pid": "7437",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "60026",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:18:47",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "MarshaledTime": "2020-06-07T11:18:47Z"
      },
@@ -1045,6 +1619,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:18:47 sd-126005 sshd[7437]: Disconnected from 8.8.8.8 port 60026 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 60026 [preauth]",
+      "pid": "7437",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "60026",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:18:47",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -1090,6 +1686,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:18:47 sd-126005 sshd[7437]: Disconnected from 8.8.8.8 port 60026 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 60026 [preauth]",
+      "pid": "7437",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "60026",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:18:47",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -1142,6 +1760,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Jun  7 11:19:20 sd-126005 sshd[7439]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 13696",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 13696",
+      "pid": "7439",
+      "priority": "",
+      "program": "sshd",
+      "timestamp": "Jun  7 11:19:20",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -1169,6 +1806,26 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:19:20 sd-126005 sshd[7439]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 13696",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 13696",
+      "pid": "7439",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "timestamp": "Jun  7 11:19:20",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -1201,6 +1858,26 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:19:20 sd-126005 sshd[7439]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 13696",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 13696",
+      "pid": "7439",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "timestamp": "Jun  7 11:19:20",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "MarshaledTime": "2020-06-07T11:19:20Z"
      },
@@ -1234,6 +1911,26 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:19:20 sd-126005 sshd[7439]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 13696",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 13696",
+      "pid": "7439",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "timestamp": "Jun  7 11:19:20",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -1279,6 +1976,26 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:19:20 sd-126005 sshd[7439]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 13696",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 13696",
+      "pid": "7439",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "timestamp": "Jun  7 11:19:20",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -1331,6 +2048,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Jun  7 11:19:32 sd-126005 sshd[7440]: Disconnected from 8.8.8.8 port 50526 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 50526 [preauth]",
+      "pid": "7440",
+      "priority": "",
+      "program": "sshd",
+      "timestamp": "Jun  7 11:19:32",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -1358,6 +2094,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:19:32 sd-126005 sshd[7440]: Disconnected from 8.8.8.8 port 50526 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 50526 [preauth]",
+      "pid": "7440",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "50526",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:19:32",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -1390,6 +2148,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:19:32 sd-126005 sshd[7440]: Disconnected from 8.8.8.8 port 50526 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 50526 [preauth]",
+      "pid": "7440",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "50526",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:19:32",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "MarshaledTime": "2020-06-07T11:19:32Z"
      },
@@ -1423,6 +2203,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:19:32 sd-126005 sshd[7440]: Disconnected from 8.8.8.8 port 50526 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 50526 [preauth]",
+      "pid": "7440",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "50526",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:19:32",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -1468,6 +2270,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:19:32 sd-126005 sshd[7440]: Disconnected from 8.8.8.8 port 50526 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 50526 [preauth]",
+      "pid": "7440",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "50526",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:19:32",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -1520,6 +2344,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Jun  7 11:19:59 sd-126005 sshd[7442]: Disconnected from 8.8.8.8 port 39100 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 39100 [preauth]",
+      "pid": "7442",
+      "priority": "",
+      "program": "sshd",
+      "timestamp": "Jun  7 11:19:59",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -1547,6 +2390,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:19:59 sd-126005 sshd[7442]: Disconnected from 8.8.8.8 port 39100 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 39100 [preauth]",
+      "pid": "7442",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "39100",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:19:59",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -1579,6 +2444,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:19:59 sd-126005 sshd[7442]: Disconnected from 8.8.8.8 port 39100 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 39100 [preauth]",
+      "pid": "7442",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "39100",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:19:59",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "MarshaledTime": "2020-06-07T11:19:59Z"
      },
@@ -1612,6 +2499,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:19:59 sd-126005 sshd[7442]: Disconnected from 8.8.8.8 port 39100 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 39100 [preauth]",
+      "pid": "7442",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "39100",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:19:59",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -1657,6 +2566,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:19:59 sd-126005 sshd[7442]: Disconnected from 8.8.8.8 port 39100 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 39100 [preauth]",
+      "pid": "7442",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "39100",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:19:59",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -1709,6 +2640,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Jun  7 11:20:03 sd-126005 sshd[7444]: Disconnected from 8.8.8.8 port 46733 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 46733 [preauth]",
+      "pid": "7444",
+      "priority": "",
+      "program": "sshd",
+      "timestamp": "Jun  7 11:20:03",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -1736,6 +2686,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:20:03 sd-126005 sshd[7444]: Disconnected from 8.8.8.8 port 46733 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 46733 [preauth]",
+      "pid": "7444",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "46733",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:20:03",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -1768,6 +2740,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:20:03 sd-126005 sshd[7444]: Disconnected from 8.8.8.8 port 46733 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 46733 [preauth]",
+      "pid": "7444",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "46733",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:20:03",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "MarshaledTime": "2020-06-07T11:20:03Z"
      },
@@ -1801,6 +2795,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:20:03 sd-126005 sshd[7444]: Disconnected from 8.8.8.8 port 46733 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 46733 [preauth]",
+      "pid": "7444",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "46733",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:20:03",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -1846,6 +2862,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:20:03 sd-126005 sshd[7444]: Disconnected from 8.8.8.8 port 46733 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 46733 [preauth]",
+      "pid": "7444",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "46733",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:20:03",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -1898,6 +2936,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Jun  7 11:20:16 sd-126005 sshd[7446]: Disconnected from 8.8.8.8 port 57314 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 57314 [preauth]",
+      "pid": "7446",
+      "priority": "",
+      "program": "sshd",
+      "timestamp": "Jun  7 11:20:16",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -1925,6 +2982,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:20:16 sd-126005 sshd[7446]: Disconnected from 8.8.8.8 port 57314 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 57314 [preauth]",
+      "pid": "7446",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "57314",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:20:16",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -1957,6 +3036,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:20:16 sd-126005 sshd[7446]: Disconnected from 8.8.8.8 port 57314 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 57314 [preauth]",
+      "pid": "7446",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "57314",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:20:16",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "MarshaledTime": "2020-06-07T11:20:16Z"
      },
@@ -1990,6 +3091,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:20:16 sd-126005 sshd[7446]: Disconnected from 8.8.8.8 port 57314 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 57314 [preauth]",
+      "pid": "7446",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "57314",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:20:16",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -2035,6 +3158,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:20:16 sd-126005 sshd[7446]: Disconnected from 8.8.8.8 port 57314 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 57314 [preauth]",
+      "pid": "7446",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "57314",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:20:16",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -2087,6 +3232,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Jun  7 11:20:21 sd-126005 sshd[7448]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 9216",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 9216",
+      "pid": "7448",
+      "priority": "",
+      "program": "sshd",
+      "timestamp": "Jun  7 11:20:21",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -2114,6 +3278,26 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:20:21 sd-126005 sshd[7448]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 9216",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 9216",
+      "pid": "7448",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "timestamp": "Jun  7 11:20:21",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -2146,6 +3330,26 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:20:21 sd-126005 sshd[7448]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 9216",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 9216",
+      "pid": "7448",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "timestamp": "Jun  7 11:20:21",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "MarshaledTime": "2020-06-07T11:20:21Z"
      },
@@ -2179,6 +3383,26 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:20:21 sd-126005 sshd[7448]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 9216",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 9216",
+      "pid": "7448",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "timestamp": "Jun  7 11:20:21",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -2224,6 +3448,26 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:20:21 sd-126005 sshd[7448]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 9216",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 9216",
+      "pid": "7448",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "timestamp": "Jun  7 11:20:21",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -2276,6 +3520,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Jun  7 11:20:26 sd-126005 sshd[7449]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 13056",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 13056",
+      "pid": "7449",
+      "priority": "",
+      "program": "sshd",
+      "timestamp": "Jun  7 11:20:26",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -2303,6 +3566,26 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:20:26 sd-126005 sshd[7449]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 13056",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 13056",
+      "pid": "7449",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "timestamp": "Jun  7 11:20:26",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -2335,6 +3618,26 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:20:26 sd-126005 sshd[7449]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 13056",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 13056",
+      "pid": "7449",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "timestamp": "Jun  7 11:20:26",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "MarshaledTime": "2020-06-07T11:20:26Z"
      },
@@ -2368,6 +3671,26 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:20:26 sd-126005 sshd[7449]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 13056",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 13056",
+      "pid": "7449",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "timestamp": "Jun  7 11:20:26",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -2413,6 +3736,26 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:20:26 sd-126005 sshd[7449]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 13056",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 13056",
+      "pid": "7449",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "timestamp": "Jun  7 11:20:26",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -2465,6 +3808,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Jun  7 11:20:49 sd-126005 sshd[7450]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 2752",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 2752",
+      "pid": "7450",
+      "priority": "",
+      "program": "sshd",
+      "timestamp": "Jun  7 11:20:49",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -2492,6 +3854,26 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:20:49 sd-126005 sshd[7450]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 2752",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 2752",
+      "pid": "7450",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "timestamp": "Jun  7 11:20:49",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -2524,6 +3906,26 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:20:49 sd-126005 sshd[7450]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 2752",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 2752",
+      "pid": "7450",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "timestamp": "Jun  7 11:20:49",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "MarshaledTime": "2020-06-07T11:20:49Z"
      },
@@ -2557,6 +3959,26 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:20:49 sd-126005 sshd[7450]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 2752",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 2752",
+      "pid": "7450",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "timestamp": "Jun  7 11:20:49",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -2602,6 +4024,26 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:20:49 sd-126005 sshd[7450]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 2752",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 2752",
+      "pid": "7450",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "timestamp": "Jun  7 11:20:49",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -2654,6 +4096,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Jun  7 11:21:00 sd-126005 sshd[7451]: Invalid user admin from 8.8.8.8 port 35546",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Invalid user admin from 8.8.8.8 port 35546",
+      "pid": "7451",
+      "priority": "",
+      "program": "sshd",
+      "timestamp": "Jun  7 11:21:00",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -2681,6 +4142,27 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:21:00 sd-126005 sshd[7451]: Invalid user admin from 8.8.8.8 port 35546",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Invalid user admin from 8.8.8.8 port 35546",
+      "pid": "7451",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_invalid_user": "admin",
+      "timestamp": "Jun  7 11:21:00",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -2714,6 +4196,27 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:21:00 sd-126005 sshd[7451]: Invalid user admin from 8.8.8.8 port 35546",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Invalid user admin from 8.8.8.8 port 35546",
+      "pid": "7451",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_invalid_user": "admin",
+      "timestamp": "Jun  7 11:21:00",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "MarshaledTime": "2020-06-07T11:21:00Z"
      },
@@ -2748,6 +4251,27 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:21:00 sd-126005 sshd[7451]: Invalid user admin from 8.8.8.8 port 35546",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Invalid user admin from 8.8.8.8 port 35546",
+      "pid": "7451",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_invalid_user": "admin",
+      "timestamp": "Jun  7 11:21:00",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -2794,6 +4318,27 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:21:00 sd-126005 sshd[7451]: Invalid user admin from 8.8.8.8 port 35546",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Invalid user admin from 8.8.8.8 port 35546",
+      "pid": "7451",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_invalid_user": "admin",
+      "timestamp": "Jun  7 11:21:00",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -2847,6 +4392,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Jun  7 11:21:00 sd-126005 sshd[7451]: Disconnected from 8.8.8.8 port 35546 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 35546 [preauth]",
+      "pid": "7451",
+      "priority": "",
+      "program": "sshd",
+      "timestamp": "Jun  7 11:21:00",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -2874,6 +4438,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:21:00 sd-126005 sshd[7451]: Disconnected from 8.8.8.8 port 35546 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 35546 [preauth]",
+      "pid": "7451",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "35546",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:21:00",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -2906,6 +4492,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:21:00 sd-126005 sshd[7451]: Disconnected from 8.8.8.8 port 35546 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 35546 [preauth]",
+      "pid": "7451",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "35546",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:21:00",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "MarshaledTime": "2020-06-07T11:21:00Z"
      },
@@ -2939,6 +4547,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:21:00 sd-126005 sshd[7451]: Disconnected from 8.8.8.8 port 35546 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 35546 [preauth]",
+      "pid": "7451",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "35546",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:21:00",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -2984,6 +4614,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:21:00 sd-126005 sshd[7451]: Disconnected from 8.8.8.8 port 35546 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 35546 [preauth]",
+      "pid": "7451",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "35546",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:21:00",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -3036,6 +4688,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Jun  7 11:21:41 sd-126005 sshd[7454]: Disconnected from 8.8.8.8 port 42690 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 42690 [preauth]",
+      "pid": "7454",
+      "priority": "",
+      "program": "sshd",
+      "timestamp": "Jun  7 11:21:41",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -3063,6 +4734,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:21:41 sd-126005 sshd[7454]: Disconnected from 8.8.8.8 port 42690 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 42690 [preauth]",
+      "pid": "7454",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "42690",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:21:41",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -3095,6 +4788,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:21:41 sd-126005 sshd[7454]: Disconnected from 8.8.8.8 port 42690 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 42690 [preauth]",
+      "pid": "7454",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "42690",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:21:41",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "MarshaledTime": "2020-06-07T11:21:41Z"
      },
@@ -3128,6 +4843,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:21:41 sd-126005 sshd[7454]: Disconnected from 8.8.8.8 port 42690 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 42690 [preauth]",
+      "pid": "7454",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "42690",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:21:41",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -3173,6 +4910,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:21:41 sd-126005 sshd[7454]: Disconnected from 8.8.8.8 port 42690 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 42690 [preauth]",
+      "pid": "7454",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "42690",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:21:41",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -3225,6 +4984,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Jun  7 11:21:43 sd-126005 sshd[7456]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 2624",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 2624",
+      "pid": "7456",
+      "priority": "",
+      "program": "sshd",
+      "timestamp": "Jun  7 11:21:43",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -3252,6 +5030,26 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:21:43 sd-126005 sshd[7456]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 2624",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 2624",
+      "pid": "7456",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "timestamp": "Jun  7 11:21:43",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -3284,6 +5082,26 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:21:43 sd-126005 sshd[7456]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 2624",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 2624",
+      "pid": "7456",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "timestamp": "Jun  7 11:21:43",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "MarshaledTime": "2020-06-07T11:21:43Z"
      },
@@ -3317,6 +5135,26 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:21:43 sd-126005 sshd[7456]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 2624",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 2624",
+      "pid": "7456",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "timestamp": "Jun  7 11:21:43",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -3362,6 +5200,26 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:21:43 sd-126005 sshd[7456]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 2624",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 2624",
+      "pid": "7456",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "timestamp": "Jun  7 11:21:43",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -3414,6 +5272,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Jun  7 11:21:53 sd-126005 sshd[7457]: Disconnected from 8.8.8.8 port 52956 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 52956 [preauth]",
+      "pid": "7457",
+      "priority": "",
+      "program": "sshd",
+      "timestamp": "Jun  7 11:21:53",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -3441,6 +5318,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:21:53 sd-126005 sshd[7457]: Disconnected from 8.8.8.8 port 52956 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 52956 [preauth]",
+      "pid": "7457",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "52956",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:21:53",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -3473,6 +5372,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:21:53 sd-126005 sshd[7457]: Disconnected from 8.8.8.8 port 52956 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 52956 [preauth]",
+      "pid": "7457",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "52956",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:21:53",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "MarshaledTime": "2020-06-07T11:21:53Z"
      },
@@ -3506,6 +5427,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:21:53 sd-126005 sshd[7457]: Disconnected from 8.8.8.8 port 52956 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 52956 [preauth]",
+      "pid": "7457",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "52956",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:21:53",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -3551,6 +5494,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:21:53 sd-126005 sshd[7457]: Disconnected from 8.8.8.8 port 52956 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 52956 [preauth]",
+      "pid": "7457",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "52956",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:21:53",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -3603,6 +5568,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Jun  7 11:22:22 sd-126005 sshd[7459]: Invalid user oracle from 8.8.8.8 port 49188",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Invalid user oracle from 8.8.8.8 port 49188",
+      "pid": "7459",
+      "priority": "",
+      "program": "sshd",
+      "timestamp": "Jun  7 11:22:22",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -3630,6 +5614,27 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:22:22 sd-126005 sshd[7459]: Invalid user oracle from 8.8.8.8 port 49188",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Invalid user oracle from 8.8.8.8 port 49188",
+      "pid": "7459",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_invalid_user": "oracle",
+      "timestamp": "Jun  7 11:22:22",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -3663,6 +5668,27 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:22:22 sd-126005 sshd[7459]: Invalid user oracle from 8.8.8.8 port 49188",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Invalid user oracle from 8.8.8.8 port 49188",
+      "pid": "7459",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_invalid_user": "oracle",
+      "timestamp": "Jun  7 11:22:22",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "MarshaledTime": "2020-06-07T11:22:22Z"
      },
@@ -3697,6 +5723,27 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:22:22 sd-126005 sshd[7459]: Invalid user oracle from 8.8.8.8 port 49188",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Invalid user oracle from 8.8.8.8 port 49188",
+      "pid": "7459",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_invalid_user": "oracle",
+      "timestamp": "Jun  7 11:22:22",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -3743,6 +5790,27 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:22:22 sd-126005 sshd[7459]: Invalid user oracle from 8.8.8.8 port 49188",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Invalid user oracle from 8.8.8.8 port 49188",
+      "pid": "7459",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_invalid_user": "oracle",
+      "timestamp": "Jun  7 11:22:22",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -3796,6 +5864,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Jun  7 11:22:22 sd-126005 sshd[7459]: Disconnected from 8.8.8.8 port 49188 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 49188 [preauth]",
+      "pid": "7459",
+      "priority": "",
+      "program": "sshd",
+      "timestamp": "Jun  7 11:22:22",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -3823,6 +5910,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:22:22 sd-126005 sshd[7459]: Disconnected from 8.8.8.8 port 49188 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 49188 [preauth]",
+      "pid": "7459",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "49188",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:22:22",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -3855,6 +5964,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:22:22 sd-126005 sshd[7459]: Disconnected from 8.8.8.8 port 49188 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 49188 [preauth]",
+      "pid": "7459",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "49188",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:22:22",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "MarshaledTime": "2020-06-07T11:22:22Z"
      },
@@ -3888,6 +6019,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:22:22 sd-126005 sshd[7459]: Disconnected from 8.8.8.8 port 49188 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 49188 [preauth]",
+      "pid": "7459",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "49188",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:22:22",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -3933,6 +6086,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:22:22 sd-126005 sshd[7459]: Disconnected from 8.8.8.8 port 49188 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 49188 [preauth]",
+      "pid": "7459",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "49188",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:22:22",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -3985,6 +6160,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Jun  7 11:22:30 sd-126005 sshd[7461]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 13504",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 13504",
+      "pid": "7461",
+      "priority": "",
+      "program": "sshd",
+      "timestamp": "Jun  7 11:22:30",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -4012,6 +6206,26 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:22:30 sd-126005 sshd[7461]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 13504",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 13504",
+      "pid": "7461",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "timestamp": "Jun  7 11:22:30",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -4044,6 +6258,26 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:22:30 sd-126005 sshd[7461]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 13504",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 13504",
+      "pid": "7461",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "timestamp": "Jun  7 11:22:30",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "MarshaledTime": "2020-06-07T11:22:30Z"
      },
@@ -4077,6 +6311,26 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:22:30 sd-126005 sshd[7461]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 13504",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 13504",
+      "pid": "7461",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "timestamp": "Jun  7 11:22:30",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -4122,6 +6376,26 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:22:30 sd-126005 sshd[7461]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 13504",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 13504",
+      "pid": "7461",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "timestamp": "Jun  7 11:22:30",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -4174,6 +6448,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Jun  7 11:23:05 sd-126005 sshd[7488]: Invalid user oracle from 8.8.8.8 port 55954",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Invalid user oracle from 8.8.8.8 port 55954",
+      "pid": "7488",
+      "priority": "",
+      "program": "sshd",
+      "timestamp": "Jun  7 11:23:05",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -4201,6 +6494,27 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:23:05 sd-126005 sshd[7488]: Invalid user oracle from 8.8.8.8 port 55954",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Invalid user oracle from 8.8.8.8 port 55954",
+      "pid": "7488",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_invalid_user": "oracle",
+      "timestamp": "Jun  7 11:23:05",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -4234,6 +6548,27 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:23:05 sd-126005 sshd[7488]: Invalid user oracle from 8.8.8.8 port 55954",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Invalid user oracle from 8.8.8.8 port 55954",
+      "pid": "7488",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_invalid_user": "oracle",
+      "timestamp": "Jun  7 11:23:05",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "MarshaledTime": "2020-06-07T11:23:05Z"
      },
@@ -4268,6 +6603,27 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:23:05 sd-126005 sshd[7488]: Invalid user oracle from 8.8.8.8 port 55954",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Invalid user oracle from 8.8.8.8 port 55954",
+      "pid": "7488",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_invalid_user": "oracle",
+      "timestamp": "Jun  7 11:23:05",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -4314,6 +6670,27 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:23:05 sd-126005 sshd[7488]: Invalid user oracle from 8.8.8.8 port 55954",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Invalid user oracle from 8.8.8.8 port 55954",
+      "pid": "7488",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_invalid_user": "oracle",
+      "timestamp": "Jun  7 11:23:05",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -4367,6 +6744,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Jun  7 11:23:05 sd-126005 sshd[7488]: Disconnected from 8.8.8.8 port 55954 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 55954 [preauth]",
+      "pid": "7488",
+      "priority": "",
+      "program": "sshd",
+      "timestamp": "Jun  7 11:23:05",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -4394,6 +6790,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:23:05 sd-126005 sshd[7488]: Disconnected from 8.8.8.8 port 55954 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 55954 [preauth]",
+      "pid": "7488",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "55954",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:23:05",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -4426,6 +6844,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:23:05 sd-126005 sshd[7488]: Disconnected from 8.8.8.8 port 55954 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 55954 [preauth]",
+      "pid": "7488",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "55954",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:23:05",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "MarshaledTime": "2020-06-07T11:23:05Z"
      },
@@ -4459,6 +6899,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:23:05 sd-126005 sshd[7488]: Disconnected from 8.8.8.8 port 55954 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 55954 [preauth]",
+      "pid": "7488",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "55954",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:23:05",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -4504,6 +6966,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:23:05 sd-126005 sshd[7488]: Disconnected from 8.8.8.8 port 55954 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 55954 [preauth]",
+      "pid": "7488",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "55954",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:23:05",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -4556,6 +7040,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Jun  7 11:23:46 sd-126005 sshd[7492]: Disconnected from 8.8.8.8 port 34516 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 34516 [preauth]",
+      "pid": "7492",
+      "priority": "",
+      "program": "sshd",
+      "timestamp": "Jun  7 11:23:46",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -4583,6 +7086,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:23:46 sd-126005 sshd[7492]: Disconnected from 8.8.8.8 port 34516 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 34516 [preauth]",
+      "pid": "7492",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "34516",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:23:46",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -4615,6 +7140,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:23:46 sd-126005 sshd[7492]: Disconnected from 8.8.8.8 port 34516 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 34516 [preauth]",
+      "pid": "7492",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "34516",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:23:46",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "MarshaledTime": "2020-06-07T11:23:46Z"
      },
@@ -4648,6 +7195,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:23:46 sd-126005 sshd[7492]: Disconnected from 8.8.8.8 port 34516 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 34516 [preauth]",
+      "pid": "7492",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "34516",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:23:46",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",
@@ -4693,6 +7262,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:23:46 sd-126005 sshd[7492]: Disconnected from 8.8.8.8 port 34516 [preauth]",
+      "Src": "./tests/ssh-1/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 34516 [preauth]",
+      "pid": "7492",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "34516",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:23:46",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "15169",
       "ASNOrg": "Google LLC",

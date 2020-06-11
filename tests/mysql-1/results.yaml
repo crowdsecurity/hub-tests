@@ -8,6 +8,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Apr 16 05:13:38 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:38.620135Z 341 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:38.620135Z 341 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "timestamp": "Apr 16 05:13:38",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -35,6 +54,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:38 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:38.620135Z 341 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:38.620135Z 341 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:38.620135Z",
+      "timestamp": "Apr 16 05:13:38",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -67,6 +108,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:38 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:38.620135Z 341 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:38.620135Z 341 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:38.620135Z",
+      "timestamp": "Apr 16 05:13:38",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Enriched": {
       "MarshaledTime": "2020-04-16T05:13:38Z"
      },
@@ -100,6 +163,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:38 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:38.620135Z 341 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:38.620135Z 341 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:38.620135Z",
+      "timestamp": "Apr 16 05:13:38",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Enriched": {
       "ASNNumber": "133774",
       "ASNOrg": "Fuzhou",
@@ -145,6 +230,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:38 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:38.620135Z 341 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:38.620135Z 341 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:38.620135Z",
+      "timestamp": "Apr 16 05:13:38",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Enriched": {
       "ASNNumber": "133774",
       "ASNOrg": "Fuzhou",
@@ -197,6 +304,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Apr 16 05:13:40 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:40.206995Z 342 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:40.206995Z 342 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "timestamp": "Apr 16 05:13:40",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -224,6 +350,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:40 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:40.206995Z 342 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:40.206995Z 342 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:40.206995Z",
+      "timestamp": "Apr 16 05:13:40",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -256,6 +404,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:40 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:40.206995Z 342 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:40.206995Z 342 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:40.206995Z",
+      "timestamp": "Apr 16 05:13:40",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Enriched": {
       "MarshaledTime": "2020-04-16T05:13:40Z"
      },
@@ -289,6 +459,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:40 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:40.206995Z 342 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:40.206995Z 342 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:40.206995Z",
+      "timestamp": "Apr 16 05:13:40",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Enriched": {
       "ASNNumber": "133774",
       "ASNOrg": "Fuzhou",
@@ -334,6 +526,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:40 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:40.206995Z 342 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:40.206995Z 342 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:40.206995Z",
+      "timestamp": "Apr 16 05:13:40",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Enriched": {
       "ASNNumber": "133774",
       "ASNOrg": "Fuzhou",
@@ -386,6 +600,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Apr 16 05:13:40 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:40.585807Z 343 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:40.585807Z 343 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "timestamp": "Apr 16 05:13:40",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -413,6 +646,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:40 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:40.585807Z 343 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:40.585807Z 343 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:40.585807Z",
+      "timestamp": "Apr 16 05:13:40",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -445,6 +700,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:40 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:40.585807Z 343 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:40.585807Z 343 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:40.585807Z",
+      "timestamp": "Apr 16 05:13:40",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Enriched": {
       "MarshaledTime": "2020-04-16T05:13:40Z"
      },
@@ -478,6 +755,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:40 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:40.585807Z 343 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:40.585807Z 343 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:40.585807Z",
+      "timestamp": "Apr 16 05:13:40",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Enriched": {
       "ASNNumber": "133774",
       "ASNOrg": "Fuzhou",
@@ -523,6 +822,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:40 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:40.585807Z 343 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:40.585807Z 343 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:40.585807Z",
+      "timestamp": "Apr 16 05:13:40",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Enriched": {
       "ASNNumber": "133774",
       "ASNOrg": "Fuzhou",
@@ -575,6 +896,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Apr 16 05:13:40 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:40.861934Z 344 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:40.861934Z 344 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "timestamp": "Apr 16 05:13:40",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -602,6 +942,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:40 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:40.861934Z 344 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:40.861934Z 344 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:40.861934Z",
+      "timestamp": "Apr 16 05:13:40",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -634,6 +996,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:40 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:40.861934Z 344 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:40.861934Z 344 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:40.861934Z",
+      "timestamp": "Apr 16 05:13:40",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Enriched": {
       "MarshaledTime": "2020-04-16T05:13:40Z"
      },
@@ -667,6 +1051,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:40 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:40.861934Z 344 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:40.861934Z 344 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:40.861934Z",
+      "timestamp": "Apr 16 05:13:40",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Enriched": {
       "ASNNumber": "133774",
       "ASNOrg": "Fuzhou",
@@ -712,6 +1118,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:40 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:40.861934Z 344 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:40.861934Z 344 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:40.861934Z",
+      "timestamp": "Apr 16 05:13:40",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Enriched": {
       "ASNNumber": "133774",
       "ASNOrg": "Fuzhou",
@@ -764,6 +1192,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Apr 16 05:13:42 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:42.432640Z 346 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:42.432640Z 346 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "timestamp": "Apr 16 05:13:42",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -791,6 +1238,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:42 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:42.432640Z 346 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:42.432640Z 346 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:42.432640Z",
+      "timestamp": "Apr 16 05:13:42",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -823,6 +1292,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:42 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:42.432640Z 346 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:42.432640Z 346 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:42.432640Z",
+      "timestamp": "Apr 16 05:13:42",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Enriched": {
       "MarshaledTime": "2020-04-16T05:13:42Z"
      },
@@ -856,6 +1347,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:42 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:42.432640Z 346 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:42.432640Z 346 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:42.432640Z",
+      "timestamp": "Apr 16 05:13:42",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Enriched": {
       "ASNNumber": "133774",
       "ASNOrg": "Fuzhou",
@@ -901,6 +1414,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:42 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:42.432640Z 346 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:42.432640Z 346 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:42.432640Z",
+      "timestamp": "Apr 16 05:13:42",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Enriched": {
       "ASNNumber": "133774",
       "ASNOrg": "Fuzhou",
@@ -953,6 +1488,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Apr 16 05:13:44 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:44.138140Z 348 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:44.138140Z 348 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "timestamp": "Apr 16 05:13:44",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -980,6 +1534,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:44 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:44.138140Z 348 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:44.138140Z 348 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:44.138140Z",
+      "timestamp": "Apr 16 05:13:44",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -1012,6 +1588,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:44 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:44.138140Z 348 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:44.138140Z 348 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:44.138140Z",
+      "timestamp": "Apr 16 05:13:44",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Enriched": {
       "MarshaledTime": "2020-04-16T05:13:44Z"
      },
@@ -1045,6 +1643,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:44 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:44.138140Z 348 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:44.138140Z 348 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:44.138140Z",
+      "timestamp": "Apr 16 05:13:44",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Enriched": {
       "ASNNumber": "133774",
       "ASNOrg": "Fuzhou",
@@ -1090,6 +1710,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:44 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:44.138140Z 348 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:44.138140Z 348 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:44.138140Z",
+      "timestamp": "Apr 16 05:13:44",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Enriched": {
       "ASNNumber": "133774",
       "ASNOrg": "Fuzhou",
@@ -1142,6 +1784,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Apr 16 05:13:44 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:44.424902Z 349 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:44.424902Z 349 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "timestamp": "Apr 16 05:13:44",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -1169,6 +1830,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:44 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:44.424902Z 349 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:44.424902Z 349 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:44.424902Z",
+      "timestamp": "Apr 16 05:13:44",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -1201,6 +1884,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:44 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:44.424902Z 349 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:44.424902Z 349 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:44.424902Z",
+      "timestamp": "Apr 16 05:13:44",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Enriched": {
       "MarshaledTime": "2020-04-16T05:13:44Z"
      },
@@ -1234,6 +1939,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:44 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:44.424902Z 349 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:44.424902Z 349 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:44.424902Z",
+      "timestamp": "Apr 16 05:13:44",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Enriched": {
       "ASNNumber": "133774",
       "ASNOrg": "Fuzhou",
@@ -1279,6 +2006,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:44 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:44.424902Z 349 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:44.424902Z 349 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:44.424902Z",
+      "timestamp": "Apr 16 05:13:44",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Enriched": {
       "ASNNumber": "133774",
       "ASNOrg": "Fuzhou",
@@ -1331,6 +2080,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Apr 16 05:13:44 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:44.708373Z 350 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:44.708373Z 350 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "timestamp": "Apr 16 05:13:44",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -1358,6 +2126,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:44 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:44.708373Z 350 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:44.708373Z 350 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:44.708373Z",
+      "timestamp": "Apr 16 05:13:44",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -1390,6 +2180,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:44 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:44.708373Z 350 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:44.708373Z 350 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:44.708373Z",
+      "timestamp": "Apr 16 05:13:44",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Enriched": {
       "MarshaledTime": "2020-04-16T05:13:44Z"
      },
@@ -1423,6 +2235,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:44 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:44.708373Z 350 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:44.708373Z 350 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:44.708373Z",
+      "timestamp": "Apr 16 05:13:44",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Enriched": {
       "ASNNumber": "133774",
       "ASNOrg": "Fuzhou",
@@ -1468,6 +2302,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:44 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:44.708373Z 350 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:44.708373Z 350 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:44.708373Z",
+      "timestamp": "Apr 16 05:13:44",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Enriched": {
       "ASNNumber": "133774",
       "ASNOrg": "Fuzhou",
@@ -1520,6 +2376,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Apr 16 05:13:44 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:44.994465Z 351 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:44.994465Z 351 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "timestamp": "Apr 16 05:13:44",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -1547,6 +2422,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:44 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:44.994465Z 351 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:44.994465Z 351 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:44.994465Z",
+      "timestamp": "Apr 16 05:13:44",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -1579,6 +2476,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:44 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:44.994465Z 351 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:44.994465Z 351 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:44.994465Z",
+      "timestamp": "Apr 16 05:13:44",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Enriched": {
       "MarshaledTime": "2020-04-16T05:13:44Z"
      },
@@ -1612,6 +2531,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:44 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:44.994465Z 351 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:44.994465Z 351 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:44.994465Z",
+      "timestamp": "Apr 16 05:13:44",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Enriched": {
       "ASNNumber": "133774",
       "ASNOrg": "Fuzhou",
@@ -1657,6 +2598,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:44 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:44.994465Z 351 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:44.994465Z 351 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:44.994465Z",
+      "timestamp": "Apr 16 05:13:44",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Enriched": {
       "ASNNumber": "133774",
       "ASNOrg": "Fuzhou",
@@ -1709,6 +2672,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Apr 16 05:13:45 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:45.271532Z 352 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:45.271532Z 352 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "timestamp": "Apr 16 05:13:45",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -1736,6 +2718,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:45 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:45.271532Z 352 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:45.271532Z 352 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:45.271532Z",
+      "timestamp": "Apr 16 05:13:45",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -1768,6 +2772,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:45 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:45.271532Z 352 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:45.271532Z 352 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:45.271532Z",
+      "timestamp": "Apr 16 05:13:45",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Enriched": {
       "MarshaledTime": "2020-04-16T05:13:45Z"
      },
@@ -1801,6 +2827,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:45 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:45.271532Z 352 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:45.271532Z 352 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:45.271532Z",
+      "timestamp": "Apr 16 05:13:45",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Enriched": {
       "ASNNumber": "133774",
       "ASNOrg": "Fuzhou",
@@ -1846,6 +2894,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:45 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:45.271532Z 352 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:45.271532Z 352 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:45.271532Z",
+      "timestamp": "Apr 16 05:13:45",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Enriched": {
       "ASNNumber": "133774",
       "ASNOrg": "Fuzhou",
@@ -1898,6 +2968,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Apr 16 05:13:45 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:45.570262Z 353 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:45.570262Z 353 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "timestamp": "Apr 16 05:13:45",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -1925,6 +3014,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:45 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:45.570262Z 353 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:45.570262Z 353 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:45.570262Z",
+      "timestamp": "Apr 16 05:13:45",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -1957,6 +3068,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:45 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:45.570262Z 353 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:45.570262Z 353 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:45.570262Z",
+      "timestamp": "Apr 16 05:13:45",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Enriched": {
       "MarshaledTime": "2020-04-16T05:13:45Z"
      },
@@ -1990,6 +3123,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:45 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:45.570262Z 353 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:45.570262Z 353 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:45.570262Z",
+      "timestamp": "Apr 16 05:13:45",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Enriched": {
       "ASNNumber": "133774",
       "ASNOrg": "Fuzhou",
@@ -2035,6 +3190,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:45 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:45.570262Z 353 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:45.570262Z 353 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:45.570262Z",
+      "timestamp": "Apr 16 05:13:45",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Enriched": {
       "ASNNumber": "133774",
       "ASNOrg": "Fuzhou",
@@ -2087,6 +3264,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Apr 16 05:13:45 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:45.861562Z 354 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:45.861562Z 354 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "timestamp": "Apr 16 05:13:45",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -2114,6 +3310,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:45 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:45.861562Z 354 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:45.861562Z 354 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:45.861562Z",
+      "timestamp": "Apr 16 05:13:45",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -2146,6 +3364,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:45 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:45.861562Z 354 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:45.861562Z 354 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:45.861562Z",
+      "timestamp": "Apr 16 05:13:45",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Enriched": {
       "MarshaledTime": "2020-04-16T05:13:45Z"
      },
@@ -2179,6 +3419,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:45 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:45.861562Z 354 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:45.861562Z 354 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:45.861562Z",
+      "timestamp": "Apr 16 05:13:45",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Enriched": {
       "ASNNumber": "133774",
       "ASNOrg": "Fuzhou",
@@ -2224,6 +3486,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:45 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:45.861562Z 354 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:45.861562Z 354 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:45.861562Z",
+      "timestamp": "Apr 16 05:13:45",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Enriched": {
       "ASNNumber": "133774",
       "ASNOrg": "Fuzhou",
@@ -2276,6 +3560,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Apr 16 05:13:46 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:46.146232Z 355 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:46.146232Z 355 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "timestamp": "Apr 16 05:13:46",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -2303,6 +3606,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:46 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:46.146232Z 355 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:46.146232Z 355 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:46.146232Z",
+      "timestamp": "Apr 16 05:13:46",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -2335,6 +3660,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:46 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:46.146232Z 355 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:46.146232Z 355 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:46.146232Z",
+      "timestamp": "Apr 16 05:13:46",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Enriched": {
       "MarshaledTime": "2020-04-16T05:13:46Z"
      },
@@ -2368,6 +3715,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:46 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:46.146232Z 355 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:46.146232Z 355 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:46.146232Z",
+      "timestamp": "Apr 16 05:13:46",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Enriched": {
       "ASNNumber": "133774",
       "ASNOrg": "Fuzhou",
@@ -2413,6 +3782,28 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Apr 16 05:13:46 ip-172-31-36-243.ap-northeast-2.compute.internal mysql[2769]: 2020-04-16T05:13:46.146232Z 355 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "Src": "./tests/mysql-1/mysql.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "2020-04-16T05:13:46.146232Z 355 [Note] Access denied for user 'root'@'27.155.87.54' (using password: YES)",
+      "pid": "2769",
+      "priority": "",
+      "program": "mysql",
+      "source_ip": "27.155.87.54",
+      "time": "2020-04-16T05:13:46.146232Z",
+      "timestamp": "Apr 16 05:13:46",
+      "timestamp8601": "",
+      "user": "root"
+     },
      "Enriched": {
       "ASNNumber": "133774",
       "ASNOrg": "Fuzhou",

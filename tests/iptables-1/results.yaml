@@ -8,6 +8,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Jun  8 14:34:33 sd-126005 kernel: [50028442.088484] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.160.107 DST=51.15.166.67 LEN=40 TOS=0x00 PREC=0x00 TTL=245 ID=37308 PROTO=TCP SPT=8080 DPT=8123 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "[50028442.088484] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.160.107 DST=51.15.166.67 LEN=40 TOS=0x00 PREC=0x00 TTL=245 ID=37308 PROTO=TCP SPT=8080 DPT=8123 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "timestamp": "Jun  8 14:34:33",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -35,6 +54,33 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  8 14:34:33 sd-126005 kernel: [50028442.088484] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.160.107 DST=51.15.166.67 LEN=40 TOS=0x00 PREC=0x00 TTL=245 ID=37308 PROTO=TCP SPT=8080 DPT=8123 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "action": "",
+      "dst_ip": "51.15.166.67",
+      "dst_port": "8123",
+      "facility": "",
+      "int_eth": "enp1s0",
+      "length": "40",
+      "logsource": "syslog",
+      "message": "[50028442.088484] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.160.107 DST=51.15.166.67 LEN=40 TOS=0x00 PREC=0x00 TTL=245 ID=37308 PROTO=TCP SPT=8080 DPT=8123 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "proto": "TCP",
+      "src_ip": "195.54.160.107",
+      "src_port": "8080",
+      "timestamp": "Jun  8 14:34:33",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -67,6 +113,33 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  8 14:34:33 sd-126005 kernel: [50028442.088484] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.160.107 DST=51.15.166.67 LEN=40 TOS=0x00 PREC=0x00 TTL=245 ID=37308 PROTO=TCP SPT=8080 DPT=8123 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "action": "",
+      "dst_ip": "51.15.166.67",
+      "dst_port": "8123",
+      "facility": "",
+      "int_eth": "enp1s0",
+      "length": "40",
+      "logsource": "syslog",
+      "message": "[50028442.088484] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.160.107 DST=51.15.166.67 LEN=40 TOS=0x00 PREC=0x00 TTL=245 ID=37308 PROTO=TCP SPT=8080 DPT=8123 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "proto": "TCP",
+      "src_ip": "195.54.160.107",
+      "src_port": "8080",
+      "timestamp": "Jun  8 14:34:33",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "MarshaledTime": "2020-06-08T14:34:33Z"
      },
@@ -100,6 +173,33 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  8 14:34:33 sd-126005 kernel: [50028442.088484] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.160.107 DST=51.15.166.67 LEN=40 TOS=0x00 PREC=0x00 TTL=245 ID=37308 PROTO=TCP SPT=8080 DPT=8123 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "action": "",
+      "dst_ip": "51.15.166.67",
+      "dst_port": "8123",
+      "facility": "",
+      "int_eth": "enp1s0",
+      "length": "40",
+      "logsource": "syslog",
+      "message": "[50028442.088484] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.160.107 DST=51.15.166.67 LEN=40 TOS=0x00 PREC=0x00 TTL=245 ID=37308 PROTO=TCP SPT=8080 DPT=8123 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "proto": "TCP",
+      "src_ip": "195.54.160.107",
+      "src_port": "8080",
+      "timestamp": "Jun  8 14:34:33",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "0",
       "ASNOrg": "",
@@ -141,6 +241,33 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  8 14:34:33 sd-126005 kernel: [50028442.088484] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.160.107 DST=51.15.166.67 LEN=40 TOS=0x00 PREC=0x00 TTL=245 ID=37308 PROTO=TCP SPT=8080 DPT=8123 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "action": "",
+      "dst_ip": "51.15.166.67",
+      "dst_port": "8123",
+      "facility": "",
+      "int_eth": "enp1s0",
+      "length": "40",
+      "logsource": "syslog",
+      "message": "[50028442.088484] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.160.107 DST=51.15.166.67 LEN=40 TOS=0x00 PREC=0x00 TTL=245 ID=37308 PROTO=TCP SPT=8080 DPT=8123 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "proto": "TCP",
+      "src_ip": "195.54.160.107",
+      "src_port": "8080",
+      "timestamp": "Jun  8 14:34:33",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "0",
       "ASNOrg": "",
@@ -189,6 +316,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Jun  8 14:34:33 sd-126005 kernel: [50028442.976199] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.166.184 DST=51.15.166.67 LEN=40 TOS=0x00 PREC=0x00 TTL=246 ID=22270 PROTO=TCP SPT=42778 DPT=44773 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "[50028442.976199] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.166.184 DST=51.15.166.67 LEN=40 TOS=0x00 PREC=0x00 TTL=246 ID=22270 PROTO=TCP SPT=42778 DPT=44773 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "timestamp": "Jun  8 14:34:33",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -216,6 +362,33 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  8 14:34:33 sd-126005 kernel: [50028442.976199] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.166.184 DST=51.15.166.67 LEN=40 TOS=0x00 PREC=0x00 TTL=246 ID=22270 PROTO=TCP SPT=42778 DPT=44773 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "action": "",
+      "dst_ip": "51.15.166.67",
+      "dst_port": "44773",
+      "facility": "",
+      "int_eth": "enp1s0",
+      "length": "40",
+      "logsource": "syslog",
+      "message": "[50028442.976199] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.166.184 DST=51.15.166.67 LEN=40 TOS=0x00 PREC=0x00 TTL=246 ID=22270 PROTO=TCP SPT=42778 DPT=44773 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "proto": "TCP",
+      "src_ip": "195.54.166.184",
+      "src_port": "42778",
+      "timestamp": "Jun  8 14:34:33",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -248,6 +421,33 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  8 14:34:33 sd-126005 kernel: [50028442.976199] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.166.184 DST=51.15.166.67 LEN=40 TOS=0x00 PREC=0x00 TTL=246 ID=22270 PROTO=TCP SPT=42778 DPT=44773 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "action": "",
+      "dst_ip": "51.15.166.67",
+      "dst_port": "44773",
+      "facility": "",
+      "int_eth": "enp1s0",
+      "length": "40",
+      "logsource": "syslog",
+      "message": "[50028442.976199] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.166.184 DST=51.15.166.67 LEN=40 TOS=0x00 PREC=0x00 TTL=246 ID=22270 PROTO=TCP SPT=42778 DPT=44773 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "proto": "TCP",
+      "src_ip": "195.54.166.184",
+      "src_port": "42778",
+      "timestamp": "Jun  8 14:34:33",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "MarshaledTime": "2020-06-08T14:34:33Z"
      },
@@ -281,6 +481,33 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  8 14:34:33 sd-126005 kernel: [50028442.976199] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.166.184 DST=51.15.166.67 LEN=40 TOS=0x00 PREC=0x00 TTL=246 ID=22270 PROTO=TCP SPT=42778 DPT=44773 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "action": "",
+      "dst_ip": "51.15.166.67",
+      "dst_port": "44773",
+      "facility": "",
+      "int_eth": "enp1s0",
+      "length": "40",
+      "logsource": "syslog",
+      "message": "[50028442.976199] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.166.184 DST=51.15.166.67 LEN=40 TOS=0x00 PREC=0x00 TTL=246 ID=22270 PROTO=TCP SPT=42778 DPT=44773 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "proto": "TCP",
+      "src_ip": "195.54.166.184",
+      "src_port": "42778",
+      "timestamp": "Jun  8 14:34:33",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "0",
       "ASNOrg": "",
@@ -322,6 +549,33 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  8 14:34:33 sd-126005 kernel: [50028442.976199] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.166.184 DST=51.15.166.67 LEN=40 TOS=0x00 PREC=0x00 TTL=246 ID=22270 PROTO=TCP SPT=42778 DPT=44773 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "action": "",
+      "dst_ip": "51.15.166.67",
+      "dst_port": "44773",
+      "facility": "",
+      "int_eth": "enp1s0",
+      "length": "40",
+      "logsource": "syslog",
+      "message": "[50028442.976199] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.166.184 DST=51.15.166.67 LEN=40 TOS=0x00 PREC=0x00 TTL=246 ID=22270 PROTO=TCP SPT=42778 DPT=44773 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "proto": "TCP",
+      "src_ip": "195.54.166.184",
+      "src_port": "42778",
+      "timestamp": "Jun  8 14:34:33",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "0",
       "ASNOrg": "",
@@ -370,6 +624,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Jun  8 14:34:33 sd-126005 kernel: [50028442.976236] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.166.184 DST=51.15.166.67 LEN=40 TOS=0x00 PREC=0x00 TTL=246 ID=22270 PROTO=TCP SPT=42778 DPT=44773 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "[50028442.976236] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.166.184 DST=51.15.166.67 LEN=40 TOS=0x00 PREC=0x00 TTL=246 ID=22270 PROTO=TCP SPT=42778 DPT=44773 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "timestamp": "Jun  8 14:34:33",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -397,6 +670,33 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  8 14:34:33 sd-126005 kernel: [50028442.976236] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.166.184 DST=51.15.166.67 LEN=40 TOS=0x00 PREC=0x00 TTL=246 ID=22270 PROTO=TCP SPT=42778 DPT=44773 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "action": "",
+      "dst_ip": "51.15.166.67",
+      "dst_port": "44773",
+      "facility": "",
+      "int_eth": "enp1s0",
+      "length": "40",
+      "logsource": "syslog",
+      "message": "[50028442.976236] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.166.184 DST=51.15.166.67 LEN=40 TOS=0x00 PREC=0x00 TTL=246 ID=22270 PROTO=TCP SPT=42778 DPT=44773 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "proto": "TCP",
+      "src_ip": "195.54.166.184",
+      "src_port": "42778",
+      "timestamp": "Jun  8 14:34:33",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -429,6 +729,33 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  8 14:34:33 sd-126005 kernel: [50028442.976236] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.166.184 DST=51.15.166.67 LEN=40 TOS=0x00 PREC=0x00 TTL=246 ID=22270 PROTO=TCP SPT=42778 DPT=44773 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "action": "",
+      "dst_ip": "51.15.166.67",
+      "dst_port": "44773",
+      "facility": "",
+      "int_eth": "enp1s0",
+      "length": "40",
+      "logsource": "syslog",
+      "message": "[50028442.976236] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.166.184 DST=51.15.166.67 LEN=40 TOS=0x00 PREC=0x00 TTL=246 ID=22270 PROTO=TCP SPT=42778 DPT=44773 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "proto": "TCP",
+      "src_ip": "195.54.166.184",
+      "src_port": "42778",
+      "timestamp": "Jun  8 14:34:33",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "MarshaledTime": "2020-06-08T14:34:33Z"
      },
@@ -462,6 +789,33 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  8 14:34:33 sd-126005 kernel: [50028442.976236] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.166.184 DST=51.15.166.67 LEN=40 TOS=0x00 PREC=0x00 TTL=246 ID=22270 PROTO=TCP SPT=42778 DPT=44773 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "action": "",
+      "dst_ip": "51.15.166.67",
+      "dst_port": "44773",
+      "facility": "",
+      "int_eth": "enp1s0",
+      "length": "40",
+      "logsource": "syslog",
+      "message": "[50028442.976236] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.166.184 DST=51.15.166.67 LEN=40 TOS=0x00 PREC=0x00 TTL=246 ID=22270 PROTO=TCP SPT=42778 DPT=44773 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "proto": "TCP",
+      "src_ip": "195.54.166.184",
+      "src_port": "42778",
+      "timestamp": "Jun  8 14:34:33",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "0",
       "ASNOrg": "",
@@ -503,6 +857,33 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  8 14:34:33 sd-126005 kernel: [50028442.976236] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.166.184 DST=51.15.166.67 LEN=40 TOS=0x00 PREC=0x00 TTL=246 ID=22270 PROTO=TCP SPT=42778 DPT=44773 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "action": "",
+      "dst_ip": "51.15.166.67",
+      "dst_port": "44773",
+      "facility": "",
+      "int_eth": "enp1s0",
+      "length": "40",
+      "logsource": "syslog",
+      "message": "[50028442.976236] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.166.184 DST=51.15.166.67 LEN=40 TOS=0x00 PREC=0x00 TTL=246 ID=22270 PROTO=TCP SPT=42778 DPT=44773 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "proto": "TCP",
+      "src_ip": "195.54.166.184",
+      "src_port": "42778",
+      "timestamp": "Jun  8 14:34:33",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "0",
       "ASNOrg": "",
@@ -551,6 +932,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Jun  8 14:34:34 sd-126005 kernel: [50028443.630069] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.160.107 DST=195.154.37.115 LEN=40 TOS=0x00 PREC=0x00 TTL=245 ID=10244 PROTO=TCP SPT=8080 DPT=10040 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "[50028443.630069] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.160.107 DST=195.154.37.115 LEN=40 TOS=0x00 PREC=0x00 TTL=245 ID=10244 PROTO=TCP SPT=8080 DPT=10040 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "timestamp": "Jun  8 14:34:34",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -578,6 +978,33 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  8 14:34:34 sd-126005 kernel: [50028443.630069] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.160.107 DST=195.154.37.115 LEN=40 TOS=0x00 PREC=0x00 TTL=245 ID=10244 PROTO=TCP SPT=8080 DPT=10040 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "action": "",
+      "dst_ip": "195.154.37.115",
+      "dst_port": "10040",
+      "facility": "",
+      "int_eth": "enp1s0",
+      "length": "40",
+      "logsource": "syslog",
+      "message": "[50028443.630069] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.160.107 DST=195.154.37.115 LEN=40 TOS=0x00 PREC=0x00 TTL=245 ID=10244 PROTO=TCP SPT=8080 DPT=10040 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "proto": "TCP",
+      "src_ip": "195.54.160.107",
+      "src_port": "8080",
+      "timestamp": "Jun  8 14:34:34",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -610,6 +1037,33 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  8 14:34:34 sd-126005 kernel: [50028443.630069] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.160.107 DST=195.154.37.115 LEN=40 TOS=0x00 PREC=0x00 TTL=245 ID=10244 PROTO=TCP SPT=8080 DPT=10040 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "action": "",
+      "dst_ip": "195.154.37.115",
+      "dst_port": "10040",
+      "facility": "",
+      "int_eth": "enp1s0",
+      "length": "40",
+      "logsource": "syslog",
+      "message": "[50028443.630069] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.160.107 DST=195.154.37.115 LEN=40 TOS=0x00 PREC=0x00 TTL=245 ID=10244 PROTO=TCP SPT=8080 DPT=10040 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "proto": "TCP",
+      "src_ip": "195.54.160.107",
+      "src_port": "8080",
+      "timestamp": "Jun  8 14:34:34",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "MarshaledTime": "2020-06-08T14:34:34Z"
      },
@@ -643,6 +1097,33 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  8 14:34:34 sd-126005 kernel: [50028443.630069] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.160.107 DST=195.154.37.115 LEN=40 TOS=0x00 PREC=0x00 TTL=245 ID=10244 PROTO=TCP SPT=8080 DPT=10040 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "action": "",
+      "dst_ip": "195.154.37.115",
+      "dst_port": "10040",
+      "facility": "",
+      "int_eth": "enp1s0",
+      "length": "40",
+      "logsource": "syslog",
+      "message": "[50028443.630069] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.160.107 DST=195.154.37.115 LEN=40 TOS=0x00 PREC=0x00 TTL=245 ID=10244 PROTO=TCP SPT=8080 DPT=10040 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "proto": "TCP",
+      "src_ip": "195.54.160.107",
+      "src_port": "8080",
+      "timestamp": "Jun  8 14:34:34",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "0",
       "ASNOrg": "",
@@ -684,6 +1165,33 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  8 14:34:34 sd-126005 kernel: [50028443.630069] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.160.107 DST=195.154.37.115 LEN=40 TOS=0x00 PREC=0x00 TTL=245 ID=10244 PROTO=TCP SPT=8080 DPT=10040 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "action": "",
+      "dst_ip": "195.154.37.115",
+      "dst_port": "10040",
+      "facility": "",
+      "int_eth": "enp1s0",
+      "length": "40",
+      "logsource": "syslog",
+      "message": "[50028443.630069] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.160.107 DST=195.154.37.115 LEN=40 TOS=0x00 PREC=0x00 TTL=245 ID=10244 PROTO=TCP SPT=8080 DPT=10040 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "proto": "TCP",
+      "src_ip": "195.54.160.107",
+      "src_port": "8080",
+      "timestamp": "Jun  8 14:34:34",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "0",
       "ASNOrg": "",
@@ -732,6 +1240,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Jun  8 14:34:34 sd-126005 kernel: [50028443.630106] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.160.107 DST=195.154.37.115 LEN=40 TOS=0x00 PREC=0x00 TTL=245 ID=10244 PROTO=TCP SPT=8080 DPT=10040 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "[50028443.630106] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.160.107 DST=195.154.37.115 LEN=40 TOS=0x00 PREC=0x00 TTL=245 ID=10244 PROTO=TCP SPT=8080 DPT=10040 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "timestamp": "Jun  8 14:34:34",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -759,6 +1286,33 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  8 14:34:34 sd-126005 kernel: [50028443.630106] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.160.107 DST=195.154.37.115 LEN=40 TOS=0x00 PREC=0x00 TTL=245 ID=10244 PROTO=TCP SPT=8080 DPT=10040 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "action": "",
+      "dst_ip": "195.154.37.115",
+      "dst_port": "10040",
+      "facility": "",
+      "int_eth": "enp1s0",
+      "length": "40",
+      "logsource": "syslog",
+      "message": "[50028443.630106] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.160.107 DST=195.154.37.115 LEN=40 TOS=0x00 PREC=0x00 TTL=245 ID=10244 PROTO=TCP SPT=8080 DPT=10040 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "proto": "TCP",
+      "src_ip": "195.54.160.107",
+      "src_port": "8080",
+      "timestamp": "Jun  8 14:34:34",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -791,6 +1345,33 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  8 14:34:34 sd-126005 kernel: [50028443.630106] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.160.107 DST=195.154.37.115 LEN=40 TOS=0x00 PREC=0x00 TTL=245 ID=10244 PROTO=TCP SPT=8080 DPT=10040 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "action": "",
+      "dst_ip": "195.154.37.115",
+      "dst_port": "10040",
+      "facility": "",
+      "int_eth": "enp1s0",
+      "length": "40",
+      "logsource": "syslog",
+      "message": "[50028443.630106] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.160.107 DST=195.154.37.115 LEN=40 TOS=0x00 PREC=0x00 TTL=245 ID=10244 PROTO=TCP SPT=8080 DPT=10040 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "proto": "TCP",
+      "src_ip": "195.54.160.107",
+      "src_port": "8080",
+      "timestamp": "Jun  8 14:34:34",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "MarshaledTime": "2020-06-08T14:34:34Z"
      },
@@ -824,6 +1405,33 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  8 14:34:34 sd-126005 kernel: [50028443.630106] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.160.107 DST=195.154.37.115 LEN=40 TOS=0x00 PREC=0x00 TTL=245 ID=10244 PROTO=TCP SPT=8080 DPT=10040 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "action": "",
+      "dst_ip": "195.154.37.115",
+      "dst_port": "10040",
+      "facility": "",
+      "int_eth": "enp1s0",
+      "length": "40",
+      "logsource": "syslog",
+      "message": "[50028443.630106] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.160.107 DST=195.154.37.115 LEN=40 TOS=0x00 PREC=0x00 TTL=245 ID=10244 PROTO=TCP SPT=8080 DPT=10040 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "proto": "TCP",
+      "src_ip": "195.54.160.107",
+      "src_port": "8080",
+      "timestamp": "Jun  8 14:34:34",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "0",
       "ASNOrg": "",
@@ -865,6 +1473,33 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  8 14:34:34 sd-126005 kernel: [50028443.630106] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.160.107 DST=195.154.37.115 LEN=40 TOS=0x00 PREC=0x00 TTL=245 ID=10244 PROTO=TCP SPT=8080 DPT=10040 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "action": "",
+      "dst_ip": "195.154.37.115",
+      "dst_port": "10040",
+      "facility": "",
+      "int_eth": "enp1s0",
+      "length": "40",
+      "logsource": "syslog",
+      "message": "[50028443.630106] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.160.107 DST=195.154.37.115 LEN=40 TOS=0x00 PREC=0x00 TTL=245 ID=10244 PROTO=TCP SPT=8080 DPT=10040 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "proto": "TCP",
+      "src_ip": "195.54.160.107",
+      "src_port": "8080",
+      "timestamp": "Jun  8 14:34:34",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "0",
       "ASNOrg": "",
@@ -913,6 +1548,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Jun  8 14:34:35 sd-126005 kernel: [50028444.583497] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=194.26.29.53 DST=195.154.37.115 LEN=40 TOS=0x08 PREC=0x20 TTL=244 ID=50126 PROTO=TCP SPT=40817 DPT=4157 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "[50028444.583497] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=194.26.29.53 DST=195.154.37.115 LEN=40 TOS=0x08 PREC=0x20 TTL=244 ID=50126 PROTO=TCP SPT=40817 DPT=4157 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "timestamp": "Jun  8 14:34:35",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -940,6 +1594,33 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  8 14:34:35 sd-126005 kernel: [50028444.583497] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=194.26.29.53 DST=195.154.37.115 LEN=40 TOS=0x08 PREC=0x20 TTL=244 ID=50126 PROTO=TCP SPT=40817 DPT=4157 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "action": "",
+      "dst_ip": "195.154.37.115",
+      "dst_port": "4157",
+      "facility": "",
+      "int_eth": "enp1s0",
+      "length": "40",
+      "logsource": "syslog",
+      "message": "[50028444.583497] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=194.26.29.53 DST=195.154.37.115 LEN=40 TOS=0x08 PREC=0x20 TTL=244 ID=50126 PROTO=TCP SPT=40817 DPT=4157 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "proto": "TCP",
+      "src_ip": "194.26.29.53",
+      "src_port": "40817",
+      "timestamp": "Jun  8 14:34:35",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -972,6 +1653,33 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  8 14:34:35 sd-126005 kernel: [50028444.583497] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=194.26.29.53 DST=195.154.37.115 LEN=40 TOS=0x08 PREC=0x20 TTL=244 ID=50126 PROTO=TCP SPT=40817 DPT=4157 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "action": "",
+      "dst_ip": "195.154.37.115",
+      "dst_port": "4157",
+      "facility": "",
+      "int_eth": "enp1s0",
+      "length": "40",
+      "logsource": "syslog",
+      "message": "[50028444.583497] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=194.26.29.53 DST=195.154.37.115 LEN=40 TOS=0x08 PREC=0x20 TTL=244 ID=50126 PROTO=TCP SPT=40817 DPT=4157 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "proto": "TCP",
+      "src_ip": "194.26.29.53",
+      "src_port": "40817",
+      "timestamp": "Jun  8 14:34:35",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "MarshaledTime": "2020-06-08T14:34:35Z"
      },
@@ -1005,6 +1713,33 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  8 14:34:35 sd-126005 kernel: [50028444.583497] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=194.26.29.53 DST=195.154.37.115 LEN=40 TOS=0x08 PREC=0x20 TTL=244 ID=50126 PROTO=TCP SPT=40817 DPT=4157 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "action": "",
+      "dst_ip": "195.154.37.115",
+      "dst_port": "4157",
+      "facility": "",
+      "int_eth": "enp1s0",
+      "length": "40",
+      "logsource": "syslog",
+      "message": "[50028444.583497] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=194.26.29.53 DST=195.154.37.115 LEN=40 TOS=0x08 PREC=0x20 TTL=244 ID=50126 PROTO=TCP SPT=40817 DPT=4157 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "proto": "TCP",
+      "src_ip": "194.26.29.53",
+      "src_port": "40817",
+      "timestamp": "Jun  8 14:34:35",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "0",
       "ASNOrg": "",
@@ -1046,6 +1781,33 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  8 14:34:35 sd-126005 kernel: [50028444.583497] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=194.26.29.53 DST=195.154.37.115 LEN=40 TOS=0x08 PREC=0x20 TTL=244 ID=50126 PROTO=TCP SPT=40817 DPT=4157 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "action": "",
+      "dst_ip": "195.154.37.115",
+      "dst_port": "4157",
+      "facility": "",
+      "int_eth": "enp1s0",
+      "length": "40",
+      "logsource": "syslog",
+      "message": "[50028444.583497] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=194.26.29.53 DST=195.154.37.115 LEN=40 TOS=0x08 PREC=0x20 TTL=244 ID=50126 PROTO=TCP SPT=40817 DPT=4157 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "proto": "TCP",
+      "src_ip": "194.26.29.53",
+      "src_port": "40817",
+      "timestamp": "Jun  8 14:34:35",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "0",
       "ASNOrg": "",
@@ -1094,6 +1856,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Jun  8 14:34:35 sd-126005 kernel: [50028444.583534] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=194.26.29.53 DST=195.154.37.115 LEN=40 TOS=0x08 PREC=0x20 TTL=244 ID=50126 PROTO=TCP SPT=40817 DPT=4157 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "[50028444.583534] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=194.26.29.53 DST=195.154.37.115 LEN=40 TOS=0x08 PREC=0x20 TTL=244 ID=50126 PROTO=TCP SPT=40817 DPT=4157 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "timestamp": "Jun  8 14:34:35",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -1121,6 +1902,33 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  8 14:34:35 sd-126005 kernel: [50028444.583534] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=194.26.29.53 DST=195.154.37.115 LEN=40 TOS=0x08 PREC=0x20 TTL=244 ID=50126 PROTO=TCP SPT=40817 DPT=4157 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "action": "",
+      "dst_ip": "195.154.37.115",
+      "dst_port": "4157",
+      "facility": "",
+      "int_eth": "enp1s0",
+      "length": "40",
+      "logsource": "syslog",
+      "message": "[50028444.583534] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=194.26.29.53 DST=195.154.37.115 LEN=40 TOS=0x08 PREC=0x20 TTL=244 ID=50126 PROTO=TCP SPT=40817 DPT=4157 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "proto": "TCP",
+      "src_ip": "194.26.29.53",
+      "src_port": "40817",
+      "timestamp": "Jun  8 14:34:35",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -1153,6 +1961,33 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  8 14:34:35 sd-126005 kernel: [50028444.583534] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=194.26.29.53 DST=195.154.37.115 LEN=40 TOS=0x08 PREC=0x20 TTL=244 ID=50126 PROTO=TCP SPT=40817 DPT=4157 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "action": "",
+      "dst_ip": "195.154.37.115",
+      "dst_port": "4157",
+      "facility": "",
+      "int_eth": "enp1s0",
+      "length": "40",
+      "logsource": "syslog",
+      "message": "[50028444.583534] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=194.26.29.53 DST=195.154.37.115 LEN=40 TOS=0x08 PREC=0x20 TTL=244 ID=50126 PROTO=TCP SPT=40817 DPT=4157 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "proto": "TCP",
+      "src_ip": "194.26.29.53",
+      "src_port": "40817",
+      "timestamp": "Jun  8 14:34:35",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "MarshaledTime": "2020-06-08T14:34:35Z"
      },
@@ -1186,6 +2021,33 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  8 14:34:35 sd-126005 kernel: [50028444.583534] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=194.26.29.53 DST=195.154.37.115 LEN=40 TOS=0x08 PREC=0x20 TTL=244 ID=50126 PROTO=TCP SPT=40817 DPT=4157 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "action": "",
+      "dst_ip": "195.154.37.115",
+      "dst_port": "4157",
+      "facility": "",
+      "int_eth": "enp1s0",
+      "length": "40",
+      "logsource": "syslog",
+      "message": "[50028444.583534] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=194.26.29.53 DST=195.154.37.115 LEN=40 TOS=0x08 PREC=0x20 TTL=244 ID=50126 PROTO=TCP SPT=40817 DPT=4157 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "proto": "TCP",
+      "src_ip": "194.26.29.53",
+      "src_port": "40817",
+      "timestamp": "Jun  8 14:34:35",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "0",
       "ASNOrg": "",
@@ -1227,6 +2089,33 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  8 14:34:35 sd-126005 kernel: [50028444.583534] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=194.26.29.53 DST=195.154.37.115 LEN=40 TOS=0x08 PREC=0x20 TTL=244 ID=50126 PROTO=TCP SPT=40817 DPT=4157 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "action": "",
+      "dst_ip": "195.154.37.115",
+      "dst_port": "4157",
+      "facility": "",
+      "int_eth": "enp1s0",
+      "length": "40",
+      "logsource": "syslog",
+      "message": "[50028444.583534] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=194.26.29.53 DST=195.154.37.115 LEN=40 TOS=0x08 PREC=0x20 TTL=244 ID=50126 PROTO=TCP SPT=40817 DPT=4157 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "proto": "TCP",
+      "src_ip": "194.26.29.53",
+      "src_port": "40817",
+      "timestamp": "Jun  8 14:34:35",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "0",
       "ASNOrg": "",
@@ -1275,6 +2164,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Jun  8 14:34:39 sd-126005 kernel: [50028448.585602] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=194.168.212.208 DST=195.154.37.115 LEN=40 TOS=0x00 PREC=0x00 TTL=247 ID=43360 PROTO=TCP SPT=443 DPT=443 WINDOW=5840 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "[50028448.585602] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=194.168.212.208 DST=195.154.37.115 LEN=40 TOS=0x00 PREC=0x00 TTL=247 ID=43360 PROTO=TCP SPT=443 DPT=443 WINDOW=5840 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "timestamp": "Jun  8 14:34:39",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -1302,6 +2210,33 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  8 14:34:39 sd-126005 kernel: [50028448.585602] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=194.168.212.208 DST=195.154.37.115 LEN=40 TOS=0x00 PREC=0x00 TTL=247 ID=43360 PROTO=TCP SPT=443 DPT=443 WINDOW=5840 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "action": "",
+      "dst_ip": "195.154.37.115",
+      "dst_port": "443",
+      "facility": "",
+      "int_eth": "enp1s0",
+      "length": "40",
+      "logsource": "syslog",
+      "message": "[50028448.585602] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=194.168.212.208 DST=195.154.37.115 LEN=40 TOS=0x00 PREC=0x00 TTL=247 ID=43360 PROTO=TCP SPT=443 DPT=443 WINDOW=5840 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "proto": "TCP",
+      "src_ip": "194.168.212.208",
+      "src_port": "443",
+      "timestamp": "Jun  8 14:34:39",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -1334,6 +2269,33 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  8 14:34:39 sd-126005 kernel: [50028448.585602] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=194.168.212.208 DST=195.154.37.115 LEN=40 TOS=0x00 PREC=0x00 TTL=247 ID=43360 PROTO=TCP SPT=443 DPT=443 WINDOW=5840 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "action": "",
+      "dst_ip": "195.154.37.115",
+      "dst_port": "443",
+      "facility": "",
+      "int_eth": "enp1s0",
+      "length": "40",
+      "logsource": "syslog",
+      "message": "[50028448.585602] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=194.168.212.208 DST=195.154.37.115 LEN=40 TOS=0x00 PREC=0x00 TTL=247 ID=43360 PROTO=TCP SPT=443 DPT=443 WINDOW=5840 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "proto": "TCP",
+      "src_ip": "194.168.212.208",
+      "src_port": "443",
+      "timestamp": "Jun  8 14:34:39",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "MarshaledTime": "2020-06-08T14:34:39Z"
      },
@@ -1367,6 +2329,33 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  8 14:34:39 sd-126005 kernel: [50028448.585602] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=194.168.212.208 DST=195.154.37.115 LEN=40 TOS=0x00 PREC=0x00 TTL=247 ID=43360 PROTO=TCP SPT=443 DPT=443 WINDOW=5840 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "action": "",
+      "dst_ip": "195.154.37.115",
+      "dst_port": "443",
+      "facility": "",
+      "int_eth": "enp1s0",
+      "length": "40",
+      "logsource": "syslog",
+      "message": "[50028448.585602] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=194.168.212.208 DST=195.154.37.115 LEN=40 TOS=0x00 PREC=0x00 TTL=247 ID=43360 PROTO=TCP SPT=443 DPT=443 WINDOW=5840 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "proto": "TCP",
+      "src_ip": "194.168.212.208",
+      "src_port": "443",
+      "timestamp": "Jun  8 14:34:39",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "5089",
       "ASNOrg": "Virgin Media Limited",
@@ -1412,6 +2401,33 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  8 14:34:39 sd-126005 kernel: [50028448.585602] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=194.168.212.208 DST=195.154.37.115 LEN=40 TOS=0x00 PREC=0x00 TTL=247 ID=43360 PROTO=TCP SPT=443 DPT=443 WINDOW=5840 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "action": "",
+      "dst_ip": "195.154.37.115",
+      "dst_port": "443",
+      "facility": "",
+      "int_eth": "enp1s0",
+      "length": "40",
+      "logsource": "syslog",
+      "message": "[50028448.585602] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=194.168.212.208 DST=195.154.37.115 LEN=40 TOS=0x00 PREC=0x00 TTL=247 ID=43360 PROTO=TCP SPT=443 DPT=443 WINDOW=5840 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "proto": "TCP",
+      "src_ip": "194.168.212.208",
+      "src_port": "443",
+      "timestamp": "Jun  8 14:34:39",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "5089",
       "ASNOrg": "Virgin Media Limited",
@@ -1464,6 +2480,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Jun  8 14:34:39 sd-126005 kernel: [50028448.593486] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=31.121.165.199 DST=195.154.37.115 LEN=40 TOS=0x00 PREC=0x00 TTL=247 ID=29887 PROTO=TCP SPT=443 DPT=443 WINDOW=5840 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "[50028448.593486] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=31.121.165.199 DST=195.154.37.115 LEN=40 TOS=0x00 PREC=0x00 TTL=247 ID=29887 PROTO=TCP SPT=443 DPT=443 WINDOW=5840 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "timestamp": "Jun  8 14:34:39",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -1491,6 +2526,33 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  8 14:34:39 sd-126005 kernel: [50028448.593486] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=31.121.165.199 DST=195.154.37.115 LEN=40 TOS=0x00 PREC=0x00 TTL=247 ID=29887 PROTO=TCP SPT=443 DPT=443 WINDOW=5840 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "action": "",
+      "dst_ip": "195.154.37.115",
+      "dst_port": "443",
+      "facility": "",
+      "int_eth": "enp1s0",
+      "length": "40",
+      "logsource": "syslog",
+      "message": "[50028448.593486] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=31.121.165.199 DST=195.154.37.115 LEN=40 TOS=0x00 PREC=0x00 TTL=247 ID=29887 PROTO=TCP SPT=443 DPT=443 WINDOW=5840 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "proto": "TCP",
+      "src_ip": "31.121.165.199",
+      "src_port": "443",
+      "timestamp": "Jun  8 14:34:39",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -1523,6 +2585,33 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  8 14:34:39 sd-126005 kernel: [50028448.593486] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=31.121.165.199 DST=195.154.37.115 LEN=40 TOS=0x00 PREC=0x00 TTL=247 ID=29887 PROTO=TCP SPT=443 DPT=443 WINDOW=5840 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "action": "",
+      "dst_ip": "195.154.37.115",
+      "dst_port": "443",
+      "facility": "",
+      "int_eth": "enp1s0",
+      "length": "40",
+      "logsource": "syslog",
+      "message": "[50028448.593486] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=31.121.165.199 DST=195.154.37.115 LEN=40 TOS=0x00 PREC=0x00 TTL=247 ID=29887 PROTO=TCP SPT=443 DPT=443 WINDOW=5840 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "proto": "TCP",
+      "src_ip": "31.121.165.199",
+      "src_port": "443",
+      "timestamp": "Jun  8 14:34:39",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "MarshaledTime": "2020-06-08T14:34:39Z"
      },
@@ -1556,6 +2645,33 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  8 14:34:39 sd-126005 kernel: [50028448.593486] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=31.121.165.199 DST=195.154.37.115 LEN=40 TOS=0x00 PREC=0x00 TTL=247 ID=29887 PROTO=TCP SPT=443 DPT=443 WINDOW=5840 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "action": "",
+      "dst_ip": "195.154.37.115",
+      "dst_port": "443",
+      "facility": "",
+      "int_eth": "enp1s0",
+      "length": "40",
+      "logsource": "syslog",
+      "message": "[50028448.593486] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=31.121.165.199 DST=195.154.37.115 LEN=40 TOS=0x00 PREC=0x00 TTL=247 ID=29887 PROTO=TCP SPT=443 DPT=443 WINDOW=5840 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "proto": "TCP",
+      "src_ip": "31.121.165.199",
+      "src_port": "443",
+      "timestamp": "Jun  8 14:34:39",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "12576",
       "ASNOrg": "EE Limited",
@@ -1601,6 +2717,33 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  8 14:34:39 sd-126005 kernel: [50028448.593486] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=31.121.165.199 DST=195.154.37.115 LEN=40 TOS=0x00 PREC=0x00 TTL=247 ID=29887 PROTO=TCP SPT=443 DPT=443 WINDOW=5840 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "action": "",
+      "dst_ip": "195.154.37.115",
+      "dst_port": "443",
+      "facility": "",
+      "int_eth": "enp1s0",
+      "length": "40",
+      "logsource": "syslog",
+      "message": "[50028448.593486] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=31.121.165.199 DST=195.154.37.115 LEN=40 TOS=0x00 PREC=0x00 TTL=247 ID=29887 PROTO=TCP SPT=443 DPT=443 WINDOW=5840 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "proto": "TCP",
+      "src_ip": "31.121.165.199",
+      "src_port": "443",
+      "timestamp": "Jun  8 14:34:39",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "12576",
       "ASNOrg": "EE Limited",
@@ -1653,6 +2796,25 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Jun  8 14:34:40 sd-126005 kernel: [50028449.620983] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.161.41 DST=51.15.166.67 LEN=40 TOS=0x00 PREC=0x00 TTL=245 ID=7124 PROTO=TCP SPT=42792 DPT=4937 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "[50028449.620983] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.161.41 DST=51.15.166.67 LEN=40 TOS=0x00 PREC=0x00 TTL=245 ID=7124 PROTO=TCP SPT=42792 DPT=4937 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "timestamp": "Jun  8 14:34:40",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -1680,6 +2842,33 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  8 14:34:40 sd-126005 kernel: [50028449.620983] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.161.41 DST=51.15.166.67 LEN=40 TOS=0x00 PREC=0x00 TTL=245 ID=7124 PROTO=TCP SPT=42792 DPT=4937 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "action": "",
+      "dst_ip": "51.15.166.67",
+      "dst_port": "4937",
+      "facility": "",
+      "int_eth": "enp1s0",
+      "length": "40",
+      "logsource": "syslog",
+      "message": "[50028449.620983] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.161.41 DST=51.15.166.67 LEN=40 TOS=0x00 PREC=0x00 TTL=245 ID=7124 PROTO=TCP SPT=42792 DPT=4937 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "proto": "TCP",
+      "src_ip": "195.54.161.41",
+      "src_port": "42792",
+      "timestamp": "Jun  8 14:34:40",
+      "timestamp8601": ""
+     },
      "Overflow": {
       "MapKey": "",
       "start_at": "0001-01-01T00:00:00Z",
@@ -1712,6 +2901,33 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  8 14:34:40 sd-126005 kernel: [50028449.620983] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.161.41 DST=51.15.166.67 LEN=40 TOS=0x00 PREC=0x00 TTL=245 ID=7124 PROTO=TCP SPT=42792 DPT=4937 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "action": "",
+      "dst_ip": "51.15.166.67",
+      "dst_port": "4937",
+      "facility": "",
+      "int_eth": "enp1s0",
+      "length": "40",
+      "logsource": "syslog",
+      "message": "[50028449.620983] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.161.41 DST=51.15.166.67 LEN=40 TOS=0x00 PREC=0x00 TTL=245 ID=7124 PROTO=TCP SPT=42792 DPT=4937 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "proto": "TCP",
+      "src_ip": "195.54.161.41",
+      "src_port": "42792",
+      "timestamp": "Jun  8 14:34:40",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "MarshaledTime": "2020-06-08T14:34:40Z"
      },
@@ -1745,6 +2961,33 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  8 14:34:40 sd-126005 kernel: [50028449.620983] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.161.41 DST=51.15.166.67 LEN=40 TOS=0x00 PREC=0x00 TTL=245 ID=7124 PROTO=TCP SPT=42792 DPT=4937 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "action": "",
+      "dst_ip": "51.15.166.67",
+      "dst_port": "4937",
+      "facility": "",
+      "int_eth": "enp1s0",
+      "length": "40",
+      "logsource": "syslog",
+      "message": "[50028449.620983] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.161.41 DST=51.15.166.67 LEN=40 TOS=0x00 PREC=0x00 TTL=245 ID=7124 PROTO=TCP SPT=42792 DPT=4937 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "proto": "TCP",
+      "src_ip": "195.54.161.41",
+      "src_port": "42792",
+      "timestamp": "Jun  8 14:34:40",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "0",
       "ASNOrg": "",
@@ -1786,6 +3029,33 @@
      "ExpectMode": 1,
      "Whitelisted": false,
      "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  8 14:34:40 sd-126005 kernel: [50028449.620983] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.161.41 DST=51.15.166.67 LEN=40 TOS=0x00 PREC=0x00 TTL=245 ID=7124 PROTO=TCP SPT=42792 DPT=4937 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "Src": "./tests/iptables-1/iptables.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "action": "",
+      "dst_ip": "51.15.166.67",
+      "dst_port": "4937",
+      "facility": "",
+      "int_eth": "enp1s0",
+      "length": "40",
+      "logsource": "syslog",
+      "message": "[50028449.620983] IN=enp1s0 OUT= MAC=00:08:a2:0c:1f:12:00:c8:8b:e2:d6:87:08:00 SRC=195.54.161.41 DST=51.15.166.67 LEN=40 TOS=0x00 PREC=0x00 TTL=245 ID=7124 PROTO=TCP SPT=42792 DPT=4937 WINDOW=1024 RES=0x00 SYN URGP=0 ",
+      "pid": "",
+      "priority": "",
+      "program": "kernel",
+      "proto": "TCP",
+      "src_ip": "195.54.161.41",
+      "src_port": "42792",
+      "timestamp": "Jun  8 14:34:40",
+      "timestamp8601": ""
+     },
      "Enriched": {
       "ASNNumber": "0",
       "ASNOrg": "",
