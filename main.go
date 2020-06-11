@@ -165,7 +165,7 @@ func testOneDir(target_dir string, parserCTX *parser.UnixParserCtx) (bool, error
 			if !test_ok {
 				failure = true
 				testsFailed++
-				log.Errorf("test failed.")
+				log.Errorf("test %d failed.", linesRead)
 				if err != nil {
 					log.Errorf("test failure : %s", err)
 				}
