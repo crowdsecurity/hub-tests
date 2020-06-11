@@ -96,7 +96,7 @@ func parseMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parserNo
 			//we go an exact match
 			AllExpected = append(AllExpected[:idx], AllExpected[idx+1:]...)
 		} else {
-			return false, true, fmt.Errorf("mismatch diff: %s", cmp.Diff(candidate, oneResult, opt))
+			return false, true, fmt.Errorf("mismatch diff (-want +got) : %s", cmp.Diff(candidate, oneResult, opt))
 		}
 		break
 	}
@@ -169,7 +169,6 @@ func testOneDir(target_dir string, parserCTX *parser.UnixParserCtx) (bool, error
 				if err != nil {
 					log.Errorf("test failure : %s", err)
 				}
-				//log.Errorf("stop tests.")
 				continue
 			}
 		}
