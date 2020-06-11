@@ -11,6 +11,7 @@ import (
 
 	"github.com/crowdsecurity/crowdsec/pkg/acquisition"
 	"github.com/crowdsecurity/crowdsec/pkg/csconfig"
+	"github.com/crowdsecurity/crowdsec/pkg/cwversion"
 	"github.com/crowdsecurity/crowdsec/pkg/parser"
 	"github.com/crowdsecurity/crowdsec/pkg/types"
 	"github.com/google/go-cmp/cmp"
@@ -96,6 +97,8 @@ func parseMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parserNo
 			//we go an exact match
 			AllExpected = append(AllExpected[:idx], AllExpected[idx+1:]...)
 		} else {
+			log.Printf("Expected : %+v", candidate)
+			log.Fatalf("fu")
 			return false, true, fmt.Errorf("mismatch diff (-want +got) : %s", cmp.Diff(candidate, oneResult, opt))
 		}
 		break
@@ -234,6 +237,8 @@ func main() {
 		cConfig *csconfig.CrowdSec
 	)
 	log.SetLevel(log.InfoLevel)
+
+	log.Infof("built against %s", cwversion.VersionStr())
 	cConfig = csconfig.NewCrowdSecConfig()
 	/* load base regexps for two grok parsers */
 	parserCTX, err = p.Init(map[string]interface{}{"patterns": cConfig.ConfigFolder + string("/patterns/"), "data": cConfig.DataFolder})
