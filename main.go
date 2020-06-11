@@ -97,8 +97,6 @@ func parseMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parserNo
 			//we go an exact match
 			AllExpected = append(AllExpected[:idx], AllExpected[idx+1:]...)
 		} else {
-			log.Printf("Expected : %+v", candidate)
-			log.Fatalf("fu")
 			return false, true, fmt.Errorf("mismatch diff (-want +got) : %s", cmp.Diff(candidate, oneResult, opt))
 		}
 		break
