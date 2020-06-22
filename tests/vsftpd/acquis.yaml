@@ -1,6 +1,6 @@
 mode: cat
 filenames:
- - ./tests/vsftpd-1/vsftpd.log
+ - ./tests/vsftpd/vsftpd.log
 labels:
   type: vsftpd
   
