@@ -1,5 +1,0 @@
-93.43.209.58 - - [08/Jun/2020:06:49:01 +0000] "GET / HTTP/1.0" 500 803 "-" "-"
-164.68.112.178 - - [08/Jun/2020:07:01:28 +0000] "GET / HTTP/1.0" 500 799 "-" "masscan/1.0 (https://github.com/robertdavidgraham/masscan)"
-185.164.136.111 - - [08/Jun/2020:07:03:37 +0000] "GET / HTTP/1.1" 500 798 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:75.0) Gecko/20100101 Firefox/75.0"
-195.54.160.135 - - [08/Jun/2020:08:04:43 +0000] "GET /solr/admin/info/system?wt=json HTTP/1.1" 500 803 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36"
-195.54.160.135 - - [08/Jun/2020:08:06:35 +0000] "GET /?a=fetch&content=<php>die(@md5(HelloThinkCMF))</php> HTTP/1.1" 500 803 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36"
