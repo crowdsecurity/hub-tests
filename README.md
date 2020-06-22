@@ -15,7 +15,7 @@ cd crowdsec-vXXX
 cd tests
 #run the tests
 cd ..
-./main ./tests/nginx-1
+./main -c dev.yaml ./tests/nginx-1
 ```
 
 The "prep_tests.sh" script :
