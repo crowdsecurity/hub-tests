@@ -2,7 +2,7 @@ name: Update index
 
 on: 
   push:
-    branches: [ master, hub_update ]
+    branches: [ master ]
   pull_request:
     branches: [ master ]
 

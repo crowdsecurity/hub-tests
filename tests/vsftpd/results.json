@@ -1,1 +1,272 @@
-null
+[
+  {
+   "Line": "Mon Jun 8 12:08:53 2020 [pid 27244] [hes] FAIL LOGIN: Client \"::ffff:93.24.101.89\"",
+   "ParserResults": {
+    "s00-raw": {
+     "crowdsecurity/non-syslog": {
+      "Type": 0,
+      "ExpectMode": 1,
+      "Whitelisted": false,
+      "Stage": "s01-parse",
+      "Line": {
+       "Raw": "Mon Jun 8 12:08:53 2020 [pid 27244] [hes] FAIL LOGIN: Client \"::ffff:93.24.101.89\"",
+       "Src": "./tests/vsftpd/vsftpd.log",
+       "Time": "0001-01-01T00:00:00Z",
+       "Labels": {
+        "type": "vsftpd"
+       },
+       "Process": true
+      },
+      "Parsed": {
+       "message": "Mon Jun 8 12:08:53 2020 [pid 27244] [hes] FAIL LOGIN: Client \"::ffff:93.24.101.89\"",
+       "program": "vsftpd"
+      },
+      "Overflow": {
+       "MapKey": "",
+       "start_at": "0001-01-01T00:00:00Z",
+       "stop_at": "0001-01-01T00:00:00Z",
+       "source": null,
+       "Source_ip": "",
+       "Source_range": "",
+       "Source_AutonomousSystemNumber": "",
+       "Source_AutonomousSystemOrganization": "",
+       "Source_Country": "",
+       "Source_Latitude": 0,
+       "Source_Longitude": 0,
+       "Reprocess": false,
+       "Labels": null
+      },
+      "Time": "0001-01-01T00:00:00Z",
+      "StrTime": "",
+      "MarshaledTime": "",
+      "Process": false
+     }
+    },
+    "s01-parse": {
+     "vsftpd-logs": {
+      "Type": 0,
+      "ExpectMode": 1,
+      "Whitelisted": false,
+      "Stage": "s02-enrich",
+      "Line": {
+       "Raw": "Mon Jun 8 12:08:53 2020 [pid 27244] [hes] FAIL LOGIN: Client \"::ffff:93.24.101.89\"",
+       "Src": "./tests/vsftpd/vsftpd.log",
+       "Time": "0001-01-01T00:00:00Z",
+       "Labels": {
+        "type": "vsftpd"
+       },
+       "Process": true
+      },
+      "Parsed": {
+       "message": "Mon Jun 8 12:08:53 2020 [pid 27244] [hes] FAIL LOGIN: Client \"::ffff:93.24.101.89\"",
+       "program": "vsftpd",
+       "source_ip": "93.24.101.89",
+       "timestamp": "Mon Jun 8 12:08:53 2020",
+       "user": "hes"
+      },
+      "Overflow": {
+       "MapKey": "",
+       "start_at": "0001-01-01T00:00:00Z",
+       "stop_at": "0001-01-01T00:00:00Z",
+       "source": null,
+       "Source_ip": "",
+       "Source_range": "",
+       "Source_AutonomousSystemNumber": "",
+       "Source_AutonomousSystemOrganization": "",
+       "Source_Country": "",
+       "Source_Latitude": 0,
+       "Source_Longitude": 0,
+       "Reprocess": false,
+       "Labels": null
+      },
+      "Time": "0001-01-01T00:00:00Z",
+      "StrTime": "Mon Jun 8 12:08:53 2020",
+      "MarshaledTime": "",
+      "Process": false,
+      "Meta": {
+       "log_type": "ftp_failed_auth",
+       "program": "vsftpd",
+       "source_ip": "93.24.101.89",
+       "user": "hes"
+      }
+     }
+    },
+    "s02-enrich": {
+     "crowdsecurity/dateparse-enrich": {
+      "Type": 0,
+      "ExpectMode": 1,
+      "Whitelisted": false,
+      "Stage": "s02-enrich",
+      "Line": {
+       "Raw": "Mon Jun 8 12:08:53 2020 [pid 27244] [hes] FAIL LOGIN: Client \"::ffff:93.24.101.89\"",
+       "Src": "./tests/vsftpd/vsftpd.log",
+       "Time": "0001-01-01T00:00:00Z",
+       "Labels": {
+        "type": "vsftpd"
+       },
+       "Process": true
+      },
+      "Parsed": {
+       "message": "Mon Jun 8 12:08:53 2020 [pid 27244] [hes] FAIL LOGIN: Client \"::ffff:93.24.101.89\"",
+       "program": "vsftpd",
+       "source_ip": "93.24.101.89",
+       "timestamp": "Mon Jun 8 12:08:53 2020",
+       "user": "hes"
+      },
+      "Enriched": {
+       "MarshaledTime": "2020-06-08T12:08:53Z"
+      },
+      "Overflow": {
+       "MapKey": "",
+       "start_at": "0001-01-01T00:00:00Z",
+       "stop_at": "0001-01-01T00:00:00Z",
+       "source": null,
+       "Source_ip": "",
+       "Source_range": "",
+       "Source_AutonomousSystemNumber": "",
+       "Source_AutonomousSystemOrganization": "",
+       "Source_Country": "",
+       "Source_Latitude": 0,
+       "Source_Longitude": 0,
+       "Reprocess": false,
+       "Labels": null
+      },
+      "Time": "0001-01-01T00:00:00Z",
+      "StrTime": "Mon Jun 8 12:08:53 2020",
+      "MarshaledTime": "2020-06-08T12:08:53Z",
+      "Process": false,
+      "Meta": {
+       "log_type": "ftp_failed_auth",
+       "program": "vsftpd",
+       "source_ip": "93.24.101.89",
+       "user": "hes"
+      }
+     },
+     "crowdsecurity/geoip-enrich": {
+      "Type": 0,
+      "ExpectMode": 1,
+      "Whitelisted": false,
+      "Stage": "s02-enrich",
+      "Line": {
+       "Raw": "Mon Jun 8 12:08:53 2020 [pid 27244] [hes] FAIL LOGIN: Client \"::ffff:93.24.101.89\"",
+       "Src": "./tests/vsftpd/vsftpd.log",
+       "Time": "0001-01-01T00:00:00Z",
+       "Labels": {
+        "type": "vsftpd"
+       },
+       "Process": true
+      },
+      "Parsed": {
+       "message": "Mon Jun 8 12:08:53 2020 [pid 27244] [hes] FAIL LOGIN: Client \"::ffff:93.24.101.89\"",
+       "program": "vsftpd",
+       "source_ip": "93.24.101.89",
+       "timestamp": "Mon Jun 8 12:08:53 2020",
+       "user": "hes"
+      },
+      "Enriched": {
+       "ASNNumber": "15557",
+       "ASNOrg": "SFR SA",
+       "IsInEU": "true",
+       "IsoCode": "FR",
+       "Latitude": "48.991700",
+       "Longitude": "1.909700",
+       "MarshaledTime": "2020-06-08T12:08:53Z",
+       "SourceRange": "93.24.0.0/13"
+      },
+      "Overflow": {
+       "MapKey": "",
+       "start_at": "0001-01-01T00:00:00Z",
+       "stop_at": "0001-01-01T00:00:00Z",
+       "source": null,
+       "Source_ip": "",
+       "Source_range": "",
+       "Source_AutonomousSystemNumber": "",
+       "Source_AutonomousSystemOrganization": "",
+       "Source_Country": "",
+       "Source_Latitude": 0,
+       "Source_Longitude": 0,
+       "Reprocess": false,
+       "Labels": null
+      },
+      "Time": "0001-01-01T00:00:00Z",
+      "StrTime": "Mon Jun 8 12:08:53 2020",
+      "MarshaledTime": "2020-06-08T12:08:53Z",
+      "Process": false,
+      "Meta": {
+       "ASNNumber": "15557",
+       "ASNOrg": "SFR SA",
+       "IsInEU": "true",
+       "IsoCode": "FR",
+       "SourceRange": "93.24.0.0/13",
+       "log_type": "ftp_failed_auth",
+       "program": "vsftpd",
+       "source_ip": "93.24.101.89",
+       "user": "hes"
+      }
+     },
+     "crowdsecurity/whitelists": {
+      "Type": 0,
+      "ExpectMode": 1,
+      "Whitelisted": false,
+      "Stage": "s02-enrich",
+      "Line": {
+       "Raw": "Mon Jun 8 12:08:53 2020 [pid 27244] [hes] FAIL LOGIN: Client \"::ffff:93.24.101.89\"",
+       "Src": "./tests/vsftpd/vsftpd.log",
+       "Time": "0001-01-01T00:00:00Z",
+       "Labels": {
+        "type": "vsftpd"
+       },
+       "Process": true
+      },
+      "Parsed": {
+       "message": "Mon Jun 8 12:08:53 2020 [pid 27244] [hes] FAIL LOGIN: Client \"::ffff:93.24.101.89\"",
+       "program": "vsftpd",
+       "source_ip": "93.24.101.89",
+       "timestamp": "Mon Jun 8 12:08:53 2020",
+       "user": "hes"
+      },
+      "Enriched": {
+       "ASNNumber": "15557",
+       "ASNOrg": "SFR SA",
+       "IsInEU": "true",
+       "IsoCode": "FR",
+       "Latitude": "48.991700",
+       "Longitude": "1.909700",
+       "MarshaledTime": "2020-06-08T12:08:53Z",
+       "SourceRange": "93.24.0.0/13"
+      },
+      "Overflow": {
+       "MapKey": "",
+       "start_at": "0001-01-01T00:00:00Z",
+       "stop_at": "0001-01-01T00:00:00Z",
+       "source": null,
+       "Source_ip": "",
+       "Source_range": "",
+       "Source_AutonomousSystemNumber": "",
+       "Source_AutonomousSystemOrganization": "",
+       "Source_Country": "",
+       "Source_Latitude": 0,
+       "Source_Longitude": 0,
+       "Reprocess": false,
+       "Labels": null
+      },
+      "Time": "0001-01-01T00:00:00Z",
+      "StrTime": "Mon Jun 8 12:08:53 2020",
+      "MarshaledTime": "2020-06-08T12:08:53Z",
+      "Process": false,
+      "Meta": {
+       "ASNNumber": "15557",
+       "ASNOrg": "SFR SA",
+       "IsInEU": "true",
+       "IsoCode": "FR",
+       "SourceRange": "93.24.0.0/13",
+       "log_type": "ftp_failed_auth",
+       "program": "vsftpd",
+       "source_ip": "93.24.101.89",
+       "user": "hes"
+      }
+     }
+    }
+   }
+  }
+]
