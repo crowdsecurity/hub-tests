@@ -9,7 +9,8 @@ on:
 jobs:
   generate_taxonomy:
     runs-on: ubuntu-latest
-    steps: 
+    steps:
+    - uses: actions/checkout@v1
     - name: merge all results
       run: |
         jq -n 'reduce inputs as $s (.; (.[input_filename|rtrimstr("/results.json")]) += $s)' tests/*/results.json > exportedFields.json
