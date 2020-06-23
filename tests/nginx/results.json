@@ -1,6 +1,6 @@
 [
  {
-  "Line": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
+  "Line": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJ5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
   "ParserResults": {
    "s00-raw": {
     "crowdsecurity/non-syslog": {
@@ -9,7 +9,7 @@
      "Whitelisted": false,
      "Stage": "s01-parse",
      "Line": {
-      "Raw": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
+      "Raw": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJ5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
       "Src": "./tests/nginx/nginx.log",
       "Time": "0001-01-01T00:00:00Z",
       "Labels": {
@@ -18,7 +18,7 @@
       "Process": true
      },
      "Parsed": {
-      "message": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
+      "message": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJ5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
       "program": "nginx"
      },
      "Overflow": {
@@ -49,7 +49,7 @@
      "Whitelisted": false,
      "Stage": "s02-enrich",
      "Line": {
-      "Raw": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
+      "Raw": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJ5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
       "Src": "./tests/nginx/nginx.log",
       "Time": "0001-01-01T00:00:00Z",
       "Labels": {
@@ -62,12 +62,12 @@
       "http_referer": "-",
       "http_user_agent": "Go-http-client/1.1",
       "http_version": "1.1",
-      "message": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
+      "message": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJ5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
       "method": "GET",
       "program": "nginx",
       "remote_addr": "5.5.8.5",
       "remote_user": "-",
-      "request": "/.well-known/acme-challenge/FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo",
+      "request": "/.well-known/acme-challenge/FMuukC2JOJ5HKmLBujjE_BkDo",
       "status": "404",
       "time_local": "04/Jan/2020:07:25:02 +0000"
      },
@@ -91,7 +91,7 @@
      "MarshaledTime": "",
      "Process": false,
      "Meta": {
-      "http_path": "/.well-known/acme-challenge/FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo",
+      "http_path": "/.well-known/acme-challenge/FMuukC2JOJ5HKmLBujjE_BkDo",
       "http_status": "404",
       "log_type": "http_access-log",
       "service": "http",
@@ -106,7 +106,7 @@
      "Whitelisted": false,
      "Stage": "s02-enrich",
      "Line": {
-      "Raw": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
+      "Raw": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJ5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
       "Src": "./tests/nginx/nginx.log",
       "Time": "0001-01-01T00:00:00Z",
       "Labels": {
@@ -119,12 +119,12 @@
       "http_referer": "-",
       "http_user_agent": "Go-http-client/1.1",
       "http_version": "1.1",
-      "message": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
+      "message": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJ5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
       "method": "GET",
       "program": "nginx",
       "remote_addr": "5.5.8.5",
       "remote_user": "-",
-      "request": "/.well-known/acme-challenge/FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo",
+      "request": "/.well-known/acme-challenge/FMuukC2JOJ5HKmLBujjE_BkDo",
       "status": "404",
       "time_local": "04/Jan/2020:07:25:02 +0000"
      },
@@ -151,7 +151,7 @@
      "MarshaledTime": "2020-01-04T07:25:02Z",
      "Process": false,
      "Meta": {
-      "http_path": "/.well-known/acme-challenge/FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo",
+      "http_path": "/.well-known/acme-challenge/FMuukC2JOJ5HKmLBujjE_BkDo",
       "http_status": "404",
       "log_type": "http_access-log",
       "service": "http",
@@ -164,7 +164,7 @@
      "Whitelisted": false,
      "Stage": "s02-enrich",
      "Line": {
-      "Raw": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
+      "Raw": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJ5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
       "Src": "./tests/nginx/nginx.log",
       "Time": "0001-01-01T00:00:00Z",
       "Labels": {
@@ -177,12 +177,12 @@
       "http_referer": "-",
       "http_user_agent": "Go-http-client/1.1",
       "http_version": "1.1",
-      "message": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
+      "message": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJ5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
       "method": "GET",
       "program": "nginx",
       "remote_addr": "5.5.8.5",
       "remote_user": "-",
-      "request": "/.well-known/acme-challenge/FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo",
+      "request": "/.well-known/acme-challenge/FMuukC2JOJ5HKmLBujjE_BkDo",
       "status": "404",
       "time_local": "04/Jan/2020:07:25:02 +0000"
      },
@@ -221,7 +221,7 @@
       "IsInEU": "true",
       "IsoCode": "DE",
       "SourceRange": "5.4.0.0/14",
-      "http_path": "/.well-known/acme-challenge/FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo",
+      "http_path": "/.well-known/acme-challenge/FMuukC2JOJ5HKmLBujjE_BkDo",
       "http_status": "404",
       "log_type": "http_access-log",
       "service": "http",
@@ -234,7 +234,7 @@
      "Whitelisted": false,
      "Stage": "s02-enrich",
      "Line": {
-      "Raw": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
+      "Raw": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJ5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
       "Src": "./tests/nginx/nginx.log",
       "Time": "0001-01-01T00:00:00Z",
       "Labels": {
@@ -246,18 +246,18 @@
       "body_bytes_sent": "522",
       "file_dir": "/.well-known/acme-challenge/",
       "file_ext": "",
-      "file_frag": "FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo",
-      "file_name": "FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo",
+      "file_frag": "FMuukC2JOJ5HKmLBujjE_BkDo",
+      "file_name": "FMuukC2JOJ5HKmLBujjE_BkDo",
       "http_referer": "-",
       "http_user_agent": "Go-http-client/1.1",
       "http_version": "1.1",
       "impact_completion": "false",
-      "message": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
+      "message": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJ5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
       "method": "GET",
       "program": "nginx",
       "remote_addr": "5.5.8.5",
       "remote_user": "-",
-      "request": "/.well-known/acme-challenge/FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo",
+      "request": "/.well-known/acme-challenge/FMuukC2JOJ5HKmLBujjE_BkDo",
       "static_ressource": "false",
       "status": "404",
       "time_local": "04/Jan/2020:07:25:02 +0000"
@@ -298,7 +298,7 @@
       "IsoCode": "DE",
       "SourceRange": "5.4.0.0/14",
       "http_args_len": "0",
-      "http_path": "/.well-known/acme-challenge/FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo",
+      "http_path": "/.well-known/acme-challenge/FMuukC2JOJ5HKmLBujjE_BkDo",
       "http_status": "404",
       "log_type": "http_access-log",
       "service": "http",
@@ -311,7 +311,7 @@
      "Whitelisted": false,
      "Stage": "s02-enrich",
      "Line": {
-      "Raw": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
+      "Raw": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJ5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
       "Src": "./tests/nginx/nginx.log",
       "Time": "0001-01-01T00:00:00Z",
       "Labels": {
@@ -323,18 +323,18 @@
       "body_bytes_sent": "522",
       "file_dir": "/.well-known/acme-challenge/",
       "file_ext": "",
-      "file_frag": "FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo",
-      "file_name": "FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo",
+      "file_frag": "FMuukC2JOJ5HKmLBujjE_BkDo",
+      "file_name": "FMuukC2JOJ5HKmLBujjE_BkDo",
       "http_referer": "-",
       "http_user_agent": "Go-http-client/1.1",
       "http_version": "1.1",
       "impact_completion": "false",
-      "message": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
+      "message": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJ5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
       "method": "GET",
       "program": "nginx",
       "remote_addr": "5.5.8.5",
       "remote_user": "-",
-      "request": "/.well-known/acme-challenge/FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo",
+      "request": "/.well-known/acme-challenge/FMuukC2JOJ5HKmLBujjE_BkDo",
       "static_ressource": "false",
       "status": "404",
       "time_local": "04/Jan/2020:07:25:02 +0000"
@@ -375,7 +375,7 @@
       "IsoCode": "DE",
       "SourceRange": "5.4.0.0/14",
       "http_args_len": "0",
-      "http_path": "/.well-known/acme-challenge/FMuukC2JOJgLl-MAJwMFWayJFwW_5HKmLBujjE_BkDo",
+      "http_path": "/.well-known/acme-challenge/FMuukC2JOJ5HKmLBujjE_BkDo",
       "http_status": "404",
       "log_type": "http_access-log",
       "service": "http",

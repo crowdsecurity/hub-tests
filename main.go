@@ -129,7 +129,7 @@ func testOneDir(target_dir string, parserCTX *parser.UnixParserCtx, cConfig *csc
 	}
 	//load the expected results
 	ExpectedPresent := false
-	expectedResultsFile := target_dir + "/results.yaml"
+	expectedResultsFile := target_dir + "/results.json"
 	expected_bytes, err := ioutil.ReadFile(expectedResultsFile)
 	if err != nil {
 		log.Warningf("no results in %s, will dump data instead!", target_dir)
