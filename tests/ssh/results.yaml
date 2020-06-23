@@ -1,0 +1,882 @@
+[
+ {
+  "Line": "Jun  7 11:17:17 sd-126005 sshd[7429]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 25088",
+  "ParserResults": {
+   "s00-raw": {
+    "crowdsecurity/syslog-logs": {
+     "Type": 0,
+     "ExpectMode": 1,
+     "Whitelisted": false,
+     "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Jun  7 11:17:17 sd-126005 sshd[7429]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 25088",
+      "Src": "./tests/ssh/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 25088",
+      "pid": "7429",
+      "priority": "",
+      "program": "sshd",
+      "timestamp": "Jun  7 11:17:17",
+      "timestamp8601": ""
+     },
+     "Overflow": {
+      "MapKey": "",
+      "start_at": "0001-01-01T00:00:00Z",
+      "stop_at": "0001-01-01T00:00:00Z",
+      "source": null,
+      "Source_ip": "",
+      "Source_range": "",
+      "Source_AutonomousSystemNumber": "",
+      "Source_AutonomousSystemOrganization": "",
+      "Source_Country": "",
+      "Source_Latitude": 0,
+      "Source_Longitude": 0,
+      "Reprocess": false,
+      "Labels": null
+     },
+     "Time": "0001-01-01T00:00:00Z",
+     "StrTime": "Jun  7 11:17:17",
+     "MarshaledTime": "",
+     "Process": false
+    }
+   },
+   "s01-parse": {
+    "crowdsecurity/sshd-logs": {
+     "Type": 0,
+     "ExpectMode": 1,
+     "Whitelisted": false,
+     "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:17:17 sd-126005 sshd[7429]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 25088",
+      "Src": "./tests/ssh/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 25088",
+      "pid": "7429",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "timestamp": "Jun  7 11:17:17",
+      "timestamp8601": ""
+     },
+     "Overflow": {
+      "MapKey": "",
+      "start_at": "0001-01-01T00:00:00Z",
+      "stop_at": "0001-01-01T00:00:00Z",
+      "source": null,
+      "Source_ip": "",
+      "Source_range": "",
+      "Source_AutonomousSystemNumber": "",
+      "Source_AutonomousSystemOrganization": "",
+      "Source_Country": "",
+      "Source_Latitude": 0,
+      "Source_Longitude": 0,
+      "Reprocess": false,
+      "Labels": null
+     },
+     "Time": "0001-01-01T00:00:00Z",
+     "StrTime": "Jun  7 11:17:17",
+     "MarshaledTime": "",
+     "Process": false,
+     "Meta": {
+      "log_type": "ssh_failed-auth",
+      "service": "ssh",
+      "source_ip": "8.8.8.8"
+     }
+    }
+   },
+   "s02-enrich": {
+    "crowdsecurity/dateparse-enrich": {
+     "Type": 0,
+     "ExpectMode": 1,
+     "Whitelisted": false,
+     "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:17:17 sd-126005 sshd[7429]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 25088",
+      "Src": "./tests/ssh/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 25088",
+      "pid": "7429",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "timestamp": "Jun  7 11:17:17",
+      "timestamp8601": ""
+     },
+     "Enriched": {
+      "MarshaledTime": "2020-06-07T11:17:17Z"
+     },
+     "Overflow": {
+      "MapKey": "",
+      "start_at": "0001-01-01T00:00:00Z",
+      "stop_at": "0001-01-01T00:00:00Z",
+      "source": null,
+      "Source_ip": "",
+      "Source_range": "",
+      "Source_AutonomousSystemNumber": "",
+      "Source_AutonomousSystemOrganization": "",
+      "Source_Country": "",
+      "Source_Latitude": 0,
+      "Source_Longitude": 0,
+      "Reprocess": false,
+      "Labels": null
+     },
+     "Time": "0001-01-01T00:00:00Z",
+     "StrTime": "Jun  7 11:17:17",
+     "MarshaledTime": "2020-06-07T11:17:17Z",
+     "Process": false,
+     "Meta": {
+      "log_type": "ssh_failed-auth",
+      "service": "ssh",
+      "source_ip": "8.8.8.8"
+     }
+    },
+    "crowdsecurity/geoip-enrich": {
+     "Type": 0,
+     "ExpectMode": 1,
+     "Whitelisted": false,
+     "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:17:17 sd-126005 sshd[7429]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 25088",
+      "Src": "./tests/ssh/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 25088",
+      "pid": "7429",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "timestamp": "Jun  7 11:17:17",
+      "timestamp8601": ""
+     },
+     "Enriched": {
+      "ASNNumber": "15169",
+      "ASNOrg": "Google LLC",
+      "IsInEU": "false",
+      "IsoCode": "US",
+      "Latitude": "37.751000",
+      "Longitude": "-97.822000",
+      "MarshaledTime": "2020-06-07T11:17:17Z",
+      "SourceRange": "8.8.8.0/24"
+     },
+     "Overflow": {
+      "MapKey": "",
+      "start_at": "0001-01-01T00:00:00Z",
+      "stop_at": "0001-01-01T00:00:00Z",
+      "source": null,
+      "Source_ip": "",
+      "Source_range": "",
+      "Source_AutonomousSystemNumber": "",
+      "Source_AutonomousSystemOrganization": "",
+      "Source_Country": "",
+      "Source_Latitude": 0,
+      "Source_Longitude": 0,
+      "Reprocess": false,
+      "Labels": null
+     },
+     "Time": "0001-01-01T00:00:00Z",
+     "StrTime": "Jun  7 11:17:17",
+     "MarshaledTime": "2020-06-07T11:17:17Z",
+     "Process": false,
+     "Meta": {
+      "ASNNumber": "15169",
+      "ASNOrg": "Google LLC",
+      "IsInEU": "false",
+      "IsoCode": "US",
+      "SourceRange": "8.8.8.0/24",
+      "log_type": "ssh_failed-auth",
+      "service": "ssh",
+      "source_ip": "8.8.8.8"
+     }
+    },
+    "crowdsecurity/whitelists": {
+     "Type": 0,
+     "ExpectMode": 1,
+     "Whitelisted": false,
+     "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:17:17 sd-126005 sshd[7429]: Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 25088",
+      "Src": "./tests/ssh/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Bad protocol version identification 'GET /?controller=404 HTTP/1.1' from 8.8.8.8 port 25088",
+      "pid": "7429",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "timestamp": "Jun  7 11:17:17",
+      "timestamp8601": ""
+     },
+     "Enriched": {
+      "ASNNumber": "15169",
+      "ASNOrg": "Google LLC",
+      "IsInEU": "false",
+      "IsoCode": "US",
+      "Latitude": "37.751000",
+      "Longitude": "-97.822000",
+      "MarshaledTime": "2020-06-07T11:17:17Z",
+      "SourceRange": "8.8.8.0/24"
+     },
+     "Overflow": {
+      "MapKey": "",
+      "start_at": "0001-01-01T00:00:00Z",
+      "stop_at": "0001-01-01T00:00:00Z",
+      "source": null,
+      "Source_ip": "",
+      "Source_range": "",
+      "Source_AutonomousSystemNumber": "",
+      "Source_AutonomousSystemOrganization": "",
+      "Source_Country": "",
+      "Source_Latitude": 0,
+      "Source_Longitude": 0,
+      "Reprocess": false,
+      "Labels": null
+     },
+     "Time": "0001-01-01T00:00:00Z",
+     "StrTime": "Jun  7 11:17:17",
+     "MarshaledTime": "2020-06-07T11:17:17Z",
+     "Process": false,
+     "Meta": {
+      "ASNNumber": "15169",
+      "ASNOrg": "Google LLC",
+      "IsInEU": "false",
+      "IsoCode": "US",
+      "SourceRange": "8.8.8.0/24",
+      "log_type": "ssh_failed-auth",
+      "service": "ssh",
+      "source_ip": "8.8.8.8"
+     }
+    }
+   }
+  }
+ },
+ {
+  "Line": "Jun  7 11:17:51 sd-126005 sshd[7431]: Disconnected from 8.8.8.8 port 33652 [preauth]",
+  "ParserResults": {
+   "s00-raw": {
+    "crowdsecurity/syslog-logs": {
+     "Type": 0,
+     "ExpectMode": 1,
+     "Whitelisted": false,
+     "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Jun  7 11:17:51 sd-126005 sshd[7431]: Disconnected from 8.8.8.8 port 33652 [preauth]",
+      "Src": "./tests/ssh/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 33652 [preauth]",
+      "pid": "7431",
+      "priority": "",
+      "program": "sshd",
+      "timestamp": "Jun  7 11:17:51",
+      "timestamp8601": ""
+     },
+     "Overflow": {
+      "MapKey": "",
+      "start_at": "0001-01-01T00:00:00Z",
+      "stop_at": "0001-01-01T00:00:00Z",
+      "source": null,
+      "Source_ip": "",
+      "Source_range": "",
+      "Source_AutonomousSystemNumber": "",
+      "Source_AutonomousSystemOrganization": "",
+      "Source_Country": "",
+      "Source_Latitude": 0,
+      "Source_Longitude": 0,
+      "Reprocess": false,
+      "Labels": null
+     },
+     "Time": "0001-01-01T00:00:00Z",
+     "StrTime": "Jun  7 11:17:51",
+     "MarshaledTime": "",
+     "Process": false
+    }
+   },
+   "s01-parse": {
+    "crowdsecurity/sshd-logs": {
+     "Type": 0,
+     "ExpectMode": 1,
+     "Whitelisted": false,
+     "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:17:51 sd-126005 sshd[7431]: Disconnected from 8.8.8.8 port 33652 [preauth]",
+      "Src": "./tests/ssh/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 33652 [preauth]",
+      "pid": "7431",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "33652",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:17:51",
+      "timestamp8601": ""
+     },
+     "Overflow": {
+      "MapKey": "",
+      "start_at": "0001-01-01T00:00:00Z",
+      "stop_at": "0001-01-01T00:00:00Z",
+      "source": null,
+      "Source_ip": "",
+      "Source_range": "",
+      "Source_AutonomousSystemNumber": "",
+      "Source_AutonomousSystemOrganization": "",
+      "Source_Country": "",
+      "Source_Latitude": 0,
+      "Source_Longitude": 0,
+      "Reprocess": false,
+      "Labels": null
+     },
+     "Time": "0001-01-01T00:00:00Z",
+     "StrTime": "Jun  7 11:17:51",
+     "MarshaledTime": "",
+     "Process": false,
+     "Meta": {
+      "log_type": "ssh_failed-auth",
+      "service": "ssh",
+      "source_ip": "8.8.8.8"
+     }
+    }
+   },
+   "s02-enrich": {
+    "crowdsecurity/dateparse-enrich": {
+     "Type": 0,
+     "ExpectMode": 1,
+     "Whitelisted": false,
+     "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:17:51 sd-126005 sshd[7431]: Disconnected from 8.8.8.8 port 33652 [preauth]",
+      "Src": "./tests/ssh/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 33652 [preauth]",
+      "pid": "7431",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "33652",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:17:51",
+      "timestamp8601": ""
+     },
+     "Enriched": {
+      "MarshaledTime": "2020-06-07T11:17:51Z"
+     },
+     "Overflow": {
+      "MapKey": "",
+      "start_at": "0001-01-01T00:00:00Z",
+      "stop_at": "0001-01-01T00:00:00Z",
+      "source": null,
+      "Source_ip": "",
+      "Source_range": "",
+      "Source_AutonomousSystemNumber": "",
+      "Source_AutonomousSystemOrganization": "",
+      "Source_Country": "",
+      "Source_Latitude": 0,
+      "Source_Longitude": 0,
+      "Reprocess": false,
+      "Labels": null
+     },
+     "Time": "0001-01-01T00:00:00Z",
+     "StrTime": "Jun  7 11:17:51",
+     "MarshaledTime": "2020-06-07T11:17:51Z",
+     "Process": false,
+     "Meta": {
+      "log_type": "ssh_failed-auth",
+      "service": "ssh",
+      "source_ip": "8.8.8.8"
+     }
+    },
+    "crowdsecurity/geoip-enrich": {
+     "Type": 0,
+     "ExpectMode": 1,
+     "Whitelisted": false,
+     "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:17:51 sd-126005 sshd[7431]: Disconnected from 8.8.8.8 port 33652 [preauth]",
+      "Src": "./tests/ssh/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 33652 [preauth]",
+      "pid": "7431",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "33652",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:17:51",
+      "timestamp8601": ""
+     },
+     "Enriched": {
+      "ASNNumber": "15169",
+      "ASNOrg": "Google LLC",
+      "IsInEU": "false",
+      "IsoCode": "US",
+      "Latitude": "37.751000",
+      "Longitude": "-97.822000",
+      "MarshaledTime": "2020-06-07T11:17:51Z",
+      "SourceRange": "8.8.8.0/24"
+     },
+     "Overflow": {
+      "MapKey": "",
+      "start_at": "0001-01-01T00:00:00Z",
+      "stop_at": "0001-01-01T00:00:00Z",
+      "source": null,
+      "Source_ip": "",
+      "Source_range": "",
+      "Source_AutonomousSystemNumber": "",
+      "Source_AutonomousSystemOrganization": "",
+      "Source_Country": "",
+      "Source_Latitude": 0,
+      "Source_Longitude": 0,
+      "Reprocess": false,
+      "Labels": null
+     },
+     "Time": "0001-01-01T00:00:00Z",
+     "StrTime": "Jun  7 11:17:51",
+     "MarshaledTime": "2020-06-07T11:17:51Z",
+     "Process": false,
+     "Meta": {
+      "ASNNumber": "15169",
+      "ASNOrg": "Google LLC",
+      "IsInEU": "false",
+      "IsoCode": "US",
+      "SourceRange": "8.8.8.0/24",
+      "log_type": "ssh_failed-auth",
+      "service": "ssh",
+      "source_ip": "8.8.8.8"
+     }
+    },
+    "crowdsecurity/whitelists": {
+     "Type": 0,
+     "ExpectMode": 1,
+     "Whitelisted": false,
+     "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:17:51 sd-126005 sshd[7431]: Disconnected from 8.8.8.8 port 33652 [preauth]",
+      "Src": "./tests/ssh/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Disconnected from 8.8.8.8 port 33652 [preauth]",
+      "pid": "7431",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_port": "33652",
+      "sshd_privsep": "preauth",
+      "timestamp": "Jun  7 11:17:51",
+      "timestamp8601": ""
+     },
+     "Enriched": {
+      "ASNNumber": "15169",
+      "ASNOrg": "Google LLC",
+      "IsInEU": "false",
+      "IsoCode": "US",
+      "Latitude": "37.751000",
+      "Longitude": "-97.822000",
+      "MarshaledTime": "2020-06-07T11:17:51Z",
+      "SourceRange": "8.8.8.0/24"
+     },
+     "Overflow": {
+      "MapKey": "",
+      "start_at": "0001-01-01T00:00:00Z",
+      "stop_at": "0001-01-01T00:00:00Z",
+      "source": null,
+      "Source_ip": "",
+      "Source_range": "",
+      "Source_AutonomousSystemNumber": "",
+      "Source_AutonomousSystemOrganization": "",
+      "Source_Country": "",
+      "Source_Latitude": 0,
+      "Source_Longitude": 0,
+      "Reprocess": false,
+      "Labels": null
+     },
+     "Time": "0001-01-01T00:00:00Z",
+     "StrTime": "Jun  7 11:17:51",
+     "MarshaledTime": "2020-06-07T11:17:51Z",
+     "Process": false,
+     "Meta": {
+      "ASNNumber": "15169",
+      "ASNOrg": "Google LLC",
+      "IsInEU": "false",
+      "IsoCode": "US",
+      "SourceRange": "8.8.8.0/24",
+      "log_type": "ssh_failed-auth",
+      "service": "ssh",
+      "source_ip": "8.8.8.8"
+     }
+    }
+   }
+  }
+ },
+ {
+  "Line": "Jun  7 11:21:00 sd-126005 sshd[7451]: Invalid user admin from 8.8.8.8 port 35546",
+  "ParserResults": {
+   "s00-raw": {
+    "crowdsecurity/syslog-logs": {
+     "Type": 0,
+     "ExpectMode": 1,
+     "Whitelisted": false,
+     "Stage": "s01-parse",
+     "Line": {
+      "Raw": "Jun  7 11:21:00 sd-126005 sshd[7451]: Invalid user admin from 8.8.8.8 port 35546",
+      "Src": "./tests/ssh/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Invalid user admin from 8.8.8.8 port 35546",
+      "pid": "7451",
+      "priority": "",
+      "program": "sshd",
+      "timestamp": "Jun  7 11:21:00",
+      "timestamp8601": ""
+     },
+     "Overflow": {
+      "MapKey": "",
+      "start_at": "0001-01-01T00:00:00Z",
+      "stop_at": "0001-01-01T00:00:00Z",
+      "source": null,
+      "Source_ip": "",
+      "Source_range": "",
+      "Source_AutonomousSystemNumber": "",
+      "Source_AutonomousSystemOrganization": "",
+      "Source_Country": "",
+      "Source_Latitude": 0,
+      "Source_Longitude": 0,
+      "Reprocess": false,
+      "Labels": null
+     },
+     "Time": "0001-01-01T00:00:00Z",
+     "StrTime": "Jun  7 11:21:00",
+     "MarshaledTime": "",
+     "Process": false
+    }
+   },
+   "s01-parse": {
+    "crowdsecurity/sshd-logs": {
+     "Type": 0,
+     "ExpectMode": 1,
+     "Whitelisted": false,
+     "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:21:00 sd-126005 sshd[7451]: Invalid user admin from 8.8.8.8 port 35546",
+      "Src": "./tests/ssh/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Invalid user admin from 8.8.8.8 port 35546",
+      "pid": "7451",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_invalid_user": "admin",
+      "timestamp": "Jun  7 11:21:00",
+      "timestamp8601": ""
+     },
+     "Overflow": {
+      "MapKey": "",
+      "start_at": "0001-01-01T00:00:00Z",
+      "stop_at": "0001-01-01T00:00:00Z",
+      "source": null,
+      "Source_ip": "",
+      "Source_range": "",
+      "Source_AutonomousSystemNumber": "",
+      "Source_AutonomousSystemOrganization": "",
+      "Source_Country": "",
+      "Source_Latitude": 0,
+      "Source_Longitude": 0,
+      "Reprocess": false,
+      "Labels": null
+     },
+     "Time": "0001-01-01T00:00:00Z",
+     "StrTime": "Jun  7 11:21:00",
+     "MarshaledTime": "",
+     "Process": false,
+     "Meta": {
+      "log_type": "ssh_failed-auth",
+      "service": "ssh",
+      "source_ip": "8.8.8.8",
+      "target_user": "admin"
+     }
+    }
+   },
+   "s02-enrich": {
+    "crowdsecurity/dateparse-enrich": {
+     "Type": 0,
+     "ExpectMode": 1,
+     "Whitelisted": false,
+     "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:21:00 sd-126005 sshd[7451]: Invalid user admin from 8.8.8.8 port 35546",
+      "Src": "./tests/ssh/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Invalid user admin from 8.8.8.8 port 35546",
+      "pid": "7451",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_invalid_user": "admin",
+      "timestamp": "Jun  7 11:21:00",
+      "timestamp8601": ""
+     },
+     "Enriched": {
+      "MarshaledTime": "2020-06-07T11:21:00Z"
+     },
+     "Overflow": {
+      "MapKey": "",
+      "start_at": "0001-01-01T00:00:00Z",
+      "stop_at": "0001-01-01T00:00:00Z",
+      "source": null,
+      "Source_ip": "",
+      "Source_range": "",
+      "Source_AutonomousSystemNumber": "",
+      "Source_AutonomousSystemOrganization": "",
+      "Source_Country": "",
+      "Source_Latitude": 0,
+      "Source_Longitude": 0,
+      "Reprocess": false,
+      "Labels": null
+     },
+     "Time": "0001-01-01T00:00:00Z",
+     "StrTime": "Jun  7 11:21:00",
+     "MarshaledTime": "2020-06-07T11:21:00Z",
+     "Process": false,
+     "Meta": {
+      "log_type": "ssh_failed-auth",
+      "service": "ssh",
+      "source_ip": "8.8.8.8",
+      "target_user": "admin"
+     }
+    },
+    "crowdsecurity/geoip-enrich": {
+     "Type": 0,
+     "ExpectMode": 1,
+     "Whitelisted": false,
+     "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:21:00 sd-126005 sshd[7451]: Invalid user admin from 8.8.8.8 port 35546",
+      "Src": "./tests/ssh/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Invalid user admin from 8.8.8.8 port 35546",
+      "pid": "7451",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_invalid_user": "admin",
+      "timestamp": "Jun  7 11:21:00",
+      "timestamp8601": ""
+     },
+     "Enriched": {
+      "ASNNumber": "15169",
+      "ASNOrg": "Google LLC",
+      "IsInEU": "false",
+      "IsoCode": "US",
+      "Latitude": "37.751000",
+      "Longitude": "-97.822000",
+      "MarshaledTime": "2020-06-07T11:21:00Z",
+      "SourceRange": "8.8.8.0/24"
+     },
+     "Overflow": {
+      "MapKey": "",
+      "start_at": "0001-01-01T00:00:00Z",
+      "stop_at": "0001-01-01T00:00:00Z",
+      "source": null,
+      "Source_ip": "",
+      "Source_range": "",
+      "Source_AutonomousSystemNumber": "",
+      "Source_AutonomousSystemOrganization": "",
+      "Source_Country": "",
+      "Source_Latitude": 0,
+      "Source_Longitude": 0,
+      "Reprocess": false,
+      "Labels": null
+     },
+     "Time": "0001-01-01T00:00:00Z",
+     "StrTime": "Jun  7 11:21:00",
+     "MarshaledTime": "2020-06-07T11:21:00Z",
+     "Process": false,
+     "Meta": {
+      "ASNNumber": "15169",
+      "ASNOrg": "Google LLC",
+      "IsInEU": "false",
+      "IsoCode": "US",
+      "SourceRange": "8.8.8.0/24",
+      "log_type": "ssh_failed-auth",
+      "service": "ssh",
+      "source_ip": "8.8.8.8",
+      "target_user": "admin"
+     }
+    },
+    "crowdsecurity/whitelists": {
+     "Type": 0,
+     "ExpectMode": 1,
+     "Whitelisted": false,
+     "Stage": "s02-enrich",
+     "Line": {
+      "Raw": "Jun  7 11:21:00 sd-126005 sshd[7451]: Invalid user admin from 8.8.8.8 port 35546",
+      "Src": "./tests/ssh/auth.log",
+      "Time": "0001-01-01T00:00:00Z",
+      "Labels": {
+       "type": "syslog"
+      },
+      "Process": true
+     },
+     "Parsed": {
+      "facility": "",
+      "logsource": "syslog",
+      "message": "Invalid user admin from 8.8.8.8 port 35546",
+      "pid": "7451",
+      "priority": "",
+      "program": "sshd",
+      "sshd_client_ip": "8.8.8.8",
+      "sshd_invalid_user": "admin",
+      "timestamp": "Jun  7 11:21:00",
+      "timestamp8601": ""
+     },
+     "Enriched": {
+      "ASNNumber": "15169",
+      "ASNOrg": "Google LLC",
+      "IsInEU": "false",
+      "IsoCode": "US",
+      "Latitude": "37.751000",
+      "Longitude": "-97.822000",
+      "MarshaledTime": "2020-06-07T11:21:00Z",
+      "SourceRange": "8.8.8.0/24"
+     },
+     "Overflow": {
+      "MapKey": "",
+      "start_at": "0001-01-01T00:00:00Z",
+      "stop_at": "0001-01-01T00:00:00Z",
+      "source": null,
+      "Source_ip": "",
+      "Source_range": "",
+      "Source_AutonomousSystemNumber": "",
+      "Source_AutonomousSystemOrganization": "",
+      "Source_Country": "",
+      "Source_Latitude": 0,
+      "Source_Longitude": 0,
+      "Reprocess": false,
+      "Labels": null
+     },
+     "Time": "0001-01-01T00:00:00Z",
+     "StrTime": "Jun  7 11:21:00",
+     "MarshaledTime": "2020-06-07T11:21:00Z",
+     "Process": false,
+     "Meta": {
+      "ASNNumber": "15169",
+      "ASNOrg": "Google LLC",
+      "IsInEU": "false",
+      "IsoCode": "US",
+      "SourceRange": "8.8.8.0/24",
+      "log_type": "ssh_failed-auth",
+      "service": "ssh",
+      "source_ip": "8.8.8.8",
+      "target_user": "admin"
+     }
+    }
+   }
+  }
+ }
+]

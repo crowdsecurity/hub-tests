@@ -1,5 +1,5 @@
 mode: cat
 filenames:
- - ./tests/iptables-1/iptables.log
+ - ./tests/iptables/iptables.log
 labels:
   type: syslog

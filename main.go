@@ -107,8 +107,7 @@ func parseMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parserNo
 	return matched, true, nil
 }
 
-func testOneDir(target_dir string, parserCTX *parser.UnixParserCtx) (bool, error) {
-	var cConfig *csconfig.CrowdSec
+func testOneDir(target_dir string, parserCTX *parser.UnixParserCtx, cConfig *csconfig.CrowdSec) (bool, error) {
 	var parserNodes []parser.Node = make([]parser.Node, 0)
 	var err error
 	var acquisitionCTX *acquisition.FileAcquisCtx
@@ -116,7 +115,6 @@ func testOneDir(target_dir string, parserCTX *parser.UnixParserCtx) (bool, error
 	var failure bool
 	var OrigExpectedLen int
 
-	cConfig = csconfig.NewCrowdSecConfig()
 	cConfig.AcquisitionFile = target_dir + "/acquis.yaml"
 	//load parsers
 	log.Infof("Loading parsers")
@@ -124,14 +122,14 @@ func testOneDir(target_dir string, parserCTX *parser.UnixParserCtx) (bool, error
 	if err != nil {
 		return false, fmt.Errorf("failed to load parser config : %v", err)
 	}
-	//Init the acqusition : from cli or from acquis.yaml file
+	//Init the acquisition : from cli or from acquis.yaml file
 	acquisitionCTX, err = acquisition.LoadAcquisitionConfig(cConfig)
 	if err != nil {
 		return false, fmt.Errorf("Failed to start acquisition : %s", err)
 	}
 	//load the expected results
 	ExpectedPresent := false
-	expectedResultsFile := target_dir + "/results.yaml"
+	expectedResultsFile := target_dir + "/results.json"
 	expected_bytes, err := ioutil.ReadFile(expectedResultsFile)
 	if err != nil {
 		log.Warningf("no results in %s, will dump data instead!", target_dir)
@@ -238,6 +236,12 @@ func main() {
 
 	log.Infof("built against %s", cwversion.VersionStr())
 	cConfig = csconfig.NewCrowdSecConfig()
+
+	// Handle command line arguments
+	if err := cConfig.GetOPT(); err != nil {
+		log.Fatalf(err.Error())
+	}
+
 	/* load base regexps for two grok parsers */
 	parserCTX, err = p.Init(map[string]interface{}{"patterns": cConfig.ConfigFolder + string("/patterns/"), "data": cConfig.DataFolder})
 	if err != nil {
@@ -251,7 +255,7 @@ func main() {
 		log.Errorf("Failed to load plugin geoip : %v", err)
 	}
 	parser.ECTX = append(parser.ECTX, parserPlugins)
-	ok, err := testOneDir(os.Args[1], parserCTX)
+	ok, err := testOneDir(os.Args[len(os.Args)-1], parserCTX, cConfig)
 	if !ok {
 		log.Warningf("While testing: %s", os.Args[1])
 		log.Warningf("%s", err)
