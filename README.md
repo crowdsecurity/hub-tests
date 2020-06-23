@@ -15,7 +15,7 @@ git clone git@github.com:crowdsecurity/hub-tests.git
 cd hub-tests && bash prep_tests.sh
 #run the tests
 cd ..
-./main ./tests/nginx-1
+./main -c dev.yaml ./tests/nginx-1
 ```
 
 The "prep_tests.sh" script :
