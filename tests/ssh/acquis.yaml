@@ -1,6 +1,6 @@
 mode: cat
 filenames:
- - ./tests/ssh-1/auth.log
+ - ./tests/ssh/auth.log
 labels:
   type: syslog
 
