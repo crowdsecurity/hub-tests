@@ -1,11 +1,11 @@
-name: Print on external push
+name: Create tag from external dispatch
 
 on:
   repository_dispatch:
     types: ['create_tag']
 
 jobs:
-  build:
+  create_tag:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
