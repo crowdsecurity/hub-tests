@@ -9,10 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: set env
+        run: echo ::set-env name=TAG::$(echo "${{ github.event.client_payload.ref }}" | cut -d "/" -f3)
       - name: Run a one-line script
         uses: tvdias/github-tagger@v0.0.1
-        env: 
-          TAG: $(echo "${{ github.event.client_payload.ref }}" | cut -d "/" -f3)
         with:
-          tag: "${{ TAG }}"
+          tag: "${{ env.TAG }}"
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
