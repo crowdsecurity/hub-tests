@@ -12,6 +12,7 @@ import (
 	"github.com/crowdsecurity/crowdsec/pkg/acquisition"
 	"github.com/crowdsecurity/crowdsec/pkg/csconfig"
 	"github.com/crowdsecurity/crowdsec/pkg/cwversion"
+	"github.com/crowdsecurity/crowdsec/pkg/exprhelpers"
 	"github.com/crowdsecurity/crowdsec/pkg/parser"
 	"github.com/crowdsecurity/crowdsec/pkg/types"
 	"github.com/google/go-cmp/cmp"
@@ -240,6 +241,11 @@ func main() {
 	// Handle command line arguments
 	if err := cConfig.LoadConfig(); err != nil {
 		log.Fatalf(err.Error())
+	}
+
+	err = exprhelpers.Init()
+	if err != nil {
+		log.Fatalf("Failed to init expr helpers : %s", err)
 	}
 
 	/* load base regexps for two grok parsers */
