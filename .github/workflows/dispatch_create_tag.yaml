@@ -10,4 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run a one-line script
-        run: echo "${{ toJson(github) }}"
+        uses: tvdias/github-tagger@v0.0.1
+        with:
+          tag: $(echo "${{ github.event.client_payload.ref }}" | cut -d "/" -f3)
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
