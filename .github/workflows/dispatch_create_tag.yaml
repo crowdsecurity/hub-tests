@@ -1,4 +1,4 @@
-name: Create a new tag
+name: Print on external push
 
 on:
   repository_dispatch:
@@ -10,4 +10,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run a one-line script
-        run: echo ${{ github.event.client_payload.tag }}
+        run: echo ${{ github.event.client_payload }}
