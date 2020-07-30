@@ -239,7 +239,7 @@ func main() {
 	cConfig = csconfig.NewCrowdSecConfig()
 
 	// Handle command line arguments
-	if err := cConfig.LoadConfig(); err != nil {
+	if err := cConfig.GetOPT(); err != nil {
 		log.Fatalf(err.Error())
 	}
 
