@@ -34,6 +34,8 @@
               "Source_Country": "",
               "Source_Latitude": 0,
               "Source_Longitude": 0,
+              "Whitelisted": false,
+              "Simulation": false,
               "Reprocess": false,
               "Labels": null
             },
@@ -71,6 +73,7 @@
               "referrer": "\"-\"",
               "request": "/",
               "response": "500",
+              "target_fqdn": "",
               "timestamp": "08/Jun/2020:06:49:01 +0000",
               "verb": "GET"
             },
@@ -86,6 +89,8 @@
               "Source_Country": "",
               "Source_Latitude": 0,
               "Source_Longitude": 0,
+              "Whitelisted": false,
+              "Simulation": false,
               "Reprocess": false,
               "Labels": null
             },
@@ -130,6 +135,7 @@
               "referrer": "\"-\"",
               "request": "/",
               "response": "500",
+              "target_fqdn": "",
               "timestamp": "08/Jun/2020:06:49:01 +0000",
               "verb": "GET"
             },
@@ -148,6 +154,8 @@
               "Source_Country": "",
               "Source_Latitude": 0,
               "Source_Longitude": 0,
+              "Whitelisted": false,
+              "Simulation": false,
               "Reprocess": false,
               "Labels": null
             },
@@ -190,6 +198,7 @@
               "referrer": "\"-\"",
               "request": "/",
               "response": "500",
+              "target_fqdn": "",
               "timestamp": "08/Jun/2020:06:49:01 +0000",
               "verb": "GET"
             },
@@ -215,6 +224,8 @@
               "Source_Country": "",
               "Source_Latitude": 0,
               "Source_Longitude": 0,
+              "Whitelisted": false,
+              "Simulation": false,
               "Reprocess": false,
               "Labels": null
             },
@@ -263,6 +274,7 @@
               "referrer": "\"-\"",
               "request": "/",
               "response": "500",
+              "target_fqdn": "",
               "timestamp": "08/Jun/2020:06:49:01 +0000",
               "verb": "GET"
             },
@@ -288,6 +300,8 @@
               "Source_Country": "",
               "Source_Latitude": 0,
               "Source_Longitude": 0,
+              "Whitelisted": false,
+              "Simulation": false,
               "Reprocess": false,
               "Labels": null
             },
@@ -345,6 +359,8 @@
               "Source_Country": "",
               "Source_Latitude": 0,
               "Source_Longitude": 0,
+              "Whitelisted": false,
+              "Simulation": false,
               "Reprocess": false,
               "Labels": null
             },
@@ -382,6 +398,7 @@
               "referrer": "\"-\"",
               "request": "/",
               "response": "500",
+              "target_fqdn": "",
               "timestamp": "08/Jun/2020:07:01:28 +0000",
               "verb": "GET"
             },
@@ -397,6 +414,8 @@
               "Source_Country": "",
               "Source_Latitude": 0,
               "Source_Longitude": 0,
+              "Whitelisted": false,
+              "Simulation": false,
               "Reprocess": false,
               "Labels": null
             },
@@ -441,6 +460,7 @@
               "referrer": "\"-\"",
               "request": "/",
               "response": "500",
+              "target_fqdn": "",
               "timestamp": "08/Jun/2020:07:01:28 +0000",
               "verb": "GET"
             },
@@ -459,6 +479,8 @@
               "Source_Country": "",
               "Source_Latitude": 0,
               "Source_Longitude": 0,
+              "Whitelisted": false,
+              "Simulation": false,
               "Reprocess": false,
               "Labels": null
             },
@@ -501,6 +523,7 @@
               "referrer": "\"-\"",
               "request": "/",
               "response": "500",
+              "target_fqdn": "",
               "timestamp": "08/Jun/2020:07:01:28 +0000",
               "verb": "GET"
             },
@@ -526,6 +549,8 @@
               "Source_Country": "",
               "Source_Latitude": 0,
               "Source_Longitude": 0,
+              "Whitelisted": false,
+              "Simulation": false,
               "Reprocess": false,
               "Labels": null
             },
@@ -574,6 +599,7 @@
               "referrer": "\"-\"",
               "request": "/",
               "response": "500",
+              "target_fqdn": "",
               "timestamp": "08/Jun/2020:07:01:28 +0000",
               "verb": "GET"
             },
@@ -599,6 +625,8 @@
               "Source_Country": "",
               "Source_Latitude": 0,
               "Source_Longitude": 0,
+              "Whitelisted": false,
+              "Simulation": false,
               "Reprocess": false,
               "Labels": null
             },
@@ -656,6 +684,8 @@
               "Source_Country": "",
               "Source_Latitude": 0,
               "Source_Longitude": 0,
+              "Whitelisted": false,
+              "Simulation": false,
               "Reprocess": false,
               "Labels": null
             },
@@ -693,6 +723,7 @@
               "referrer": "\"-\"",
               "request": "/solr/admin/info/system?wt=json",
               "response": "500",
+              "target_fqdn": "",
               "timestamp": "08/Jun/2020:08:04:43 +0000",
               "verb": "GET"
             },
@@ -708,6 +739,8 @@
               "Source_Country": "",
               "Source_Latitude": 0,
               "Source_Longitude": 0,
+              "Whitelisted": false,
+              "Simulation": false,
               "Reprocess": false,
               "Labels": null
             },
@@ -752,6 +785,7 @@
               "referrer": "\"-\"",
               "request": "/solr/admin/info/system?wt=json",
               "response": "500",
+              "target_fqdn": "",
               "timestamp": "08/Jun/2020:08:04:43 +0000",
               "verb": "GET"
             },
@@ -770,6 +804,8 @@
               "Source_Country": "",
               "Source_Latitude": 0,
               "Source_Longitude": 0,
+              "Whitelisted": false,
+              "Simulation": false,
               "Reprocess": false,
               "Labels": null
             },
@@ -812,6 +848,7 @@
               "referrer": "\"-\"",
               "request": "/solr/admin/info/system?wt=json",
               "response": "500",
+              "target_fqdn": "",
               "timestamp": "08/Jun/2020:08:04:43 +0000",
               "verb": "GET"
             },
@@ -836,6 +873,8 @@
               "Source_Country": "",
               "Source_Latitude": 0,
               "Source_Longitude": 0,
+              "Whitelisted": false,
+              "Simulation": false,
               "Reprocess": false,
               "Labels": null
             },
@@ -887,6 +926,7 @@
               "request": "/solr/admin/info/system",
               "response": "500",
               "static_ressource": "false",
+              "target_fqdn": "",
               "timestamp": "08/Jun/2020:08:04:43 +0000",
               "verb": "GET"
             },
@@ -911,6 +951,8 @@
               "Source_Country": "",
               "Source_Latitude": 0,
               "Source_Longitude": 0,
+              "Whitelisted": false,
+              "Simulation": false,
               "Reprocess": false,
               "Labels": null
             },
@@ -963,6 +1005,7 @@
               "request": "/solr/admin/info/system",
               "response": "500",
               "static_ressource": "false",
+              "target_fqdn": "",
               "timestamp": "08/Jun/2020:08:04:43 +0000",
               "verb": "GET"
             },
@@ -987,6 +1030,8 @@
               "Source_Country": "",
               "Source_Latitude": 0,
               "Source_Longitude": 0,
+              "Whitelisted": false,
+              "Simulation": false,
               "Reprocess": false,
               "Labels": null
             },
@@ -1003,6 +1048,412 @@
               "log_type": "http_access-log",
               "service": "http",
               "source_ip": "195.54.160.135"
+            }
+          }
+        }
+      }
+    },
+    {
+      "Line": "www.crowdsec.net 1.2.3.4 - - [08/Jun/2020:08:04:43 +0000] \"GET /solr/admin/info/system?wt=json HTTP/1.1\" 500 803 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
+      "ParserResults": {
+        "s00-raw": {
+          "crowdsecurity/non-syslog": {
+            "Type": 0,
+            "ExpectMode": 1,
+            "Whitelisted": false,
+            "Stage": "s01-parse",
+            "Line": {
+              "Raw": "www.crowdsec.net 1.2.3.4 - - [08/Jun/2020:08:04:43 +0000] \"GET /solr/admin/info/system?wt=json HTTP/1.1\" 500 803 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
+              "Src": "./tests/apache2/apache2.log",
+              "Time": "0001-01-01T00:00:00Z",
+              "Labels": {
+                "type": "apache2"
+              },
+              "Process": true
+            },
+            "Parsed": {
+              "message": "www.crowdsec.net 1.2.3.4 - - [08/Jun/2020:08:04:43 +0000] \"GET /solr/admin/info/system?wt=json HTTP/1.1\" 500 803 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
+              "program": "apache2"
+            },
+            "Overflow": {
+              "MapKey": "",
+              "start_at": "0001-01-01T00:00:00Z",
+              "stop_at": "0001-01-01T00:00:00Z",
+              "source": null,
+              "Source_ip": "",
+              "Source_range": "",
+              "Source_AutonomousSystemNumber": "",
+              "Source_AutonomousSystemOrganization": "",
+              "Source_Country": "",
+              "Source_Latitude": 0,
+              "Source_Longitude": 0,
+              "Whitelisted": false,
+              "Simulation": false,
+              "Reprocess": false,
+              "Labels": null
+            },
+            "Time": "0001-01-01T00:00:00Z",
+            "StrTime": "",
+            "MarshaledTime": "",
+            "Process": false
+          }
+        },
+        "s01-parse": {
+          "crowdsecurity/apache2-logs": {
+            "Type": 0,
+            "ExpectMode": 1,
+            "Whitelisted": false,
+            "Stage": "s02-enrich",
+            "Line": {
+              "Raw": "www.crowdsec.net 1.2.3.4 - - [08/Jun/2020:08:04:43 +0000] \"GET /solr/admin/info/system?wt=json HTTP/1.1\" 500 803 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
+              "Src": "./tests/apache2/apache2.log",
+              "Time": "0001-01-01T00:00:00Z",
+              "Labels": {
+                "type": "apache2"
+              },
+              "Process": true
+            },
+            "Parsed": {
+              "agent": "\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
+              "auth": "-",
+              "bytes": "803",
+              "clientip": "1.2.3.4",
+              "httpversion": "1.1",
+              "ident": "-",
+              "message": "www.crowdsec.net 1.2.3.4 - - [08/Jun/2020:08:04:43 +0000] \"GET /solr/admin/info/system?wt=json HTTP/1.1\" 500 803 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
+              "program": "apache2",
+              "rawrequest": "",
+              "referrer": "\"-\"",
+              "request": "/solr/admin/info/system?wt=json",
+              "response": "500",
+              "target_fqdn": "www.crowdsec.net",
+              "timestamp": "08/Jun/2020:08:04:43 +0000",
+              "verb": "GET"
+            },
+            "Overflow": {
+              "MapKey": "",
+              "start_at": "0001-01-01T00:00:00Z",
+              "stop_at": "0001-01-01T00:00:00Z",
+              "source": null,
+              "Source_ip": "",
+              "Source_range": "",
+              "Source_AutonomousSystemNumber": "",
+              "Source_AutonomousSystemOrganization": "",
+              "Source_Country": "",
+              "Source_Latitude": 0,
+              "Source_Longitude": 0,
+              "Whitelisted": false,
+              "Simulation": false,
+              "Reprocess": false,
+              "Labels": null
+            },
+            "Time": "0001-01-01T00:00:00Z",
+            "StrTime": "08/Jun/2020:08:04:43 +0000",
+            "MarshaledTime": "",
+            "Process": false,
+            "Meta": {
+              "http_path": "/solr/admin/info/system?wt=json",
+              "http_status": "500",
+              "log_type": "http_access-log",
+              "service": "http",
+              "source_ip": "1.2.3.4"
+            }
+          }
+        },
+        "s02-enrich": {
+          "crowdsecurity/dateparse-enrich": {
+            "Type": 0,
+            "ExpectMode": 1,
+            "Whitelisted": false,
+            "Stage": "s02-enrich",
+            "Line": {
+              "Raw": "www.crowdsec.net 1.2.3.4 - - [08/Jun/2020:08:04:43 +0000] \"GET /solr/admin/info/system?wt=json HTTP/1.1\" 500 803 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
+              "Src": "./tests/apache2/apache2.log",
+              "Time": "0001-01-01T00:00:00Z",
+              "Labels": {
+                "type": "apache2"
+              },
+              "Process": true
+            },
+            "Parsed": {
+              "agent": "\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
+              "auth": "-",
+              "bytes": "803",
+              "clientip": "1.2.3.4",
+              "httpversion": "1.1",
+              "ident": "-",
+              "message": "www.crowdsec.net 1.2.3.4 - - [08/Jun/2020:08:04:43 +0000] \"GET /solr/admin/info/system?wt=json HTTP/1.1\" 500 803 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
+              "program": "apache2",
+              "rawrequest": "",
+              "referrer": "\"-\"",
+              "request": "/solr/admin/info/system?wt=json",
+              "response": "500",
+              "target_fqdn": "www.crowdsec.net",
+              "timestamp": "08/Jun/2020:08:04:43 +0000",
+              "verb": "GET"
+            },
+            "Enriched": {
+              "MarshaledTime": "2020-06-08T08:04:43Z"
+            },
+            "Overflow": {
+              "MapKey": "",
+              "start_at": "0001-01-01T00:00:00Z",
+              "stop_at": "0001-01-01T00:00:00Z",
+              "source": null,
+              "Source_ip": "",
+              "Source_range": "",
+              "Source_AutonomousSystemNumber": "",
+              "Source_AutonomousSystemOrganization": "",
+              "Source_Country": "",
+              "Source_Latitude": 0,
+              "Source_Longitude": 0,
+              "Whitelisted": false,
+              "Simulation": false,
+              "Reprocess": false,
+              "Labels": null
+            },
+            "Time": "0001-01-01T00:00:00Z",
+            "StrTime": "08/Jun/2020:08:04:43 +0000",
+            "MarshaledTime": "2020-06-08T08:04:43Z",
+            "Process": false,
+            "Meta": {
+              "http_path": "/solr/admin/info/system?wt=json",
+              "http_status": "500",
+              "log_type": "http_access-log",
+              "service": "http",
+              "source_ip": "1.2.3.4"
+            }
+          },
+          "crowdsecurity/geoip-enrich": {
+            "Type": 0,
+            "ExpectMode": 1,
+            "Whitelisted": false,
+            "Stage": "s02-enrich",
+            "Line": {
+              "Raw": "www.crowdsec.net 1.2.3.4 - - [08/Jun/2020:08:04:43 +0000] \"GET /solr/admin/info/system?wt=json HTTP/1.1\" 500 803 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
+              "Src": "./tests/apache2/apache2.log",
+              "Time": "0001-01-01T00:00:00Z",
+              "Labels": {
+                "type": "apache2"
+              },
+              "Process": true
+            },
+            "Parsed": {
+              "agent": "\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
+              "auth": "-",
+              "bytes": "803",
+              "clientip": "1.2.3.4",
+              "httpversion": "1.1",
+              "ident": "-",
+              "message": "www.crowdsec.net 1.2.3.4 - - [08/Jun/2020:08:04:43 +0000] \"GET /solr/admin/info/system?wt=json HTTP/1.1\" 500 803 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
+              "program": "apache2",
+              "rawrequest": "",
+              "referrer": "\"-\"",
+              "request": "/solr/admin/info/system?wt=json",
+              "response": "500",
+              "target_fqdn": "www.crowdsec.net",
+              "timestamp": "08/Jun/2020:08:04:43 +0000",
+              "verb": "GET"
+            },
+            "Enriched": {
+              "ASNNumber": "0",
+              "ASNOrg": "",
+              "IsInEU": "false",
+              "IsoCode": "US",
+              "Latitude": "47.913000",
+              "Longitude": "-122.304200",
+              "MarshaledTime": "2020-06-08T08:04:43Z"
+            },
+            "Overflow": {
+              "MapKey": "",
+              "start_at": "0001-01-01T00:00:00Z",
+              "stop_at": "0001-01-01T00:00:00Z",
+              "source": null,
+              "Source_ip": "",
+              "Source_range": "",
+              "Source_AutonomousSystemNumber": "",
+              "Source_AutonomousSystemOrganization": "",
+              "Source_Country": "",
+              "Source_Latitude": 0,
+              "Source_Longitude": 0,
+              "Whitelisted": false,
+              "Simulation": false,
+              "Reprocess": false,
+              "Labels": null
+            },
+            "Time": "0001-01-01T00:00:00Z",
+            "StrTime": "08/Jun/2020:08:04:43 +0000",
+            "MarshaledTime": "2020-06-08T08:04:43Z",
+            "Process": false,
+            "Meta": {
+              "ASNNumber": "0",
+              "IsInEU": "false",
+              "IsoCode": "US",
+              "http_path": "/solr/admin/info/system?wt=json",
+              "http_status": "500",
+              "log_type": "http_access-log",
+              "service": "http",
+              "source_ip": "1.2.3.4"
+            }
+          },
+          "crowdsecurity/http-logs": {
+            "Type": 0,
+            "ExpectMode": 1,
+            "Whitelisted": false,
+            "Stage": "s02-enrich",
+            "Line": {
+              "Raw": "www.crowdsec.net 1.2.3.4 - - [08/Jun/2020:08:04:43 +0000] \"GET /solr/admin/info/system?wt=json HTTP/1.1\" 500 803 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
+              "Src": "./tests/apache2/apache2.log",
+              "Time": "0001-01-01T00:00:00Z",
+              "Labels": {
+                "type": "apache2"
+              },
+              "Process": true
+            },
+            "Parsed": {
+              "agent": "\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
+              "auth": "-",
+              "bytes": "803",
+              "clientip": "1.2.3.4",
+              "file_dir": "/solr/admin/info/",
+              "file_ext": "",
+              "file_frag": "system",
+              "file_name": "system",
+              "http_args": "wt=json",
+              "httpversion": "1.1",
+              "ident": "-",
+              "impact_completion": "true",
+              "message": "www.crowdsec.net 1.2.3.4 - - [08/Jun/2020:08:04:43 +0000] \"GET /solr/admin/info/system?wt=json HTTP/1.1\" 500 803 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
+              "program": "apache2",
+              "rawrequest": "",
+              "referrer": "\"-\"",
+              "request": "/solr/admin/info/system",
+              "response": "500",
+              "static_ressource": "false",
+              "target_fqdn": "www.crowdsec.net",
+              "timestamp": "08/Jun/2020:08:04:43 +0000",
+              "verb": "GET"
+            },
+            "Enriched": {
+              "ASNNumber": "0",
+              "ASNOrg": "",
+              "IsInEU": "false",
+              "IsoCode": "US",
+              "Latitude": "47.913000",
+              "Longitude": "-122.304200",
+              "MarshaledTime": "2020-06-08T08:04:43Z"
+            },
+            "Overflow": {
+              "MapKey": "",
+              "start_at": "0001-01-01T00:00:00Z",
+              "stop_at": "0001-01-01T00:00:00Z",
+              "source": null,
+              "Source_ip": "",
+              "Source_range": "",
+              "Source_AutonomousSystemNumber": "",
+              "Source_AutonomousSystemOrganization": "",
+              "Source_Country": "",
+              "Source_Latitude": 0,
+              "Source_Longitude": 0,
+              "Whitelisted": false,
+              "Simulation": false,
+              "Reprocess": false,
+              "Labels": null
+            },
+            "Time": "0001-01-01T00:00:00Z",
+            "StrTime": "08/Jun/2020:08:04:43 +0000",
+            "MarshaledTime": "2020-06-08T08:04:43Z",
+            "Process": false,
+            "Meta": {
+              "ASNNumber": "0",
+              "IsInEU": "false",
+              "IsoCode": "US",
+              "http_args_len": "7",
+              "http_path": "/solr/admin/info/system?wt=json",
+              "http_status": "500",
+              "log_type": "http_access-log",
+              "service": "http",
+              "source_ip": "1.2.3.4"
+            }
+          },
+          "crowdsecurity/whitelists": {
+            "Type": 0,
+            "ExpectMode": 1,
+            "Whitelisted": false,
+            "Stage": "s02-enrich",
+            "Line": {
+              "Raw": "www.crowdsec.net 1.2.3.4 - - [08/Jun/2020:08:04:43 +0000] \"GET /solr/admin/info/system?wt=json HTTP/1.1\" 500 803 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
+              "Src": "./tests/apache2/apache2.log",
+              "Time": "0001-01-01T00:00:00Z",
+              "Labels": {
+                "type": "apache2"
+              },
+              "Process": true
+            },
+            "Parsed": {
+              "agent": "\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
+              "auth": "-",
+              "bytes": "803",
+              "clientip": "1.2.3.4",
+              "file_dir": "/solr/admin/info/",
+              "file_ext": "",
+              "file_frag": "system",
+              "file_name": "system",
+              "http_args": "wt=json",
+              "httpversion": "1.1",
+              "ident": "-",
+              "impact_completion": "true",
+              "message": "www.crowdsec.net 1.2.3.4 - - [08/Jun/2020:08:04:43 +0000] \"GET /solr/admin/info/system?wt=json HTTP/1.1\" 500 803 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
+              "program": "apache2",
+              "rawrequest": "",
+              "referrer": "\"-\"",
+              "request": "/solr/admin/info/system",
+              "response": "500",
+              "static_ressource": "false",
+              "target_fqdn": "www.crowdsec.net",
+              "timestamp": "08/Jun/2020:08:04:43 +0000",
+              "verb": "GET"
+            },
+            "Enriched": {
+              "ASNNumber": "0",
+              "ASNOrg": "",
+              "IsInEU": "false",
+              "IsoCode": "US",
+              "Latitude": "47.913000",
+              "Longitude": "-122.304200",
+              "MarshaledTime": "2020-06-08T08:04:43Z"
+            },
+            "Overflow": {
+              "MapKey": "",
+              "start_at": "0001-01-01T00:00:00Z",
+              "stop_at": "0001-01-01T00:00:00Z",
+              "source": null,
+              "Source_ip": "",
+              "Source_range": "",
+              "Source_AutonomousSystemNumber": "",
+              "Source_AutonomousSystemOrganization": "",
+              "Source_Country": "",
+              "Source_Latitude": 0,
+              "Source_Longitude": 0,
+              "Whitelisted": false,
+              "Simulation": false,
+              "Reprocess": false,
+              "Labels": null
+            },
+            "Time": "0001-01-01T00:00:00Z",
+            "StrTime": "08/Jun/2020:08:04:43 +0000",
+            "MarshaledTime": "2020-06-08T08:04:43Z",
+            "Process": false,
+            "Meta": {
+              "ASNNumber": "0",
+              "IsInEU": "false",
+              "IsoCode": "US",
+              "http_args_len": "7",
+              "http_path": "/solr/admin/info/system?wt=json",
+              "http_status": "500",
+              "log_type": "http_access-log",
+              "service": "http",
+              "source_ip": "1.2.3.4"
             }
           }
         }
