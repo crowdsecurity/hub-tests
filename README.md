@@ -7,14 +7,18 @@ Testing hub parsers
 ```bash
 #build release of crowdsec and test env
 make release
-cd crowdsec-vXXX
+#hub-tests must be cloned from crowdsec directory, as its go.mod makes crowdsec point to ../
+git clone git@github.com:crowdsecurity/hub-tests.git
+cd hub-tests
+make
+#go to crowdsec release dir
+cd ../crowdsec-vXXX
 ./test_env.sh
 cd tests
-#build CI
-git clone git@github.com:crowdsecurity/hub-tests.git
-cd hub-tests && bash prep_tests.sh
+#copy CI binary and tests files to release's test directory
+cp -R ../../hub-tests/tests .
+cp ../../hub-tests/main .
 #run the tests
-cd ..
 ./main -c dev.yaml ./tests/nginx-1
 ```
 
