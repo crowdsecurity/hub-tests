@@ -17,6 +17,7 @@ import (
 	"github.com/crowdsecurity/crowdsec/pkg/cwversion"
 	"github.com/crowdsecurity/crowdsec/pkg/exprhelpers"
 	leaky "github.com/crowdsecurity/crowdsec/pkg/leakybucket"
+	"github.com/crowdsecurity/crowdsec/pkg/models"
 	"github.com/crowdsecurity/crowdsec/pkg/parser"
 	"github.com/crowdsecurity/crowdsec/pkg/types"
 	"github.com/google/go-cmp/cmp"
@@ -70,6 +71,12 @@ func getCmpOptions() cmp.Option {
 // 	})
 // 	return opt
 // }
+
+//sort alert for each overflow
+func sortAlerts(event types.Event) types.Event {
+	//copy the slice
+	tmp := append([]*models.Events{}, event.Overflow.Alert...)
+}
 
 //cleanForMatch : cleanup results from items that might change every run. We strip as well strictly equal results
 func cleanForMatch(in map[string]map[string]types.Event) map[string]map[string]types.Event {
