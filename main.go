@@ -58,6 +58,19 @@ func getCmpOptions() cmp.Option {
 	return opt
 }
 
+// func sortSliceCmpOptions() cmp.Option {
+// 	opt := cmp.Transformer("Sort", func(in []int) []int {
+// 		out := append([]int(nil), in...) // Copy input to avoid mutating it
+// 		sort.Slice()
+// 		sort.Slice(parsers.StageFiles, func(i, j int) bool {
+// 		return parsers.StageFiles[i].Filename < parsers.StageFiles[j].Filename
+// 	})
+
+// 		return out
+// 	})
+// 	return opt
+// }
+
 //cleanForMatch : cleanup results from items that might change every run. We strip as well strictly equal results
 func cleanForMatch(in map[string]map[string]types.Event) map[string]map[string]types.Event {
 	for stage, val := range in {
@@ -148,11 +161,10 @@ func parseMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parserNo
 	return matched, true, parsed, nil
 }
 
-func testBucketsOutput(target_dir string) (bool, error) {
+func testBucketsOutput(target_dir string, AllBucketsResult []types.Event) (bool, error) {
 	var (
 		OrigExpectedLen int
 
-		AllBucketsResult   []types.Event = []types.Event{}
 		AllBucketsExpected []types.Event = []types.Event{}
 	)
 	//load the expected results
@@ -190,13 +202,13 @@ func testBucketsOutput(target_dir string) (bool, error) {
 	if cmp.Equal(AllBucketsExpected, AllBucketsResult, opt) {
 		matched = true
 	} else {
-		return true, fmt.Errorf("mismatch diff (-want +got) : %s", cmp.Diff(AllBucketsExpected, AllBucketsResult, opt))
+		return false, fmt.Errorf("mismatch diff (-want +got) : %s", cmp.Diff(AllBucketsExpected, AllBucketsResult, opt))
 	}
 
 	if !matched && len(AllExpected) != 0 {
 		expectedResultsFile = expectedResultsFile + ".fail"
 		log.Errorf("tests failed, writting results to %s", expectedResultsFile)
-		dump_bytes, err := json.MarshalIndent(AllResults, "", " ")
+		dump_bytes, err := json.MarshalIndent(AllBucketsResult, "", " ")
 		if err != nil {
 			log.Fatalf("failed to marshal results : %s", err)
 		}
@@ -271,81 +283,50 @@ func testOneDir(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 	potomb = tomb.Tomb{}
 	// ptomb.Go(func() error {
 
-	// 	//log.Printf("Processing lines")
-	// 	log.Printf("processing loop over parsing")
-	// 	for {
-	// 		select {
-	// 		case event, ok := <- inputLineChan:
-	// 			if !ok {
-	// 				return nil
-	// 			}
-	// 			log.Printf("one line")
-	// 			linesRead++
-	// 			test_ok, parsed_ok, parsed, err := parseMatchLine(event, parsers.Ctx, parsers.Nodes)
-	// 			bucketsInput = append(bucketsInput, parsed)
-	// 			if !parsed_ok {
-	// 				if err != nil {
-	// 					log.Warningf("parser error : %s", err)
-	// 				}
-	// 				linesUnparsed++
-	// 			}
-	// 			if !test_ok {
-	// 				failure = true
-	// 				// TODO: estsFailed++
-	// 				log.Errorf("test %d failed.", linesRead)
-	// 				if err != nil {
-	// 					log.Errorf("test failure : %s", err)
-	// 				}
-	// 			}
-	// 		case <- ptomb.Dying():
-	// 			return nil
-	// 		}
-	// 	}
-	// 	return nil
-	// })
-	go func() {
-		for event := range inputLineChan {
-			log.Printf("one line")
-			linesRead++
-			test_ok, parsed_ok, parsed, err := parseMatchLine(event, parsers.Ctx, parsers.Nodes)
-			bucketsInput = append(bucketsInput, parsed)
-			if !parsed_ok {
-				if err != nil {
-					log.Warningf("parser error : %s", err)
+	ptomb.Go(func() error {
+		log.Printf("Processing logs")
+		for {
+			select {
+			case event, ok := <-inputLineChan:
+				if !ok {
+					return nil
 				}
-				linesUnparsed++
-			}
-			if !test_ok {
-				failure = true
-				// TODO: estsFailed++
-				log.Errorf("test %d failed.", linesRead)
-				if err != nil {
-					log.Errorf("test failure : %s", err)
+				log.Printf("one line")
+				linesRead++
+				test_ok, parsed_ok, parsed, err := parseMatchLine(event, parsers.Ctx, parsers.Nodes)
+				bucketsInput = append(bucketsInput, parsed)
+				log.Printf("done")
+				if !parsed_ok {
+					if err != nil {
+						log.Warningf("parser error : %s", err)
+					}
+					linesUnparsed++
 				}
+				if !test_ok {
+					failure = true
+					// TODO: estsFailed++
+					log.Errorf("test %d failed.", linesRead)
+					if err != nil {
+						log.Errorf("test failure : %s", err)
+					}
+				}
+			case <-ptomb.Dying():
+				return nil
 			}
 		}
-	}()
+	})
 
 	log.Printf("waiting for acquis tomb to die")
 	if err := acquisTomb.Wait(); err != nil {
 		log.Warningf("acquisition returned error : %s", err)
 	}
 	log.Printf("acquis tomb died")
-	//	time.Sleep(1*time.Second)
-	close(inputLineChan)
-	//sleep seems mandatory to avoid loosing event
-	// log.Printf("Waiting for parsers tomb to die")
-	// if err := ptomb.Wait(); err != nil {
-	// 	log.Warningf("acquisition returned error : %s", err)
-	// }
 
-	log.Infof("Pouring buckets")
-	for index, parsed := range bucketsInput {
-		log.Printf("Pouring item %d", index+1)
-		_, err = leaky.PourItemToHolders(parsed, holders, buckets)
-		if err != nil {
-			log.Fatalf("bucketify failed for: %v", parsed)
-		}
+	//We close the log chan, and waiting the tomb to die, to be sure not to forget event in the cloud
+	close(inputLineChan)
+	log.Printf("Waiting for parsers tomb to die")
+	if err := ptomb.Wait(); err != nil {
+		log.Warningf("acquisition returned error : %s", err)
 	}
 
 	potomb.Go(func() error {
@@ -374,7 +355,7 @@ func testOneDir(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 						log.Errorf("test failure : %s", err)
 					}
 				}
-			case <-ptomb.Dying():
+			case <-potomb.Dying():
 				return nil
 			}
 
@@ -382,15 +363,19 @@ func testOneDir(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 		return nil
 	})
 
-	log.Printf("Waiting for bucket tomb to die")
-	if err := potomb.Wait(); err != nil {
-		log.Warningf("acquisition returned error : %s", err)
+	log.Infof("Pouring buckets")
+	for index, parsed := range bucketsInput {
+		log.Printf("Pouring item %d", index+1)
+		_, err = leaky.PourItemToHolders(parsed, holders, buckets)
+		if err != nil {
+			log.Fatalf("bucketify failed for: %v", parsed)
+		}
 	}
-	time.Sleep(10 * time.Second)
 
-	/*now let's check the results*/
-	close(outputEventChan)
+	//this should be taken care of
+	time.Sleep(5 * time.Second)
 
+	//parser result analysis
 	log.Infof("%d lines read", linesRead)
 	log.Infof("%d parser results, %d UNPARSED", len(AllResults), linesUnparsed)
 	if linesRead != len(AllResults) {
@@ -431,8 +416,15 @@ func testOneDir(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 	}
 	log.Infof("parser tests are finished.")
 
-	if r, err := testBucketsOutput(target_dir); !r {
+	if r, err := testBucketsOutput(target_dir, bucketsOutput); !r {
 		log.Fatalf("Buckets error: %s", err)
+	}
+
+	close(outputEventChan)
+
+	log.Printf("Waiting for bucket tomb to die")
+	if err := potomb.Wait(); err != nil {
+		log.Warningf("acquisition returned error : %s", err)
 	}
 
 	return true, nil
