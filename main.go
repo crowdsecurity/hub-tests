@@ -3,22 +3,22 @@ package main
 import (
 	"crypto/sha256"
 	"encoding/json"
+	"flag"
 	"fmt"
 	"io/ioutil"
-	"flag"
 	"os"
 	"reflect"
-	"time"
 	"sort"
+	"time"
 
 	"github.com/crowdsecurity/crowdsec/pkg/acquisition"
 	"github.com/crowdsecurity/crowdsec/pkg/csconfig"
+	"github.com/crowdsecurity/crowdsec/pkg/cwhub"
 	"github.com/crowdsecurity/crowdsec/pkg/cwversion"
 	"github.com/crowdsecurity/crowdsec/pkg/exprhelpers"
+	leaky "github.com/crowdsecurity/crowdsec/pkg/leakybucket"
 	"github.com/crowdsecurity/crowdsec/pkg/parser"
 	"github.com/crowdsecurity/crowdsec/pkg/types"
-	leaky "github.com/crowdsecurity/crowdsec/pkg/leakybucket"
-	"github.com/crowdsecurity/crowdsec/pkg/cwhub"
 	"github.com/google/go-cmp/cmp"
 	log "github.com/sirupsen/logrus"
 	"gopkg.in/tomb.v2"
@@ -26,23 +26,21 @@ import (
 
 var (
 	acquisTomb tomb.Tomb
-	testDir string
-	
-	AllResults []LineParseResult
+	testDir    string
+
+	AllResults  []LineParseResult
 	AllExpected []LineParseResult
-	
-	holders         []leaky.BucketFactory
-	buckets         *leaky.Buckets
+
+	holders []leaky.BucketFactory
+	buckets *leaky.Buckets
 
 	outputEventChan chan types.Event
-
 )
 
 type LineParseResult struct {
 	Line          string
 	ParserResults map[string]map[string]types.Event
 }
-
 
 func getCmpOptions() cmp.Option {
 	/*
@@ -72,39 +70,53 @@ func cleanForMatch(in map[string]map[string]types.Event) map[string]map[string]t
 	return in
 }
 
-//ret : test_ok, parsed_ok, error
-func parseMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parserNodes []parser.Node) (bool, bool, error) {
+func parsePoMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parserNodes []parser.Node) (bool, bool, error) {
 	var (
-		err error
+		err    error
 		parsed types.Event
-		
+	)
+	//	oneResult := LineParseResult{}
+
+	if event.Type == types.LOG {
+		log.Fatalf("event %+v is not an overflow", event)
+		return true, false, nil
+	}
+
+	parsed, err = parser.Parse(*parserCTX, event, parserNodes)
+	if err != nil {
+		return false, false, fmt.Errorf("failed parsing : %v\n", err)
+	}
+	if parsed.Overflow.Reprocess {
+		log.Infof("Pouring buckets")
+		_, err = leaky.PourItemToHolders(parsed, holders, buckets)
+	}
+	return true, true, nil
+}
+
+//ret : test_ok, parsed_ok, error
+func parseMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parserNodes []parser.Node) (bool, bool, types.Event, error) {
+	var (
+		err    error
+		parsed types.Event
 	)
 	oneResult := LineParseResult{}
 	h := sha256.New()
 
 	if event.Line.Raw == "" {
 		log.Warningf("discarding empty line")
-		return true, false, nil
+		return true, false, types.Event{}, nil
 	}
 	h.Write([]byte(event.Line.Raw))
 	//parse
 	parsed, err = parser.Parse(*parserCTX, event, parserNodes)
 	if err != nil {
-		return false, false, fmt.Errorf("failed parsing : %v\n", err)
+		return false, false, types.Event{}, fmt.Errorf("failed parsing : %v\n", err)
 	}
-
-	// if (parsed.Overflow.BucketId == "") || parsed.Overflow.Reprocess {
-	// 	log.Infof("Pouring buckets")
-	// 	_, err = leaky.PourItemToHolders(parsed, holders, buckets)
-	// }
-	// if err != nil {
-	// 	log.Fatalf("bucketify failed for: %v", parsed)
-	// }
 
 	if !parsed.Process {
-		return true, false, fmt.Errorf("unparsed line %s", parsed.Line.Raw)
+		return true, false, types.Event{}, fmt.Errorf("unparsed line %s", parsed.Line.Raw)
 	}
-	
+
 	//marshal current result
 	oneResult.Line = parsed.Line.Raw
 	//we need to clean Line's timestamp
@@ -118,7 +130,7 @@ func parseMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parserNo
 	matched := false
 	for idx, candidate := range AllExpected {
 		//not our line
-		if candidate.Line != event.Line.Raw {			
+		if candidate.Line != event.Line.Raw {
 			continue
 		}
 		if cmp.Equal(candidate, oneResult, opt) {
@@ -126,21 +138,21 @@ func parseMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parserNo
 			//we go an exact match
 			AllExpected = append(AllExpected[:idx], AllExpected[idx+1:]...)
 		} else {
-			return false, true, fmt.Errorf("mismatch diff (-want +got) : %s", cmp.Diff(candidate, oneResult, opt))
+			return false, true, types.Event{}, fmt.Errorf("mismatch diff (-want +got) : %s", cmp.Diff(candidate, oneResult, opt))
 		}
 		break
 	}
 	if !matched && len(AllExpected) != 0 {
-		return false, true, fmt.Errorf("Result is not in the %d expected results", len(AllExpected))
+		return false, true, types.Event{}, fmt.Errorf("Result is not in the %d expected results", len(AllExpected))
 	}
-	return matched, true, nil
+	return matched, true, parsed, nil
 }
 
 func testBucketsOutput(target_dir string) (bool, error) {
 	var (
 		OrigExpectedLen int
 
-		AllBucketsResult []types.Event = []types.Event{}
+		AllBucketsResult   []types.Event = []types.Event{}
 		AllBucketsExpected []types.Event = []types.Event{}
 	)
 	//load the expected results
@@ -157,7 +169,7 @@ func testBucketsOutput(target_dir string) (bool, error) {
 			OrigExpectedLen = len(AllBucketsExpected)
 		}
 	}
-		//there was no data present, just dump
+	//there was no data present, just dump
 	if !ExpectedPresent {
 		log.Warningf("No expected results loaded, dump.")
 		dump_bytes, err := json.MarshalIndent(AllBucketsResult, "", " ")
@@ -193,7 +205,7 @@ func testBucketsOutput(target_dir string) (bool, error) {
 		}
 		log.Printf("done")
 		return false, fmt.Errorf("Result is not in the %d expected results", len(AllExpected))
-	
+
 	}
 	log.Infof("%d/%d matched results", OrigExpectedLen-len(AllBucketsExpected), OrigExpectedLen)
 	log.Infof("tests are finished.")
@@ -203,14 +215,15 @@ func testBucketsOutput(target_dir string) (bool, error) {
 
 func testOneDir(target_dir string, parsers *parser.Parsers, cConfig *csconfig.GlobalConfig) (bool, error) {
 	var (
-		err error
-		acquisitionCTX *acquisition.FileAcquisCtx
-		inputLineChan = make(chan types.Event)
-		failure bool
+		err             error
+		acquisitionCTX  *acquisition.FileAcquisCtx
+		inputLineChan   = make(chan types.Event)
+		failure         bool
 		OrigExpectedLen int
-		tmpctx []acquisition.FileCtx
-		ptomb, potomb tomb.Tomb
-		bucketsOutput []types.Event		
+		tmpctx          []acquisition.FileCtx
+		ptomb, potomb   tomb.Tomb
+		bucketsInput    []types.Event = []types.Event{}
+		bucketsOutput   []types.Event
 	)
 
 	log.Infof("Loading acquisition")
@@ -223,9 +236,7 @@ func testOneDir(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 			log.Warning("The mode of reading the log file '%s' is not 'cat'. The whole thing is highly probably bound to fail", filectx.Filename)
 		}
 	}
-	
 
-	
 	acquisitionCTX, err = acquisition.InitReaderFromFileCtx(tmpctx)
 	if err != nil {
 		log.Fatalf("Not able to init acquisition")
@@ -248,7 +259,6 @@ func testOneDir(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 		}
 	}
 
-	
 	//start reading in the background
 	acquisition.AcquisStartReading(acquisitionCTX, inputLineChan, &acquisTomb)
 
@@ -259,52 +269,97 @@ func testOneDir(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 	parser.ParseDump = true
 	ptomb = tomb.Tomb{}
 	potomb = tomb.Tomb{}
-	ptomb.Go(func() error {
-		
-		//log.Printf("Processing lines")
-		log.Printf("processing loop over parsing")
-		for {
-			select {
-			case event, ok := <- inputLineChan:
-				if !ok {
-					return nil
+	// ptomb.Go(func() error {
+
+	// 	//log.Printf("Processing lines")
+	// 	log.Printf("processing loop over parsing")
+	// 	for {
+	// 		select {
+	// 		case event, ok := <- inputLineChan:
+	// 			if !ok {
+	// 				return nil
+	// 			}
+	// 			log.Printf("one line")
+	// 			linesRead++
+	// 			test_ok, parsed_ok, parsed, err := parseMatchLine(event, parsers.Ctx, parsers.Nodes)
+	// 			bucketsInput = append(bucketsInput, parsed)
+	// 			if !parsed_ok {
+	// 				if err != nil {
+	// 					log.Warningf("parser error : %s", err)
+	// 				}
+	// 				linesUnparsed++
+	// 			}
+	// 			if !test_ok {
+	// 				failure = true
+	// 				// TODO: estsFailed++
+	// 				log.Errorf("test %d failed.", linesRead)
+	// 				if err != nil {
+	// 					log.Errorf("test failure : %s", err)
+	// 				}
+	// 			}
+	// 		case <- ptomb.Dying():
+	// 			return nil
+	// 		}
+	// 	}
+	// 	return nil
+	// })
+	go func() {
+		for event := range inputLineChan {
+			log.Printf("one line")
+			linesRead++
+			test_ok, parsed_ok, parsed, err := parseMatchLine(event, parsers.Ctx, parsers.Nodes)
+			bucketsInput = append(bucketsInput, parsed)
+			if !parsed_ok {
+				if err != nil {
+					log.Warningf("parser error : %s", err)
 				}
-				log.Printf("one line")
-				linesRead++
-				test_ok, parsed_ok, err := parseMatchLine(event, parsers.Ctx, parsers.Nodes)
-				if !parsed_ok {
-					if err != nil {
-						log.Warningf("parser error : %s", err)
-					}
-					linesUnparsed++
+				linesUnparsed++
+			}
+			if !test_ok {
+				failure = true
+				// TODO: estsFailed++
+				log.Errorf("test %d failed.", linesRead)
+				if err != nil {
+					log.Errorf("test failure : %s", err)
 				}
-				if !test_ok {
-					failure = true
-					// TODO: estsFailed++
-					log.Errorf("test %d failed.", linesRead)
-					if err != nil {
-						log.Errorf("test failure : %s", err)
-					}
-				}
-			case <- ptomb.Dying():
-				return nil			
 			}
 		}
-		return nil
-	})
+	}()
 
-	
-	bucketsOutput = []types.Event{}
+	log.Printf("waiting for acquis tomb to die")
+	if err := acquisTomb.Wait(); err != nil {
+		log.Warningf("acquisition returned error : %s", err)
+	}
+	log.Printf("acquis tomb died")
+	//	time.Sleep(1*time.Second)
+	close(inputLineChan)
+	//sleep seems mandatory to avoid loosing event
+	// log.Printf("Waiting for parsers tomb to die")
+	// if err := ptomb.Wait(); err != nil {
+	// 	log.Warningf("acquisition returned error : %s", err)
+	// }
+
+	log.Infof("Pouring buckets")
+	for index, parsed := range bucketsInput {
+		log.Printf("Pouring item %d", index+1)
+		_, err = leaky.PourItemToHolders(parsed, holders, buckets)
+		if err != nil {
+			log.Fatalf("bucketify failed for: %v", parsed)
+		}
+	}
+
 	potomb.Go(func() error {
 		log.Printf("processing loop over postoveflow")
 		for {
 			select {
-			case event, ok := <- outputEventChan:
+			case event, ok := <-outputEventChan:
 				if !ok {
 					return nil
 				}
+				log.Printf("one overflow")
+				log.Printf("out: %+v", event)
 				bucketsOutput = append(bucketsOutput, event)
-				test_ok, parsed_ok, err := parseMatchLine(event, parsers.Povfwctx , parsers.Povfwnodes)
+				test_ok, parsed_ok, err := parsePoMatchLine(event, parsers.Povfwctx, parsers.Povfwnodes)
 				if !parsed_ok {
 					if err != nil {
 						log.Warningf("parser error : %s", err)
@@ -319,35 +374,22 @@ func testOneDir(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 						log.Errorf("test failure : %s", err)
 					}
 				}
-			case <- ptomb.Dying():
+			case <-ptomb.Dying():
 				return nil
 			}
-			
+
 		}
 		return nil
 	})
 
-	
-	log.Printf("waiting for acquis tomb to die")
-	if err := acquisTomb.Wait(); err != nil {
-		log.Warningf("acquisition returned error : %s", err)
-	}
-
-	close(inputLineChan)
-	log.Printf("Waiting for parsers tomb to die")
-	if err := ptomb.Wait(); err != nil {
-		log.Warningf("acquisition returned error : %s", err)
-	}
-
-	close(outputEventChan)
-	log.Printf("Waiting for parsers tomb to die")
+	log.Printf("Waiting for bucket tomb to die")
 	if err := potomb.Wait(); err != nil {
 		log.Warningf("acquisition returned error : %s", err)
 	}
+	time.Sleep(10 * time.Second)
 
-
-	time.Sleep(1 * time.Second)
 	/*now let's check the results*/
+	close(outputEventChan)
 
 	log.Infof("%d lines read", linesRead)
 	log.Infof("%d parser results, %d UNPARSED", len(AllResults), linesUnparsed)
@@ -389,11 +431,10 @@ func testOneDir(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 	}
 	log.Infof("parser tests are finished.")
 
-	// if r, err := testBucketsOutput(target_dir);!r {
-	// 	log.Fatalf("Buckets error: %s", err)
-	// }
+	if r, err := testBucketsOutput(target_dir); !r {
+		log.Fatalf("Buckets error: %s", err)
+	}
 
-	
 	return true, nil
 }
 
@@ -422,19 +463,18 @@ func newParsers() *parser.Parsers {
 			}
 		}
 	}
-	sort.Slice(parsers.StageFiles,func(i, j int) bool {
+	sort.Slice(parsers.StageFiles, func(i, j int) bool {
 		return parsers.StageFiles[i].Filename < parsers.StageFiles[j].Filename
 	})
-	sort.Slice(parsers.PovfwStageFiles,func(i, j int) bool {
+	sort.Slice(parsers.PovfwStageFiles, func(i, j int) bool {
 		return parsers.PovfwStageFiles[i].Filename < parsers.PovfwStageFiles[j].Filename
 	})
 	return parsers
 }
 
 type Flags struct {
-	ConfigFile     string
-	TargetDir string
-
+	ConfigFile string
+	TargetDir  string
 }
 
 func (f *Flags) Parse() {
@@ -446,13 +486,13 @@ func (f *Flags) Parse() {
 
 func main() {
 	var (
-		err       error
+		err     error
 		cConfig *csconfig.GlobalConfig
-		flags *Flags
-		files []string
+		flags   *Flags
+		files   []string
 	)
 	log.SetLevel(log.InfoLevel)
-	
+
 	log.Infof("built against %s", cwversion.VersionStr())
 	flags = &Flags{}
 	flags.Parse()
@@ -483,7 +523,7 @@ func main() {
 	if err := cwhub.GetHubIdx(cConfig.Cscli); err != nil {
 		log.Fatalf("Failed to load hub index : %s", err)
 	}
-	
+
 	csParsers := newParsers()
 	if csParsers, err = parser.LoadParsers(cConfig, csParsers); err != nil {
 		log.Fatalf("Failed to load parsers: %s", err)
@@ -496,7 +536,7 @@ func main() {
 	}
 
 	log.Infof("Loading %d scenario files", len(files))
-	
+
 	buckets = leaky.NewBuckets()
 	holders, outputEventChan, err = leaky.LoadBuckets(cConfig.Crowdsec, files)
 
