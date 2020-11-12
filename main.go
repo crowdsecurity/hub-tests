@@ -174,6 +174,8 @@ func testOneDir(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 		log.Warningf("acquisition returned error : %s", err)
 	}
 
+	overflow := 0
+	unparsedOverflow := 0
 	potomb.Go(func() error {
 		log.Printf("processing loop over postoveflow")
 		for {
@@ -183,18 +185,19 @@ func testOneDir(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 					return nil
 				}
 				log.Printf("one overflow")
+				overflow++
 				bucketsOutput = append(bucketsOutput, sortAlerts(event))
 				test_ok, parsed_ok, _, err := parsePoMatchLine(event, parsers.Povfwctx, parsers.Povfwnodes)
 				if !parsed_ok {
 					if err != nil {
 						log.Warningf("parser error : %s", err)
 					}
-					linesUnparsed++
+					unparsedOverflow++
 				}
 				if !test_ok {
 					//				failure = true
 					testsFailed++
-					//log.Errorf("test %d failed.", linesRead)
+					log.Errorf("test %d failed.", overflow)
 					if err != nil {
 						log.Errorf("test failure : %s", err)
 					}
