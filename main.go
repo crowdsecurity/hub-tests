@@ -28,8 +28,8 @@ var (
 
 	AllResults    []LineParseResult
 	AllExpected   []LineParseResult
-	AllPoResults  []LineParseResult
-	AllPoExpected []LineParseResult
+	AllPoResults  []LineParsePoResult
+	AllPoExpected []LineParsePoResult
 
 	holders []leaky.BucketFactory
 	buckets *leaky.Buckets
@@ -39,6 +39,11 @@ var (
 
 type LineParseResult struct {
 	Line          string
+	ParserResults map[string]map[string]types.Event
+}
+
+type LineParsePoResult struct {
+	Overflow      types.RuntimeAlert
 	ParserResults map[string]map[string]types.Event
 }
 
@@ -197,7 +202,7 @@ func testOneDir(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 				if !test_ok {
 					//				failure = true
 					testsFailed++
-					log.Errorf("test %d failed.", overflow)
+					log.Errorf("test postoverflow %d failed.", overflow)
 					if err != nil {
 						log.Errorf("test failure : %s", err)
 					}
@@ -274,6 +279,9 @@ func testOneDir(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 		log.Warningf("acquisition returned error : %s", err)
 	}
 
+	log.Printf("Testing postoverflows")
+
+	checkResultPo(target_dir, testsFailed == 0)
 	log.Infof("tests are finished.")
 
 	return true, nil

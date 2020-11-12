@@ -1,7 +1,10 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
+	"io/ioutil"
+	"os"
 
 	leaky "github.com/crowdsecurity/crowdsec/pkg/leakybucket"
 	"github.com/crowdsecurity/crowdsec/pkg/parser"
@@ -17,7 +20,7 @@ func parsePoMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parser
 	)
 	//	oneResult := LineParseResult{}
 
-	oneResult := LineParseResult{}
+	oneResult := LineParsePoResult{}
 
 	if event.Type == types.LOG {
 		return true, false, types.Event{}, fmt.Errorf("event %+v is not an overflow", event)
@@ -36,10 +39,9 @@ func parsePoMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parser
 	}
 
 	//marshal current result
-	oneResult.Line = parsed.Line.Raw
+	oneResult.Overflow = parsed.Overflow
 	//we need to clean Line's timestamp
 	oneResult.ParserResults = cleanForMatch(parser.StageParseCache)
-
 	opt := getCmpOptions()
 
 	/*
@@ -47,9 +49,11 @@ func parsePoMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parser
 	*/
 	AllPoResults = append(AllPoResults, oneResult)
 	matched := false
+	log.Printf("candidate: %+v", event)
+
 	for idx, candidate := range AllPoExpected {
 		//not our line
-		if candidate.Line != event.Line.Raw {
+		if cmp.Equal(candidate.Overflow, event.Overflow) {
 			continue
 		}
 		if cmp.Equal(candidate, oneResult, opt) {
@@ -61,8 +65,44 @@ func parsePoMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parser
 		}
 		break
 	}
+
 	if !matched && len(AllPoExpected) != 0 {
 		return false, true, types.Event{}, fmt.Errorf("Result is not in the %d expected results", len(AllPoExpected))
 	}
 	return matched, true, parsed, nil
+}
+
+func checkResultPo(target_dir string, failure bool) {
+	//there was no data present, just dump
+	ExpectedPresent := false
+	expectedResultsFile := target_dir + "/po_results.json"
+
+	if !ExpectedPresent {
+		log.Warningf("No expected results loaded, dump.")
+		dump_bytes, err := json.MarshalIndent(AllResults, "", " ")
+		if err != nil {
+			log.Fatalf("failed to marshal results : %s", err)
+		}
+		if err := ioutil.WriteFile(expectedResultsFile, dump_bytes, 0644); err != nil {
+			log.Fatalf("failed to dump data to %s : %s", expectedResultsFile, err)
+		}
+	} else {
+		if len(AllExpected) > 0 {
+			log.Errorf("Left-over results in expected : %d", len(AllExpected))
+		}
+	}
+	if failure {
+		expectedResultsFile = expectedResultsFile + ".fail"
+		log.Errorf("tests failed, writting results to %s", expectedResultsFile)
+		dump_bytes, err := json.MarshalIndent(AllResults, "", " ")
+		if err != nil {
+			log.Fatalf("failed to marshal results : %s", err)
+		}
+		if err := ioutil.WriteFile(expectedResultsFile, dump_bytes, 0644); err != nil {
+			log.Fatalf("failed to dump data to %s : %s", expectedResultsFile, err)
+		}
+		log.Printf("done")
+		os.Exit(1)
+	}
+	log.Infof("parser tests are finished.")
 }
