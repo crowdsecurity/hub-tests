@@ -1,7 +1,6 @@
 package main
 
 import (
-	"crypto/sha256"
 	"encoding/json"
 	"flag"
 	"fmt"
@@ -17,7 +16,6 @@ import (
 	"github.com/crowdsecurity/crowdsec/pkg/cwversion"
 	"github.com/crowdsecurity/crowdsec/pkg/exprhelpers"
 	leaky "github.com/crowdsecurity/crowdsec/pkg/leakybucket"
-	"github.com/crowdsecurity/crowdsec/pkg/models"
 	"github.com/crowdsecurity/crowdsec/pkg/parser"
 	"github.com/crowdsecurity/crowdsec/pkg/types"
 	"github.com/google/go-cmp/cmp"
@@ -29,8 +27,10 @@ var (
 	acquisTomb tomb.Tomb
 	testDir    string
 
-	AllResults  []LineParseResult
-	AllExpected []LineParseResult
+	AllResults    []LineParseResult
+	AllExpected   []LineParseResult
+	AllPoResults  []LineParseResult
+	AllPoExpected []LineParseResult
 
 	holders []leaky.BucketFactory
 	buckets *leaky.Buckets
@@ -59,23 +59,25 @@ func getCmpOptions() cmp.Option {
 	return opt
 }
 
-// func sortSliceCmpOptions() cmp.Option {
-// 	opt := cmp.Transformer("Sort", func(in []int) []int {
-// 		out := append([]int(nil), in...) // Copy input to avoid mutating it
-// 		sort.Slice()
-// 		sort.Slice(parsers.StageFiles, func(i, j int) bool {
-// 		return parsers.StageFiles[i].Filename < parsers.StageFiles[j].Filename
-// 	})
-
-// 		return out
-// 	})
-// 	return opt
-// }
-
 //sort alert for each overflow
 func sortAlerts(event types.Event) types.Event {
 	//copy the slice
-	tmp := append([]*models.Events{}, event.Overflow.Alert...)
+	if event.Overflow.APIAlerts == nil {
+		return event
+	}
+	//	tmp := append([]models.Alert{}, event.Overflow.APIAlerts...)
+	//	log.Printf("meta1: %+v", event)
+	for index, alert := range event.Overflow.APIAlerts {
+		for i, evt := range alert.Events {
+			meta := evt.Meta
+			sort.Slice(meta, func(i, j int) bool {
+				return meta[i].Key < meta[j].Key
+			})
+			//			log.Printf("meta2: %+v", meta)
+			event.Overflow.APIAlerts[index].Events[i].Meta = meta
+		}
+	}
+	return event
 }
 
 //cleanForMatch : cleanup results from items that might change every run. We strip as well strictly equal results
@@ -90,49 +92,27 @@ func cleanForMatch(in map[string]map[string]types.Event) map[string]map[string]t
 	return in
 }
 
-func parsePoMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parserNodes []parser.Node) (bool, bool, error) {
+func parsePoMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parserNodes []parser.Node) (bool, bool, types.Event, error) {
 	var (
 		err    error
 		parsed types.Event
 	)
 	//	oneResult := LineParseResult{}
 
+	oneResult := LineParseResult{}
+
 	if event.Type == types.LOG {
-		log.Fatalf("event %+v is not an overflow", event)
-		return true, false, nil
+		return true, false, types.Event{}, fmt.Errorf("event %+v is not an overflow", event)
 	}
 
 	parsed, err = parser.Parse(*parserCTX, event, parserNodes)
 	if err != nil {
-		return false, false, fmt.Errorf("failed parsing : %v\n", err)
+		return false, false, types.Event{}, fmt.Errorf("failed parsing : %v\n", err)
 	}
 	if parsed.Overflow.Reprocess {
 		log.Infof("Pouring buckets")
 		_, err = leaky.PourItemToHolders(parsed, holders, buckets)
 	}
-	return true, true, nil
-}
-
-//ret : test_ok, parsed_ok, error
-func parseMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parserNodes []parser.Node) (bool, bool, types.Event, error) {
-	var (
-		err    error
-		parsed types.Event
-	)
-	oneResult := LineParseResult{}
-	h := sha256.New()
-
-	if event.Line.Raw == "" {
-		log.Warningf("discarding empty line")
-		return true, false, types.Event{}, nil
-	}
-	h.Write([]byte(event.Line.Raw))
-	//parse
-	parsed, err = parser.Parse(*parserCTX, event, parserNodes)
-	if err != nil {
-		return false, false, types.Event{}, fmt.Errorf("failed parsing : %v\n", err)
-	}
-
 	if !parsed.Process {
 		return true, false, types.Event{}, fmt.Errorf("unparsed line %s", parsed.Line.Raw)
 	}
@@ -143,12 +123,13 @@ func parseMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parserNo
 	oneResult.ParserResults = cleanForMatch(parser.StageParseCache)
 
 	opt := getCmpOptions()
+
 	/*
 		Iterate over the list of expected results and try to find back
 	*/
-	AllResults = append(AllResults, oneResult)
+	AllPoResults = append(AllPoResults, oneResult)
 	matched := false
-	for idx, candidate := range AllExpected {
+	for idx, candidate := range AllPoExpected {
 		//not our line
 		if candidate.Line != event.Line.Raw {
 			continue
@@ -156,22 +137,21 @@ func parseMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parserNo
 		if cmp.Equal(candidate, oneResult, opt) {
 			matched = true
 			//we go an exact match
-			AllExpected = append(AllExpected[:idx], AllExpected[idx+1:]...)
+			AllPoExpected = append(AllPoExpected[:idx], AllPoExpected[idx+1:]...)
 		} else {
 			return false, true, types.Event{}, fmt.Errorf("mismatch diff (-want +got) : %s", cmp.Diff(candidate, oneResult, opt))
 		}
 		break
 	}
-	if !matched && len(AllExpected) != 0 {
-		return false, true, types.Event{}, fmt.Errorf("Result is not in the %d expected results", len(AllExpected))
+	if !matched && len(AllPoExpected) != 0 {
+		return false, true, types.Event{}, fmt.Errorf("Result is not in the %d expected results", len(AllPoExpected))
 	}
 	return matched, true, parsed, nil
 }
 
 func testBucketsOutput(target_dir string, AllBucketsResult []types.Event) (bool, error) {
 	var (
-		OrigExpectedLen int
-
+		OrigExpectedLen    int
 		AllBucketsExpected []types.Event = []types.Event{}
 	)
 	//load the expected results
@@ -204,30 +184,6 @@ func testBucketsOutput(target_dir string, AllBucketsResult []types.Event) (bool,
 		}
 	}
 
-	opt := getCmpOptions()
-	matched := false
-	if cmp.Equal(AllBucketsExpected, AllBucketsResult, opt) {
-		matched = true
-	} else {
-		return false, fmt.Errorf("mismatch diff (-want +got) : %s", cmp.Diff(AllBucketsExpected, AllBucketsResult, opt))
-	}
-
-	if !matched && len(AllExpected) != 0 {
-		expectedResultsFile = expectedResultsFile + ".fail"
-		log.Errorf("tests failed, writting results to %s", expectedResultsFile)
-		dump_bytes, err := json.MarshalIndent(AllBucketsResult, "", " ")
-		if err != nil {
-			log.Fatalf("failed to marshal results : %s", err)
-		}
-		if err := ioutil.WriteFile(expectedResultsFile, dump_bytes, 0644); err != nil {
-			log.Fatalf("failed to dump data to %s : %s", expectedResultsFile, err)
-		}
-		log.Printf("done")
-		return false, fmt.Errorf("Result is not in the %d expected results", len(AllExpected))
-
-	}
-	log.Infof("%d/%d matched results", OrigExpectedLen-len(AllBucketsExpected), OrigExpectedLen)
-	log.Infof("tests are finished.")
 	return true, nil
 
 }
@@ -345,9 +301,8 @@ func testOneDir(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 					return nil
 				}
 				log.Printf("one overflow")
-				log.Printf("out: %+v", event)
-				bucketsOutput = append(bucketsOutput, event)
-				test_ok, parsed_ok, err := parsePoMatchLine(event, parsers.Povfwctx, parsers.Povfwnodes)
+				bucketsOutput = append(bucketsOutput, sortAlerts(event))
+				test_ok, parsed_ok, _, err := parsePoMatchLine(event, parsers.Povfwctx, parsers.Povfwnodes)
 				if !parsed_ok {
 					if err != nil {
 						log.Warningf("parser error : %s", err)
@@ -434,41 +389,43 @@ func testOneDir(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 		log.Warningf("acquisition returned error : %s", err)
 	}
 
-	return true, nil
-}
-
-// Return new parsers
-// nodes and povfwnodes are already initialized in parser.LoadStages
-func newParsers() *parser.Parsers {
-	parsers := &parser.Parsers{
-		Ctx:             &parser.UnixParserCtx{},
-		Povfwctx:        &parser.UnixParserCtx{},
-		StageFiles:      make([]parser.Stagefile, 0),
-		PovfwStageFiles: make([]parser.Stagefile, 0),
-	}
-	for _, itemType := range []string{cwhub.PARSERS, cwhub.PARSERS_OVFLW} {
-		for _, hubParserItem := range cwhub.GetItemMap(itemType) {
-			if hubParserItem.Installed {
-				stagefile := parser.Stagefile{
-					Filename: hubParserItem.LocalPath,
-					Stage:    hubParserItem.Stage,
-				}
-				if itemType == cwhub.PARSERS {
-					parsers.StageFiles = append(parsers.StageFiles, stagefile)
-				}
-				if itemType == cwhub.PARSERS_OVFLW {
-					parsers.PovfwStageFiles = append(parsers.PovfwStageFiles, stagefile)
-				}
-			}
+	//from here we will deal with postoverflow
+	opt := getCmpOptions()
+	matched := false
+	if cmp.Equal(AllBucketsExpected, AllBucketsResult, opt) {
+		matched = true
+	} else {
+		expectedResultsFile = expectedResultsFile + ".fail"
+		log.Errorf("tests failed, writting results to %s", expectedResultsFile)
+		dump_bytes, err := json.MarshalIndent(AllBucketsResult, "", " ")
+		if err != nil {
+			log.Fatalf("failed to marshal results : %s", err)
 		}
+		if err := ioutil.WriteFile(expectedResultsFile, dump_bytes, 0644); err != nil {
+			log.Fatalf("failed to dump data to %s : %s", expectedResultsFile, err)
+		}
+		log.Printf("done")
+		return false, fmt.Errorf("mismatch diff (-want +got) : %s", cmp.Diff(AllBucketsExpected, AllBucketsResult, opt))
 	}
-	sort.Slice(parsers.StageFiles, func(i, j int) bool {
-		return parsers.StageFiles[i].Filename < parsers.StageFiles[j].Filename
-	})
-	sort.Slice(parsers.PovfwStageFiles, func(i, j int) bool {
-		return parsers.PovfwStageFiles[i].Filename < parsers.PovfwStageFiles[j].Filename
-	})
-	return parsers
+
+	if !matched && len(AllExpected) != 0 {
+		expectedResultsFile = expectedResultsFile + ".fail"
+		log.Errorf("tests failed, writting results to %s", expectedResultsFile)
+		dump_bytes, err := json.MarshalIndent(AllBucketsResult, "", " ")
+		if err != nil {
+			log.Fatalf("failed to marshal results : %s", err)
+		}
+		if err := ioutil.WriteFile(expectedResultsFile, dump_bytes, 0644); err != nil {
+			log.Fatalf("failed to dump data to %s : %s", expectedResultsFile, err)
+		}
+		log.Printf("done")
+		return false, fmt.Errorf("Result is not in the %d expected results", len(AllExpected))
+
+	}
+	log.Infof("%d/%d matched results", OrigExpectedLen-len(AllBucketsExpected), OrigExpectedLen)
+	log.Infof("tests are finished.")
+
+	return true, nil
 }
 
 type Flags struct {
