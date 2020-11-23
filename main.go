@@ -192,20 +192,12 @@ func testOneDir(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 				log.Printf("one overflow")
 				overflow++
 				bucketsOutput = append(bucketsOutput, sortAlerts(event))
-				test_ok, parsed_ok, _, err := parsePoMatchLine(event, parsers.Povfwctx, parsers.Povfwnodes)
+				parsed_ok, err := parsePoMatchLine(event, parsers.Povfwctx, parsers.Povfwnodes)
 				if !parsed_ok {
 					if err != nil {
 						log.Warningf("parser error : %s", err)
 					}
 					unparsedOverflow++
-				}
-				if !test_ok {
-					//				failure = true
-					testsFailed++
-					log.Errorf("test postoverflow %d failed.", overflow)
-					if err != nil {
-						log.Errorf("test failure : %s", err)
-					}
 				}
 			case <-potomb.Dying():
 				return nil
