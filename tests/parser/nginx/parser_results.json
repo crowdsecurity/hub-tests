@@ -4,9 +4,7 @@
   "ParserResults": {
    "s00-raw": {
     "crowdsecurity/non-syslog": {
-     "Type": 0,
      "ExpectMode": 1,
-     "Whitelisted": false,
      "Stage": "s01-parse",
      "Line": {
       "Raw": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJ5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
@@ -21,34 +19,13 @@
       "message": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJ5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
       "program": "nginx"
      },
-     "Overflow": {
-      "MapKey": "",
-      "start_at": "0001-01-01T00:00:00Z",
-      "stop_at": "0001-01-01T00:00:00Z",
-      "source": null,
-      "Source_ip": "",
-      "Source_range": "",
-      "Source_AutonomousSystemNumber": "",
-      "Source_AutonomousSystemOrganization": "",
-      "Source_Country": "",
-      "Source_Latitude": 0,
-      "Source_Longitude": 0,
-      "Whitelisted": false,
-      "Simulation": false,
-      "Reprocess": false,
-      "Labels": null
-     },
-     "Time": "0001-01-01T00:00:00Z",
-     "StrTime": "",
-     "MarshaledTime": "",
-     "Process": false
+     "Alert": {},
+     "Time": "0001-01-01T00:00:00Z"
     }
    },
    "s01-parse": {
     "crowdsecurity/nginx-logs": {
-     "Type": 0,
      "ExpectMode": 1,
-     "Whitelisted": false,
      "Stage": "s02-enrich",
      "Line": {
       "Raw": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJ5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
@@ -74,27 +51,9 @@
       "target_fqdn": "",
       "time_local": "04/Jan/2020:07:25:02 +0000"
      },
-     "Overflow": {
-      "MapKey": "",
-      "start_at": "0001-01-01T00:00:00Z",
-      "stop_at": "0001-01-01T00:00:00Z",
-      "source": null,
-      "Source_ip": "",
-      "Source_range": "",
-      "Source_AutonomousSystemNumber": "",
-      "Source_AutonomousSystemOrganization": "",
-      "Source_Country": "",
-      "Source_Latitude": 0,
-      "Source_Longitude": 0,
-      "Whitelisted": false,
-      "Simulation": false,
-      "Reprocess": false,
-      "Labels": null
-     },
+     "Alert": {},
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "04/Jan/2020:07:25:02 +0000",
-     "MarshaledTime": "",
-     "Process": false,
      "Meta": {
       "http_path": "/.well-known/acme-challenge/FMuukC2JOJ5HKmLBujjE_BkDo",
       "http_status": "404",
@@ -106,9 +65,7 @@
    },
    "s02-enrich": {
     "crowdsecurity/dateparse-enrich": {
-     "Type": 0,
      "ExpectMode": 1,
-     "Whitelisted": false,
      "Stage": "s02-enrich",
      "Line": {
       "Raw": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJ5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
@@ -137,27 +94,10 @@
      "Enriched": {
       "MarshaledTime": "2020-01-04T07:25:02Z"
      },
-     "Overflow": {
-      "MapKey": "",
-      "start_at": "0001-01-01T00:00:00Z",
-      "stop_at": "0001-01-01T00:00:00Z",
-      "source": null,
-      "Source_ip": "",
-      "Source_range": "",
-      "Source_AutonomousSystemNumber": "",
-      "Source_AutonomousSystemOrganization": "",
-      "Source_Country": "",
-      "Source_Latitude": 0,
-      "Source_Longitude": 0,
-      "Whitelisted": false,
-      "Simulation": false,
-      "Reprocess": false,
-      "Labels": null
-     },
+     "Alert": {},
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "04/Jan/2020:07:25:02 +0000",
      "MarshaledTime": "2020-01-04T07:25:02Z",
-     "Process": false,
      "Meta": {
       "http_path": "/.well-known/acme-challenge/FMuukC2JOJ5HKmLBujjE_BkDo",
       "http_status": "404",
@@ -167,9 +107,7 @@
      }
     },
     "crowdsecurity/geoip-enrich": {
-     "Type": 0,
      "ExpectMode": 1,
-     "Whitelisted": false,
      "Stage": "s02-enrich",
      "Line": {
       "Raw": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJ5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
@@ -205,27 +143,10 @@
       "MarshaledTime": "2020-01-04T07:25:02Z",
       "SourceRange": "5.4.0.0/14"
      },
-     "Overflow": {
-      "MapKey": "",
-      "start_at": "0001-01-01T00:00:00Z",
-      "stop_at": "0001-01-01T00:00:00Z",
-      "source": null,
-      "Source_ip": "",
-      "Source_range": "",
-      "Source_AutonomousSystemNumber": "",
-      "Source_AutonomousSystemOrganization": "",
-      "Source_Country": "",
-      "Source_Latitude": 0,
-      "Source_Longitude": 0,
-      "Whitelisted": false,
-      "Simulation": false,
-      "Reprocess": false,
-      "Labels": null
-     },
+     "Alert": {},
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "04/Jan/2020:07:25:02 +0000",
      "MarshaledTime": "2020-01-04T07:25:02Z",
-     "Process": false,
      "Meta": {
       "ASNNumber": "12638",
       "ASNOrg": "E-Plus Service GmbH",
@@ -240,9 +161,7 @@
      }
     },
     "crowdsecurity/http-logs": {
-     "Type": 0,
      "ExpectMode": 1,
-     "Whitelisted": false,
      "Stage": "s02-enrich",
      "Line": {
       "Raw": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJ5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
@@ -284,27 +203,10 @@
       "MarshaledTime": "2020-01-04T07:25:02Z",
       "SourceRange": "5.4.0.0/14"
      },
-     "Overflow": {
-      "MapKey": "",
-      "start_at": "0001-01-01T00:00:00Z",
-      "stop_at": "0001-01-01T00:00:00Z",
-      "source": null,
-      "Source_ip": "",
-      "Source_range": "",
-      "Source_AutonomousSystemNumber": "",
-      "Source_AutonomousSystemOrganization": "",
-      "Source_Country": "",
-      "Source_Latitude": 0,
-      "Source_Longitude": 0,
-      "Whitelisted": false,
-      "Simulation": false,
-      "Reprocess": false,
-      "Labels": null
-     },
+     "Alert": {},
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "04/Jan/2020:07:25:02 +0000",
      "MarshaledTime": "2020-01-04T07:25:02Z",
-     "Process": false,
      "Meta": {
       "ASNNumber": "12638",
       "ASNOrg": "E-Plus Service GmbH",
@@ -320,9 +222,7 @@
      }
     },
     "crowdsecurity/whitelists": {
-     "Type": 0,
      "ExpectMode": 1,
-     "Whitelisted": false,
      "Stage": "s02-enrich",
      "Line": {
       "Raw": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJ5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
@@ -364,27 +264,10 @@
       "MarshaledTime": "2020-01-04T07:25:02Z",
       "SourceRange": "5.4.0.0/14"
      },
-     "Overflow": {
-      "MapKey": "",
-      "start_at": "0001-01-01T00:00:00Z",
-      "stop_at": "0001-01-01T00:00:00Z",
-      "source": null,
-      "Source_ip": "",
-      "Source_range": "",
-      "Source_AutonomousSystemNumber": "",
-      "Source_AutonomousSystemOrganization": "",
-      "Source_Country": "",
-      "Source_Latitude": 0,
-      "Source_Longitude": 0,
-      "Whitelisted": false,
-      "Simulation": false,
-      "Reprocess": false,
-      "Labels": null
-     },
+     "Alert": {},
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "04/Jan/2020:07:25:02 +0000",
      "MarshaledTime": "2020-01-04T07:25:02Z",
-     "Process": false,
      "Meta": {
       "ASNNumber": "12638",
       "ASNOrg": "E-Plus Service GmbH",
@@ -407,9 +290,7 @@
   "ParserResults": {
    "s00-raw": {
     "crowdsecurity/non-syslog": {
-     "Type": 0,
      "ExpectMode": 1,
-     "Whitelisted": false,
      "Stage": "s01-parse",
      "Line": {
       "Raw": "2.30.19.10 - - [04/Jan/2020:08:29:17 +0000] \"GET / HTTP/1.1\" 400 0 \"-\" \"-\"",
@@ -424,34 +305,13 @@
       "message": "2.30.19.10 - - [04/Jan/2020:08:29:17 +0000] \"GET / HTTP/1.1\" 400 0 \"-\" \"-\"",
       "program": "nginx"
      },
-     "Overflow": {
-      "MapKey": "",
-      "start_at": "0001-01-01T00:00:00Z",
-      "stop_at": "0001-01-01T00:00:00Z",
-      "source": null,
-      "Source_ip": "",
-      "Source_range": "",
-      "Source_AutonomousSystemNumber": "",
-      "Source_AutonomousSystemOrganization": "",
-      "Source_Country": "",
-      "Source_Latitude": 0,
-      "Source_Longitude": 0,
-      "Whitelisted": false,
-      "Simulation": false,
-      "Reprocess": false,
-      "Labels": null
-     },
-     "Time": "0001-01-01T00:00:00Z",
-     "StrTime": "",
-     "MarshaledTime": "",
-     "Process": false
+     "Alert": {},
+     "Time": "0001-01-01T00:00:00Z"
     }
    },
    "s01-parse": {
     "crowdsecurity/nginx-logs": {
-     "Type": 0,
      "ExpectMode": 1,
-     "Whitelisted": false,
      "Stage": "s02-enrich",
      "Line": {
       "Raw": "2.30.19.10 - - [04/Jan/2020:08:29:17 +0000] \"GET / HTTP/1.1\" 400 0 \"-\" \"-\"",
@@ -477,27 +337,9 @@
       "target_fqdn": "",
       "time_local": "04/Jan/2020:08:29:17 +0000"
      },
-     "Overflow": {
-      "MapKey": "",
-      "start_at": "0001-01-01T00:00:00Z",
-      "stop_at": "0001-01-01T00:00:00Z",
-      "source": null,
-      "Source_ip": "",
-      "Source_range": "",
-      "Source_AutonomousSystemNumber": "",
-      "Source_AutonomousSystemOrganization": "",
-      "Source_Country": "",
-      "Source_Latitude": 0,
-      "Source_Longitude": 0,
-      "Whitelisted": false,
-      "Simulation": false,
-      "Reprocess": false,
-      "Labels": null
-     },
+     "Alert": {},
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "04/Jan/2020:08:29:17 +0000",
-     "MarshaledTime": "",
-     "Process": false,
      "Meta": {
       "http_path": "/",
       "http_status": "400",
@@ -509,9 +351,7 @@
    },
    "s02-enrich": {
     "crowdsecurity/dateparse-enrich": {
-     "Type": 0,
      "ExpectMode": 1,
-     "Whitelisted": false,
      "Stage": "s02-enrich",
      "Line": {
       "Raw": "2.30.19.10 - - [04/Jan/2020:08:29:17 +0000] \"GET / HTTP/1.1\" 400 0 \"-\" \"-\"",
@@ -540,27 +380,10 @@
      "Enriched": {
       "MarshaledTime": "2020-01-04T08:29:17Z"
      },
-     "Overflow": {
-      "MapKey": "",
-      "start_at": "0001-01-01T00:00:00Z",
-      "stop_at": "0001-01-01T00:00:00Z",
-      "source": null,
-      "Source_ip": "",
-      "Source_range": "",
-      "Source_AutonomousSystemNumber": "",
-      "Source_AutonomousSystemOrganization": "",
-      "Source_Country": "",
-      "Source_Latitude": 0,
-      "Source_Longitude": 0,
-      "Whitelisted": false,
-      "Simulation": false,
-      "Reprocess": false,
-      "Labels": null
-     },
+     "Alert": {},
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "04/Jan/2020:08:29:17 +0000",
      "MarshaledTime": "2020-01-04T08:29:17Z",
-     "Process": false,
      "Meta": {
       "http_path": "/",
       "http_status": "400",
@@ -570,9 +393,7 @@
      }
     },
     "crowdsecurity/geoip-enrich": {
-     "Type": 0,
      "ExpectMode": 1,
-     "Whitelisted": false,
      "Stage": "s02-enrich",
      "Line": {
       "Raw": "2.30.19.10 - - [04/Jan/2020:08:29:17 +0000] \"GET / HTTP/1.1\" 400 0 \"-\" \"-\"",
@@ -608,27 +429,10 @@
       "MarshaledTime": "2020-01-04T08:29:17Z",
       "SourceRange": "2.24.0.0/13"
      },
-     "Overflow": {
-      "MapKey": "",
-      "start_at": "0001-01-01T00:00:00Z",
-      "stop_at": "0001-01-01T00:00:00Z",
-      "source": null,
-      "Source_ip": "",
-      "Source_range": "",
-      "Source_AutonomousSystemNumber": "",
-      "Source_AutonomousSystemOrganization": "",
-      "Source_Country": "",
-      "Source_Latitude": 0,
-      "Source_Longitude": 0,
-      "Whitelisted": false,
-      "Simulation": false,
-      "Reprocess": false,
-      "Labels": null
-     },
+     "Alert": {},
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "04/Jan/2020:08:29:17 +0000",
      "MarshaledTime": "2020-01-04T08:29:17Z",
-     "Process": false,
      "Meta": {
       "ASNNumber": "12576",
       "ASNOrg": "EE Limited",
@@ -643,9 +447,7 @@
      }
     },
     "crowdsecurity/whitelists": {
-     "Type": 0,
      "ExpectMode": 1,
-     "Whitelisted": false,
      "Stage": "s02-enrich",
      "Line": {
       "Raw": "2.30.19.10 - - [04/Jan/2020:08:29:17 +0000] \"GET / HTTP/1.1\" 400 0 \"-\" \"-\"",
@@ -682,27 +484,10 @@
       "MarshaledTime": "2020-01-04T08:29:17Z",
       "SourceRange": "2.24.0.0/13"
      },
-     "Overflow": {
-      "MapKey": "",
-      "start_at": "0001-01-01T00:00:00Z",
-      "stop_at": "0001-01-01T00:00:00Z",
-      "source": null,
-      "Source_ip": "",
-      "Source_range": "",
-      "Source_AutonomousSystemNumber": "",
-      "Source_AutonomousSystemOrganization": "",
-      "Source_Country": "",
-      "Source_Latitude": 0,
-      "Source_Longitude": 0,
-      "Whitelisted": false,
-      "Simulation": false,
-      "Reprocess": false,
-      "Labels": null
-     },
+     "Alert": {},
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "04/Jan/2020:08:29:17 +0000",
      "MarshaledTime": "2020-01-04T08:29:17Z",
-     "Process": false,
      "Meta": {
       "ASNNumber": "12576",
       "ASNOrg": "EE Limited",
@@ -724,9 +509,7 @@
   "ParserResults": {
    "s00-raw": {
     "crowdsecurity/non-syslog": {
-     "Type": 0,
      "ExpectMode": 1,
-     "Whitelisted": false,
      "Stage": "s01-parse",
      "Line": {
       "Raw": "52.59.61.4 - - [04/Jan/2020:08:41:43 +0000] \"GET /index.php/nous-contacter/ HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
@@ -741,34 +524,13 @@
       "message": "52.59.61.4 - - [04/Jan/2020:08:41:43 +0000] \"GET /index.php/nous-contacter/ HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
       "program": "nginx"
      },
-     "Overflow": {
-      "MapKey": "",
-      "start_at": "0001-01-01T00:00:00Z",
-      "stop_at": "0001-01-01T00:00:00Z",
-      "source": null,
-      "Source_ip": "",
-      "Source_range": "",
-      "Source_AutonomousSystemNumber": "",
-      "Source_AutonomousSystemOrganization": "",
-      "Source_Country": "",
-      "Source_Latitude": 0,
-      "Source_Longitude": 0,
-      "Whitelisted": false,
-      "Simulation": false,
-      "Reprocess": false,
-      "Labels": null
-     },
-     "Time": "0001-01-01T00:00:00Z",
-     "StrTime": "",
-     "MarshaledTime": "",
-     "Process": false
+     "Alert": {},
+     "Time": "0001-01-01T00:00:00Z"
     }
    },
    "s01-parse": {
     "crowdsecurity/nginx-logs": {
-     "Type": 0,
      "ExpectMode": 1,
-     "Whitelisted": false,
      "Stage": "s02-enrich",
      "Line": {
       "Raw": "52.59.61.4 - - [04/Jan/2020:08:41:43 +0000] \"GET /index.php/nous-contacter/ HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
@@ -794,27 +556,9 @@
       "target_fqdn": "",
       "time_local": "04/Jan/2020:08:41:43 +0000"
      },
-     "Overflow": {
-      "MapKey": "",
-      "start_at": "0001-01-01T00:00:00Z",
-      "stop_at": "0001-01-01T00:00:00Z",
-      "source": null,
-      "Source_ip": "",
-      "Source_range": "",
-      "Source_AutonomousSystemNumber": "",
-      "Source_AutonomousSystemOrganization": "",
-      "Source_Country": "",
-      "Source_Latitude": 0,
-      "Source_Longitude": 0,
-      "Whitelisted": false,
-      "Simulation": false,
-      "Reprocess": false,
-      "Labels": null
-     },
+     "Alert": {},
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "04/Jan/2020:08:41:43 +0000",
-     "MarshaledTime": "",
-     "Process": false,
      "Meta": {
       "http_path": "/index.php/nous-contacter/",
       "http_status": "500",
@@ -826,9 +570,7 @@
    },
    "s02-enrich": {
     "crowdsecurity/dateparse-enrich": {
-     "Type": 0,
      "ExpectMode": 1,
-     "Whitelisted": false,
      "Stage": "s02-enrich",
      "Line": {
       "Raw": "52.59.61.4 - - [04/Jan/2020:08:41:43 +0000] \"GET /index.php/nous-contacter/ HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
@@ -857,27 +599,10 @@
      "Enriched": {
       "MarshaledTime": "2020-01-04T08:41:43Z"
      },
-     "Overflow": {
-      "MapKey": "",
-      "start_at": "0001-01-01T00:00:00Z",
-      "stop_at": "0001-01-01T00:00:00Z",
-      "source": null,
-      "Source_ip": "",
-      "Source_range": "",
-      "Source_AutonomousSystemNumber": "",
-      "Source_AutonomousSystemOrganization": "",
-      "Source_Country": "",
-      "Source_Latitude": 0,
-      "Source_Longitude": 0,
-      "Whitelisted": false,
-      "Simulation": false,
-      "Reprocess": false,
-      "Labels": null
-     },
+     "Alert": {},
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "04/Jan/2020:08:41:43 +0000",
      "MarshaledTime": "2020-01-04T08:41:43Z",
-     "Process": false,
      "Meta": {
       "http_path": "/index.php/nous-contacter/",
       "http_status": "500",
@@ -887,9 +612,7 @@
      }
     },
     "crowdsecurity/geoip-enrich": {
-     "Type": 0,
      "ExpectMode": 1,
-     "Whitelisted": false,
      "Stage": "s02-enrich",
      "Line": {
       "Raw": "52.59.61.4 - - [04/Jan/2020:08:41:43 +0000] \"GET /index.php/nous-contacter/ HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
@@ -925,27 +648,10 @@
       "MarshaledTime": "2020-01-04T08:41:43Z",
       "SourceRange": "52.56.0.0/14"
      },
-     "Overflow": {
-      "MapKey": "",
-      "start_at": "0001-01-01T00:00:00Z",
-      "stop_at": "0001-01-01T00:00:00Z",
-      "source": null,
-      "Source_ip": "",
-      "Source_range": "",
-      "Source_AutonomousSystemNumber": "",
-      "Source_AutonomousSystemOrganization": "",
-      "Source_Country": "",
-      "Source_Latitude": 0,
-      "Source_Longitude": 0,
-      "Whitelisted": false,
-      "Simulation": false,
-      "Reprocess": false,
-      "Labels": null
-     },
+     "Alert": {},
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "04/Jan/2020:08:41:43 +0000",
      "MarshaledTime": "2020-01-04T08:41:43Z",
-     "Process": false,
      "Meta": {
       "ASNNumber": "16509",
       "ASNOrg": "Amazon.com, Inc.",
@@ -960,9 +666,7 @@
      }
     },
     "crowdsecurity/http-logs": {
-     "Type": 0,
      "ExpectMode": 1,
-     "Whitelisted": false,
      "Stage": "s02-enrich",
      "Line": {
       "Raw": "52.59.61.4 - - [04/Jan/2020:08:41:43 +0000] \"GET /index.php/nous-contacter/ HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
@@ -1004,27 +708,10 @@
       "MarshaledTime": "2020-01-04T08:41:43Z",
       "SourceRange": "52.56.0.0/14"
      },
-     "Overflow": {
-      "MapKey": "",
-      "start_at": "0001-01-01T00:00:00Z",
-      "stop_at": "0001-01-01T00:00:00Z",
-      "source": null,
-      "Source_ip": "",
-      "Source_range": "",
-      "Source_AutonomousSystemNumber": "",
-      "Source_AutonomousSystemOrganization": "",
-      "Source_Country": "",
-      "Source_Latitude": 0,
-      "Source_Longitude": 0,
-      "Whitelisted": false,
-      "Simulation": false,
-      "Reprocess": false,
-      "Labels": null
-     },
+     "Alert": {},
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "04/Jan/2020:08:41:43 +0000",
      "MarshaledTime": "2020-01-04T08:41:43Z",
-     "Process": false,
      "Meta": {
       "ASNNumber": "16509",
       "ASNOrg": "Amazon.com, Inc.",
@@ -1040,9 +727,7 @@
      }
     },
     "crowdsecurity/whitelists": {
-     "Type": 0,
      "ExpectMode": 1,
-     "Whitelisted": false,
      "Stage": "s02-enrich",
      "Line": {
       "Raw": "52.59.61.4 - - [04/Jan/2020:08:41:43 +0000] \"GET /index.php/nous-contacter/ HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
@@ -1084,27 +769,10 @@
       "MarshaledTime": "2020-01-04T08:41:43Z",
       "SourceRange": "52.56.0.0/14"
      },
-     "Overflow": {
-      "MapKey": "",
-      "start_at": "0001-01-01T00:00:00Z",
-      "stop_at": "0001-01-01T00:00:00Z",
-      "source": null,
-      "Source_ip": "",
-      "Source_range": "",
-      "Source_AutonomousSystemNumber": "",
-      "Source_AutonomousSystemOrganization": "",
-      "Source_Country": "",
-      "Source_Latitude": 0,
-      "Source_Longitude": 0,
-      "Whitelisted": false,
-      "Simulation": false,
-      "Reprocess": false,
-      "Labels": null
-     },
+     "Alert": {},
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "04/Jan/2020:08:41:43 +0000",
      "MarshaledTime": "2020-01-04T08:41:43Z",
-     "Process": false,
      "Meta": {
       "ASNNumber": "16509",
       "ASNOrg": "Amazon.com, Inc.",
@@ -1127,9 +795,7 @@
   "ParserResults": {
    "s00-raw": {
     "crowdsecurity/non-syslog": {
-     "Type": 0,
      "ExpectMode": 1,
-     "Whitelisted": false,
      "Stage": "s01-parse",
      "Line": {
       "Raw": "www.mydomain.com 52.59.61.4 - - [04/Jan/2020:08:41:43 +0000] \"GET /index.php/nous-contacter/ HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
@@ -1144,34 +810,13 @@
       "message": "www.mydomain.com 52.59.61.4 - - [04/Jan/2020:08:41:43 +0000] \"GET /index.php/nous-contacter/ HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
       "program": "nginx"
      },
-     "Overflow": {
-      "MapKey": "",
-      "start_at": "0001-01-01T00:00:00Z",
-      "stop_at": "0001-01-01T00:00:00Z",
-      "source": null,
-      "Source_ip": "",
-      "Source_range": "",
-      "Source_AutonomousSystemNumber": "",
-      "Source_AutonomousSystemOrganization": "",
-      "Source_Country": "",
-      "Source_Latitude": 0,
-      "Source_Longitude": 0,
-      "Whitelisted": false,
-      "Simulation": false,
-      "Reprocess": false,
-      "Labels": null
-     },
-     "Time": "0001-01-01T00:00:00Z",
-     "StrTime": "",
-     "MarshaledTime": "",
-     "Process": false
+     "Alert": {},
+     "Time": "0001-01-01T00:00:00Z"
     }
    },
    "s01-parse": {
     "crowdsecurity/nginx-logs": {
-     "Type": 0,
      "ExpectMode": 1,
-     "Whitelisted": false,
      "Stage": "s02-enrich",
      "Line": {
       "Raw": "www.mydomain.com 52.59.61.4 - - [04/Jan/2020:08:41:43 +0000] \"GET /index.php/nous-contacter/ HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
@@ -1197,27 +842,9 @@
       "target_fqdn": "www.mydomain.com",
       "time_local": "04/Jan/2020:08:41:43 +0000"
      },
-     "Overflow": {
-      "MapKey": "",
-      "start_at": "0001-01-01T00:00:00Z",
-      "stop_at": "0001-01-01T00:00:00Z",
-      "source": null,
-      "Source_ip": "",
-      "Source_range": "",
-      "Source_AutonomousSystemNumber": "",
-      "Source_AutonomousSystemOrganization": "",
-      "Source_Country": "",
-      "Source_Latitude": 0,
-      "Source_Longitude": 0,
-      "Whitelisted": false,
-      "Simulation": false,
-      "Reprocess": false,
-      "Labels": null
-     },
+     "Alert": {},
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "04/Jan/2020:08:41:43 +0000",
-     "MarshaledTime": "",
-     "Process": false,
      "Meta": {
       "http_path": "/index.php/nous-contacter/",
       "http_status": "500",
@@ -1229,9 +856,7 @@
    },
    "s02-enrich": {
     "crowdsecurity/dateparse-enrich": {
-     "Type": 0,
      "ExpectMode": 1,
-     "Whitelisted": false,
      "Stage": "s02-enrich",
      "Line": {
       "Raw": "www.mydomain.com 52.59.61.4 - - [04/Jan/2020:08:41:43 +0000] \"GET /index.php/nous-contacter/ HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
@@ -1260,27 +885,10 @@
      "Enriched": {
       "MarshaledTime": "2020-01-04T08:41:43Z"
      },
-     "Overflow": {
-      "MapKey": "",
-      "start_at": "0001-01-01T00:00:00Z",
-      "stop_at": "0001-01-01T00:00:00Z",
-      "source": null,
-      "Source_ip": "",
-      "Source_range": "",
-      "Source_AutonomousSystemNumber": "",
-      "Source_AutonomousSystemOrganization": "",
-      "Source_Country": "",
-      "Source_Latitude": 0,
-      "Source_Longitude": 0,
-      "Whitelisted": false,
-      "Simulation": false,
-      "Reprocess": false,
-      "Labels": null
-     },
+     "Alert": {},
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "04/Jan/2020:08:41:43 +0000",
      "MarshaledTime": "2020-01-04T08:41:43Z",
-     "Process": false,
      "Meta": {
       "http_path": "/index.php/nous-contacter/",
       "http_status": "500",
@@ -1290,9 +898,7 @@
      }
     },
     "crowdsecurity/geoip-enrich": {
-     "Type": 0,
      "ExpectMode": 1,
-     "Whitelisted": false,
      "Stage": "s02-enrich",
      "Line": {
       "Raw": "www.mydomain.com 52.59.61.4 - - [04/Jan/2020:08:41:43 +0000] \"GET /index.php/nous-contacter/ HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
@@ -1328,27 +934,10 @@
       "MarshaledTime": "2020-01-04T08:41:43Z",
       "SourceRange": "52.56.0.0/14"
      },
-     "Overflow": {
-      "MapKey": "",
-      "start_at": "0001-01-01T00:00:00Z",
-      "stop_at": "0001-01-01T00:00:00Z",
-      "source": null,
-      "Source_ip": "",
-      "Source_range": "",
-      "Source_AutonomousSystemNumber": "",
-      "Source_AutonomousSystemOrganization": "",
-      "Source_Country": "",
-      "Source_Latitude": 0,
-      "Source_Longitude": 0,
-      "Whitelisted": false,
-      "Simulation": false,
-      "Reprocess": false,
-      "Labels": null
-     },
+     "Alert": {},
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "04/Jan/2020:08:41:43 +0000",
      "MarshaledTime": "2020-01-04T08:41:43Z",
-     "Process": false,
      "Meta": {
       "ASNNumber": "16509",
       "ASNOrg": "Amazon.com, Inc.",
@@ -1363,9 +952,7 @@
      }
     },
     "crowdsecurity/http-logs": {
-     "Type": 0,
      "ExpectMode": 1,
-     "Whitelisted": false,
      "Stage": "s02-enrich",
      "Line": {
       "Raw": "www.mydomain.com 52.59.61.4 - - [04/Jan/2020:08:41:43 +0000] \"GET /index.php/nous-contacter/ HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
@@ -1407,27 +994,10 @@
       "MarshaledTime": "2020-01-04T08:41:43Z",
       "SourceRange": "52.56.0.0/14"
      },
-     "Overflow": {
-      "MapKey": "",
-      "start_at": "0001-01-01T00:00:00Z",
-      "stop_at": "0001-01-01T00:00:00Z",
-      "source": null,
-      "Source_ip": "",
-      "Source_range": "",
-      "Source_AutonomousSystemNumber": "",
-      "Source_AutonomousSystemOrganization": "",
-      "Source_Country": "",
-      "Source_Latitude": 0,
-      "Source_Longitude": 0,
-      "Whitelisted": false,
-      "Simulation": false,
-      "Reprocess": false,
-      "Labels": null
-     },
+     "Alert": {},
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "04/Jan/2020:08:41:43 +0000",
      "MarshaledTime": "2020-01-04T08:41:43Z",
-     "Process": false,
      "Meta": {
       "ASNNumber": "16509",
       "ASNOrg": "Amazon.com, Inc.",
@@ -1443,9 +1013,7 @@
      }
     },
     "crowdsecurity/whitelists": {
-     "Type": 0,
      "ExpectMode": 1,
-     "Whitelisted": false,
      "Stage": "s02-enrich",
      "Line": {
       "Raw": "www.mydomain.com 52.59.61.4 - - [04/Jan/2020:08:41:43 +0000] \"GET /index.php/nous-contacter/ HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
@@ -1487,27 +1055,10 @@
       "MarshaledTime": "2020-01-04T08:41:43Z",
       "SourceRange": "52.56.0.0/14"
      },
-     "Overflow": {
-      "MapKey": "",
-      "start_at": "0001-01-01T00:00:00Z",
-      "stop_at": "0001-01-01T00:00:00Z",
-      "source": null,
-      "Source_ip": "",
-      "Source_range": "",
-      "Source_AutonomousSystemNumber": "",
-      "Source_AutonomousSystemOrganization": "",
-      "Source_Country": "",
-      "Source_Latitude": 0,
-      "Source_Longitude": 0,
-      "Whitelisted": false,
-      "Simulation": false,
-      "Reprocess": false,
-      "Labels": null
-     },
+     "Alert": {},
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "04/Jan/2020:08:41:43 +0000",
      "MarshaledTime": "2020-01-04T08:41:43Z",
-     "Process": false,
      "Meta": {
       "ASNNumber": "16509",
       "ASNOrg": "Amazon.com, Inc.",
