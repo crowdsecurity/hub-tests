@@ -42,9 +42,6 @@ func parsePoMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parser
 	//we need to clean Line's timestamp
 	oneResult.ParserResults = cleanForMatch(parser.StageParseCache)
 
-	/*
-		Iterate over the list of expected results and try to find back
-	*/
 	AllPoResults = append(AllPoResults, oneResult)
 	return true, nil
 }
@@ -83,7 +80,6 @@ func checkResultPo(target_dir string, failure bool) error {
 	}
 
 	opt := getCmpOptions()
-	log.Printf("AllPoExpected: %+v", AllPoExpected)
 	for idx, candidate := range AllPoExpected {
 		matched = false
 		for _, result := range AllPoResults {

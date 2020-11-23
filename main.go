@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
-	"reflect"
 	"time"
 
 	"github.com/crowdsecurity/crowdsec/pkg/acquisition"
@@ -17,7 +16,6 @@ import (
 	leaky "github.com/crowdsecurity/crowdsec/pkg/leakybucket"
 	"github.com/crowdsecurity/crowdsec/pkg/parser"
 	"github.com/crowdsecurity/crowdsec/pkg/types"
-	"github.com/google/go-cmp/cmp"
 	log "github.com/sirupsen/logrus"
 	"gopkg.in/tomb.v2"
 )
@@ -44,34 +42,6 @@ type LineParseResult struct {
 type LineParsePoResult struct {
 	Overflow      types.RuntimeAlert
 	ParserResults map[string]map[string]types.Event
-}
-
-func getCmpOptions() cmp.Option {
-	/*
-	** we are using cmp's feature to match structures.
-	** because of the way marshal/unmarshal works we want to make nil == empty
-	 */
-	// This option handles slices and maps of any type.
-	alwaysEqual := cmp.Comparer(func(_, _ interface{}) bool { return true })
-	opt := cmp.FilterValues(func(x, y interface{}) bool {
-		vx, vy := reflect.ValueOf(x), reflect.ValueOf(y)
-		return (vx.IsValid() && vy.IsValid() && vx.Type() == vy.Type()) &&
-			(vx.Kind() == reflect.Slice || vx.Kind() == reflect.Map) &&
-			(vx.Len() == 0 && vy.Len() == 0)
-	}, alwaysEqual)
-	return opt
-}
-
-//cleanForMatch : cleanup results from items that might change every run. We strip as well strictly equal results
-func cleanForMatch(in map[string]map[string]types.Event) map[string]map[string]types.Event {
-	for stage, val := range in {
-		for parser, evt := range val {
-			evt.Line.Time = time.Time{}
-			evt.Time = time.Time{}
-			in[stage][parser] = evt
-		}
-	}
-	return in
 }
 
 func testOneDir(target_dir string, parsers *parser.Parsers, cConfig *csconfig.GlobalConfig) (bool, error) {
@@ -103,6 +73,9 @@ func testOneDir(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 		log.Fatalf("Not able to init acquisition")
 	}
 
+	//start reading in the background
+	acquisition.AcquisStartReading(acquisitionCTX, inputLineChan, &acquisTomb)
+
 	//load parsers
 	log.Infof("Loading parsers")
 	//load the expected results
@@ -119,9 +92,6 @@ func testOneDir(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 			OrigExpectedLen = len(AllExpected)
 		}
 	}
-
-	//start reading in the background
-	acquisition.AcquisStartReading(acquisitionCTX, inputLineChan, &acquisTomb)
 
 	linesRead := 0
 	linesUnparsed := 0
