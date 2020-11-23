@@ -24,7 +24,6 @@ import (
 
 var (
 	acquisTomb tomb.Tomb
-	testDir    string
 
 	AllResults    []LineParseResult
 	AllExpected   []LineParseResult
