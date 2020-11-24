@@ -46,7 +46,7 @@ func parsePoMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parser
 	return true, nil
 }
 
-func checkResultPo(target_dir string, failure bool) error {
+func checkResultPo(target_dir string) error {
 	var matched bool
 	//there was no data present, just dump
 	ExpectedPresent := false

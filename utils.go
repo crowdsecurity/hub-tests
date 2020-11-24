@@ -8,6 +8,40 @@ import (
 	"github.com/google/go-cmp/cmp"
 )
 
+type UniqDescriptor interface {
+}
+
+type Result interface {
+	Discriminate(interface{}) bool
+	DeepEqual(map[string]map[string]types.Event) bool
+}
+
+type LineResult struct {
+	string
+	LineResult map[string]map[string]types.Event
+}
+
+func (s *LineResult) Discriminate(e string) bool {
+	return s.string == e
+}
+
+func (s *LineResult) DeepEqual(result map[string]map[string]types.Event) bool {
+	return cmp.Equal(s.LineResult, result, getCmpOptions())
+}
+
+type Overflow struct {
+	types.RuntimeAlert
+	OverflowResult map[string]map[string]types.Event
+}
+
+func (o *Overflow) Discriminate(e types.RuntimeAlert) bool {
+	return cmp.Equal(o.RuntimeAlert, e, getCmpOptions())
+}
+
+func (o *Overflow) DeepEqual(result map[string]map[string]types.Event) bool {
+	return cmp.Equal(o.OverflowResult, result, getCmpOptions())
+}
+
 func getCmpOptions() cmp.Option {
 	/*
 	** we are using cmp's feature to match structures.
