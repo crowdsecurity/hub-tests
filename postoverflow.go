@@ -114,8 +114,6 @@ func testPwfl(target_dir string, parsers *parser.Parsers, localConfig ConfigTest
 			log.Printf("Comparing")
 			//			if !cmp.Equal(candidate.Overflow.APIAlerts[0].Source, result.Overflow.APIAlerts[0].Source) {
 			if !cmp.Equal(candidate.Overflow, result.Overflow, opt) {
-				log.Printf("candidate: %+v", candidate.Overflow.APIAlerts[0].Meta)
-				log.Printf("result   : %+v", result.Overflow.APIAlerts[0].Meta)
 				log.Printf("mismatch diff (-want +got) : %s", cmp.Diff(candidate.Overflow.APIAlerts[0].Meta, result.Overflow.APIAlerts[0].Meta, opt))
 				continue
 			}

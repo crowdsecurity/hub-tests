@@ -22,15 +22,12 @@ func sortAlerts(event types.Event) types.Event {
 	if event.Overflow.APIAlerts == nil {
 		return event
 	}
-	//	tmp := append([]models.Alert{}, event.Overflow.APIAlerts...)
-	//	log.Printf("meta1: %+v", event)
 	for index, alert := range event.Overflow.APIAlerts {
 		for i, evt := range alert.Events {
 			meta := evt.Meta
 			sort.Slice(meta, func(i, j int) bool {
 				return meta[i].Key < meta[j].Key
 			})
-			//			log.Printf("meta2: %+v", meta)
 			event.Overflow.APIAlerts[index].Events[i].Meta = meta
 		}
 	}
@@ -138,13 +135,6 @@ func testBuckets(target_dir string, parsers *parser.Parsers, cConfig *csconfig.G
 				log.Printf("An overflow happened")
 				overflow++
 				bucketsOutput = append(bucketsOutput, sortAlerts(event))
-				//				parsed_ok, err := parsePoMatchLine(event, parsers.Povfwctx, parsers.Povfwnodes)
-				// if !parsed_ok {
-				// 	if err != nil {
-				// 		log.Warningf("parser error : %s", err)
-				// 	}
-				// 	unparsedOverflow++
-				// }
 			case <-potomb.Dying():
 				return nil
 			}
