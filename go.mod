@@ -11,5 +11,6 @@ require (
 	golang.org/x/tools v0.0.0-20201111224557-41a3a589386c // indirect
 	golang.org/x/tools/gopls v0.0.0-20201111224557-41a3a589386c // indirect
 	gopkg.in/tomb.v2 v2.0.0-20161208151619-d5d1b5820637
+	gopkg.in/yaml.v2 v2.3.0
 	mvdan.cc/gofumpt v0.0.0-20201107090320-a024667a00f1 // indirect
 )

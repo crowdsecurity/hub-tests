@@ -1,11 +1,14 @@
 package main
 
 import (
+	"fmt"
+	"io/ioutil"
 	"reflect"
 	"time"
 
 	"github.com/crowdsecurity/crowdsec/pkg/types"
 	"github.com/google/go-cmp/cmp"
+	"gopkg.in/yaml.v2"
 )
 
 type UniqDescriptor interface {
@@ -68,4 +71,33 @@ func cleanForMatch(in map[string]map[string]types.Event) map[string]map[string]t
 		}
 	}
 	return in
+}
+
+func marshalAndStore(in interface{}, filename string) error {
+	var (
+		out []byte
+		err error
+	)
+	if out, err = yaml.Marshal(in); err != nil {
+		return fmt.Errorf("Marshal %s error: %s, filename", err)
+	}
+	if err = ioutil.WriteFile(filename, out, 0644); err != nil {
+		return fmt.Errorf("Write file %s error: %s, filename", err)
+	}
+	return nil
+}
+
+func retrieveAndUnmarshal(filename string) (interface{}, error) {
+	var (
+		out interface{}
+		buf []byte
+		err error
+	)
+	if buf, err = ioutil.ReadFile(filename); err != nil {
+		return nil, fmt.Errorf("Read file %s error: %s", filename, err)
+	}
+	if err = yaml.Unmarshal(buf, &out); err != nil {
+		return nil, fmt.Errorf("Unmarshal file %s error: %s", filename, err)
+	}
+	return out, nil
 }

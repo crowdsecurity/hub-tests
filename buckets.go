@@ -5,10 +5,15 @@ import (
 	"fmt"
 	"io/ioutil"
 	"sort"
+	"time"
 
+	"github.com/crowdsecurity/crowdsec/pkg/csconfig"
+	leaky "github.com/crowdsecurity/crowdsec/pkg/leakybucket"
+	"github.com/crowdsecurity/crowdsec/pkg/parser"
 	"github.com/crowdsecurity/crowdsec/pkg/types"
 	"github.com/google/go-cmp/cmp"
 	log "github.com/sirupsen/logrus"
+	"gopkg.in/tomb.v2"
 )
 
 //sort alert for each overflow
@@ -104,4 +109,80 @@ func testBucketsOutput(target_dir string, AllBucketsResult []types.Event) (bool,
 	log.Infof("Bucket tets are finished")
 	return true, nil
 
+}
+
+func testBuckets(target_dir string, parsers *parser.Parsers, cConfig *csconfig.GlobalConfig, localConfig ConfigTest) error {
+	var (
+		potomb        tomb.Tomb
+		bucketsOutput []types.Event = []types.Event{}
+		bucketsInput  []types.Event = []types.Event{}
+		err           error
+		ok            bool
+		tmp           interface{}
+	)
+
+	if tmp, err = retrieveAndUnmarshal(localConfig.bucketInputFile); err != nil {
+		return fmt.Errorf("Error unmarshaling %s: %s", localConfig.bucketInputFile, err)
+	}
+	if bucketsInput, ok = tmp.([]types.Event); !ok {
+		return fmt.Errorf("Error unmarshaling %s: output is not of expected type", localConfig.bucketInputFile)
+	}
+
+	overflow := 0
+	unparsedOverflow := 0
+	potomb.Go(func() error {
+		log.Printf("processing loop over postoveflow")
+		for {
+			select {
+			case event, ok := <-outputEventChan:
+				if !ok {
+					return nil
+				}
+				log.Printf("one overflow")
+				overflow++
+				bucketsOutput = append(bucketsOutput, sortAlerts(event))
+				parsed_ok, err := parsePoMatchLine(event, parsers.Povfwctx, parsers.Povfwnodes)
+				if !parsed_ok {
+					if err != nil {
+						log.Warningf("parser error : %s", err)
+					}
+					unparsedOverflow++
+				}
+			case <-potomb.Dying():
+				return nil
+			}
+
+		}
+		return nil
+	})
+
+	log.Infof("Pouring buckets")
+	for index, parsed := range bucketsInput {
+		log.Printf("Pouring item %d", index+1)
+		_, err = leaky.PourItemToHolders(parsed, holders, buckets)
+		if err != nil {
+			log.Fatalf("bucketify failed for: %v", parsed)
+		}
+	}
+
+	//this should be taken care of
+	time.Sleep(5 * time.Second)
+
+	if r, err := testBucketsOutput(target_dir, bucketsOutput); !r {
+		log.Fatalf("Buckets error: %s", err)
+	}
+
+	close(outputEventChan)
+
+	log.Printf("Waiting for bucket tomb to die")
+	if err := potomb.Wait(); err != nil {
+		log.Warningf("acquisition returned error : %s", err)
+	}
+
+	log.Printf("Testing postoverflows")
+
+	checkResultPo(target_dir)
+	log.Infof("tests are finished.")
+
+	return nil
 }

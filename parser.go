@@ -2,14 +2,19 @@ package main
 
 import (
 	"crypto/sha256"
+	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"sort"
 
+	"github.com/crowdsecurity/crowdsec/pkg/acquisition"
+	"github.com/crowdsecurity/crowdsec/pkg/csconfig"
 	"github.com/crowdsecurity/crowdsec/pkg/cwhub"
 	"github.com/crowdsecurity/crowdsec/pkg/parser"
 	"github.com/crowdsecurity/crowdsec/pkg/types"
 	"github.com/google/go-cmp/cmp"
 	log "github.com/sirupsen/logrus"
+	"gopkg.in/tomb.v2"
 )
 
 // Return new parsers
@@ -99,4 +104,152 @@ func parseMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parserNo
 		return false, true, types.Event{}, fmt.Errorf("Result is not in the %d expected results", len(AllExpected))
 	}
 	return matched, true, parsed, nil
+}
+
+func testParser(target_dir string, parsers *parser.Parsers, cConfig *csconfig.GlobalConfig, localConfig ConfigTest) error {
+	var (
+		err             error
+		acquisitionCTX  *acquisition.FileAcquisCtx
+		inputLineChan   = make(chan types.Event)
+		failure         bool
+		OrigExpectedLen int
+		tmpctx          []acquisition.FileCtx
+		ptomb           tomb.Tomb
+		bucketsInput    []types.Event = []types.Event{}
+	)
+
+	log.Infof("Loading acquisition")
+	tmpctx, err = acquisition.LoadAcquisCtxConfigFile(cConfig.Crowdsec)
+	if err != nil {
+		log.Fatalf("Not able to init acquisition")
+	}
+	for _, filectx := range tmpctx {
+		if filectx.Mode != "cat" {
+			log.Warning("The mode of reading the log file '%s' is not 'cat'. The whole thing is highly probably bound to fail", filectx.Filename)
+		}
+	}
+
+	acquisitionCTX, err = acquisition.InitReaderFromFileCtx(tmpctx)
+	if err != nil {
+		log.Fatalf("Not able to init acquisition")
+	}
+
+	//start reading in the background
+	acquisition.AcquisStartReading(acquisitionCTX, inputLineChan, &acquisTomb)
+
+	//load parsers
+	log.Infof("Loading parsers")
+	//load the expected results
+	ExpectedPresent := false
+	expectedResultsFile := target_dir + "/parser_results.json"
+	expected_bytes, err := ioutil.ReadFile(expectedResultsFile)
+	if err != nil {
+		log.Warningf("no results in %s, will dump data instead!", target_dir)
+	} else {
+		if err := json.Unmarshal(expected_bytes, &AllExpected); err != nil {
+			return fmt.Errorf("file %s can't be unmarshaled : %s", expectedResultsFile, err)
+		} else {
+			ExpectedPresent = true
+			OrigExpectedLen = len(AllExpected)
+		}
+	}
+
+	linesRead := 0
+	linesUnparsed := 0
+
+	parser.ParseDump = true
+	ptomb = tomb.Tomb{}
+	// ptomb.Go(func() error {
+
+	ptomb.Go(func() error {
+		log.Printf("Processing logs")
+		for {
+			select {
+			case event, ok := <-inputLineChan:
+				if !ok {
+					return nil
+				}
+				log.Printf("one line")
+				linesRead++
+				test_ok, parsed_ok, parsed, err := parseMatchLine(event, parsers.Ctx, parsers.Nodes)
+				bucketsInput = append(bucketsInput, parsed)
+				log.Printf("done")
+				if !parsed_ok {
+					if err != nil {
+						log.Warningf("parser error : %s", err)
+					}
+					linesUnparsed++
+				}
+				if !test_ok {
+					failure = true
+					// TODO: estsFailed++
+					log.Errorf("test %d failed.", linesRead)
+					if err != nil {
+						log.Errorf("test failure : %s", err)
+					}
+				}
+			case <-ptomb.Dying():
+				return nil
+			}
+		}
+	})
+
+	log.Printf("waiting for acquis tomb to die")
+	if err := acquisTomb.Wait(); err != nil {
+		log.Warningf("acquisition returned error : %s", err)
+	}
+	log.Printf("acquis tomb died")
+
+	//We close the log chan, and waiting the tomb to die, to be sure not to forget event in the cloud
+	close(inputLineChan)
+	log.Printf("Waiting for parsers tomb to die")
+	if err := ptomb.Wait(); err != nil {
+		log.Warningf("acquisition returned error : %s", err)
+	}
+
+	//parser result analysis
+	log.Infof("%d lines read", linesRead)
+	log.Infof("%d parser results, %d UNPARSED", len(AllResults), linesUnparsed)
+	if linesRead != len(AllResults) {
+		log.Warningf("%d out of %d lines didn't yeld result", linesRead-len(AllResults), linesRead)
+	}
+	log.Infof("%d/%d matched results", OrigExpectedLen-len(AllExpected), OrigExpectedLen)
+	if len(AllExpected) > 0 {
+		log.Warningf("%d out of %d expected results unmatched", len(AllExpected), OrigExpectedLen)
+	}
+
+	//there was no data present, just dump
+	if !ExpectedPresent {
+		log.Warningf("No expected results loaded, dump.")
+		dump_bytes, err := json.MarshalIndent(AllResults, "", " ")
+		if err != nil {
+			log.Fatalf("failed to marshal results : %s", err)
+		}
+		if err := ioutil.WriteFile(expectedResultsFile, dump_bytes, 0644); err != nil {
+			log.Fatalf("failed to dump data to %s : %s", expectedResultsFile, err)
+		}
+	} else {
+		if len(AllExpected) > 0 {
+			log.Errorf("Left-over results in expected : %d", len(AllExpected))
+		}
+	}
+	if failure {
+		expectedResultsFile = expectedResultsFile + ".fail"
+		log.Errorf("tests failed, writting results to %s", expectedResultsFile)
+		dump_bytes, err := json.MarshalIndent(AllResults, "", " ")
+		if err != nil {
+			log.Fatalf("failed to marshal results : %s", err)
+		}
+		if err := ioutil.WriteFile(expectedResultsFile, dump_bytes, 0644); err != nil {
+			log.Fatalf("failed to dump data to %s : %s", expectedResultsFile, err)
+		}
+		log.Printf("done")
+		log.Fatalf("Parsers test failed, bailing out")
+	}
+	log.Infof("parser tests are finished.")
+
+	if err := marshalAndStore(bucketsInput, localConfig.bucketInputFile); err != nil {
+		return fmt.Errorf("marshaling failed: %s")
+	}
+	return nil
 }
