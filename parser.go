@@ -183,7 +183,7 @@ func testParser(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 				if !test_ok {
 					failure = true
 					// TODO: estsFailed++
-					log.Errorf("test %d failed.", linesRead)
+					log.Errorf("test %d failed. It's highly probable that the 'crowdsecurity/syslog-logs' dependency failed.", linesRead)
 					if err != nil {
 						log.Errorf("test failure : %s", err)
 					}
