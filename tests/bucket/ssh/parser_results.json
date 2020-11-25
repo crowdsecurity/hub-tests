@@ -1,13 +1,13 @@
 [
  {
-  "Line": "Nov 10 15:01:29 alib sshd[8421]: Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+  "Line": "Nov 10 15:01:29 host sshd[8421]: Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
   "ParserResults": {
    "s00-raw": {
     "crowdsecurity/syslog-logs": {
      "ExpectMode": 1,
      "Stage": "s01-parse",
      "Line": {
-      "Raw": "Nov 10 15:01:29 alib sshd[8421]: Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "Raw": "Nov 10 15:01:29 host sshd[8421]: Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "Src": "./tests/bucket/ssh/auth.log",
       "Time": "0001-01-01T00:00:00Z",
       "Labels": {
@@ -18,7 +18,7 @@
      "Parsed": {
       "facility": "",
       "logsource": "syslog",
-      "message": "Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "message": "Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "pid": "8421",
       "priority": "",
       "program": "sshd",
@@ -35,7 +35,7 @@
      "ExpectMode": 1,
      "Stage": "s02-enrich",
      "Line": {
-      "Raw": "Nov 10 15:01:29 alib sshd[8421]: Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "Raw": "Nov 10 15:01:29 host sshd[8421]: Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "Src": "./tests/bucket/ssh/auth.log",
       "Time": "0001-01-01T00:00:00Z",
       "Labels": {
@@ -46,11 +46,11 @@
      "Parsed": {
       "facility": "",
       "logsource": "syslog",
-      "message": "Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "message": "Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "pid": "8421",
       "priority": "",
       "program": "sshd",
-      "sshd_client_ip": "182.254.164.34",
+      "sshd_client_ip": "1.1.1.1",
       "sshd_invalid_user": "test_ftp",
       "sshd_port": "38140",
       "sshd_protocol": "ssh2",
@@ -63,7 +63,7 @@
      "Meta": {
       "log_type": "ssh_failed-auth",
       "service": "ssh",
-      "source_ip": "182.254.164.34",
+      "source_ip": "1.1.1.1",
       "target_user": "test_ftp"
      }
     }
@@ -73,7 +73,7 @@
      "ExpectMode": 1,
      "Stage": "s02-enrich",
      "Line": {
-      "Raw": "Nov 10 15:01:29 alib sshd[8421]: Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "Raw": "Nov 10 15:01:29 host sshd[8421]: Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "Src": "./tests/bucket/ssh/auth.log",
       "Time": "0001-01-01T00:00:00Z",
       "Labels": {
@@ -84,11 +84,11 @@
      "Parsed": {
       "facility": "",
       "logsource": "syslog",
-      "message": "Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "message": "Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "pid": "8421",
       "priority": "",
       "program": "sshd",
-      "sshd_client_ip": "182.254.164.34",
+      "sshd_client_ip": "1.1.1.1",
       "sshd_invalid_user": "test_ftp",
       "sshd_port": "38140",
       "sshd_protocol": "ssh2",
@@ -105,7 +105,7 @@
      "Meta": {
       "log_type": "ssh_failed-auth",
       "service": "ssh",
-      "source_ip": "182.254.164.34",
+      "source_ip": "1.1.1.1",
       "target_user": "test_ftp"
      }
     },
@@ -113,7 +113,7 @@
      "ExpectMode": 1,
      "Stage": "s02-enrich",
      "Line": {
-      "Raw": "Nov 10 15:01:29 alib sshd[8421]: Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "Raw": "Nov 10 15:01:29 host sshd[8421]: Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "Src": "./tests/bucket/ssh/auth.log",
       "Time": "0001-01-01T00:00:00Z",
       "Labels": {
@@ -124,11 +124,11 @@
      "Parsed": {
       "facility": "",
       "logsource": "syslog",
-      "message": "Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "message": "Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "pid": "8421",
       "priority": "",
       "program": "sshd",
-      "sshd_client_ip": "182.254.164.34",
+      "sshd_client_ip": "1.1.1.1",
       "sshd_invalid_user": "test_ftp",
       "sshd_port": "38140",
       "sshd_protocol": "ssh2",
@@ -136,28 +136,28 @@
       "timestamp8601": ""
      },
      "Enriched": {
-      "ASNNumber": "45090",
-      "ASNOrg": "Shenzhen Tencent Computer Systems Company Limited",
+      "ASNNumber": "13335",
+      "ASNOrg": "Cloudflare Inc",
       "IsInEU": "false",
-      "IsoCode": "CN",
-      "Latitude": "39.928900",
-      "Longitude": "116.388300",
+      "IsoCode": "AU",
+      "Latitude": "-37.700000",
+      "Longitude": "145.183300",
       "MarshaledTime": "2020-11-10T15:01:29Z",
-      "SourceRange": "182.254.0.0/16"
+      "SourceRange": "1.1.1.0/24"
      },
      "Alert": {},
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "Nov 10 15:01:29",
      "MarshaledTime": "2020-11-10T15:01:29Z",
      "Meta": {
-      "ASNNumber": "45090",
-      "ASNOrg": "Shenzhen Tencent Computer Systems Company Limited",
+      "ASNNumber": "13335",
+      "ASNOrg": "Cloudflare Inc",
       "IsInEU": "false",
-      "IsoCode": "CN",
-      "SourceRange": "182.254.0.0/16",
+      "IsoCode": "AU",
+      "SourceRange": "1.1.1.0/24",
       "log_type": "ssh_failed-auth",
       "service": "ssh",
-      "source_ip": "182.254.164.34",
+      "source_ip": "1.1.1.1",
       "target_user": "test_ftp"
      }
     },
@@ -165,7 +165,7 @@
      "ExpectMode": 1,
      "Stage": "s02-enrich",
      "Line": {
-      "Raw": "Nov 10 15:01:29 alib sshd[8421]: Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "Raw": "Nov 10 15:01:29 host sshd[8421]: Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "Src": "./tests/bucket/ssh/auth.log",
       "Time": "0001-01-01T00:00:00Z",
       "Labels": {
@@ -176,11 +176,11 @@
      "Parsed": {
       "facility": "",
       "logsource": "syslog",
-      "message": "Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "message": "Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "pid": "8421",
       "priority": "",
       "program": "sshd",
-      "sshd_client_ip": "182.254.164.34",
+      "sshd_client_ip": "1.1.1.1",
       "sshd_invalid_user": "test_ftp",
       "sshd_port": "38140",
       "sshd_protocol": "ssh2",
@@ -188,28 +188,28 @@
       "timestamp8601": ""
      },
      "Enriched": {
-      "ASNNumber": "45090",
-      "ASNOrg": "Shenzhen Tencent Computer Systems Company Limited",
+      "ASNNumber": "13335",
+      "ASNOrg": "Cloudflare Inc",
       "IsInEU": "false",
-      "IsoCode": "CN",
-      "Latitude": "39.928900",
-      "Longitude": "116.388300",
+      "IsoCode": "AU",
+      "Latitude": "-37.700000",
+      "Longitude": "145.183300",
       "MarshaledTime": "2020-11-10T15:01:29Z",
-      "SourceRange": "182.254.0.0/16"
+      "SourceRange": "1.1.1.0/24"
      },
      "Alert": {},
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "Nov 10 15:01:29",
      "MarshaledTime": "2020-11-10T15:01:29Z",
      "Meta": {
-      "ASNNumber": "45090",
-      "ASNOrg": "Shenzhen Tencent Computer Systems Company Limited",
+      "ASNNumber": "13335",
+      "ASNOrg": "Cloudflare Inc",
       "IsInEU": "false",
-      "IsoCode": "CN",
-      "SourceRange": "182.254.0.0/16",
+      "IsoCode": "AU",
+      "SourceRange": "1.1.1.0/24",
       "log_type": "ssh_failed-auth",
       "service": "ssh",
-      "source_ip": "182.254.164.34",
+      "source_ip": "1.1.1.1",
       "target_user": "test_ftp"
      }
     }
@@ -217,14 +217,14 @@
   }
  },
  {
-  "Line": "Nov 10 15:01:29 alib sshd[8421]: Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+  "Line": "Nov 10 15:01:29 host sshd[8421]: Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
   "ParserResults": {
    "s00-raw": {
     "crowdsecurity/syslog-logs": {
      "ExpectMode": 1,
      "Stage": "s01-parse",
      "Line": {
-      "Raw": "Nov 10 15:01:29 alib sshd[8421]: Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "Raw": "Nov 10 15:01:29 host sshd[8421]: Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "Src": "./tests/bucket/ssh/auth.log",
       "Time": "0001-01-01T00:00:00Z",
       "Labels": {
@@ -235,7 +235,7 @@
      "Parsed": {
       "facility": "",
       "logsource": "syslog",
-      "message": "Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "message": "Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "pid": "8421",
       "priority": "",
       "program": "sshd",
@@ -252,7 +252,7 @@
      "ExpectMode": 1,
      "Stage": "s02-enrich",
      "Line": {
-      "Raw": "Nov 10 15:01:29 alib sshd[8421]: Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "Raw": "Nov 10 15:01:29 host sshd[8421]: Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "Src": "./tests/bucket/ssh/auth.log",
       "Time": "0001-01-01T00:00:00Z",
       "Labels": {
@@ -263,11 +263,11 @@
      "Parsed": {
       "facility": "",
       "logsource": "syslog",
-      "message": "Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "message": "Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "pid": "8421",
       "priority": "",
       "program": "sshd",
-      "sshd_client_ip": "182.254.164.34",
+      "sshd_client_ip": "1.1.1.1",
       "sshd_invalid_user": "test_ftp",
       "sshd_port": "38140",
       "sshd_protocol": "ssh2",
@@ -280,7 +280,7 @@
      "Meta": {
       "log_type": "ssh_failed-auth",
       "service": "ssh",
-      "source_ip": "182.254.164.34",
+      "source_ip": "1.1.1.1",
       "target_user": "test_ftp"
      }
     }
@@ -290,7 +290,7 @@
      "ExpectMode": 1,
      "Stage": "s02-enrich",
      "Line": {
-      "Raw": "Nov 10 15:01:29 alib sshd[8421]: Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "Raw": "Nov 10 15:01:29 host sshd[8421]: Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "Src": "./tests/bucket/ssh/auth.log",
       "Time": "0001-01-01T00:00:00Z",
       "Labels": {
@@ -301,11 +301,11 @@
      "Parsed": {
       "facility": "",
       "logsource": "syslog",
-      "message": "Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "message": "Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "pid": "8421",
       "priority": "",
       "program": "sshd",
-      "sshd_client_ip": "182.254.164.34",
+      "sshd_client_ip": "1.1.1.1",
       "sshd_invalid_user": "test_ftp",
       "sshd_port": "38140",
       "sshd_protocol": "ssh2",
@@ -322,7 +322,7 @@
      "Meta": {
       "log_type": "ssh_failed-auth",
       "service": "ssh",
-      "source_ip": "182.254.164.34",
+      "source_ip": "1.1.1.1",
       "target_user": "test_ftp"
      }
     },
@@ -330,7 +330,7 @@
      "ExpectMode": 1,
      "Stage": "s02-enrich",
      "Line": {
-      "Raw": "Nov 10 15:01:29 alib sshd[8421]: Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "Raw": "Nov 10 15:01:29 host sshd[8421]: Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "Src": "./tests/bucket/ssh/auth.log",
       "Time": "0001-01-01T00:00:00Z",
       "Labels": {
@@ -341,11 +341,11 @@
      "Parsed": {
       "facility": "",
       "logsource": "syslog",
-      "message": "Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "message": "Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "pid": "8421",
       "priority": "",
       "program": "sshd",
-      "sshd_client_ip": "182.254.164.34",
+      "sshd_client_ip": "1.1.1.1",
       "sshd_invalid_user": "test_ftp",
       "sshd_port": "38140",
       "sshd_protocol": "ssh2",
@@ -353,28 +353,28 @@
       "timestamp8601": ""
      },
      "Enriched": {
-      "ASNNumber": "45090",
-      "ASNOrg": "Shenzhen Tencent Computer Systems Company Limited",
+      "ASNNumber": "13335",
+      "ASNOrg": "Cloudflare Inc",
       "IsInEU": "false",
-      "IsoCode": "CN",
-      "Latitude": "39.928900",
-      "Longitude": "116.388300",
+      "IsoCode": "AU",
+      "Latitude": "-37.700000",
+      "Longitude": "145.183300",
       "MarshaledTime": "2020-11-10T15:01:29Z",
-      "SourceRange": "182.254.0.0/16"
+      "SourceRange": "1.1.1.0/24"
      },
      "Alert": {},
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "Nov 10 15:01:29",
      "MarshaledTime": "2020-11-10T15:01:29Z",
      "Meta": {
-      "ASNNumber": "45090",
-      "ASNOrg": "Shenzhen Tencent Computer Systems Company Limited",
+      "ASNNumber": "13335",
+      "ASNOrg": "Cloudflare Inc",
       "IsInEU": "false",
-      "IsoCode": "CN",
-      "SourceRange": "182.254.0.0/16",
+      "IsoCode": "AU",
+      "SourceRange": "1.1.1.0/24",
       "log_type": "ssh_failed-auth",
       "service": "ssh",
-      "source_ip": "182.254.164.34",
+      "source_ip": "1.1.1.1",
       "target_user": "test_ftp"
      }
     },
@@ -382,7 +382,7 @@
      "ExpectMode": 1,
      "Stage": "s02-enrich",
      "Line": {
-      "Raw": "Nov 10 15:01:29 alib sshd[8421]: Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "Raw": "Nov 10 15:01:29 host sshd[8421]: Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "Src": "./tests/bucket/ssh/auth.log",
       "Time": "0001-01-01T00:00:00Z",
       "Labels": {
@@ -393,11 +393,11 @@
      "Parsed": {
       "facility": "",
       "logsource": "syslog",
-      "message": "Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "message": "Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "pid": "8421",
       "priority": "",
       "program": "sshd",
-      "sshd_client_ip": "182.254.164.34",
+      "sshd_client_ip": "1.1.1.1",
       "sshd_invalid_user": "test_ftp",
       "sshd_port": "38140",
       "sshd_protocol": "ssh2",
@@ -405,28 +405,28 @@
       "timestamp8601": ""
      },
      "Enriched": {
-      "ASNNumber": "45090",
-      "ASNOrg": "Shenzhen Tencent Computer Systems Company Limited",
+      "ASNNumber": "13335",
+      "ASNOrg": "Cloudflare Inc",
       "IsInEU": "false",
-      "IsoCode": "CN",
-      "Latitude": "39.928900",
-      "Longitude": "116.388300",
+      "IsoCode": "AU",
+      "Latitude": "-37.700000",
+      "Longitude": "145.183300",
       "MarshaledTime": "2020-11-10T15:01:29Z",
-      "SourceRange": "182.254.0.0/16"
+      "SourceRange": "1.1.1.0/24"
      },
      "Alert": {},
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "Nov 10 15:01:29",
      "MarshaledTime": "2020-11-10T15:01:29Z",
      "Meta": {
-      "ASNNumber": "45090",
-      "ASNOrg": "Shenzhen Tencent Computer Systems Company Limited",
+      "ASNNumber": "13335",
+      "ASNOrg": "Cloudflare Inc",
       "IsInEU": "false",
-      "IsoCode": "CN",
-      "SourceRange": "182.254.0.0/16",
+      "IsoCode": "AU",
+      "SourceRange": "1.1.1.0/24",
       "log_type": "ssh_failed-auth",
       "service": "ssh",
-      "source_ip": "182.254.164.34",
+      "source_ip": "1.1.1.1",
       "target_user": "test_ftp"
      }
     }
@@ -434,14 +434,14 @@
   }
  },
  {
-  "Line": "Nov 10 15:01:29 alib sshd[8421]: Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+  "Line": "Nov 10 15:01:29 host sshd[8421]: Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
   "ParserResults": {
    "s00-raw": {
     "crowdsecurity/syslog-logs": {
      "ExpectMode": 1,
      "Stage": "s01-parse",
      "Line": {
-      "Raw": "Nov 10 15:01:29 alib sshd[8421]: Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "Raw": "Nov 10 15:01:29 host sshd[8421]: Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "Src": "./tests/bucket/ssh/auth.log",
       "Time": "0001-01-01T00:00:00Z",
       "Labels": {
@@ -452,7 +452,7 @@
      "Parsed": {
       "facility": "",
       "logsource": "syslog",
-      "message": "Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "message": "Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "pid": "8421",
       "priority": "",
       "program": "sshd",
@@ -469,7 +469,7 @@
      "ExpectMode": 1,
      "Stage": "s02-enrich",
      "Line": {
-      "Raw": "Nov 10 15:01:29 alib sshd[8421]: Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "Raw": "Nov 10 15:01:29 host sshd[8421]: Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "Src": "./tests/bucket/ssh/auth.log",
       "Time": "0001-01-01T00:00:00Z",
       "Labels": {
@@ -480,11 +480,11 @@
      "Parsed": {
       "facility": "",
       "logsource": "syslog",
-      "message": "Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "message": "Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "pid": "8421",
       "priority": "",
       "program": "sshd",
-      "sshd_client_ip": "182.254.164.34",
+      "sshd_client_ip": "1.1.1.1",
       "sshd_invalid_user": "test_ftp",
       "sshd_port": "38140",
       "sshd_protocol": "ssh2",
@@ -497,7 +497,7 @@
      "Meta": {
       "log_type": "ssh_failed-auth",
       "service": "ssh",
-      "source_ip": "182.254.164.34",
+      "source_ip": "1.1.1.1",
       "target_user": "test_ftp"
      }
     }
@@ -507,7 +507,7 @@
      "ExpectMode": 1,
      "Stage": "s02-enrich",
      "Line": {
-      "Raw": "Nov 10 15:01:29 alib sshd[8421]: Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "Raw": "Nov 10 15:01:29 host sshd[8421]: Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "Src": "./tests/bucket/ssh/auth.log",
       "Time": "0001-01-01T00:00:00Z",
       "Labels": {
@@ -518,11 +518,11 @@
      "Parsed": {
       "facility": "",
       "logsource": "syslog",
-      "message": "Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "message": "Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "pid": "8421",
       "priority": "",
       "program": "sshd",
-      "sshd_client_ip": "182.254.164.34",
+      "sshd_client_ip": "1.1.1.1",
       "sshd_invalid_user": "test_ftp",
       "sshd_port": "38140",
       "sshd_protocol": "ssh2",
@@ -539,7 +539,7 @@
      "Meta": {
       "log_type": "ssh_failed-auth",
       "service": "ssh",
-      "source_ip": "182.254.164.34",
+      "source_ip": "1.1.1.1",
       "target_user": "test_ftp"
      }
     },
@@ -547,7 +547,7 @@
      "ExpectMode": 1,
      "Stage": "s02-enrich",
      "Line": {
-      "Raw": "Nov 10 15:01:29 alib sshd[8421]: Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "Raw": "Nov 10 15:01:29 host sshd[8421]: Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "Src": "./tests/bucket/ssh/auth.log",
       "Time": "0001-01-01T00:00:00Z",
       "Labels": {
@@ -558,11 +558,11 @@
      "Parsed": {
       "facility": "",
       "logsource": "syslog",
-      "message": "Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "message": "Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "pid": "8421",
       "priority": "",
       "program": "sshd",
-      "sshd_client_ip": "182.254.164.34",
+      "sshd_client_ip": "1.1.1.1",
       "sshd_invalid_user": "test_ftp",
       "sshd_port": "38140",
       "sshd_protocol": "ssh2",
@@ -570,28 +570,28 @@
       "timestamp8601": ""
      },
      "Enriched": {
-      "ASNNumber": "45090",
-      "ASNOrg": "Shenzhen Tencent Computer Systems Company Limited",
+      "ASNNumber": "13335",
+      "ASNOrg": "Cloudflare Inc",
       "IsInEU": "false",
-      "IsoCode": "CN",
-      "Latitude": "39.928900",
-      "Longitude": "116.388300",
+      "IsoCode": "AU",
+      "Latitude": "-37.700000",
+      "Longitude": "145.183300",
       "MarshaledTime": "2020-11-10T15:01:29Z",
-      "SourceRange": "182.254.0.0/16"
+      "SourceRange": "1.1.1.0/24"
      },
      "Alert": {},
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "Nov 10 15:01:29",
      "MarshaledTime": "2020-11-10T15:01:29Z",
      "Meta": {
-      "ASNNumber": "45090",
-      "ASNOrg": "Shenzhen Tencent Computer Systems Company Limited",
+      "ASNNumber": "13335",
+      "ASNOrg": "Cloudflare Inc",
       "IsInEU": "false",
-      "IsoCode": "CN",
-      "SourceRange": "182.254.0.0/16",
+      "IsoCode": "AU",
+      "SourceRange": "1.1.1.0/24",
       "log_type": "ssh_failed-auth",
       "service": "ssh",
-      "source_ip": "182.254.164.34",
+      "source_ip": "1.1.1.1",
       "target_user": "test_ftp"
      }
     },
@@ -599,7 +599,7 @@
      "ExpectMode": 1,
      "Stage": "s02-enrich",
      "Line": {
-      "Raw": "Nov 10 15:01:29 alib sshd[8421]: Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "Raw": "Nov 10 15:01:29 host sshd[8421]: Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "Src": "./tests/bucket/ssh/auth.log",
       "Time": "0001-01-01T00:00:00Z",
       "Labels": {
@@ -610,11 +610,11 @@
      "Parsed": {
       "facility": "",
       "logsource": "syslog",
-      "message": "Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "message": "Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "pid": "8421",
       "priority": "",
       "program": "sshd",
-      "sshd_client_ip": "182.254.164.34",
+      "sshd_client_ip": "1.1.1.1",
       "sshd_invalid_user": "test_ftp",
       "sshd_port": "38140",
       "sshd_protocol": "ssh2",
@@ -622,28 +622,28 @@
       "timestamp8601": ""
      },
      "Enriched": {
-      "ASNNumber": "45090",
-      "ASNOrg": "Shenzhen Tencent Computer Systems Company Limited",
+      "ASNNumber": "13335",
+      "ASNOrg": "Cloudflare Inc",
       "IsInEU": "false",
-      "IsoCode": "CN",
-      "Latitude": "39.928900",
-      "Longitude": "116.388300",
+      "IsoCode": "AU",
+      "Latitude": "-37.700000",
+      "Longitude": "145.183300",
       "MarshaledTime": "2020-11-10T15:01:29Z",
-      "SourceRange": "182.254.0.0/16"
+      "SourceRange": "1.1.1.0/24"
      },
      "Alert": {},
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "Nov 10 15:01:29",
      "MarshaledTime": "2020-11-10T15:01:29Z",
      "Meta": {
-      "ASNNumber": "45090",
-      "ASNOrg": "Shenzhen Tencent Computer Systems Company Limited",
+      "ASNNumber": "13335",
+      "ASNOrg": "Cloudflare Inc",
       "IsInEU": "false",
-      "IsoCode": "CN",
-      "SourceRange": "182.254.0.0/16",
+      "IsoCode": "AU",
+      "SourceRange": "1.1.1.0/24",
       "log_type": "ssh_failed-auth",
       "service": "ssh",
-      "source_ip": "182.254.164.34",
+      "source_ip": "1.1.1.1",
       "target_user": "test_ftp"
      }
     }
@@ -651,14 +651,14 @@
   }
  },
  {
-  "Line": "Nov 10 15:01:29 alib sshd[8421]: Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+  "Line": "Nov 10 15:01:29 host sshd[8421]: Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
   "ParserResults": {
    "s00-raw": {
     "crowdsecurity/syslog-logs": {
      "ExpectMode": 1,
      "Stage": "s01-parse",
      "Line": {
-      "Raw": "Nov 10 15:01:29 alib sshd[8421]: Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "Raw": "Nov 10 15:01:29 host sshd[8421]: Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "Src": "./tests/bucket/ssh/auth.log",
       "Time": "0001-01-01T00:00:00Z",
       "Labels": {
@@ -669,7 +669,7 @@
      "Parsed": {
       "facility": "",
       "logsource": "syslog",
-      "message": "Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "message": "Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "pid": "8421",
       "priority": "",
       "program": "sshd",
@@ -686,7 +686,7 @@
      "ExpectMode": 1,
      "Stage": "s02-enrich",
      "Line": {
-      "Raw": "Nov 10 15:01:29 alib sshd[8421]: Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "Raw": "Nov 10 15:01:29 host sshd[8421]: Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "Src": "./tests/bucket/ssh/auth.log",
       "Time": "0001-01-01T00:00:00Z",
       "Labels": {
@@ -697,11 +697,11 @@
      "Parsed": {
       "facility": "",
       "logsource": "syslog",
-      "message": "Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "message": "Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "pid": "8421",
       "priority": "",
       "program": "sshd",
-      "sshd_client_ip": "182.254.164.34",
+      "sshd_client_ip": "1.1.1.1",
       "sshd_invalid_user": "test_ftp",
       "sshd_port": "38140",
       "sshd_protocol": "ssh2",
@@ -714,7 +714,7 @@
      "Meta": {
       "log_type": "ssh_failed-auth",
       "service": "ssh",
-      "source_ip": "182.254.164.34",
+      "source_ip": "1.1.1.1",
       "target_user": "test_ftp"
      }
     }
@@ -724,7 +724,7 @@
      "ExpectMode": 1,
      "Stage": "s02-enrich",
      "Line": {
-      "Raw": "Nov 10 15:01:29 alib sshd[8421]: Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "Raw": "Nov 10 15:01:29 host sshd[8421]: Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "Src": "./tests/bucket/ssh/auth.log",
       "Time": "0001-01-01T00:00:00Z",
       "Labels": {
@@ -735,11 +735,11 @@
      "Parsed": {
       "facility": "",
       "logsource": "syslog",
-      "message": "Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "message": "Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "pid": "8421",
       "priority": "",
       "program": "sshd",
-      "sshd_client_ip": "182.254.164.34",
+      "sshd_client_ip": "1.1.1.1",
       "sshd_invalid_user": "test_ftp",
       "sshd_port": "38140",
       "sshd_protocol": "ssh2",
@@ -756,7 +756,7 @@
      "Meta": {
       "log_type": "ssh_failed-auth",
       "service": "ssh",
-      "source_ip": "182.254.164.34",
+      "source_ip": "1.1.1.1",
       "target_user": "test_ftp"
      }
     },
@@ -764,7 +764,7 @@
      "ExpectMode": 1,
      "Stage": "s02-enrich",
      "Line": {
-      "Raw": "Nov 10 15:01:29 alib sshd[8421]: Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "Raw": "Nov 10 15:01:29 host sshd[8421]: Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "Src": "./tests/bucket/ssh/auth.log",
       "Time": "0001-01-01T00:00:00Z",
       "Labels": {
@@ -775,11 +775,11 @@
      "Parsed": {
       "facility": "",
       "logsource": "syslog",
-      "message": "Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "message": "Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "pid": "8421",
       "priority": "",
       "program": "sshd",
-      "sshd_client_ip": "182.254.164.34",
+      "sshd_client_ip": "1.1.1.1",
       "sshd_invalid_user": "test_ftp",
       "sshd_port": "38140",
       "sshd_protocol": "ssh2",
@@ -787,28 +787,28 @@
       "timestamp8601": ""
      },
      "Enriched": {
-      "ASNNumber": "45090",
-      "ASNOrg": "Shenzhen Tencent Computer Systems Company Limited",
+      "ASNNumber": "13335",
+      "ASNOrg": "Cloudflare Inc",
       "IsInEU": "false",
-      "IsoCode": "CN",
-      "Latitude": "39.928900",
-      "Longitude": "116.388300",
+      "IsoCode": "AU",
+      "Latitude": "-37.700000",
+      "Longitude": "145.183300",
       "MarshaledTime": "2020-11-10T15:01:29Z",
-      "SourceRange": "182.254.0.0/16"
+      "SourceRange": "1.1.1.0/24"
      },
      "Alert": {},
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "Nov 10 15:01:29",
      "MarshaledTime": "2020-11-10T15:01:29Z",
      "Meta": {
-      "ASNNumber": "45090",
-      "ASNOrg": "Shenzhen Tencent Computer Systems Company Limited",
+      "ASNNumber": "13335",
+      "ASNOrg": "Cloudflare Inc",
       "IsInEU": "false",
-      "IsoCode": "CN",
-      "SourceRange": "182.254.0.0/16",
+      "IsoCode": "AU",
+      "SourceRange": "1.1.1.0/24",
       "log_type": "ssh_failed-auth",
       "service": "ssh",
-      "source_ip": "182.254.164.34",
+      "source_ip": "1.1.1.1",
       "target_user": "test_ftp"
      }
     },
@@ -816,7 +816,7 @@
      "ExpectMode": 1,
      "Stage": "s02-enrich",
      "Line": {
-      "Raw": "Nov 10 15:01:29 alib sshd[8421]: Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "Raw": "Nov 10 15:01:29 host sshd[8421]: Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "Src": "./tests/bucket/ssh/auth.log",
       "Time": "0001-01-01T00:00:00Z",
       "Labels": {
@@ -827,11 +827,11 @@
      "Parsed": {
       "facility": "",
       "logsource": "syslog",
-      "message": "Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "message": "Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "pid": "8421",
       "priority": "",
       "program": "sshd",
-      "sshd_client_ip": "182.254.164.34",
+      "sshd_client_ip": "1.1.1.1",
       "sshd_invalid_user": "test_ftp",
       "sshd_port": "38140",
       "sshd_protocol": "ssh2",
@@ -839,28 +839,28 @@
       "timestamp8601": ""
      },
      "Enriched": {
-      "ASNNumber": "45090",
-      "ASNOrg": "Shenzhen Tencent Computer Systems Company Limited",
+      "ASNNumber": "13335",
+      "ASNOrg": "Cloudflare Inc",
       "IsInEU": "false",
-      "IsoCode": "CN",
-      "Latitude": "39.928900",
-      "Longitude": "116.388300",
+      "IsoCode": "AU",
+      "Latitude": "-37.700000",
+      "Longitude": "145.183300",
       "MarshaledTime": "2020-11-10T15:01:29Z",
-      "SourceRange": "182.254.0.0/16"
+      "SourceRange": "1.1.1.0/24"
      },
      "Alert": {},
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "Nov 10 15:01:29",
      "MarshaledTime": "2020-11-10T15:01:29Z",
      "Meta": {
-      "ASNNumber": "45090",
-      "ASNOrg": "Shenzhen Tencent Computer Systems Company Limited",
+      "ASNNumber": "13335",
+      "ASNOrg": "Cloudflare Inc",
       "IsInEU": "false",
-      "IsoCode": "CN",
-      "SourceRange": "182.254.0.0/16",
+      "IsoCode": "AU",
+      "SourceRange": "1.1.1.0/24",
       "log_type": "ssh_failed-auth",
       "service": "ssh",
-      "source_ip": "182.254.164.34",
+      "source_ip": "1.1.1.1",
       "target_user": "test_ftp"
      }
     }
@@ -868,14 +868,14 @@
   }
  },
  {
-  "Line": "Nov 10 15:01:29 alib sshd[8421]: Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+  "Line": "Nov 10 15:01:29 host sshd[8421]: Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
   "ParserResults": {
    "s00-raw": {
     "crowdsecurity/syslog-logs": {
      "ExpectMode": 1,
      "Stage": "s01-parse",
      "Line": {
-      "Raw": "Nov 10 15:01:29 alib sshd[8421]: Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "Raw": "Nov 10 15:01:29 host sshd[8421]: Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "Src": "./tests/bucket/ssh/auth.log",
       "Time": "0001-01-01T00:00:00Z",
       "Labels": {
@@ -886,7 +886,7 @@
      "Parsed": {
       "facility": "",
       "logsource": "syslog",
-      "message": "Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "message": "Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "pid": "8421",
       "priority": "",
       "program": "sshd",
@@ -903,7 +903,7 @@
      "ExpectMode": 1,
      "Stage": "s02-enrich",
      "Line": {
-      "Raw": "Nov 10 15:01:29 alib sshd[8421]: Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "Raw": "Nov 10 15:01:29 host sshd[8421]: Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "Src": "./tests/bucket/ssh/auth.log",
       "Time": "0001-01-01T00:00:00Z",
       "Labels": {
@@ -914,11 +914,11 @@
      "Parsed": {
       "facility": "",
       "logsource": "syslog",
-      "message": "Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "message": "Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "pid": "8421",
       "priority": "",
       "program": "sshd",
-      "sshd_client_ip": "182.254.164.34",
+      "sshd_client_ip": "1.1.1.1",
       "sshd_invalid_user": "test_ftp",
       "sshd_port": "38140",
       "sshd_protocol": "ssh2",
@@ -931,7 +931,7 @@
      "Meta": {
       "log_type": "ssh_failed-auth",
       "service": "ssh",
-      "source_ip": "182.254.164.34",
+      "source_ip": "1.1.1.1",
       "target_user": "test_ftp"
      }
     }
@@ -941,7 +941,7 @@
      "ExpectMode": 1,
      "Stage": "s02-enrich",
      "Line": {
-      "Raw": "Nov 10 15:01:29 alib sshd[8421]: Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "Raw": "Nov 10 15:01:29 host sshd[8421]: Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "Src": "./tests/bucket/ssh/auth.log",
       "Time": "0001-01-01T00:00:00Z",
       "Labels": {
@@ -952,11 +952,11 @@
      "Parsed": {
       "facility": "",
       "logsource": "syslog",
-      "message": "Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "message": "Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "pid": "8421",
       "priority": "",
       "program": "sshd",
-      "sshd_client_ip": "182.254.164.34",
+      "sshd_client_ip": "1.1.1.1",
       "sshd_invalid_user": "test_ftp",
       "sshd_port": "38140",
       "sshd_protocol": "ssh2",
@@ -973,7 +973,7 @@
      "Meta": {
       "log_type": "ssh_failed-auth",
       "service": "ssh",
-      "source_ip": "182.254.164.34",
+      "source_ip": "1.1.1.1",
       "target_user": "test_ftp"
      }
     },
@@ -981,7 +981,7 @@
      "ExpectMode": 1,
      "Stage": "s02-enrich",
      "Line": {
-      "Raw": "Nov 10 15:01:29 alib sshd[8421]: Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "Raw": "Nov 10 15:01:29 host sshd[8421]: Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "Src": "./tests/bucket/ssh/auth.log",
       "Time": "0001-01-01T00:00:00Z",
       "Labels": {
@@ -992,11 +992,11 @@
      "Parsed": {
       "facility": "",
       "logsource": "syslog",
-      "message": "Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "message": "Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "pid": "8421",
       "priority": "",
       "program": "sshd",
-      "sshd_client_ip": "182.254.164.34",
+      "sshd_client_ip": "1.1.1.1",
       "sshd_invalid_user": "test_ftp",
       "sshd_port": "38140",
       "sshd_protocol": "ssh2",
@@ -1004,28 +1004,28 @@
       "timestamp8601": ""
      },
      "Enriched": {
-      "ASNNumber": "45090",
-      "ASNOrg": "Shenzhen Tencent Computer Systems Company Limited",
+      "ASNNumber": "13335",
+      "ASNOrg": "Cloudflare Inc",
       "IsInEU": "false",
-      "IsoCode": "CN",
-      "Latitude": "39.928900",
-      "Longitude": "116.388300",
+      "IsoCode": "AU",
+      "Latitude": "-37.700000",
+      "Longitude": "145.183300",
       "MarshaledTime": "2020-11-10T15:01:29Z",
-      "SourceRange": "182.254.0.0/16"
+      "SourceRange": "1.1.1.0/24"
      },
      "Alert": {},
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "Nov 10 15:01:29",
      "MarshaledTime": "2020-11-10T15:01:29Z",
      "Meta": {
-      "ASNNumber": "45090",
-      "ASNOrg": "Shenzhen Tencent Computer Systems Company Limited",
+      "ASNNumber": "13335",
+      "ASNOrg": "Cloudflare Inc",
       "IsInEU": "false",
-      "IsoCode": "CN",
-      "SourceRange": "182.254.0.0/16",
+      "IsoCode": "AU",
+      "SourceRange": "1.1.1.0/24",
       "log_type": "ssh_failed-auth",
       "service": "ssh",
-      "source_ip": "182.254.164.34",
+      "source_ip": "1.1.1.1",
       "target_user": "test_ftp"
      }
     },
@@ -1033,7 +1033,7 @@
      "ExpectMode": 1,
      "Stage": "s02-enrich",
      "Line": {
-      "Raw": "Nov 10 15:01:29 alib sshd[8421]: Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "Raw": "Nov 10 15:01:29 host sshd[8421]: Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "Src": "./tests/bucket/ssh/auth.log",
       "Time": "0001-01-01T00:00:00Z",
       "Labels": {
@@ -1044,11 +1044,11 @@
      "Parsed": {
       "facility": "",
       "logsource": "syslog",
-      "message": "Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "message": "Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "pid": "8421",
       "priority": "",
       "program": "sshd",
-      "sshd_client_ip": "182.254.164.34",
+      "sshd_client_ip": "1.1.1.1",
       "sshd_invalid_user": "test_ftp",
       "sshd_port": "38140",
       "sshd_protocol": "ssh2",
@@ -1056,28 +1056,28 @@
       "timestamp8601": ""
      },
      "Enriched": {
-      "ASNNumber": "45090",
-      "ASNOrg": "Shenzhen Tencent Computer Systems Company Limited",
+      "ASNNumber": "13335",
+      "ASNOrg": "Cloudflare Inc",
       "IsInEU": "false",
-      "IsoCode": "CN",
-      "Latitude": "39.928900",
-      "Longitude": "116.388300",
+      "IsoCode": "AU",
+      "Latitude": "-37.700000",
+      "Longitude": "145.183300",
       "MarshaledTime": "2020-11-10T15:01:29Z",
-      "SourceRange": "182.254.0.0/16"
+      "SourceRange": "1.1.1.0/24"
      },
      "Alert": {},
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "Nov 10 15:01:29",
      "MarshaledTime": "2020-11-10T15:01:29Z",
      "Meta": {
-      "ASNNumber": "45090",
-      "ASNOrg": "Shenzhen Tencent Computer Systems Company Limited",
+      "ASNNumber": "13335",
+      "ASNOrg": "Cloudflare Inc",
       "IsInEU": "false",
-      "IsoCode": "CN",
-      "SourceRange": "182.254.0.0/16",
+      "IsoCode": "AU",
+      "SourceRange": "1.1.1.0/24",
       "log_type": "ssh_failed-auth",
       "service": "ssh",
-      "source_ip": "182.254.164.34",
+      "source_ip": "1.1.1.1",
       "target_user": "test_ftp"
      }
     }
@@ -1085,14 +1085,14 @@
   }
  },
  {
-  "Line": "Nov 10 15:01:29 alib sshd[8421]: Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+  "Line": "Nov 10 15:01:29 host sshd[8421]: Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
   "ParserResults": {
    "s00-raw": {
     "crowdsecurity/syslog-logs": {
      "ExpectMode": 1,
      "Stage": "s01-parse",
      "Line": {
-      "Raw": "Nov 10 15:01:29 alib sshd[8421]: Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "Raw": "Nov 10 15:01:29 host sshd[8421]: Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "Src": "./tests/bucket/ssh/auth.log",
       "Time": "0001-01-01T00:00:00Z",
       "Labels": {
@@ -1103,7 +1103,7 @@
      "Parsed": {
       "facility": "",
       "logsource": "syslog",
-      "message": "Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "message": "Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "pid": "8421",
       "priority": "",
       "program": "sshd",
@@ -1120,7 +1120,7 @@
      "ExpectMode": 1,
      "Stage": "s02-enrich",
      "Line": {
-      "Raw": "Nov 10 15:01:29 alib sshd[8421]: Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "Raw": "Nov 10 15:01:29 host sshd[8421]: Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "Src": "./tests/bucket/ssh/auth.log",
       "Time": "0001-01-01T00:00:00Z",
       "Labels": {
@@ -1131,11 +1131,11 @@
      "Parsed": {
       "facility": "",
       "logsource": "syslog",
-      "message": "Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "message": "Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "pid": "8421",
       "priority": "",
       "program": "sshd",
-      "sshd_client_ip": "182.254.164.34",
+      "sshd_client_ip": "1.1.1.1",
       "sshd_invalid_user": "test_ftp",
       "sshd_port": "38140",
       "sshd_protocol": "ssh2",
@@ -1148,7 +1148,7 @@
      "Meta": {
       "log_type": "ssh_failed-auth",
       "service": "ssh",
-      "source_ip": "182.254.164.34",
+      "source_ip": "1.1.1.1",
       "target_user": "test_ftp"
      }
     }
@@ -1158,7 +1158,7 @@
      "ExpectMode": 1,
      "Stage": "s02-enrich",
      "Line": {
-      "Raw": "Nov 10 15:01:29 alib sshd[8421]: Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "Raw": "Nov 10 15:01:29 host sshd[8421]: Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "Src": "./tests/bucket/ssh/auth.log",
       "Time": "0001-01-01T00:00:00Z",
       "Labels": {
@@ -1169,11 +1169,11 @@
      "Parsed": {
       "facility": "",
       "logsource": "syslog",
-      "message": "Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "message": "Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "pid": "8421",
       "priority": "",
       "program": "sshd",
-      "sshd_client_ip": "182.254.164.34",
+      "sshd_client_ip": "1.1.1.1",
       "sshd_invalid_user": "test_ftp",
       "sshd_port": "38140",
       "sshd_protocol": "ssh2",
@@ -1190,7 +1190,7 @@
      "Meta": {
       "log_type": "ssh_failed-auth",
       "service": "ssh",
-      "source_ip": "182.254.164.34",
+      "source_ip": "1.1.1.1",
       "target_user": "test_ftp"
      }
     },
@@ -1198,7 +1198,7 @@
      "ExpectMode": 1,
      "Stage": "s02-enrich",
      "Line": {
-      "Raw": "Nov 10 15:01:29 alib sshd[8421]: Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "Raw": "Nov 10 15:01:29 host sshd[8421]: Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "Src": "./tests/bucket/ssh/auth.log",
       "Time": "0001-01-01T00:00:00Z",
       "Labels": {
@@ -1209,11 +1209,11 @@
      "Parsed": {
       "facility": "",
       "logsource": "syslog",
-      "message": "Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "message": "Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "pid": "8421",
       "priority": "",
       "program": "sshd",
-      "sshd_client_ip": "182.254.164.34",
+      "sshd_client_ip": "1.1.1.1",
       "sshd_invalid_user": "test_ftp",
       "sshd_port": "38140",
       "sshd_protocol": "ssh2",
@@ -1221,28 +1221,28 @@
       "timestamp8601": ""
      },
      "Enriched": {
-      "ASNNumber": "45090",
-      "ASNOrg": "Shenzhen Tencent Computer Systems Company Limited",
+      "ASNNumber": "13335",
+      "ASNOrg": "Cloudflare Inc",
       "IsInEU": "false",
-      "IsoCode": "CN",
-      "Latitude": "39.928900",
-      "Longitude": "116.388300",
+      "IsoCode": "AU",
+      "Latitude": "-37.700000",
+      "Longitude": "145.183300",
       "MarshaledTime": "2020-11-10T15:01:29Z",
-      "SourceRange": "182.254.0.0/16"
+      "SourceRange": "1.1.1.0/24"
      },
      "Alert": {},
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "Nov 10 15:01:29",
      "MarshaledTime": "2020-11-10T15:01:29Z",
      "Meta": {
-      "ASNNumber": "45090",
-      "ASNOrg": "Shenzhen Tencent Computer Systems Company Limited",
+      "ASNNumber": "13335",
+      "ASNOrg": "Cloudflare Inc",
       "IsInEU": "false",
-      "IsoCode": "CN",
-      "SourceRange": "182.254.0.0/16",
+      "IsoCode": "AU",
+      "SourceRange": "1.1.1.0/24",
       "log_type": "ssh_failed-auth",
       "service": "ssh",
-      "source_ip": "182.254.164.34",
+      "source_ip": "1.1.1.1",
       "target_user": "test_ftp"
      }
     },
@@ -1250,7 +1250,7 @@
      "ExpectMode": 1,
      "Stage": "s02-enrich",
      "Line": {
-      "Raw": "Nov 10 15:01:29 alib sshd[8421]: Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "Raw": "Nov 10 15:01:29 host sshd[8421]: Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "Src": "./tests/bucket/ssh/auth.log",
       "Time": "0001-01-01T00:00:00Z",
       "Labels": {
@@ -1261,11 +1261,11 @@
      "Parsed": {
       "facility": "",
       "logsource": "syslog",
-      "message": "Failed password for invalid user test_ftp from 182.254.164.34 port 38140 ssh2",
+      "message": "Failed password for invalid user test_ftp from 1.1.1.1 port 38140 ssh2",
       "pid": "8421",
       "priority": "",
       "program": "sshd",
-      "sshd_client_ip": "182.254.164.34",
+      "sshd_client_ip": "1.1.1.1",
       "sshd_invalid_user": "test_ftp",
       "sshd_port": "38140",
       "sshd_protocol": "ssh2",
@@ -1273,28 +1273,28 @@
       "timestamp8601": ""
      },
      "Enriched": {
-      "ASNNumber": "45090",
-      "ASNOrg": "Shenzhen Tencent Computer Systems Company Limited",
+      "ASNNumber": "13335",
+      "ASNOrg": "Cloudflare Inc",
       "IsInEU": "false",
-      "IsoCode": "CN",
-      "Latitude": "39.928900",
-      "Longitude": "116.388300",
+      "IsoCode": "AU",
+      "Latitude": "-37.700000",
+      "Longitude": "145.183300",
       "MarshaledTime": "2020-11-10T15:01:29Z",
-      "SourceRange": "182.254.0.0/16"
+      "SourceRange": "1.1.1.0/24"
      },
      "Alert": {},
      "Time": "0001-01-01T00:00:00Z",
      "StrTime": "Nov 10 15:01:29",
      "MarshaledTime": "2020-11-10T15:01:29Z",
      "Meta": {
-      "ASNNumber": "45090",
-      "ASNOrg": "Shenzhen Tencent Computer Systems Company Limited",
+      "ASNNumber": "13335",
+      "ASNOrg": "Cloudflare Inc",
       "IsInEU": "false",
-      "IsoCode": "CN",
-      "SourceRange": "182.254.0.0/16",
+      "IsoCode": "AU",
+      "SourceRange": "1.1.1.0/24",
       "log_type": "ssh_failed-auth",
       "service": "ssh",
-      "source_ip": "182.254.164.34",
+      "source_ip": "1.1.1.1",
       "target_user": "test_ftp"
      }
     }

@@ -53,7 +53,6 @@ type ConfigTest struct {
 type LineParseResult struct {
 	Line          string
 	ParserResults map[string]map[string]types.Event
-	bucketsInput  []types.Event
 }
 
 type LineParsePoResult struct {
@@ -108,13 +107,13 @@ func main() {
 		bucketInputFile:  "bucket_input.yaml",
 		bucketResultFile: "bucket_result.json",
 		poInputFile:      "po_input.yaml",
-		poResultFile:     "postoverflow_result.yaml",
+		poResultFile:     "postoverflow_result.json",
 	}
 	fcontent, err := ioutil.ReadFile(path)
 	if err != nil {
 		log.Fatalf("failed to read config file: %s", err)
 	}
-	err = yaml.UnmarshalStrict(fcontent, &localConfig)
+	err = yaml.Unmarshal(fcontent, &localConfig)
 	if err != nil {
 		log.Fatalf("failed unmarshaling config: %s", err)
 	}
@@ -165,4 +164,13 @@ func main() {
 			log.Errorf("Error: %s", err)
 		}
 	}
+
+	if localConfig.Postoverflow {
+		err = testPwfl(flags.TargetDir, csParsers, localConfig)
+		if err != nil {
+			log.Errorf("Error: %s", err)
+		}
+	}
+	log.Infof("tests are finished.")
+
 }

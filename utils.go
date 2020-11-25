@@ -79,25 +79,25 @@ func marshalAndStore(in interface{}, filename string) error {
 		err error
 	)
 	if out, err = yaml.Marshal(in); err != nil {
-		return fmt.Errorf("Marshal %s error: %s, filename", err)
+		return fmt.Errorf("Marshal %s error: %s, filename", filename, err)
 	}
 	if err = ioutil.WriteFile(filename, out, 0644); err != nil {
-		return fmt.Errorf("Write file %s error: %s, filename", err)
+		return fmt.Errorf("Write file %s error: %s", filename, err)
 	}
 	return nil
 }
 
-func retrieveAndUnmarshal(filename string) (interface{}, error) {
+// be cautious to pass a pointer in the interface
+func retrieveAndUnmarshal(filename string, b interface{}) error {
 	var (
-		out interface{}
 		buf []byte
 		err error
 	)
 	if buf, err = ioutil.ReadFile(filename); err != nil {
-		return nil, fmt.Errorf("Read file %s error: %s", filename, err)
+		return fmt.Errorf("Read file %s error: %s", filename, err)
 	}
-	if err = yaml.Unmarshal(buf, &out); err != nil {
-		return nil, fmt.Errorf("Unmarshal file %s error: %s", filename, err)
+	if err = yaml.Unmarshal(buf, b); err != nil {
+		return fmt.Errorf("Unmarshal file %s error: %s", filename, err)
 	}
-	return out, nil
+	return nil
 }

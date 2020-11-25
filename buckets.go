@@ -117,19 +117,16 @@ func testBuckets(target_dir string, parsers *parser.Parsers, cConfig *csconfig.G
 		bucketsOutput []types.Event = []types.Event{}
 		bucketsInput  []types.Event = []types.Event{}
 		err           error
-		ok            bool
-		tmp           interface{}
 	)
 
-	if tmp, err = retrieveAndUnmarshal(localConfig.bucketInputFile); err != nil {
+	// Retrieve value from yaml
+	// And once again we would have done better with generics...
+	if err = retrieveAndUnmarshal(target_dir+"/"+localConfig.bucketInputFile, &bucketsInput); err != nil {
 		return fmt.Errorf("Error unmarshaling %s: %s", localConfig.bucketInputFile, err)
-	}
-	if bucketsInput, ok = tmp.([]types.Event); !ok {
-		return fmt.Errorf("Error unmarshaling %s: output is not of expected type", localConfig.bucketInputFile)
 	}
 
 	overflow := 0
-	unparsedOverflow := 0
+	//	unparsedOverflow := 0
 	potomb.Go(func() error {
 		log.Printf("processing loop over postoveflow")
 		for {
@@ -138,25 +135,23 @@ func testBuckets(target_dir string, parsers *parser.Parsers, cConfig *csconfig.G
 				if !ok {
 					return nil
 				}
-				log.Printf("one overflow")
+				log.Printf("An overflow happened")
 				overflow++
 				bucketsOutput = append(bucketsOutput, sortAlerts(event))
-				parsed_ok, err := parsePoMatchLine(event, parsers.Povfwctx, parsers.Povfwnodes)
-				if !parsed_ok {
-					if err != nil {
-						log.Warningf("parser error : %s", err)
-					}
-					unparsedOverflow++
-				}
+				//				parsed_ok, err := parsePoMatchLine(event, parsers.Povfwctx, parsers.Povfwnodes)
+				// if !parsed_ok {
+				// 	if err != nil {
+				// 		log.Warningf("parser error : %s", err)
+				// 	}
+				// 	unparsedOverflow++
+				// }
 			case <-potomb.Dying():
 				return nil
 			}
 
 		}
-		return nil
 	})
 
-	log.Infof("Pouring buckets")
 	for index, parsed := range bucketsInput {
 		log.Printf("Pouring item %d", index+1)
 		_, err = leaky.PourItemToHolders(parsed, holders, buckets)
@@ -179,10 +174,9 @@ func testBuckets(target_dir string, parsers *parser.Parsers, cConfig *csconfig.G
 		log.Warningf("acquisition returned error : %s", err)
 	}
 
-	log.Printf("Testing postoverflows")
-
-	checkResultPo(target_dir)
-	log.Infof("tests are finished.")
+	if err := marshalAndStore(bucketsOutput, target_dir+"/"+localConfig.poInputFile); err != nil {
+		return fmt.Errorf("marshaling failed: %s", err)
+	}
 
 	return nil
 }
