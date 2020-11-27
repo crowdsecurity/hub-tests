@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"io/ioutil"
+	"os"
 
 	"github.com/crowdsecurity/crowdsec/pkg/csconfig"
 	"github.com/crowdsecurity/crowdsec/pkg/cwhub"
@@ -89,6 +90,7 @@ func main() {
 		index       map[string]map[string]cwhub.Item
 	)
 	log.SetLevel(log.InfoLevel)
+	log.SetOutput(os.Stdout)
 
 	log.Infof("built against %s", cwversion.VersionStr())
 	flags = &Flags{}
