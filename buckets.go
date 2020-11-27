@@ -8,8 +8,8 @@ import (
 	"time"
 
 	"github.com/crowdsecurity/crowdsec/pkg/csconfig"
+	"github.com/crowdsecurity/crowdsec/pkg/cwhub"
 	leaky "github.com/crowdsecurity/crowdsec/pkg/leakybucket"
-	"github.com/crowdsecurity/crowdsec/pkg/parser"
 	"github.com/crowdsecurity/crowdsec/pkg/types"
 	"github.com/google/go-cmp/cmp"
 	log "github.com/sirupsen/logrus"
@@ -32,6 +32,18 @@ func sortAlerts(event types.Event) types.Event {
 		}
 	}
 	return event
+}
+
+func newBuckets(index map[string]map[string]cwhub.Item, local ConfigTest) []string {
+	var (
+		files []string = []string{}
+	)
+	for _, itemType := range []string{cwhub.SCENARIOS} {
+		for _, hubParserName := range local.Configurations[itemType] {
+			files = append(files, index[itemType][hubParserName].RemotePath)
+		}
+	}
+	return files
 }
 
 func testBucketsOutput(target_dir string, AllBucketsResult []types.Event) (bool, error) {
@@ -108,7 +120,7 @@ func testBucketsOutput(target_dir string, AllBucketsResult []types.Event) (bool,
 
 }
 
-func testBuckets(target_dir string, parsers *parser.Parsers, cConfig *csconfig.GlobalConfig, localConfig ConfigTest) error {
+func testBuckets(target_dir string, cConfig *csconfig.GlobalConfig, localConfig ConfigTest) error {
 	var (
 		potomb        tomb.Tomb
 		bucketsOutput []types.Event = []types.Event{}
