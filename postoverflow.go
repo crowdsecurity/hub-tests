@@ -23,8 +23,6 @@ func parsePoMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parser
 		return false, fmt.Errorf("event %+v is not an overflow", event)
 	}
 
-	log.Printf("pouet: %v", parser.ParseDump)
-
 	parsed, err = parser.Parse(*parserCTX, event, parserNodes)
 	if err != nil {
 		return false, fmt.Errorf("failed parsing : %v\n", err)

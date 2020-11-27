@@ -19,7 +19,7 @@ import (
 
 // Return new parsers
 // nodes and povfwnodes are already initialized in parser.LoadStages
-func newParsers() *parser.Parsers {
+func newParsers(index map[string]map[string]cwhub.Item, local ConfigTest) *parser.Parsers {
 	parsers := &parser.Parsers{
 		Ctx:             &parser.UnixParserCtx{},
 		Povfwctx:        &parser.UnixParserCtx{},
@@ -27,18 +27,19 @@ func newParsers() *parser.Parsers {
 		PovfwStageFiles: make([]parser.Stagefile, 0),
 	}
 	for _, itemType := range []string{cwhub.PARSERS, cwhub.PARSERS_OVFLW} {
-		for _, hubParserItem := range cwhub.GetItemMap(itemType) {
-			if hubParserItem.Installed {
-				stagefile := parser.Stagefile{
-					Filename: hubParserItem.LocalPath,
-					Stage:    hubParserItem.Stage,
-				}
-				if itemType == cwhub.PARSERS {
-					parsers.StageFiles = append(parsers.StageFiles, stagefile)
-				}
-				if itemType == cwhub.PARSERS_OVFLW {
-					parsers.PovfwStageFiles = append(parsers.PovfwStageFiles, stagefile)
-				}
+		for _, hubParserName := range local.Configurations[itemType] {
+			hubParserItem := index[itemType][hubParserName]
+			hubParserItem.LocalPath = hubParserItem.RemotePath
+
+			stagefile := parser.Stagefile{
+				Filename: hubParserItem.LocalPath,
+				Stage:    hubParserItem.Stage,
+			}
+			if itemType == cwhub.PARSERS {
+				parsers.StageFiles = append(parsers.StageFiles, stagefile)
+			}
+			if itemType == cwhub.PARSERS_OVFLW {
+				parsers.PovfwStageFiles = append(parsers.PovfwStageFiles, stagefile)
 			}
 		}
 	}
