@@ -136,8 +136,9 @@ func main() {
 	//TODO move this to a specific function
 	cConfig.API = &csconfig.APICfg{}
 	cConfig.ConfigPaths = &csconfig.ConfigurationPaths{
-		ConfigDir: "./config",
-		DataDir:   "./data",
+		ConfigDir:    "./config",
+		DataDir:      "./data",
+		HubIndexFile: "./",
 	}
 	cConfig.Crowdsec = &csconfig.CrowdsecServiceCfg{
 		AcquisitionFilePath: flags.TargetDir + "/acquis.yaml",
