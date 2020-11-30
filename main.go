@@ -109,9 +109,6 @@ func main() {
 	//fill localConfig with default
 	path := flags.TargetDir + "/config.yaml"
 	localConfig = ConfigTest{
-		Parse:            false,
-		Bucket:           false,
-		Postoverflow:     false,
 		logFile:          "acquis.log",
 		ParseResultFile:  "parser_result.json",
 		bucketInputFile:  "bucket_input.yaml",
@@ -164,21 +161,21 @@ func main() {
 	buckets = leaky.NewBuckets()
 	holders, outputEventChan, err = leaky.LoadBuckets(cConfig.Crowdsec, files)
 
-	if localConfig.Parse {
+	if _, ok := localConfig.Configurations["parsers"]; ok {
 		err := testParser(flags.TargetDir, csParsers, cConfig, localConfig)
 		if err != nil {
 			log.Errorf("Error: %s", err)
 		}
 	}
 
-	if localConfig.Bucket {
+	if _, ok := localConfig.Configurations["scenarios"]; ok {
 		err = testBuckets(flags.TargetDir, cConfig, localConfig)
 		if err != nil {
 			log.Errorf("Error: %s", err)
 		}
 	}
 
-	if localConfig.Postoverflow {
+	if _, ok := localConfig.Configurations["postoverflows"]; ok {
 		err = testPwfl(flags.TargetDir, csParsers, localConfig)
 		if err != nil {
 			log.Errorf("Error: %s", err)
