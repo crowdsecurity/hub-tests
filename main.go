@@ -138,7 +138,7 @@ func main() {
 	cConfig.ConfigPaths = &csconfig.ConfigurationPaths{
 		ConfigDir:    "./config",
 		DataDir:      "./data",
-		HubIndexFile: "./",
+		HubIndexFile: localConfig.IndexFile,
 	}
 	cConfig.Crowdsec = &csconfig.CrowdsecServiceCfg{
 		AcquisitionFilePath: flags.TargetDir + "/acquis.yaml",
