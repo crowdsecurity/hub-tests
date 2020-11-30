@@ -5,8 +5,10 @@ go 1.13
 require (
 	github.com/crowdsecurity/crowdsec v1.0.0-rc2.0.20201123131434-f440a744faa6
 	github.com/google/go-cmp v0.5.2
+	github.com/jstemmer/go-junit-report v0.9.1 // indirect
 	github.com/mohae/deepcopy v0.0.0-20170929034955-c48cc78d4826 // indirect
 	github.com/oschwald/maxminddb-golang v1.6.0
+	github.com/pkg/errors v0.9.1
 	github.com/sirupsen/logrus v1.7.0
 	golang.org/x/tools v0.0.0-20201111224557-41a3a589386c // indirect
 	golang.org/x/tools/gopls v0.0.0-20201111224557-41a3a589386c // indirect

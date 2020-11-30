@@ -9,10 +9,11 @@ import (
 	"github.com/crowdsecurity/crowdsec/pkg/parser"
 	"github.com/crowdsecurity/crowdsec/pkg/types"
 	"github.com/google/go-cmp/cmp"
+	"github.com/pkg/errors"
 	log "github.com/sirupsen/logrus"
 )
 
-func parsePoMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parserNodes []parser.Node) (bool, error) {
+func parsePoMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parserNodes []parser.Node) error {
 	var (
 		err    error
 		parsed types.Event
@@ -20,12 +21,12 @@ func parsePoMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parser
 	oneResult := LineParsePoResult{}
 
 	if event.Type == types.LOG {
-		return false, fmt.Errorf("event %+v is not an overflow", event)
+		return errors.New(fmt.Sprintf("event %+v is not an overflow", event))
 	}
 
-	parsed, err = parser.Parse(*parserCTX, event, parserNodes)
+	parsed, err = parser.Parse(*parserCTX, event, parserNodes) //truly, parser.Parse never returns any error...
 	if err != nil {
-		return false, fmt.Errorf("failed parsing : %v\n", err)
+		return errors.Wrap(err, "failed parsing : %v\n")
 	}
 
 	//Obviously this is useless
@@ -35,7 +36,7 @@ func parsePoMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parser
 	}
 
 	if !parsed.Process {
-		return false, fmt.Errorf("unparsed line %+v", parsed.Overflow)
+		log.Errorf("Unaparsed line: %+v", parsed.Overflow)
 	}
 
 	parsed = sortAlerts(parsed)
@@ -44,7 +45,7 @@ func parsePoMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parser
 	//we need to clean Line's timestamp
 	oneResult.ParserResults = cleanForMatch(parser.StageParseCache)
 	AllPoResults = append(AllPoResults, oneResult)
-	return true, nil
+	return nil
 }
 
 func testPwfl(target_dir string, parsers *parser.Parsers, localConfig ConfigTest) error {
@@ -58,18 +59,16 @@ func testPwfl(target_dir string, parsers *parser.Parsers, localConfig ConfigTest
 	// Retrieve value from yaml
 	// And once again we would have done better with generics...
 	if err = retrieveAndUnmarshal(target_dir+"/"+localConfig.poInputFile, &poInput); err != nil {
-		return fmt.Errorf("Error unmarshaling %s: %s", localConfig.poInputFile, err)
+		return errors.Wrapf(err, "Error unmarshaling %s", localConfig.poInputFile)
 	}
 
 	unparsedOverflow := 0
 	for _, evt := range poInput {
-		parsed_ok, err := parsePoMatchLine(evt, parsers.Povfwctx, parsers.Povfwnodes)
-		if !parsed_ok {
-			if err != nil {
-				log.Warningf("parser error : %s", err)
-			}
-			unparsedOverflow++
+		err := parsePoMatchLine(evt, parsers.Povfwctx, parsers.Povfwnodes)
+		if err != nil {
+			log.Warningf("parser error : %s", err)
 		}
+		unparsedOverflow++
 	}
 
 	ExpectedPresent := false
@@ -82,7 +81,7 @@ func testPwfl(target_dir string, parsers *parser.Parsers, localConfig ConfigTest
 
 	} else {
 		if err := json.Unmarshal(expected_bytes, &AllPoExpected); err != nil {
-			log.Fatalf("file %s can't be unmarshaled : %s", expectedPoResultsFile, err)
+			return errors.Wrapf(err, "file %s can't be unmarshaled : %s", expectedPoResultsFile)
 		} else {
 			ExpectedPresent = true
 			//			OrigExpectedLen = len(AllPoExpected)
@@ -93,10 +92,10 @@ func testPwfl(target_dir string, parsers *parser.Parsers, localConfig ConfigTest
 		log.Warningf("No expected results loaded, dump.")
 		dump_bytes, err := json.MarshalIndent(AllPoResults, "", " ")
 		if err != nil {
-			log.Fatalf("failed to marshal results : %s", err)
+			errors.Wrap(err, "failed to marshal results")
 		}
 		if err := ioutil.WriteFile(expectedPoResultsFile, dump_bytes, 0644); err != nil {
-			log.Fatalf("failed to dump data to %s : %s", expectedPoResultsFile, err)
+			errors.Wrapf(err, "failed to dump data to %s", expectedPoResultsFile)
 		}
 	} else {
 		if len(AllExpected) > 0 {
@@ -112,16 +111,16 @@ func testPwfl(target_dir string, parsers *parser.Parsers, localConfig ConfigTest
 			log.Printf("Comparing")
 			//			if !cmp.Equal(candidate.Overflow.APIAlerts[0].Source, result.Overflow.APIAlerts[0].Source) {
 			if !cmp.Equal(candidate.Overflow, result.Overflow, opt) {
-				log.Printf("mismatch diff (-want +got) : %s", cmp.Diff(candidate.Overflow.APIAlerts[0].Meta, result.Overflow.APIAlerts[0].Meta, opt))
+				//				log.Printf("mismatch diff (-want +got) : %s", cmp.Diff(candidate.Overflow.APIAlerts[0].Meta, result.Overflow.APIAlerts[0].Meta, opt))
 				continue
 			}
-			log.Printf("Here")
+			log.Printf("We are comparing the results now")
 			if cmp.Equal(candidate, result, opt) {
 				matched = true
 				//we go an exact match
 				AllPoExpected = append(AllPoExpected[:idx], AllPoExpected[idx+1:]...)
 			} else {
-				return fmt.Errorf("mismatch diff (-want +got) : %s", cmp.Diff(candidate, result, opt))
+				return errors.New(fmt.Sprintf("mismatch diff (-want +got) : %s", cmp.Diff(candidate, result, opt)))
 			}
 			break
 		}
@@ -132,12 +131,12 @@ func testPwfl(target_dir string, parsers *parser.Parsers, localConfig ConfigTest
 		log.Errorf("tests failed, writing results to %s", expectedPoResultsFile)
 		dump_bytes, err := json.MarshalIndent(AllResults, "", " ")
 		if err != nil {
-			log.Fatalf("failed to marshal results : %s", err)
+			errors.Wrap(err, "failed to marshal results")
 		}
 		if err := ioutil.WriteFile(expectedPoResultsFile, dump_bytes, 0644); err != nil {
-			log.Fatalf("failed to dump data to %s : %s", expectedPoResultsFile, err)
+			errors.Wrapf(err, "failed to dump data to %s", expectedPoResultsFile)
 		}
-		return fmt.Errorf("Result is not in the %d expected results", len(AllPoExpected))
+		return errors.New(fmt.Sprintf("Result is not in the %d expected results", len(AllPoExpected)))
 	}
 	log.Infof("postoverflow tests are finished.")
 	return nil

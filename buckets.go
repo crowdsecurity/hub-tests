@@ -12,6 +12,7 @@ import (
 	leaky "github.com/crowdsecurity/crowdsec/pkg/leakybucket"
 	"github.com/crowdsecurity/crowdsec/pkg/types"
 	"github.com/google/go-cmp/cmp"
+	"github.com/pkg/errors"
 	log "github.com/sirupsen/logrus"
 	"gopkg.in/tomb.v2"
 )
@@ -46,7 +47,8 @@ func newBuckets(index map[string]map[string]cwhub.Item, local ConfigTest) []stri
 	return files
 }
 
-func testBucketsOutput(target_dir string, AllBucketsResult []types.Event) (bool, error) {
+// for now we still use the bool to say if the test was ok
+func testBucketsOutput(target_dir string, AllBucketsResult []types.Event) error {
 	var (
 		OrigExpectedLen    int
 		AllBucketsExpected []types.Event = []types.Event{}
@@ -59,7 +61,7 @@ func testBucketsOutput(target_dir string, AllBucketsResult []types.Event) (bool,
 		log.Warningf("no buckets result in %s, will dump data instead!", target_dir)
 	} else {
 		if err := json.Unmarshal(expected_bytes, &AllBucketsExpected); err != nil {
-			return false, fmt.Errorf("file %s can't be unmarshaled : %s", expectedResultsFile, err)
+			return errors.Wrapf(err, "file %s can't be unmarshaled : %s", expectedResultsFile)
 		} else {
 			ExpectedPresent = true
 			OrigExpectedLen = len(AllBucketsExpected)
@@ -70,10 +72,10 @@ func testBucketsOutput(target_dir string, AllBucketsResult []types.Event) (bool,
 		log.Warningf("No expected results loaded, dump.")
 		dump_bytes, err := json.MarshalIndent(AllBucketsResult, "", " ")
 		if err != nil {
-			log.Fatalf("failed to marshal results : %s", err)
+			return errors.Wrap(err, "failed to marshal results")
 		}
 		if err := ioutil.WriteFile(expectedResultsFile, dump_bytes, 0644); err != nil {
-			log.Fatalf("failed to dump data to %s : %s", expectedResultsFile, err)
+			return errors.Wrapf(err, "failed to dump data to %s : %s", expectedResultsFile)
 		}
 	} else {
 		if len(AllExpected) > 0 {
@@ -91,13 +93,14 @@ func testBucketsOutput(target_dir string, AllBucketsResult []types.Event) (bool,
 		log.Errorf("tests failed, writting results to %s", expectedResultsFile)
 		dump_bytes, err := json.MarshalIndent(AllBucketsResult, "", " ")
 		if err != nil {
-			log.Fatalf("failed to marshal results : %s", err)
+			return errors.Wrap(err, "failed to marshal result")
 		}
 		if err := ioutil.WriteFile(expectedResultsFile, dump_bytes, 0644); err != nil {
-			log.Fatalf("failed to dump data to %s : %s", expectedResultsFile, err)
+			return errors.Wrapf(err, "failed to dump data to %s : %s", expectedResultsFile)
 		}
 		log.Printf("done")
-		return false, fmt.Errorf("mismatch diff (-want +got) : %s", cmp.Diff(AllBucketsExpected, AllBucketsResult, opt))
+		err = errors.New(cmp.Diff(AllBucketsExpected, AllBucketsResult, opt))
+		return errors.WithMessage(err, "mismatch diff (-want +got)")
 	}
 
 	if !matched && len(AllExpected) != 0 {
@@ -105,18 +108,18 @@ func testBucketsOutput(target_dir string, AllBucketsResult []types.Event) (bool,
 		log.Errorf("tests failed, writting results to %s", expectedResultsFile)
 		dump_bytes, err := json.MarshalIndent(AllBucketsResult, "", " ")
 		if err != nil {
-			log.Fatalf("failed to marshal results : %s", err)
+			errors.Wrap(err, "failed to marshal results")
 		}
 		if err := ioutil.WriteFile(expectedResultsFile, dump_bytes, 0644); err != nil {
-			log.Fatalf("failed to dump data to %s : %s", expectedResultsFile, err)
+			errors.Wrapf(err, "failed to dump data to %s", expectedResultsFile)
 		}
 		log.Printf("done")
-		return false, fmt.Errorf("Result is not in the %d expected results", len(AllExpected))
+		return errors.New("Result is not in the expected results")
 
 	}
 	log.Infof("%d/%d matched results", OrigExpectedLen-len(AllBucketsExpected), OrigExpectedLen)
 	log.Infof("Bucket tets are finished")
-	return true, nil
+	return nil
 
 }
 
@@ -158,15 +161,15 @@ func testBuckets(target_dir string, cConfig *csconfig.GlobalConfig, localConfig 
 		log.Printf("Pouring item %d", index+1)
 		_, err = leaky.PourItemToHolders(parsed, holders, buckets)
 		if err != nil {
-			log.Fatalf("bucketify failed for: %v", parsed)
+			return errors.New(fmt.Sprintf("bucketify failed for: %v", parsed))
 		}
 	}
 
 	//this should be taken care of
 	time.Sleep(5 * time.Second)
 
-	if r, err := testBucketsOutput(target_dir, bucketsOutput); !r {
-		log.Fatalf("Buckets error: %s", err)
+	if err := testBucketsOutput(target_dir, bucketsOutput); err != nil {
+		return errors.Wrap(err, "Buckets error: %s")
 	}
 
 	close(outputEventChan)
@@ -177,7 +180,7 @@ func testBuckets(target_dir string, cConfig *csconfig.GlobalConfig, localConfig 
 	}
 
 	if err := marshalAndStore(bucketsOutput, target_dir+"/"+localConfig.poInputFile); err != nil {
-		return fmt.Errorf("marshaling failed: %s", err)
+		return errors.Wrap(err, "marshaling failed")
 	}
 
 	return nil

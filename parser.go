@@ -7,6 +7,8 @@ import (
 	"io/ioutil"
 	"sort"
 
+	"github.com/pkg/errors"
+
 	"github.com/crowdsecurity/crowdsec/pkg/acquisition"
 	"github.com/crowdsecurity/crowdsec/pkg/csconfig"
 	"github.com/crowdsecurity/crowdsec/pkg/cwhub"
@@ -122,7 +124,7 @@ func testParser(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 	log.Infof("Loading acquisition")
 	tmpctx, err = acquisition.LoadAcquisCtxConfigFile(cConfig.Crowdsec)
 	if err != nil {
-		log.Fatalf("Not able to init acquisition")
+		errors.Wrap(err, "Not able to init acquisition")
 	}
 	for _, filectx := range tmpctx {
 		if filectx.Mode != "cat" {
@@ -132,7 +134,7 @@ func testParser(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 
 	acquisitionCTX, err = acquisition.InitReaderFromFileCtx(tmpctx)
 	if err != nil {
-		log.Fatalf("Not able to init acquisition")
+		errors.Wrap(err, "Not able to init acquisition")
 	}
 
 	//start reading in the background
@@ -186,7 +188,7 @@ func testParser(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 					// TODO: estsFailed++
 					log.Errorf("test %d failed. It's highly probable that the 'crowdsecurity/syslog-logs' dependency failed.", linesRead)
 					if err != nil {
-						log.Errorf("test failure : %s", err)
+						return errors.Wrap(err, "test failure")
 					}
 				}
 			case <-ptomb.Dying():
@@ -197,7 +199,7 @@ func testParser(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 
 	log.Printf("waiting for acquis tomb to die")
 	if err := acquisTomb.Wait(); err != nil {
-		log.Warningf("acquisition returned error : %s", err)
+		return errors.Wrap(err, "acquisition returned error : %s")
 	}
 	log.Printf("acquis tomb died")
 
@@ -205,7 +207,7 @@ func testParser(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 	close(inputLineChan)
 	log.Printf("Waiting for parsers tomb to die")
 	if err := ptomb.Wait(); err != nil {
-		log.Warningf("acquisition returned error : %s", err)
+		return errors.Wrap(err, "acquisition returned error : %s")
 	}
 
 	//parser result analysis
@@ -224,10 +226,10 @@ func testParser(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 		log.Warningf("No expected results loaded, dump.")
 		dump_bytes, err := json.MarshalIndent(AllResults, "", " ")
 		if err != nil {
-			log.Fatalf("failed to marshal results : %s", err)
+			return errors.Wrap(err, "failed to marshal results")
 		}
 		if err := ioutil.WriteFile(expectedResultsFile, dump_bytes, 0644); err != nil {
-			log.Fatalf("failed to dump data to %s : %s", expectedResultsFile, err)
+			return errors.Wrapf(err, "failed to dump data to %s : %s", expectedResultsFile)
 		}
 	} else {
 		if len(AllExpected) > 0 {
@@ -245,12 +247,12 @@ func testParser(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 			log.Fatalf("failed to dump data to %s : %s", expectedResultsFile, err)
 		}
 		log.Printf("done")
-		log.Fatalf("Parsers test failed, bailing out")
+		return errors.New("Parsers test failed, bailing out")
 	}
 	log.Infof("parser tests are finished.")
 
 	if err := marshalAndStore(bucketsInput, target_dir+"/"+localConfig.bucketInputFile); err != nil {
-		return fmt.Errorf("marshaling failed: %s", err)
+		return errors.Wrap(err, "marshaling failed")
 	}
 	return nil
 }
