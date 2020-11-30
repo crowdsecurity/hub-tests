@@ -4,6 +4,7 @@ import (
 	"flag"
 	"io/ioutil"
 	"os"
+	"strings"
 
 	"github.com/crowdsecurity/crowdsec/pkg/csconfig"
 	"github.com/crowdsecurity/crowdsec/pkg/cwhub"
@@ -69,13 +70,15 @@ type LineParsePoResult struct {
 }
 
 type Flags struct {
-	ConfigFile string
-	TargetDir  string
+	ConfigFile    string
+	TargetDir     string
+	JUnitFilename string
 }
 
 func (f *Flags) Parse() {
 	flag.StringVar(&f.ConfigFile, "config", "./dev.yaml", "configuration file")
 	flag.StringVar(&f.TargetDir, "target", "", "target test dir")
+	flag.StringVar(&f.JUnitFilename, "junit", "", "junit file name")
 
 	flag.Parse()
 }
@@ -88,7 +91,10 @@ func main() {
 		files       []string
 		localConfig ConfigTest
 		index       map[string]map[string]cwhub.Item
+
+		report *JUnitTestSuites
 	)
+
 	log.SetLevel(log.InfoLevel)
 	log.SetOutput(os.Stdout)
 
@@ -170,10 +176,19 @@ func main() {
 	buckets = leaky.NewBuckets()
 	holders, outputEventChan, err = leaky.LoadBuckets(cConfig.Crowdsec, files)
 
+	if flags.JUnitFilename != "" {
+		if report, err = LoadJunitReport(flags.JUnitFilename); err != nil {
+			log.Fatalf("Error loading JUnit file: %s", flags.JUnitFilename)
+		}
+	}
+
 	if _, ok := localConfig.Configurations["parsers"]; ok {
 		err := testParser(flags.TargetDir, csParsers, cConfig, localConfig)
 		if err != nil {
 			log.Errorf("Error: %s", err)
+		}
+		if flags.JUnitFilename != "" {
+			report.AddSingleResult(cwhub.PARSERS, err, strings.Join(localConfig.Configurations[cwhub.PARSERS], ", "))
 		}
 	}
 
@@ -182,6 +197,9 @@ func main() {
 		if err != nil {
 			log.Errorf("Error: %s", err)
 		}
+		if flags.JUnitFilename != "" {
+			report.AddSingleResult(cwhub.SCENARIOS, err, strings.Join(localConfig.Configurations[cwhub.SCENARIOS], ", "))
+		}
 	}
 
 	if _, ok := localConfig.Configurations["postoverflows"]; ok {
@@ -189,7 +207,15 @@ func main() {
 		if err != nil {
 			log.Errorf("Error: %s", err)
 		}
+		if flags.JUnitFilename != "" {
+			report.AddSingleResult(cwhub.PARSERS_OVFLW, err, strings.Join(localConfig.Configurations[cwhub.PARSERS_OVFLW], ", "))
+		}
 	}
+
+	if flags.JUnitFilename != "" {
+		report.StoreJunitReport(flags.JUnitFilename)
+	}
+
 	log.Infof("tests are finished.")
 
 }

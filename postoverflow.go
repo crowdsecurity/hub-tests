@@ -8,6 +8,7 @@ import (
 	leaky "github.com/crowdsecurity/crowdsec/pkg/leakybucket"
 	"github.com/crowdsecurity/crowdsec/pkg/parser"
 	"github.com/crowdsecurity/crowdsec/pkg/types"
+
 	"github.com/google/go-cmp/cmp"
 	"github.com/pkg/errors"
 	log "github.com/sirupsen/logrus"
