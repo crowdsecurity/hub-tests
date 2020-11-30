@@ -101,10 +101,10 @@ func main() {
 	}
 
 	cConfig = csconfig.NewConfig()
-	err = cConfig.LoadConfigurationFile(flags.ConfigFile)
-	if err != nil {
-		log.Fatalf("Failed to load configuration : %s", err)
-	}
+	// err = cConfig.LoadConfigurationFile(flags.ConfigFile)
+	// if err != nil {
+	// 	log.Fatalf("Failed to load configuration : %s", err)
+	// }
 
 	//fill localConfig with default
 	path := flags.TargetDir + "/config.yaml"
@@ -126,8 +126,17 @@ func main() {
 		log.Fatalf("failed unmarshaling config: %s", err)
 	}
 
-	// ugly way of overwriting local acquis.yaml configuration
-	cConfig.Crowdsec.AcquisitionFilePath = flags.TargetDir + "/acquis.yaml"
+	//Minimal configuration loading
+	//TODO move this to a specific function
+	cConfig.API = &csconfig.APICfg{}
+	cConfig.ConfigPaths = &csconfig.ConfigurationPaths{
+		ConfigDir: "./config",
+		DataDir:   "./data",
+	}
+	cConfig.Crowdsec = &csconfig.CrowdsecServiceCfg{
+		AcquisitionFilePath: flags.TargetDir + "/acquis.yaml",
+	}
+
 	err = cConfig.LoadConfiguration()
 	if err != nil {
 		log.Fatalf("Failed to load configuration : %s", err)
