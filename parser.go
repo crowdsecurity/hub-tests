@@ -138,7 +138,6 @@ func testParser(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 	// }
 
 	//start reading in the background
-	acquisition.StartAcquisition(dataSrc, inputLineChan, &acquisTomb)
 
 	//load parsers
 	log.Infof("Loading parsers")
@@ -196,6 +195,8 @@ func testParser(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 			}
 		}
 	})
+
+	acquisition.StartAcquisition(dataSrc, inputLineChan, &acquisTomb)
 
 	log.Printf("waiting for acquis tomb to die")
 	if err := acquisTomb.Wait(); err != nil {
