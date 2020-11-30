@@ -3,7 +3,7 @@ module github.com/crowdsecurity/hub-tests
 go 1.13
 
 require (
-	github.com/crowdsecurity/crowdsec v1.0.0-rc2.0.20201123131434-f440a744faa6
+	github.com/crowdsecurity/crowdsec v1.0.0-rc3.0.20201127151808-0a0232f3fe0a
 	github.com/google/go-cmp v0.5.2
 	github.com/jstemmer/go-junit-report v0.9.1 // indirect
 	github.com/mohae/deepcopy v0.0.0-20170929034955-c48cc78d4826 // indirect

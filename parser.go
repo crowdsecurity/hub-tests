@@ -111,34 +111,34 @@ func parseMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parserNo
 
 func testParser(target_dir string, parsers *parser.Parsers, cConfig *csconfig.GlobalConfig, localConfig ConfigTest) error {
 	var (
-		err             error
-		acquisitionCTX  *acquisition.FileAcquisCtx
+		err error
+		//		acquisitionCTX  *acquisition.FileAcquisCtx
 		inputLineChan   = make(chan types.Event)
 		failure         bool
 		OrigExpectedLen int
-		tmpctx          []acquisition.FileCtx
+		dataSrc         []acquisition.DataSource
 		ptomb           tomb.Tomb
 		bucketsInput    []types.Event = []types.Event{}
 	)
 
 	log.Infof("Loading acquisition")
-	tmpctx, err = acquisition.LoadAcquisCtxConfigFile(cConfig.Crowdsec)
+	dataSrc, err = acquisition.LoadAcquisitionFromFile(cConfig.Crowdsec)
 	if err != nil {
 		errors.Wrap(err, "Not able to init acquisition")
 	}
-	for _, filectx := range tmpctx {
-		if filectx.Mode != "cat" {
-			log.Warning("The mode of reading the log file '%s' is not 'cat'. The whole thing is highly probably bound to fail", filectx.Filename)
+	for _, filectx := range dataSrc {
+		if filectx.Mode() != "cat" {
+			log.Warning("The mode of reading the log file is not 'cat'. The whole thing is highly probably bound to fail")
 		}
 	}
 
-	acquisitionCTX, err = acquisition.InitReaderFromFileCtx(tmpctx)
-	if err != nil {
-		errors.Wrap(err, "Not able to init acquisition")
-	}
+	// acquisitionCTX, err = acquisition.StartAcquisition(tmpctx)
+	// if err != nil {
+	// 	errors.Wrap(err, "Not able to init acquisition")
+	// }
 
 	//start reading in the background
-	acquisition.AcquisStartReading(acquisitionCTX, inputLineChan, &acquisTomb)
+	acquisition.StartAcquisition(dataSrc, inputLineChan, &acquisTomb)
 
 	//load parsers
 	log.Infof("Loading parsers")
