@@ -74,16 +74,23 @@ func (f *Flags) Parse() {
 	flag.StringVar(&f.ConfigFile, "config", "./dev.yaml", "configuration file")
 	flag.StringVar(&f.SingleFile, "single", "", "target test dir")
 	flag.StringVar(&f.JUnitFilename, "junit", "", "junit file name")
-	flag.StringVar(&f.GlobFiles, "glob", "**/config.yaml", "globing over all subdirs")
+	flag.StringVar(&f.GlobFiles, "glob", "config.yaml", "globing over all subdirs")
 
 	flag.Parse()
 }
 
-type AllConfig struct {
-	flags       Flags
-	cConfig     *csconfig.GlobalConfig
-	localConfig ConfigTest
-	report      *JUnitTestSuites
+// dirty globing by hand
+func glob(dir string, ext string) ([]string, error) {
+
+	files := []string{}
+	err := filepath.Walk(dir, func(path string, f os.FileInfo, err error) error {
+		if filepath.Ext(path) == ext {
+			files = append(files, path)
+		}
+		return nil
+	})
+
+	return files, err
 }
 
 func main() {
@@ -106,7 +113,7 @@ func main() {
 		doTest(flags, flags.SingleFile, report)
 	} else {
 		//we are globbing :)
-		if matches, err = filepath.Glob(flags.GlobFiles); err != nil {
+		if matches, err = glob(".", flags.GlobFiles); err != nil {
 			log.Fatalf("Error in the glob pattern: %s", err)
 		}
 		log.Printf("Doing test on %s", matches)
