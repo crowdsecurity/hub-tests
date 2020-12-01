@@ -74,7 +74,7 @@ func (f *Flags) Parse() {
 	flag.StringVar(&f.ConfigFile, "config", "./dev.yaml", "configuration file")
 	flag.StringVar(&f.SingleFile, "single", "", "target test dir")
 	flag.StringVar(&f.JUnitFilename, "junit", "", "junit file name")
-	flag.StringVar(&f.GlobFiles, "glob", "config.yaml", "globing over all subdirs")
+	flag.StringVar(&f.GlobFiles, "glob", "**/config.yaml", "globing over all subdirs")
 
 	flag.Parse()
 }
