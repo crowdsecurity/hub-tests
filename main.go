@@ -110,6 +110,7 @@ func main() {
 			log.Fatalf("Error in the glob pattern: %s", err)
 		}
 		for _, match := range matches {
+			log.Printf("Doing test on %s", match)
 			doTest(flags, match, report)
 		}
 	}
