@@ -79,6 +79,7 @@ func LoadJunitReport(filename string) (*JUnitTestSuites, error) {
 		Suites: make([]JUnitTestSuite, 0),
 	}
 	err = xml.Unmarshal(buf, report)
+	log.Printf("report: %+v", report)
 	return report, err
 }
 
@@ -90,8 +91,6 @@ func (report *JUnitTestSuites) AddSingleResult(itemType string, err error, name 
 		suite     JUnitTestSuite
 		failure   *JUnitFailure
 	)
-
-	testCase = JUnitTestCase{}
 
 	//first create the failure if any
 	if err != nil {
@@ -106,17 +105,18 @@ func (report *JUnitTestSuites) AddSingleResult(itemType string, err error, name 
 
 	//create the TestCase
 	testCase = JUnitTestCase{
-		Classname: fmt.Sprintf("%s/%s", itemType, name),
-		Name:      name,
+		Classname: itemType,
+		Name:      fmt.Sprintf("%s/%s", itemType, name),
 		Failure:   failure,
 	}
 
 	//Look for a matching TestSuite and update it
 	exists := false
-	for _, s := range report.Suites {
-		if suite.Name == itemType {
+	for i, s := range report.Suites {
+		if s.Name == itemType {
 			suite = s
 			exists = true
+			index = i
 		}
 	}
 
@@ -124,7 +124,7 @@ func (report *JUnitTestSuites) AddSingleResult(itemType string, err error, name 
 		suite = JUnitTestSuite{
 			Tests:     1,
 			Failures:  failcount,
-			Name:      name,
+			Name:      itemType,
 			TestCases: []JUnitTestCase{testCase},
 		}
 		report.Suites = []JUnitTestSuite{suite}

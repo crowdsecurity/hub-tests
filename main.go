@@ -108,6 +108,12 @@ func main() {
 	flags = &Flags{}
 	flags.Parse()
 
+	if flags.JUnitFilename != "" {
+		if report, err = LoadJunitReport(flags.JUnitFilename); err != nil {
+			log.Fatalf("Error loading JUnit file: %s", flags.JUnitFilename)
+		}
+	}
+
 	// if we specify
 	if flags.SingleFile != "" {
 		doTest(flags, flags.SingleFile, report)
@@ -122,6 +128,14 @@ func main() {
 			doTest(flags, match, report)
 		}
 	}
+
+	if flags.JUnitFilename != "" {
+		err = report.StoreJunitReport(flags.JUnitFilename)
+		if err != nil {
+			log.Errorf("Unable to store junit file: %s", err)
+		}
+	}
+
 }
 
 func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) {
@@ -201,12 +215,6 @@ func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) {
 	buckets = leaky.NewBuckets()
 	holders, outputEventChan, err = leaky.LoadBuckets(cConfig.Crowdsec, files)
 
-	if flags.JUnitFilename != "" {
-		if report, err = LoadJunitReport(flags.JUnitFilename); err != nil {
-			log.Fatalf("Error loading JUnit file: %s", flags.JUnitFilename)
-		}
-	}
-
 	if _, ok := localConfig.Configurations["parsers"]; ok {
 		err := testParser(filepath.Dir(targetFile), csParsers, cConfig, localConfig)
 		if err != nil {
@@ -235,10 +243,6 @@ func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) {
 		if flags.JUnitFilename != "" {
 			report.AddSingleResult(cwhub.PARSERS_OVFLW, err, strings.Join(localConfig.Configurations[cwhub.PARSERS_OVFLW], ", "))
 		}
-	}
-
-	if flags.JUnitFilename != "" {
-		report.StoreJunitReport(flags.JUnitFilename)
 	}
 
 	log.Infof("tests are finished.")
