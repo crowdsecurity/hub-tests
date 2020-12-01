@@ -109,6 +109,7 @@ func main() {
 		if matches, err = filepath.Glob(flags.GlobFiles); err != nil {
 			log.Fatalf("Error in the glob pattern: %s", err)
 		}
+		log.Printf("Doing test on %s", matches)
 		for _, match := range matches {
 			log.Printf("Doing test on %s", match)
 			doTest(flags, match, report)
