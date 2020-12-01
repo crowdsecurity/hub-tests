@@ -33,10 +33,6 @@ var (
 )
 
 type ConfigTest struct {
-	//to know which configuration we want to test
-	Parse        bool `yaml:"parse"`
-	Bucket       bool `yaml:"bucket"`
-	Postoverflow bool `yaml:"postoverflow"`
 	//parsers files
 	logFile         string `yaml:"log_file"`
 	ParseResultFile string `yaml:"parser_results"`
