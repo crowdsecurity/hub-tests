@@ -78,8 +78,8 @@ func testBucketsOutput(target_dir string, AllBucketsResult []types.Event) error 
 			return errors.Wrapf(err, "failed to dump data to %s : %s", expectedResultsFile)
 		}
 	} else {
-		if len(AllExpected) > 0 {
-			log.Errorf("Left-over results in expected : %d", len(AllExpected))
+		if len(AllBucketsExpected) > 0 {
+			log.Errorf("Left-over results in expected : %d", len(AllBucketsExpected))
 		}
 	}
 
@@ -103,7 +103,7 @@ func testBucketsOutput(target_dir string, AllBucketsResult []types.Event) error 
 		return errors.WithMessage(err, "mismatch diff (-want +got)")
 	}
 
-	if !matched && len(AllExpected) != 0 {
+	if !matched && len(AllBucketsExpected) != 0 {
 		expectedResultsFile = expectedResultsFile + ".fail"
 		log.Errorf("tests failed, writting results to %s", expectedResultsFile)
 		dump_bytes, err := json.MarshalIndent(AllBucketsResult, "", " ")

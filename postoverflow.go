@@ -59,6 +59,10 @@ func testPwfl(target_dir string, parsers *parser.Parsers, localConfig ConfigTest
 
 	// Retrieve value from yaml
 	// And once again we would have done better with generics...
+
+	AllPoExpected = make([]LineParsePoResult, 0)
+	AllPoResults = make([]LineParsePoResult, 0)
+
 	if err = retrieveAndUnmarshal(target_dir+"/"+localConfig.poInputFile, &poInput); err != nil {
 		return errors.Wrapf(err, "Error unmarshaling %s", localConfig.poInputFile)
 	}

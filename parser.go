@@ -122,6 +122,9 @@ func testParser(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 		bucketsInput    []types.Event = []types.Event{}
 	)
 
+	AllResults = make([]LineParseResult, 0)
+	AllExpected = make([]LineParseResult, 0)
+
 	log.Infof("Loading acquisition")
 	dataSrc, err = acquisition.LoadAcquisitionFromFile(cConfig.Crowdsec)
 	if err != nil {
@@ -208,6 +211,7 @@ func testParser(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 	//parser result analysis
 	log.Infof("%d lines read", linesRead)
 	log.Infof("%d parser results, %d UNPARSED", len(AllResults), linesUnparsed)
+
 	if linesRead != len(AllResults) {
 		log.Warningf("%d out of %d lines didn't yeld result", linesRead-len(AllResults), linesRead)
 	}
