@@ -117,6 +117,7 @@ func testParser(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 		failure         bool
 		OrigExpectedLen int
 		dataSrc         []acquisition.DataSource
+		acquisTomb      tomb.Tomb
 		ptomb           tomb.Tomb
 		bucketsInput    []types.Event = []types.Event{}
 	)
@@ -131,13 +132,6 @@ func testParser(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 			log.Warning("The mode of reading the log file is not 'cat'. The whole thing is highly probably bound to fail")
 		}
 	}
-
-	// acquisitionCTX, err = acquisition.StartAcquisition(tmpctx)
-	// if err != nil {
-	// 	errors.Wrap(err, "Not able to init acquisition")
-	// }
-
-	//start reading in the background
 
 	//load parsers
 	log.Infof("Loading parsers")
@@ -161,7 +155,7 @@ func testParser(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 
 	parser.ParseDump = true
 	ptomb = tomb.Tomb{}
-	// ptomb.Go(func() error {
+	acquisTomb = tomb.Tomb{}
 
 	ptomb.Go(func() error {
 		log.Printf("Processing logs")
@@ -171,14 +165,14 @@ func testParser(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 				if !ok {
 					return nil
 				}
-				log.Printf("one line")
+				log.Debugf("about to add one line")
 				linesRead++
 				test_ok, parsed_ok, parsed, err := parseMatchLine(event, parsers.Ctx, parsers.Nodes)
 				bucketsInput = append(bucketsInput, parsed)
-				log.Printf("done")
+				log.Printf("one line done")
 				if !parsed_ok {
 					if err != nil {
-						log.Warningf("parser error : %s", err)
+						log.Errorf("parser error : %s", err)
 					}
 					linesUnparsed++
 				}
@@ -187,7 +181,7 @@ func testParser(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 					// TODO: estsFailed++
 					log.Errorf("test %d failed. It's highly probable that the 'crowdsecurity/syslog-logs' dependency failed.", linesRead)
 					if err != nil {
-						return errors.Wrap(err, "test failure")
+						log.Errorf("test failure: %s", err)
 					}
 				}
 			case <-ptomb.Dying():
@@ -196,7 +190,7 @@ func testParser(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 		}
 	})
 
-	acquisition.StartAcquisition(dataSrc, inputLineChan, &acquisTomb)
+	go acquisition.StartAcquisition(dataSrc, inputLineChan, &acquisTomb)
 
 	log.Printf("waiting for acquis tomb to die")
 	if err := acquisTomb.Wait(); err != nil {

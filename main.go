@@ -4,6 +4,7 @@ import (
 	"flag"
 	"io/ioutil"
 	"os"
+	"path/filepath"
 	"strings"
 
 	"github.com/crowdsecurity/crowdsec/pkg/csconfig"
@@ -14,13 +15,10 @@ import (
 	"github.com/crowdsecurity/crowdsec/pkg/parser"
 	"github.com/crowdsecurity/crowdsec/pkg/types"
 	log "github.com/sirupsen/logrus"
-	"gopkg.in/tomb.v2"
 	"gopkg.in/yaml.v2"
 )
 
 var (
-	acquisTomb tomb.Tomb
-
 	AllResults    []LineParseResult
 	AllExpected   []LineParseResult
 	AllPoResults  []LineParsePoResult
@@ -67,28 +65,33 @@ type LineParsePoResult struct {
 
 type Flags struct {
 	ConfigFile    string
-	TargetDir     string
+	SingleFile    string
 	JUnitFilename string
+	GlobFiles     string
 }
 
 func (f *Flags) Parse() {
 	flag.StringVar(&f.ConfigFile, "config", "./dev.yaml", "configuration file")
-	flag.StringVar(&f.TargetDir, "target", "", "target test dir")
+	flag.StringVar(&f.SingleFile, "single", "", "target test dir")
 	flag.StringVar(&f.JUnitFilename, "junit", "", "junit file name")
+	flag.StringVar(&f.GlobFiles, "glob", "config.yaml", "globing over all subdirs")
 
 	flag.Parse()
 }
 
+type AllConfig struct {
+	flags       Flags
+	cConfig     *csconfig.GlobalConfig
+	localConfig ConfigTest
+	report      *JUnitTestSuites
+}
+
 func main() {
 	var (
-		err         error
-		cConfig     *csconfig.GlobalConfig
-		flags       *Flags
-		files       []string
-		localConfig ConfigTest
-		index       map[string]map[string]cwhub.Item
-
-		report *JUnitTestSuites
+		err     error
+		flags   *Flags
+		matches []string
+		report  *JUnitTestSuites
 	)
 
 	log.SetLevel(log.InfoLevel)
@@ -98,18 +101,32 @@ func main() {
 	flags = &Flags{}
 	flags.Parse()
 
-	if flags.TargetDir == "" {
-		log.Fatalf("A target test directory is required (-target)")
+	// if we specify
+	if flags.SingleFile != "" {
+		doTest(flags, flags.SingleFile, report)
+	} else {
+		//we are globbing :)
+		if matches, err = filepath.Glob(flags.GlobFiles); err != nil {
+			log.Fatalf("Error in the glob pattern: %s", err)
+		}
+		for _, match := range matches {
+			doTest(flags, match, report)
+		}
 	}
+}
 
+func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) {
+	var (
+		err         error
+		cConfig     *csconfig.GlobalConfig
+		files       []string
+		localConfig ConfigTest
+		index       map[string]map[string]cwhub.Item
+	)
 	cConfig = csconfig.NewConfig()
-	// err = cConfig.LoadConfigurationFile(flags.ConfigFile)
-	// if err != nil {
-	// 	log.Fatalf("Failed to load configuration : %s", err)
-	// }
 
 	//fill localConfig with default
-	path := flags.TargetDir + "/config.yaml"
+	path := targetFile
 	localConfig = ConfigTest{
 		logFile:          "acquis.log",
 		ParseResultFile:  "parser_result.json",
@@ -137,8 +154,10 @@ func main() {
 		HubIndexFile: localConfig.IndexFile,
 	}
 	cConfig.Crowdsec = &csconfig.CrowdsecServiceCfg{
-		AcquisitionFilePath: flags.TargetDir + "/acquis.yaml",
+		AcquisitionFilePath: filepath.Dir(targetFile) + "/acquis.yaml",
 	}
+
+	log.Printf("Acquisition file : %s", filepath.Dir(targetFile)+"/acquis.yaml")
 
 	err = cConfig.LoadConfiguration()
 	if err != nil {
@@ -167,7 +186,7 @@ func main() {
 	}
 
 	files = newBuckets(index, localConfig)
-	log.Printf("files: %+v", files)
+	log.Infof("scenarios files: %+v", files)
 	log.Infof("Loading %d scenario files", len(files))
 
 	buckets = leaky.NewBuckets()
@@ -180,7 +199,7 @@ func main() {
 	}
 
 	if _, ok := localConfig.Configurations["parsers"]; ok {
-		err := testParser(flags.TargetDir, csParsers, cConfig, localConfig)
+		err := testParser(filepath.Dir(targetFile), csParsers, cConfig, localConfig)
 		if err != nil {
 			log.Errorf("Error: %s", err)
 		}
@@ -190,7 +209,7 @@ func main() {
 	}
 
 	if _, ok := localConfig.Configurations["scenarios"]; ok {
-		err = testBuckets(flags.TargetDir, cConfig, localConfig)
+		err = testBuckets(filepath.Dir(targetFile), cConfig, localConfig)
 		if err != nil {
 			log.Errorf("Error: %s", err)
 		}
@@ -200,7 +219,7 @@ func main() {
 	}
 
 	if _, ok := localConfig.Configurations["postoverflows"]; ok {
-		err = testPwfl(flags.TargetDir, csParsers, localConfig)
+		err = testPwfl(filepath.Dir(targetFile), csParsers, localConfig)
 		if err != nil {
 			log.Errorf("Error: %s", err)
 		}
