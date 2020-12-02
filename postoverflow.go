@@ -14,25 +14,27 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-func parsePoMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parserNodes []parser.Node) error {
+func parsePoMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parserNodes []parser.Node) (*types.Event, error) {
 	var (
-		err    error
-		parsed types.Event
+		err       error
+		parsed    types.Event
+		reprocess bool = false
 	)
 	oneResult := LineParsePoResult{}
 
 	if event.Type == types.LOG {
-		return errors.New(fmt.Sprintf("event %+v is not an overflow", event))
+		return &types.Event{}, errors.New(fmt.Sprintf("event %+v is not an overflow", event))
 	}
 
 	parsed, err = parser.Parse(*parserCTX, event, parserNodes) //truly, parser.Parse never returns any error...
 	if err != nil {
-		return errors.Wrap(err, "failed parsing : %v\n")
+		return &types.Event{}, errors.Wrap(err, "failed parsing : %v\n")
 	}
 
 	//Obviously this is useless
 	if parsed.Overflow.Reprocess {
 		log.Infof("Pouring buckets")
+		reprocess = true
 		_, err = leaky.PourItemToHolders(parsed, holders, buckets)
 	}
 
@@ -46,14 +48,19 @@ func parsePoMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parser
 	//we need to clean Line's timestamp
 	oneResult.ParserResults = cleanForMatch(parser.StageParseCache)
 	AllPoResults = append(AllPoResults, oneResult)
-	return nil
+	if reprocess {
+		return &parsed, nil
+	}
+	return nil, nil
 }
 
 func testPwfl(target_dir string, parsers *parser.Parsers, localConfig ConfigTest) error {
 	var (
-		matched bool
-		err     error
-		poInput []types.Event = []types.Event{}
+		matched      bool
+		err          error
+		parsed       *types.Event
+		poInput      []types.Event = []types.Event{}
+		bucketsInput []types.Event = []types.Event{}
 	)
 	log.Printf("Testing postoverflows")
 
@@ -69,11 +76,14 @@ func testPwfl(target_dir string, parsers *parser.Parsers, localConfig ConfigTest
 
 	unparsedOverflow := 0
 	for _, evt := range poInput {
-		err := parsePoMatchLine(evt, parsers.Povfwctx, parsers.Povfwnodes)
+		parsed, err = parsePoMatchLine(evt, parsers.Povfwctx, parsers.Povfwnodes)
 		if err != nil {
 			log.Warningf("parser error : %s", err)
+			unparsedOverflow++
 		}
-		unparsedOverflow++
+		if parsed != nil {
+			bucketsInput = append(bucketsInput, *parsed)
+		}
 	}
 
 	ExpectedPresent := false
@@ -144,5 +154,14 @@ func testPwfl(target_dir string, parsers *parser.Parsers, localConfig ConfigTest
 		return errors.New(fmt.Sprintf("Result is not in the %d expected results", len(AllPoExpected)))
 	}
 	log.Infof("postoverflow tests are finished.")
+
+	if len(bucketsInput) > 0 {
+		tmp := make([]types.Event, 0)
+		if err = retrieveAndUnmarshal(localConfig.bucketInputFile, &tmp); err != nil {
+			log.Errorf("Unable to retrieve bucketsInputs file: %s", localConfig.bucketInputFile)
+		}
+		bucketsInput = append(bucketsInput, tmp...)
+		marshalAndStore(bucketsInput, localConfig.bucketInputFile)
+	}
 	return nil
 }
