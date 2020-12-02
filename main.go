@@ -47,6 +47,7 @@ type ConfigTest struct {
 
 	//configuration
 	acquisitionFile string `yaml:"acquisition_file"`
+	expectReprocess bool   `yaml:"reprocess"`
 
 	IndexFile string `yaml:"index"`
 	//configuration list. For now sorting by type is mandatory
@@ -240,7 +241,8 @@ func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) map[string
 		}
 	}
 
-	if _, ok := localConfig.Configurations["scenarios"]; ok {
+	_, scenarios := localConfig.Configurations["scenarios"]
+	if scenarios {
 		err = testBuckets(filepath.Dir(targetFile), cConfig, localConfig)
 		if err != nil {
 			log.Errorf("Error: %s", err)
@@ -251,7 +253,8 @@ func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) map[string
 		}
 	}
 
-	if _, ok := localConfig.Configurations["postoverflows"]; ok {
+	_, ok := localConfig.Configurations["postoverflows"]
+	if ok || localConfig.expectReprocess && scenarios {
 		err = testPwfl(filepath.Dir(targetFile), csParsers, localConfig)
 		if err != nil {
 			log.Errorf("Error: %s", err)

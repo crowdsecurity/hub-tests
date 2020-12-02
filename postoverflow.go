@@ -31,7 +31,6 @@ func parsePoMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parser
 		return &types.Event{}, errors.Wrap(err, "failed parsing : %v\n")
 	}
 
-	//Obviously this is useless
 	if parsed.Overflow.Reprocess {
 		log.Infof("Pouring buckets")
 		reprocess = true
