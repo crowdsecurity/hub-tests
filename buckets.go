@@ -77,10 +77,6 @@ func testBucketsOutput(target_dir string, AllBucketsResult []types.Event) error 
 		if err := ioutil.WriteFile(expectedResultsFile, dump_bytes, 0644); err != nil {
 			return errors.Wrapf(err, "failed to dump data to %s : %s", expectedResultsFile)
 		}
-	} else {
-		if len(AllBucketsExpected) > 0 {
-			log.Errorf("Left-over results in expected : %d", len(AllBucketsExpected))
-		}
 	}
 
 	//from here we will deal with postoverflow
@@ -133,14 +129,13 @@ func testBuckets(target_dir string, cConfig *csconfig.GlobalConfig, localConfig 
 
 	// Retrieve value from yaml
 	// And once again we would have done better with generics...
-	if err = retrieveAndUnmarshal(target_dir+"/"+localConfig.bucketInputFile, &bucketsInput); err != nil {
-		return fmt.Errorf("Error unmarshaling %s: %s", localConfig.bucketInputFile, err)
+	if err = retrieveAndUnmarshal(target_dir+"/"+localConfig.BucketInputFile, &bucketsInput); err != nil {
+		return fmt.Errorf("Error unmarshaling %s: %s", localConfig.BucketInputFile, err)
 	}
 
 	overflow := 0
 	//	unparsedOverflow := 0
 	potomb.Go(func() error {
-		log.Printf("processing loop over postoveflow")
 		for {
 			select {
 			case event, ok := <-outputEventChan:
@@ -179,7 +174,7 @@ func testBuckets(target_dir string, cConfig *csconfig.GlobalConfig, localConfig 
 		log.Warningf("acquisition returned error : %s", err)
 	}
 
-	if err := marshalAndStore(bucketsOutput, target_dir+"/"+localConfig.poInputFile); err != nil {
+	if err := marshalAndStore(bucketsOutput, target_dir+"/"+localConfig.PoInputFile); err != nil {
 		return errors.Wrap(err, "marshaling failed")
 	}
 

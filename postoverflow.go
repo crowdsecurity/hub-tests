@@ -26,13 +26,14 @@ func parsePoMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parser
 		return &types.Event{}, errors.New(fmt.Sprintf("event %+v is not an overflow", event))
 	}
 
+	log.Printf("Here")
 	parsed, err = parser.Parse(*parserCTX, event, parserNodes) //truly, parser.Parse never returns any error...
 	if err != nil {
 		return &types.Event{}, errors.Wrap(err, "failed parsing : %v\n")
 	}
-
+	log.Printf("Here")
 	if parsed.Overflow.Reprocess {
-		log.Infof("Pouring buckets")
+		log.Infof("Pouring buckets reprocess")
 		reprocess = true
 		_, err = leaky.PourItemToHolders(parsed, holders, buckets)
 	}
@@ -69,8 +70,8 @@ func testPwfl(target_dir string, parsers *parser.Parsers, localConfig ConfigTest
 	AllPoExpected = make([]LineParsePoResult, 0)
 	AllPoResults = make([]LineParsePoResult, 0)
 
-	if err = retrieveAndUnmarshal(target_dir+"/"+localConfig.poInputFile, &poInput); err != nil {
-		return errors.Wrapf(err, "Error unmarshaling %s", localConfig.poInputFile)
+	if err = retrieveAndUnmarshal(target_dir+"/"+localConfig.PoInputFile, &poInput); err != nil {
+		return errors.Wrapf(err, "Error unmarshaling %s", localConfig.PoInputFile)
 	}
 
 	unparsedOverflow := 0
@@ -86,7 +87,7 @@ func testPwfl(target_dir string, parsers *parser.Parsers, localConfig ConfigTest
 	}
 
 	ExpectedPresent := false
-	expectedPoResultsFile := target_dir + "/" + localConfig.poResultFile
+	expectedPoResultsFile := target_dir + "/" + localConfig.PoResultFile
 
 	expected_bytes, err := ioutil.ReadFile(expectedPoResultsFile)
 	if err != nil {
@@ -156,11 +157,11 @@ func testPwfl(target_dir string, parsers *parser.Parsers, localConfig ConfigTest
 
 	if len(bucketsInput) > 0 {
 		tmp := make([]types.Event, 0)
-		if err = retrieveAndUnmarshal(localConfig.bucketInputFile, &tmp); err != nil {
-			log.Errorf("Unable to retrieve bucketsInputs file: %s", localConfig.bucketInputFile)
+		if err = retrieveAndUnmarshal(localConfig.BucketInputFile, &tmp); err != nil {
+			log.Errorf("Unable to retrieve bucketsInputs file: %s", localConfig.BucketInputFile)
 		}
 		bucketsInput = append(bucketsInput, tmp...)
-		marshalAndStore(bucketsInput, localConfig.bucketInputFile)
+		marshalAndStore(bucketsInput, localConfig.BucketInputFile)
 	}
 	return nil
 }

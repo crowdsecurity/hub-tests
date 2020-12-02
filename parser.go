@@ -250,7 +250,7 @@ func testParser(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 	}
 	log.Infof("parser tests are finished.")
 
-	if err := marshalAndStore(bucketsInput, target_dir+"/"+localConfig.bucketInputFile); err != nil {
+	if err := marshalAndStore(bucketsInput, target_dir+"/"+localConfig.BucketInputFile); err != nil {
 		return errors.Wrap(err, "marshaling failed")
 	}
 	return nil
