@@ -26,12 +26,11 @@ func parsePoMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parser
 		return &types.Event{}, errors.New(fmt.Sprintf("event %+v is not an overflow", event))
 	}
 
-	log.Printf("Here")
 	parsed, err = parser.Parse(*parserCTX, event, parserNodes) //truly, parser.Parse never returns any error...
 	if err != nil {
 		return &types.Event{}, errors.Wrap(err, "failed parsing : %v\n")
 	}
-	log.Printf("Here")
+
 	if parsed.Overflow.Reprocess {
 		log.Infof("Pouring buckets reprocess")
 		reprocess = true
@@ -119,6 +118,7 @@ func testPwfl(target_dir string, parsers *parser.Parsers, localConfig ConfigTest
 	}
 
 	opt := getCmpOptions()
+	deleted := 0
 	for idx, candidate := range AllPoExpected {
 		matched = false
 		for _, result := range AllPoResults {
@@ -133,7 +133,8 @@ func testPwfl(target_dir string, parsers *parser.Parsers, localConfig ConfigTest
 			if cmp.Equal(candidate, result, opt) {
 				matched = true
 				//we go an exact match
-				AllPoExpected = append(AllPoExpected[:idx], AllPoExpected[idx+1:]...)
+				AllPoExpected = append(AllPoExpected[:idx-deleted], AllPoExpected[idx-deleted+1:]...)
+				deleted++
 			} else {
 				return errors.New(fmt.Sprintf("mismatch diff (-want +got) : %s", cmp.Diff(candidate, result, opt)))
 			}
@@ -156,12 +157,10 @@ func testPwfl(target_dir string, parsers *parser.Parsers, localConfig ConfigTest
 	log.Infof("postoverflow tests are finished.")
 
 	if len(bucketsInput) > 0 {
-		tmp := make([]types.Event, 0)
-		if err = retrieveAndUnmarshal(localConfig.BucketInputFile, &tmp); err != nil {
-			log.Errorf("Unable to retrieve bucketsInputs file: %s", localConfig.BucketInputFile)
+
+		if err = marshalAndStore(bucketsInput, localConfig.ReprocessInputFile); err != nil {
+			log.Errorf("Unable to marshal bucketsInput for reprocess stuff")
 		}
-		bucketsInput = append(bucketsInput, tmp...)
-		marshalAndStore(bucketsInput, localConfig.BucketInputFile)
 	}
 	return nil
 }

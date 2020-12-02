@@ -46,8 +46,8 @@ type ConfigTest struct {
 	PoResultFile string `yaml:"postoverflow_results"`
 
 	//configuration
-	AcquisitionFile string `yaml:"acquisition_file"`
-	ExpectReprocess bool   `yaml:"reprocess"`
+	AcquisitionFile    string `yaml:"acquisition_file"`
+	ReprocessInputFile string `yaml:"reprocess_file"`
 
 	IndexFile string `yaml:"index"`
 	//configuration list. For now sorting by type is mandatory
@@ -165,13 +165,14 @@ func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) map[string
 	//fill localConfig with default
 	path := targetFile
 	localConfig = ConfigTest{
-		LogFile:          "acquis.log",
-		ParseResultFile:  "parser_result.json",
-		BucketInputFile:  "bucket_input.yaml",
-		BucketResultFile: "bucket_result.json",
-		PoInputFile:      "po_input.yaml",
-		PoResultFile:     "postoverflow_result.json",
-		IndexFile:        ".index.json",
+		LogFile:            "acquis.log",
+		ParseResultFile:    "parser_result.json",
+		BucketInputFile:    "bucket_input.yaml",
+		BucketResultFile:   "bucket_result.json",
+		PoInputFile:        "po_input.yaml",
+		PoResultFile:       "postoverflow_result.json",
+		ReprocessInputFile: "bucket_input_reprocess.yaml",
+		IndexFile:          ".index.json",
 	}
 	fcontent, err := ioutil.ReadFile(path)
 	if err != nil {
@@ -254,7 +255,7 @@ func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) map[string
 	}
 
 	_, ok := localConfig.Configurations["postoverflows"]
-	if ok || localConfig.ExpectReprocess && scenarios {
+	if ok || localConfig.ReprocessInputFile != "" && scenarios {
 		log.Printf("Here")
 		err = testPwfl(filepath.Dir(targetFile), csParsers, localConfig)
 		if err != nil {
