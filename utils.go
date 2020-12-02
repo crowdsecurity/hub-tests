@@ -3,7 +3,10 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"os"
+	"path/filepath"
 	"reflect"
+	"strings"
 	"time"
 
 	"github.com/crowdsecurity/crowdsec/pkg/types"
@@ -43,6 +46,10 @@ func (o *Overflow) Discriminate(e types.RuntimeAlert) bool {
 
 func (o *Overflow) DeepEqual(result map[string]map[string]types.Event) bool {
 	return cmp.Equal(o.OverflowResult, result, getCmpOptions())
+}
+
+type Overall struct {
+	overall map[string]map[string]int
 }
 
 func getCmpOptions() cmp.Option {
@@ -100,4 +107,66 @@ func retrieveAndUnmarshal(filename string, b interface{}) error {
 		return fmt.Errorf("Unmarshal file %s error: %s", filename, err)
 	}
 	return nil
+}
+
+func NewOverall() *Overall {
+	return &Overall{
+		overall: make(map[string]map[string]int),
+	}
+}
+
+func (o *Overall) AddSingleResult(tested map[string][]string) {
+	for itemType, itemList := range tested {
+		if _, ok := o.overall[itemType]; !ok {
+			o.overall[itemType] = make(map[string]int)
+		}
+		for _, item := range itemList {
+			if _, ok := o.overall[itemType][item]; !ok {
+				o.overall[itemType][item] = 1
+			} else {
+				o.overall[itemType][item]++
+			}
+		}
+	}
+
+}
+
+func buildOverallResult(dir string) (map[string]map[string]Configuration, error) {
+	ret := make(map[string]map[string]Configuration)
+	err := filepath.Walk(dir, func(path string, f os.FileInfo, err error) error {
+		if strings.Contains(path, ".tests") {
+			return nil
+		}
+		parts := strings.Split(path, "/")
+		npath := ""
+		if parts[0] == "parsers" || parts[0] == "postoverflows" {
+			npath = strings.Join(parts[2:], "/")
+		}
+		if parts[0] == "scenarios" {
+			npath = strings.Join(parts[1:], "/")
+		}
+
+		if _, ok := ret[parts[0]]; !ok {
+			ret[parts[0]] = make(map[string]Configuration)
+		}
+		if filepath.Ext(npath) == ".md" {
+			c := ret[parts[0]][npath]
+			c.markdown = true
+			ret[parts[0]][npath] = c
+		}
+		fi, err := os.Stat(path)
+		size := fi.Size()
+		if size == 0 {
+			c := ret[parts[0]][npath]
+			c.markdownNotEmpty = false
+			ret[parts[0]][npath] = c
+		} else {
+			c := ret[parts[0]][npath]
+			c.markdownNotEmpty = true
+			ret[parts[0]][npath] = c
+		}
+		ret[parts[0]][npath] = Configuration{}
+		return nil
+	})
+	return ret, err
 }

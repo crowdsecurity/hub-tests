@@ -93,12 +93,19 @@ func glob(dir string, ext string) ([]string, error) {
 	return files, err
 }
 
+type Configuration struct {
+	markdown         bool
+	markdownNotEmpty bool
+	count            int
+}
+
 func main() {
 	var (
-		err     error
-		flags   *Flags
-		matches []string
-		report  *JUnitTestSuites
+		err           error
+		flags         *Flags
+		matches       []string
+		report        *JUnitTestSuites
+		OverallResult *Overall
 	)
 
 	log.SetLevel(log.InfoLevel)
@@ -114,9 +121,11 @@ func main() {
 		}
 	}
 
-	// if we specify
+	OverallResult = NewOverall()
 	if flags.SingleFile != "" {
-		doTest(flags, flags.SingleFile, report)
+		if tested := doTest(flags, flags.SingleFile, report); tested != nil {
+			OverallResult.AddSingleResult(tested)
+		}
 	} else {
 		//we are globbing :)
 		if matches, err = glob(".", flags.GlobFiles); err != nil {
@@ -125,7 +134,9 @@ func main() {
 		log.Printf("Doing test on %s", matches)
 		for _, match := range matches {
 			log.Printf("Doing test on %s", match)
-			doTest(flags, match, report)
+			if tested := doTest(flags, match, report); tested != nil {
+				OverallResult.AddSingleResult(tested)
+			}
 		}
 	}
 
@@ -138,7 +149,9 @@ func main() {
 
 }
 
-func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) {
+// do the real testing on one target
+// return the configurations loaded in order to build the overall thingy
+func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) map[string][]string {
 	var (
 		err         error
 		cConfig     *csconfig.GlobalConfig
@@ -215,10 +228,12 @@ func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) {
 	buckets = leaky.NewBuckets()
 	holders, outputEventChan, err = leaky.LoadBuckets(cConfig.Crowdsec, files)
 
+	failure := false
 	if _, ok := localConfig.Configurations["parsers"]; ok {
 		err := testParser(filepath.Dir(targetFile), csParsers, cConfig, localConfig)
 		if err != nil {
 			log.Errorf("Error: %s", err)
+			failure = true
 		}
 		if flags.JUnitFilename != "" {
 			report.AddSingleResult(cwhub.PARSERS, err, strings.Join(localConfig.Configurations[cwhub.PARSERS], ", "))
@@ -229,6 +244,7 @@ func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) {
 		err = testBuckets(filepath.Dir(targetFile), cConfig, localConfig)
 		if err != nil {
 			log.Errorf("Error: %s", err)
+			failure = true
 		}
 		if flags.JUnitFilename != "" {
 			report.AddSingleResult(cwhub.SCENARIOS, err, strings.Join(localConfig.Configurations[cwhub.SCENARIOS], ", "))
@@ -239,12 +255,15 @@ func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) {
 		err = testPwfl(filepath.Dir(targetFile), csParsers, localConfig)
 		if err != nil {
 			log.Errorf("Error: %s", err)
+			failure = true
 		}
 		if flags.JUnitFilename != "" {
 			report.AddSingleResult(cwhub.PARSERS_OVFLW, err, strings.Join(localConfig.Configurations[cwhub.PARSERS_OVFLW], ", "))
 		}
 	}
-
 	log.Infof("tests are finished.")
-
+	if failure {
+		return nil
+	}
+	return localConfig.Configurations
 }
