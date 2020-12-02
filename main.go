@@ -171,7 +171,7 @@ func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) map[string
 		BucketResultFile:   "bucket_result.json",
 		PoInputFile:        "po_input.yaml",
 		PoResultFile:       "postoverflow_result.json",
-		ReprocessInputFile: "bucket_input_reprocess.yaml",
+		ReprocessInputFile: "",
 		IndexFile:          ".index.json",
 	}
 	fcontent, err := ioutil.ReadFile(path)
@@ -256,7 +256,6 @@ func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) map[string
 
 	_, ok := localConfig.Configurations["postoverflows"]
 	if ok || localConfig.ReprocessInputFile != "" && scenarios {
-		log.Printf("Here")
 		err = testPwfl(filepath.Dir(targetFile), csParsers, localConfig)
 		if err != nil {
 			log.Errorf("Error: %s", err)

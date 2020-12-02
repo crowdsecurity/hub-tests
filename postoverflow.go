@@ -154,11 +154,11 @@ func testPwfl(target_dir string, parsers *parser.Parsers, localConfig ConfigTest
 		}
 		return errors.New(fmt.Sprintf("Result is not in the %d expected results", len(AllPoExpected)))
 	}
+
 	log.Infof("postoverflow tests are finished.")
 
 	if len(bucketsInput) > 0 {
-
-		if err = marshalAndStore(bucketsInput, localConfig.ReprocessInputFile); err != nil {
+		if err = marshalAndStore(bucketsInput, target_dir+"/"+localConfig.ReprocessInputFile); err != nil {
 			log.Errorf("Unable to marshal bucketsInput for reprocess stuff")
 		}
 	}
