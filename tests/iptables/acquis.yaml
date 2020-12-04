@@ -1,5 +1,0 @@
-mode: cat
-filenames:
- - ./tests/iptables/iptables.log
-labels:
-  type: syslog
