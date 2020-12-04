@@ -1,7 +1,0 @@
-mode: cat
-filenames:
- - ./tests/ssh/auth.log
-labels:
-  type: syslog
-
-

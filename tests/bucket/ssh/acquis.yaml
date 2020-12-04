@@ -1,5 +1,7 @@
 mode: cat
 filenames:
- - ./tests/iptables/iptables.log
+ - ./tests/bucket/ssh/auth.log
 labels:
   type: syslog
+
+
