@@ -48,8 +48,13 @@ func (o *Overflow) DeepEqual(result map[string]map[string]types.Event) bool {
 	return cmp.Equal(o.OverflowResult, result, getCmpOptions())
 }
 
+type SingleItemTested struct {
+	count     int
+	failCount int
+}
+
 type Overall struct {
-	overall map[string]map[string]int
+	overall map[string]map[string]SingleItemTested
 }
 
 func getCmpOptions() cmp.Option {
@@ -111,24 +116,42 @@ func retrieveAndUnmarshal(filename string, b interface{}) error {
 
 func NewOverall() *Overall {
 	return &Overall{
-		overall: make(map[string]map[string]int),
+		overall: make(map[string]map[string]SingleItemTested),
 	}
 }
 
-func (o *Overall) AddSingleResult(tested map[string][]string) {
+func (o *Overall) AddSingleResult(tested map[string][]string, failure bool) {
 	for itemType, itemList := range tested {
 		if _, ok := o.overall[itemType]; !ok {
-			o.overall[itemType] = make(map[string]int)
+			o.overall[itemType] = make(map[string]SingleItemTested)
 		}
 		for _, item := range itemList {
 			if _, ok := o.overall[itemType][item]; !ok {
-				o.overall[itemType][item] = 1
+				if failure {
+					o.overall[itemType][item] = SingleItemTested{
+						count:     1,
+						failCount: 1,
+					}
+				} else {
+					o.overall[itemType][item] = SingleItemTested{
+						count:     1,
+						failCount: 0,
+					}
+				}
 			} else {
-				o.overall[itemType][item]++
+				if failure {
+					tmp := o.overall[itemType][item]
+					tmp.count++
+					tmp.failCount++
+					o.overall[itemType][item] = tmp
+				} else {
+					tmp := o.overall[itemType][item]
+					tmp.count++
+					o.overall[itemType][item] = tmp
+				}
 			}
 		}
 	}
-
 }
 
 func buildOverallResult(dir string) (map[string]map[string]Configuration, error) {
@@ -137,12 +160,22 @@ func buildOverallResult(dir string) (map[string]map[string]Configuration, error)
 		if strings.Contains(path, ".tests") {
 			return nil
 		}
+
+		if f.Mode().IsDir() {
+			return nil
+		}
+
 		parts := strings.Split(path, "/")
+		if parts[0] != "parsers" && parts[0] != "scenarios" && parts[0] != "postoverflows" {
+			return nil
+		}
+
 		npath := ""
+
 		if parts[0] == "parsers" || parts[0] == "postoverflows" {
 			npath = strings.Join(parts[2:], "/")
 		}
-		if parts[0] == "scenarios" {
+		if parts[0] == "scenarios" && len(parts) > 1 {
 			npath = strings.Join(parts[1:], "/")
 		}
 
@@ -150,22 +183,34 @@ func buildOverallResult(dir string) (map[string]map[string]Configuration, error)
 			ret[parts[0]] = make(map[string]Configuration)
 		}
 		if filepath.Ext(npath) == ".md" {
-			c := ret[parts[0]][npath]
+			var c Configuration
+			entry := strings.TrimSuffix(npath, ".md")
+			if _, ok := ret[parts[0]][entry]; ok {
+				c = ret[parts[0]][entry]
+			} else {
+				c = Configuration{}
+			}
 			c.markdown = true
-			ret[parts[0]][npath] = c
+			if f.Size() == 0 {
+				c.markdownNotEmpty = false
+				ret[parts[0]][entry] = c
+			} else {
+				c.markdownNotEmpty = true
+				ret[parts[0]][entry] = c
+			}
 		}
-		fi, err := os.Stat(path)
-		size := fi.Size()
-		if size == 0 {
-			c := ret[parts[0]][npath]
-			c.markdownNotEmpty = false
-			ret[parts[0]][npath] = c
-		} else {
-			c := ret[parts[0]][npath]
-			c.markdownNotEmpty = true
-			ret[parts[0]][npath] = c
+
+		if filepath.Ext(npath) == ".yaml" {
+			entry := strings.TrimSuffix(npath, ".yaml")
+			if _, ok := ret[parts[0]][entry]; !ok {
+				ret[parts[0]][entry] = Configuration{
+					markdown:         false,
+					markdownNotEmpty: false,
+					count:            0,
+					failure:          0,
+				}
+			}
 		}
-		ret[parts[0]][npath] = Configuration{}
 		return nil
 	})
 	return ret, err
