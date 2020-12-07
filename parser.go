@@ -76,7 +76,7 @@ func parseMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parserNo
 	//parse
 	parsed, err = parser.Parse(*parserCTX, event, parserNodes)
 	if err != nil {
-		return false, false, types.Event{}, fmt.Errorf("failed parsing : %v\n", err)
+		return false, false, types.Event{}, fmt.Errorf("failed parsing : %v\n", err) //parser.Parse truly never return err != nil
 	}
 
 	if !parsed.Process {
@@ -223,6 +223,10 @@ func testParser(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 	log.Infof("%d/%d matched results", OrigExpectedLen-len(AllExpected), OrigExpectedLen)
 	if len(AllExpected) > 0 {
 		log.Warningf("%d out of %d expected results unmatched", len(AllExpected), OrigExpectedLen)
+	}
+
+	if linesRead == linesUnparsed {
+		return errors.New("No line was successfully parsed")
 	}
 
 	//there was no data present, just dump

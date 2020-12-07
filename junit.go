@@ -79,7 +79,6 @@ func LoadJunitReport(filename string) (*JUnitTestSuites, error) {
 		Suites: make([]JUnitTestSuite, 0),
 	}
 	err = xml.Unmarshal(buf, report)
-	log.Printf("report: %+v", report)
 	return report, err
 }
 
