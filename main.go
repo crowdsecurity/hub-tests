@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -14,6 +15,7 @@ import (
 	leaky "github.com/crowdsecurity/crowdsec/pkg/leakybucket"
 	"github.com/crowdsecurity/crowdsec/pkg/parser"
 	"github.com/crowdsecurity/crowdsec/pkg/types"
+	"github.com/pkg/errors"
 	log "github.com/sirupsen/logrus"
 	"gopkg.in/yaml.v2"
 )
@@ -69,6 +71,7 @@ type Flags struct {
 	SingleFile    string
 	JUnitFilename string
 	GlobFiles     string
+	Overall       bool
 }
 
 func (f *Flags) Parse() {
@@ -76,7 +79,7 @@ func (f *Flags) Parse() {
 	flag.StringVar(&f.SingleFile, "single", "", "target test dir")
 	flag.StringVar(&f.JUnitFilename, "junit", "", "junit file name")
 	flag.StringVar(&f.GlobFiles, "glob", "config.yaml", "globing over all subdirs")
-
+	flag.BoolVar(&f.Overall, "overall", false, "adding a overall checkup to tests")
 	flag.Parse()
 }
 
@@ -98,6 +101,7 @@ type Configuration struct {
 	markdown         bool
 	markdownNotEmpty bool
 	count            int
+	failure          int
 }
 
 func main() {
@@ -124,8 +128,8 @@ func main() {
 
 	OverallResult = NewOverall()
 	if flags.SingleFile != "" {
-		if tested := doTest(flags, flags.SingleFile, report); tested != nil {
-			OverallResult.AddSingleResult(tested)
+		if tested, failure := doTest(flags, flags.SingleFile, report); tested != nil {
+			OverallResult.AddSingleResult(tested, failure)
 		}
 	} else {
 		//we are globbing :)
@@ -135,9 +139,44 @@ func main() {
 		log.Printf("Doing test on %s", matches)
 		for _, match := range matches {
 			log.Printf("Doing test on %s", match)
-			if tested := doTest(flags, match, report); tested != nil {
-				OverallResult.AddSingleResult(tested)
+			if tested, failure := doTest(flags, match, report); tested != nil {
+				OverallResult.AddSingleResult(tested, failure)
 			}
+		}
+	}
+
+	//We build the overall result
+	overall := make(map[string]map[string]Configuration)
+	if flags.Overall {
+		if overall, err = buildOverallResult("."); err != nil {
+			log.Errorf("Weird thing walking for building the overall test")
+		}
+	}
+
+	for itemType, m := range OverallResult.overall {
+		for item, testResult := range m {
+			if _, ok := overall[itemType]; !ok {
+				continue
+			}
+			if _, ok := overall[itemType][item]; !ok {
+				continue
+			}
+			tmp := overall[itemType][item]
+			tmp.count = testResult.count
+			tmp.failure = testResult.failCount
+			overall[itemType][item] = tmp
+		}
+	}
+	for itemType, m := range overall {
+		for item, testResult := range m {
+			err = nil
+			if testResult.failure > 0 {
+				err = errors.New("The test failed %d times")
+			}
+			if testResult.count == 0 {
+				err = errors.New("The test wasn't performed on this configuration item")
+			}
+			report.AddSingleResult("Overall test", err, fmt.Sprintf("%s/%s passed %d times", itemType, item, testResult.count))
 		}
 	}
 
@@ -152,7 +191,7 @@ func main() {
 
 // do the real testing on one target
 // return the configurations loaded in order to build the overall thingy
-func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) map[string][]string {
+func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) (map[string][]string, bool) {
 	var (
 		err         error
 		cConfig     *csconfig.GlobalConfig
@@ -266,8 +305,5 @@ func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) map[string
 		}
 	}
 	log.Infof("tests are finished.")
-	if failure {
-		return nil
-	}
-	return localConfig.Configurations
+	return localConfig.Configurations, failure
 }
