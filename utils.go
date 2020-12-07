@@ -1,7 +1,9 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -11,6 +13,8 @@ import (
 
 	"github.com/crowdsecurity/crowdsec/pkg/types"
 	"github.com/google/go-cmp/cmp"
+	"github.com/pkg/errors"
+	log "github.com/sirupsen/logrus"
 	"gopkg.in/yaml.v2"
 )
 
@@ -169,4 +173,32 @@ func buildOverallResult(dir string) (map[string]map[string]Configuration, error)
 		return nil
 	})
 	return ret, err
+}
+
+func getDataFromFile(filename string, dataFolder string) error {
+	var (
+		err error
+		buf []byte
+	)
+
+	if buf, err = ioutil.ReadFile(filename); err != nil {
+		log.Fatalf("unable to open read %s", filename)
+	}
+	dec := yaml.NewDecoder(bytes.NewReader(buf))
+	for {
+		data := &types.DataSet{}
+		err = dec.Decode(data)
+		if err != nil {
+			if err == io.EOF {
+				break
+			} else {
+				return errors.Wrap(err, "while reading file")
+			}
+		}
+		err = types.GetData(data.Data, dataFolder)
+		if err != nil {
+			errors.Wrapf(err, "Unable to download data from %+v", data.Data)
+		}
+	}
+	return nil
 }

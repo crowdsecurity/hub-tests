@@ -43,8 +43,13 @@ func newParsers(index map[string]map[string]cwhub.Item, local ConfigTest) *parse
 			if itemType == cwhub.PARSERS_OVFLW {
 				parsers.PovfwStageFiles = append(parsers.PovfwStageFiles, stagefile)
 			}
+
+			if err := getDataFromFile(hubParserItem.LocalPath, "./data"); err != nil { //TODO have a way to fix this hardcoded direcotry
+				log.Errorf("Unable to get data for %s", hubParserItem.LocalPath)
+			}
 		}
 	}
+
 	sort.Slice(parsers.StageFiles, func(i, j int) bool {
 		return parsers.StageFiles[i].Filename < parsers.StageFiles[j].Filename
 	})
