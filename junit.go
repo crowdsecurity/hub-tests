@@ -126,7 +126,7 @@ func (report *JUnitTestSuites) AddSingleResult(itemType string, err error, name 
 			Name:      itemType,
 			TestCases: []JUnitTestCase{testCase},
 		}
-		report.Suites = []JUnitTestSuite{suite}
+		report.Suites = append(report.Suites, suite)
 	} else {
 		suite.Tests++
 		if failure != nil {
