@@ -34,7 +34,9 @@ var (
 
 type ConfigTest struct {
 	//parsers files
-	LogFile         string `yaml:"log_file"`
+	LogFile string `yaml:"log_file"`
+
+	ParserInputFile string `yaml:"parser_input"`
 	ParseResultFile string `yaml:"parser_results"`
 
 	//bucket files
@@ -54,6 +56,8 @@ type ConfigTest struct {
 	IndexFile string `yaml:"index"`
 	//configuration list. For now sorting by type is mandatory
 	Configurations map[string][]string `yaml:"configurations"`
+
+	target_dir string
 }
 
 type LineParseResult struct {
@@ -198,11 +202,13 @@ func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) (map[strin
 		files       []string
 		localConfig ConfigTest
 		index       map[string]map[string]cwhub.Item
+		target_dir  string
 	)
 	cConfig = csconfig.NewConfig()
 
 	//fill localConfig with default
 	path := targetFile
+	target_dir = filepath.Dir(targetFile)
 	localConfig = ConfigTest{
 		LogFile:            "acquis.log",
 		ParseResultFile:    "parser_result.json",
@@ -212,6 +218,7 @@ func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) (map[strin
 		PoResultFile:       "postoverflow_result.json",
 		ReprocessInputFile: "",
 		IndexFile:          ".index.json",
+		target_dir:         target_dir,
 	}
 	fcontent, err := ioutil.ReadFile(path)
 	if err != nil {
@@ -227,14 +234,14 @@ func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) (map[strin
 	cConfig.API = &csconfig.APICfg{}
 	cConfig.ConfigPaths = &csconfig.ConfigurationPaths{
 		ConfigDir:    "./config",
-		DataDir:      "./data",
+		DataDir:      "./data/",
 		HubIndexFile: localConfig.IndexFile,
 	}
 	cConfig.Crowdsec = &csconfig.CrowdsecServiceCfg{
-		AcquisitionFilePath: filepath.Dir(targetFile) + "/acquis.yaml",
+		AcquisitionFilePath: target_dir + "/acquis.yaml",
 	}
 
-	log.Printf("Acquisition file : %s", filepath.Dir(targetFile)+"/acquis.yaml")
+	log.Printf("Acquisition file : %s", target_dir+"/acquis.yaml")
 
 	err = cConfig.LoadConfiguration()
 	if err != nil {

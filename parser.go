@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"sort"
+	"sync"
 
 	"github.com/pkg/errors"
 
@@ -68,10 +69,6 @@ func parseMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parserNo
 	oneResult := LineParseResult{}
 	h := sha256.New()
 
-	if event.Line.Raw == "" {
-		log.Warningf("discarding empty line")
-		return true, false, types.Event{}, nil
-	}
 	h.Write([]byte(event.Line.Raw))
 	//parse
 	parsed, err = parser.Parse(*parserCTX, event, parserNodes)
@@ -126,18 +123,19 @@ func testParser(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 		ptomb           tomb.Tomb
 		bucketsInput    []types.Event = []types.Event{}
 	)
-
 	AllResults = make([]LineParseResult, 0)
 	AllExpected = make([]LineParseResult, 0)
 
-	log.Infof("Loading acquisition")
-	dataSrc, err = acquisition.LoadAcquisitionFromFile(cConfig.Crowdsec)
-	if err != nil {
-		errors.Wrap(err, "Not able to init acquisition")
-	}
-	for _, filectx := range dataSrc {
-		if filectx.Mode() != "cat" {
-			log.Warning("The mode of reading the log file is not 'cat'. The whole thing is highly probably bound to fail")
+	if localConfig.ParserInputFile == "" {
+		log.Infof("Loading acquisition")
+		dataSrc, err = acquisition.LoadAcquisitionFromFile(cConfig.Crowdsec)
+		if err != nil {
+			errors.Wrap(err, "Not able to init acquisition")
+		}
+		for _, filectx := range dataSrc {
+			if filectx.Mode() != "cat" {
+				log.Warning("The mode of reading the log file is not 'cat'. The whole thing is highly probably bound to fail")
+			}
 		}
 	}
 
@@ -197,16 +195,32 @@ func testParser(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 			}
 		}
 	})
+	wg := sync.WaitGroup{}
+	wg.Add(1)
+	if localConfig.ParserInputFile == "" {
+		go acquisition.StartAcquisition(dataSrc, inputLineChan, &acquisTomb)
+		log.Printf("waiting for acquis tomb to die")
+		if err := acquisTomb.Wait(); err != nil {
+			return errors.Wrap(err, "acquisition returned error : %s")
+		}
+		log.Printf("acquis tomb died")
+		wg.Done()
 
-	go acquisition.StartAcquisition(dataSrc, inputLineChan, &acquisTomb)
-
-	log.Printf("waiting for acquis tomb to die")
-	if err := acquisTomb.Wait(); err != nil {
-		return errors.Wrap(err, "acquisition returned error : %s")
+	} else {
+		parserInput := make([]types.Event, 0)
+		if err := retrieveAndUnmarshal(localConfig.target_dir+"/"+localConfig.ParserInputFile, &parserInput); err != nil {
+			return errors.Wrap(err, "Couldn't load serialized parser input")
+		}
+		go func() {
+			for _, event := range parserInput {
+				inputLineChan <- event
+			}
+			wg.Done()
+		}()
 	}
-	log.Printf("acquis tomb died")
 
 	//We close the log chan, and waiting the tomb to die, to be sure not to forget event in the cloud
+	wg.Wait()
 	close(inputLineChan)
 	log.Printf("Waiting for parsers tomb to die")
 	if err := ptomb.Wait(); err != nil {
