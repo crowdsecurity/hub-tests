@@ -10,6 +10,7 @@ import (
 	"github.com/crowdsecurity/crowdsec/pkg/csconfig"
 	"github.com/crowdsecurity/crowdsec/pkg/cwhub"
 	leaky "github.com/crowdsecurity/crowdsec/pkg/leakybucket"
+	"github.com/crowdsecurity/crowdsec/pkg/models"
 	"github.com/crowdsecurity/crowdsec/pkg/types"
 	"github.com/google/go-cmp/cmp"
 	"github.com/pkg/errors"
@@ -163,6 +164,7 @@ func testBuckets(target_dir string, cConfig *csconfig.GlobalConfig, localConfig 
 	//this should be taken care of
 	time.Sleep(5 * time.Second)
 
+	bucketsOutput = cleanBucketOutput(bucketsOutput)
 	if err := testBucketsOutput(target_dir, bucketsOutput); err != nil {
 		return errors.Wrap(err, "Buckets error: %s")
 	}
@@ -179,4 +181,24 @@ func testBuckets(target_dir string, cConfig *csconfig.GlobalConfig, localConfig 
 	}
 
 	return nil
+}
+
+func cleanBucketOutput(events []types.Event) []types.Event {
+	var (
+		output []types.Event = []types.Event{}
+	)
+	for _, event := range events {
+		var alerts []models.Alert = []models.Alert{}
+		for _, alert := range event.Overflow.APIAlerts {
+			*alert.Message = ""
+			*alert.StartAt = (time.Time{}).Format(time.RFC3339)
+			*alert.StopAt = (time.Time{}).Format(time.RFC3339)
+			alerts = append(alerts, alert)
+		}
+		event.Overflow.APIAlerts = alerts
+		event.Overflow.Alert = &event.Overflow.APIAlerts[0]
+		event.MarshaledTime = (time.Time{}).Format(time.RFC3339)
+		output = append(output, event)
+	}
+	return output
 }
