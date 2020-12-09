@@ -62,7 +62,7 @@ func testBucketsOutput(target_dir string, AllBucketsResult []types.Event) error 
 		log.Warningf("no buckets result in %s, will dump data instead!", target_dir)
 	} else {
 		if err := json.Unmarshal(expected_bytes, &AllBucketsExpected); err != nil {
-			return errors.Wrapf(err, "file %s can't be unmarshaled : %s", expectedResultsFile)
+			return errors.Wrapf(err, "file %s can't be unmarshaled", expectedResultsFile)
 		} else {
 			ExpectedPresent = true
 			OrigExpectedLen = len(AllBucketsExpected)
@@ -76,7 +76,7 @@ func testBucketsOutput(target_dir string, AllBucketsResult []types.Event) error 
 			return errors.Wrap(err, "failed to marshal results")
 		}
 		if err := ioutil.WriteFile(expectedResultsFile, dump_bytes, 0644); err != nil {
-			return errors.Wrapf(err, "failed to dump data to %s : %s", expectedResultsFile)
+			return errors.Wrapf(err, "failed to dump data to %s", expectedResultsFile)
 		}
 	}
 
@@ -93,7 +93,7 @@ func testBucketsOutput(target_dir string, AllBucketsResult []types.Event) error 
 			return errors.Wrap(err, "failed to marshal result")
 		}
 		if err := ioutil.WriteFile(expectedResultsFile, dump_bytes, 0644); err != nil {
-			return errors.Wrapf(err, "failed to dump data to %s : %s", expectedResultsFile)
+			return errors.Wrapf(err, "failed to dump data to %s", expectedResultsFile)
 		}
 		log.Printf("done")
 		err = errors.New(cmp.Diff(AllBucketsExpected, AllBucketsResult, opt))

@@ -4,10 +4,8 @@ import (
 	"encoding/xml"
 	"fmt"
 	"io/ioutil"
-	"os"
 
 	"github.com/pkg/errors"
-	log "github.com/sirupsen/logrus"
 )
 
 // type are stolen from https://github.com/jstemmer/go-junit-report/blob/master/formatter/formatter.go
@@ -59,27 +57,6 @@ type JUnitFailure struct {
 	Message  string `xml:"message,attr"`
 	Type     string `xml:"type,attr"`
 	Contents string `xml:",chardata"`
-}
-
-func LoadJunitReport(filename string) (*JUnitTestSuites, error) {
-	var (
-		err error
-		buf []byte
-	)
-	if _, err := os.Stat(filename); os.IsNotExist(err) {
-		log.Debugf("File %s doesn't exist we'll create it late")
-		return &JUnitTestSuites{}, nil
-	}
-
-	if buf, err = ioutil.ReadFile(filename); err != nil {
-		return nil, errors.Wrapf(err, "Read file %s error: %s", filename)
-	}
-
-	report := &JUnitTestSuites{
-		Suites: make([]JUnitTestSuite, 0),
-	}
-	err = xml.Unmarshal(buf, report)
-	return report, err
 }
 
 func (report *JUnitTestSuites) AddSingleResult(itemType string, err error, name string) {
