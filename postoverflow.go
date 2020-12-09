@@ -95,7 +95,7 @@ func testPwfl(target_dir string, parsers *parser.Parsers, localConfig ConfigTest
 
 	} else {
 		if err := json.Unmarshal(expected_bytes, &AllPoExpected); err != nil {
-			return errors.Wrapf(err, "file %s can't be unmarshaled : %s", expectedPoResultsFile)
+			return errors.Wrapf(err, "file %s can't be unmarshaled", expectedPoResultsFile)
 		} else {
 			ExpectedPresent = true
 			//			OrigExpectedLen = len(AllPoExpected)

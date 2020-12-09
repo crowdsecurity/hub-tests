@@ -125,9 +125,7 @@ func main() {
 	flags.Parse()
 
 	if flags.JUnitFilename != "" {
-		if report, err = LoadJunitReport(flags.JUnitFilename); err != nil {
-			log.Fatalf("Error loading JUnit file: %s", flags.JUnitFilename)
-		}
+		report = &JUnitTestSuites{}
 	}
 
 	OverallResult = NewOverall()

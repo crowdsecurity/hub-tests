@@ -251,7 +251,7 @@ func testParser(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 			return errors.Wrap(err, "failed to marshal results")
 		}
 		if err := ioutil.WriteFile(expectedResultsFile, dump_bytes, 0644); err != nil {
-			return errors.Wrapf(err, "failed to dump data to %s : %s", expectedResultsFile)
+			return errors.Wrapf(err, "failed to dump data to %s", expectedResultsFile)
 		}
 	} else {
 		if len(AllExpected) > 0 {
