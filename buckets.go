@@ -82,13 +82,22 @@ func testBucketsOutput(target_dir string, AllBucketsResult []types.Event) error 
 
 	//from here we will deal with postoverflow
 	opt := getCmpOptions()
-	matched := false
-	if cmp.Equal(AllBucketsExpected, AllBucketsResult, opt) {
-		matched = true
-	} else {
+	origAllBucketsResult := AllBucketsResult // get a copy of the original results
+
+	for i, expectedEvent := range AllBucketsExpected {
+		for j, happenedEvent := range AllBucketsResult {
+			if cmp.Equal(expectedEvent, happenedEvent, opt) {
+				AllBucketsExpected = append(AllBucketsExpected[:i], AllBucketsExpected[i+1:]...)
+				AllBucketsResult = append(AllBucketsResult[:j], AllBucketsResult[i+j:]...)
+				break
+			}
+		}
+	}
+
+	if len(AllBucketsExpected) != 0 || len(AllBucketsResult) != 0 {
 		expectedResultsFile = expectedResultsFile + ".fail"
-		log.Errorf("tests failed, writting results to %s", expectedResultsFile)
-		dump_bytes, err := json.MarshalIndent(AllBucketsResult, "", " ")
+		log.Errorf("tests failed, writing results to %s", expectedResultsFile)
+		dump_bytes, err := json.MarshalIndent(origAllBucketsResult, "", " ")
 		if err != nil {
 			return errors.Wrap(err, "failed to marshal result")
 		}
@@ -100,21 +109,7 @@ func testBucketsOutput(target_dir string, AllBucketsResult []types.Event) error 
 		return errors.WithMessage(err, "mismatch diff (-want +got)")
 	}
 
-	if !matched && len(AllBucketsExpected) != 0 {
-		expectedResultsFile = expectedResultsFile + ".fail"
-		log.Errorf("tests failed, writting results to %s", expectedResultsFile)
-		dump_bytes, err := json.MarshalIndent(AllBucketsResult, "", " ")
-		if err != nil {
-			errors.Wrap(err, "failed to marshal results")
-		}
-		if err := ioutil.WriteFile(expectedResultsFile, dump_bytes, 0644); err != nil {
-			errors.Wrapf(err, "failed to dump data to %s", expectedResultsFile)
-		}
-		log.Printf("done")
-		return errors.New("Result is not in the expected results")
-
-	}
-	log.Infof("%d/%d matched results", OrigExpectedLen-len(AllBucketsExpected), OrigExpectedLen)
+	log.Infof("%d/%d matched results", len(origAllBucketsResult)-len(AllBucketsResult), len(origAllBucketsResult))
 	log.Infof("Bucket tets are finished")
 	return nil
 
