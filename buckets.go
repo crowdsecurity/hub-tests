@@ -86,7 +86,7 @@ func testBucketsOutput(target_dir string, AllBucketsResult []types.Event) error 
 		for j, happenedEvent := range AllBucketsResult {
 			if cmp.Equal(expectedEvent, happenedEvent, opt) {
 				AllBucketsExpected = append(AllBucketsExpected[:i], AllBucketsExpected[i+1:]...)
-				AllBucketsResult = append(AllBucketsResult[:j], AllBucketsResult[i+j:]...)
+				AllBucketsResult = append(AllBucketsResult[:j], AllBucketsResult[j+1:]...)
 				break
 			}
 		}
