@@ -51,7 +51,6 @@ func newBuckets(index map[string]map[string]cwhub.Item, local ConfigTest) []stri
 // for now we still use the bool to say if the test was ok
 func testBucketsOutput(target_dir string, AllBucketsResult []types.Event) error {
 	var (
-		OrigExpectedLen    int
 		AllBucketsExpected []types.Event = []types.Event{}
 	)
 	//load the expected results
@@ -65,7 +64,6 @@ func testBucketsOutput(target_dir string, AllBucketsResult []types.Event) error 
 			return errors.Wrapf(err, "file %s can't be unmarshaled", expectedResultsFile)
 		} else {
 			ExpectedPresent = true
-			OrigExpectedLen = len(AllBucketsExpected)
 		}
 	}
 	//there was no data present, just dump
