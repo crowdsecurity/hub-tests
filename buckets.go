@@ -82,12 +82,13 @@ func testBucketsOutput(target_dir string, AllBucketsResult []types.Event) error 
 	opt := getCmpOptions()
 	origAllBucketsResult := AllBucketsResult // get a copy of the original results
 
+Loop:
 	for i, expectedEvent := range AllBucketsExpected {
 		for j, happenedEvent := range AllBucketsResult {
 			if cmp.Equal(expectedEvent, happenedEvent, opt) {
 				AllBucketsExpected = append(AllBucketsExpected[:i], AllBucketsExpected[i+1:]...)
 				AllBucketsResult = append(AllBucketsResult[:j], AllBucketsResult[j+1:]...)
-				break
+				goto Loop
 			}
 		}
 	}
