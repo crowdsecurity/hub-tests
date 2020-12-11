@@ -189,7 +189,12 @@ func cleanBucketOutput(events []types.Event) []types.Event {
 			alerts = append(alerts, alert)
 		}
 		event.Overflow.APIAlerts = alerts
-		event.Overflow.Alert = &event.Overflow.APIAlerts[0]
+		// In some cases the alerts slice can be empty:
+		// * blackhole
+		// * unusual scope
+		if len(event.Overflow.APIAlerts) > 0 {
+			event.Overflow.Alert = &event.Overflow.APIAlerts[0]
+		}
 		event.MarshaledTime = (time.Time{}).Format(time.RFC3339)
 		output = append(output, event)
 	}
