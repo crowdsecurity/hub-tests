@@ -229,11 +229,16 @@ func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) (map[strin
 
 	//Minimal configuration loading
 	//TODO move this to a specific function
-	cConfig.API = &csconfig.APICfg{}
-	cConfig.ConfigPaths = &csconfig.ConfigurationPaths{
-		ConfigDir:    "./config",
-		DataDir:      "./data/",
-		HubIndexFile: localConfig.IndexFile,
+	cConfig = &csconfig.GlobalConfig{
+		API: &csconfig.APICfg{},
+		ConfigPaths: &csconfig.ConfigurationPaths{
+			ConfigDir:    "./config",
+			DataDir:      "./data/",
+			HubIndexFile: localConfig.IndexFile,
+		},
+		Crowdsec: &csconfig.CrowdsecServiceCfg{
+			ConfigDir: "./config",
+		},
 	}
 
 	log.Printf("Acquisition file : %s", target_dir+"/acquis.yaml")
