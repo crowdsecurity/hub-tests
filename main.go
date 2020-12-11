@@ -274,6 +274,12 @@ func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) (map[strin
 	log.Infof("Loading %d scenario files", len(files))
 
 	buckets = leaky.NewBuckets()
+	for _, file := range files {
+		if err := getDataFromFile(file, "./data"); err != nil { //TODO have a way to fix this hardcoded direcotry
+			log.Errorf("Unable to get data for %s", file)
+		}
+
+	}
 	holders, outputEventChan, err = leaky.LoadBuckets(cConfig.Crowdsec, files)
 
 	failure := false
