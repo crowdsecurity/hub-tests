@@ -113,7 +113,7 @@ func testBucketsOutput(target_dir string, AllBucketsResult []types.Event) error 
 
 }
 
-func testBuckets(target_dir string, cConfig *csconfig.GlobalConfig, localConfig ConfigTest) error {
+func testBuckets(cConfig *csconfig.GlobalConfig, localConfig ConfigTest) error {
 	var (
 		potomb        tomb.Tomb
 		bucketsOutput []types.Event = []types.Event{}
@@ -123,7 +123,7 @@ func testBuckets(target_dir string, cConfig *csconfig.GlobalConfig, localConfig 
 
 	// Retrieve value from yaml
 	// And once again we would have done better with generics...
-	if err = retrieveAndUnmarshal(target_dir+"/"+localConfig.BucketInputFile, &bucketsInput); err != nil {
+	if err = retrieveAndUnmarshal(localConfig.target_dir+"/"+localConfig.BucketInputFile, &bucketsInput); err != nil {
 		return fmt.Errorf("Error unmarshaling %s: %s", localConfig.BucketInputFile, err)
 	}
 
@@ -158,7 +158,7 @@ func testBuckets(target_dir string, cConfig *csconfig.GlobalConfig, localConfig 
 	time.Sleep(5 * time.Second)
 
 	bucketsOutput = cleanBucketOutput(bucketsOutput)
-	if err := testBucketsOutput(target_dir, bucketsOutput); err != nil {
+	if err := testBucketsOutput(localConfig.target_dir, bucketsOutput); err != nil {
 		return errors.Wrap(err, "Buckets error: %s")
 	}
 
@@ -169,7 +169,7 @@ func testBuckets(target_dir string, cConfig *csconfig.GlobalConfig, localConfig 
 		log.Warningf("acquisition returned error : %s", err)
 	}
 
-	if err := marshalAndStore(bucketsOutput, target_dir+"/"+localConfig.PoInputFile); err != nil {
+	if err := marshalAndStore(bucketsOutput, localConfig.target_dir+"/"+localConfig.PoInputFile); err != nil {
 		return errors.Wrap(err, "marshaling failed")
 	}
 

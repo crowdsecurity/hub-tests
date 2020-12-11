@@ -111,7 +111,7 @@ func parseMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parserNo
 	return matched, true, parsed, nil
 }
 
-func testParser(target_dir string, parsers *parser.Parsers, cConfig *csconfig.GlobalConfig, localConfig ConfigTest) error {
+func testParser(parsers *parser.Parsers, localConfig ConfigTest) error {
 	var (
 		err error
 		//		acquisitionCTX  *acquisition.FileAcquisCtx
@@ -127,8 +127,18 @@ func testParser(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 	AllExpected = make([]LineParseResult, 0)
 
 	if localConfig.ParserInputFile == "" {
+		fakeCrowdsecServicecfg := csconfig.GlobalConfig{
+			ConfigPaths: &csconfig.ConfigurationPaths{
+				ConfigDir: "./config",
+				DataDir:   "./data/",
+			},
+			Crowdsec: &csconfig.CrowdsecServiceCfg{
+				AcquisitionFilePath: localConfig.target_dir + "/acquis.yaml",
+			},
+		}
 		log.Infof("Loading acquisition")
-		dataSrc, err = acquisition.LoadAcquisitionFromFile(cConfig.Crowdsec)
+
+		dataSrc, err = acquisition.LoadAcquisitionFromFile(fakeCrowdsecServicecfg.Crowdsec)
 		if err != nil {
 			errors.Wrap(err, "Not able to init acquisition")
 		}
@@ -143,10 +153,10 @@ func testParser(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 	log.Infof("Loading parsers")
 	//load the expected results
 	ExpectedPresent := false
-	expectedResultsFile := target_dir + "/parser_results.json"
+	expectedResultsFile := localConfig.target_dir + "/" + localConfig.ParserResultFile
 	expected_bytes, err := ioutil.ReadFile(expectedResultsFile)
 	if err != nil {
-		log.Warningf("no results in %s, will dump data instead!", target_dir)
+		log.Warningf("no results in %s, will dump data instead!", localConfig.target_dir)
 	} else {
 		if err := json.Unmarshal(expected_bytes, &AllExpected); err != nil {
 			return fmt.Errorf("file %s can't be unmarshaled : %s", expectedResultsFile, err)
@@ -222,6 +232,7 @@ func testParser(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 	//We close the log chan, and waiting the tomb to die, to be sure not to forget event in the cloud
 	wg.Wait()
 	close(inputLineChan)
+
 	log.Printf("Waiting for parsers tomb to die")
 	if err := ptomb.Wait(); err != nil {
 		return errors.Wrap(err, "acquisition returned error : %s")
@@ -273,7 +284,7 @@ func testParser(target_dir string, parsers *parser.Parsers, cConfig *csconfig.Gl
 	}
 	log.Infof("parser tests are finished.")
 
-	if err := marshalAndStore(bucketsInput, target_dir+"/"+localConfig.BucketInputFile); err != nil {
+	if err := marshalAndStore(bucketsInput, localConfig.target_dir+"/"+localConfig.BucketInputFile); err != nil {
 		return errors.Wrap(err, "marshaling failed")
 	}
 	return nil

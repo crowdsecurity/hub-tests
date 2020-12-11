@@ -53,7 +53,7 @@ func parsePoMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parser
 	return nil, nil
 }
 
-func testPwfl(target_dir string, parsers *parser.Parsers, localConfig ConfigTest) error {
+func testPwfl(parsers *parser.Parsers, localConfig ConfigTest) error {
 	var (
 		matched      bool
 		err          error
@@ -69,7 +69,7 @@ func testPwfl(target_dir string, parsers *parser.Parsers, localConfig ConfigTest
 	AllPoExpected = make([]LineParsePoResult, 0)
 	AllPoResults = make([]LineParsePoResult, 0)
 
-	if err = retrieveAndUnmarshal(target_dir+"/"+localConfig.PoInputFile, &poInput); err != nil {
+	if err = retrieveAndUnmarshal(localConfig.target_dir+"/"+localConfig.PoInputFile, &poInput); err != nil {
 		return errors.Wrapf(err, "Error unmarshaling %s", localConfig.PoInputFile)
 	}
 
@@ -86,11 +86,11 @@ func testPwfl(target_dir string, parsers *parser.Parsers, localConfig ConfigTest
 	}
 
 	ExpectedPresent := false
-	expectedPoResultsFile := target_dir + "/" + localConfig.PoResultFile
+	expectedPoResultsFile := localConfig.target_dir + "/" + localConfig.PoResultFile
 
 	expected_bytes, err := ioutil.ReadFile(expectedPoResultsFile)
 	if err != nil {
-		log.Warningf("no results in %s, will dump data instead!", target_dir)
+		log.Warningf("no results in %s, will dump data instead!", localConfig.target_dir)
 		//there was no data present, just dump
 
 	} else {
@@ -158,7 +158,7 @@ func testPwfl(target_dir string, parsers *parser.Parsers, localConfig ConfigTest
 	log.Infof("postoverflow tests are finished.")
 
 	if len(bucketsInput) > 0 {
-		if err = marshalAndStore(bucketsInput, target_dir+"/"+localConfig.ReprocessInputFile); err != nil {
+		if err = marshalAndStore(bucketsInput, localConfig.target_dir+"/"+localConfig.ReprocessInputFile); err != nil {
 			log.Errorf("Unable to marshal bucketsInput for reprocess stuff")
 		}
 	}
