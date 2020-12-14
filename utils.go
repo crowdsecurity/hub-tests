@@ -18,40 +18,6 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
-type UniqDescriptor interface {
-}
-
-type Result interface {
-	Discriminate(interface{}) bool
-	DeepEqual(map[string]map[string]types.Event) bool
-}
-
-type LineResult struct {
-	string
-	LineResult map[string]map[string]types.Event
-}
-
-func (s *LineResult) Discriminate(e string) bool {
-	return s.string == e
-}
-
-func (s *LineResult) DeepEqual(result map[string]map[string]types.Event) bool {
-	return cmp.Equal(s.LineResult, result, getCmpOptions())
-}
-
-type Overflow struct {
-	types.RuntimeAlert
-	OverflowResult map[string]map[string]types.Event
-}
-
-func (o *Overflow) Discriminate(e types.RuntimeAlert) bool {
-	return cmp.Equal(o.RuntimeAlert, e, getCmpOptions())
-}
-
-func (o *Overflow) DeepEqual(result map[string]map[string]types.Event) bool {
-	return cmp.Equal(o.OverflowResult, result, getCmpOptions())
-}
-
 type SingleItemTested struct {
 	count     int
 	failCount int
@@ -59,6 +25,41 @@ type SingleItemTested struct {
 
 type Overall struct {
 	overall map[string]map[string]SingleItemTested
+}
+
+func TestResults(expected []types.Event, results []types.Event, failFile string, testName string) error {
+	var (
+		err error
+	)
+
+	//from here we will deal with postoverflow
+	opt := getCmpOptions()
+	origResults := results // get a copy of the original results
+
+Loop:
+	for i, expectedEvent := range expected {
+		for j, happenedEvent := range results {
+			if cmp.Equal(expectedEvent, happenedEvent, opt) {
+				expected = append(expected[:i], expected[i+1:]...)
+				results = append(results[:j], results[j+1:]...)
+				goto Loop
+			}
+		}
+	}
+
+	if len(expected) != 0 || len(results) != 0 {
+		log.Errorf("tests failed, writing results to %s", failFile)
+		err = marshalAndStore(origResults, failFile)
+		if err != nil {
+			return errors.Wrapf(err, "failed to marshal result in %s", failFile)
+		}
+		return errors.WithMessage(errors.New(cmp.Diff(expected, results, opt)), "mismatch diff (-want +got)")
+	}
+
+	log.Infof("%d/%d matched results", len(origResults)-len(results), len(origResults))
+	log.Infof("%s tests are finished", testName)
+	return nil
+
 }
 
 func getCmpOptions() cmp.Option {
