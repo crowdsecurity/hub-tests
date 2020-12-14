@@ -5,20 +5,57 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"os"
 	"sort"
-	"sync"
 
 	"github.com/pkg/errors"
 
-	"github.com/crowdsecurity/crowdsec/pkg/acquisition"
-	"github.com/crowdsecurity/crowdsec/pkg/csconfig"
 	"github.com/crowdsecurity/crowdsec/pkg/cwhub"
 	"github.com/crowdsecurity/crowdsec/pkg/parser"
 	"github.com/crowdsecurity/crowdsec/pkg/types"
 	"github.com/google/go-cmp/cmp"
 	log "github.com/sirupsen/logrus"
-	"gopkg.in/tomb.v2"
 )
+
+func addFakeNodes(ctx *parser.UnixParserCtx, nodes []parser.Node, parserDir string) (*parser.UnixParserCtx, []parser.Node) {
+	var (
+		err    error
+		dirs   []os.FileInfo
+		stages []string = []string{}
+	)
+
+	if dirs, err = ioutil.ReadDir(parserDir); err != nil {
+		log.Fatalf("unable to read ./parsers directory: %s", err)
+	}
+
+	for _, dir := range dirs {
+		if dir.IsDir() {
+			stages = append(stages, dir.Name())
+		}
+	}
+
+	log.Tracef("Detected stages: %+v", stages)
+	existing_stages := map[string]bool{}
+	for _, node := range nodes {
+		existing_stages[node.Stage] = true
+	}
+	for _, stage := range stages {
+		if _, ok := existing_stages[stage]; !ok {
+			log.Tracef("adding fake node for stage %s", stage)
+			nodes = append(nodes, createFakeNode(stage))
+		}
+	}
+
+	ctx.Stages = stages
+	return ctx, nodes
+}
+
+func createFakeNode(stage string) parser.Node {
+	return parser.Node{
+		Stage:  stage,
+		Logger: log.NewEntry(log.StandardLogger()),
+	}
+}
 
 // Return new parsers
 // nodes and povfwnodes are already initialized in parser.LoadStages
@@ -57,6 +94,7 @@ func newParsers(index map[string]map[string]cwhub.Item, local ConfigTest) *parse
 	sort.Slice(parsers.PovfwStageFiles, func(i, j int) bool {
 		return parsers.PovfwStageFiles[i].Filename < parsers.PovfwStageFiles[j].Filename
 	})
+
 	return parsers
 }
 
@@ -111,52 +149,24 @@ func parseMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parserNo
 	return matched, true, parsed, nil
 }
 
-func testParser(parsers *parser.Parsers, localConfig ConfigTest) error {
+func (tp *TestParsers) Parse(parsers *parser.Parsers, events []types.Event) error {
 	var (
-		err error
-		//		acquisitionCTX  *acquisition.FileAcquisCtx
-		inputLineChan   = make(chan types.Event)
+		err             error
 		failure         bool
 		OrigExpectedLen int
-		dataSrc         []acquisition.DataSource
-		acquisTomb      tomb.Tomb
-		ptomb           tomb.Tomb
 		bucketsInput    []types.Event = []types.Event{}
 	)
 	AllResults = make([]LineParseResult, 0)
 	AllExpected = make([]LineParseResult, 0)
 
-	if localConfig.ParserInputFile == "" {
-		fakeCrowdsecServicecfg := csconfig.GlobalConfig{
-			ConfigPaths: &csconfig.ConfigurationPaths{
-				ConfigDir: "./config",
-				DataDir:   "./data/",
-			},
-			Crowdsec: &csconfig.CrowdsecServiceCfg{
-				AcquisitionFilePath: localConfig.target_dir + "/acquis.yaml",
-			},
-		}
-		log.Infof("Loading acquisition")
-
-		dataSrc, err = acquisition.LoadAcquisitionFromFile(fakeCrowdsecServicecfg.Crowdsec)
-		if err != nil {
-			errors.Wrap(err, "Not able to init acquisition")
-		}
-		for _, filectx := range dataSrc {
-			if filectx.Mode() != "cat" {
-				log.Warning("The mode of reading the log file is not 'cat'. The whole thing is highly probably bound to fail")
-			}
-		}
-	}
-
 	//load parsers
 	log.Infof("Loading parsers")
 	//load the expected results
 	ExpectedPresent := false
-	expectedResultsFile := localConfig.target_dir + "/" + localConfig.ParserResultFile
+	expectedResultsFile := tp.LocalConfig.target_dir + "/" + tp.LocalConfig.ParserResultFile
 	expected_bytes, err := ioutil.ReadFile(expectedResultsFile)
 	if err != nil {
-		log.Warningf("no results in %s, will dump data instead!", localConfig.target_dir)
+		log.Warningf("no results in %s, will dump data instead!", tp.LocalConfig.target_dir)
 	} else {
 		if err := json.Unmarshal(expected_bytes, &AllExpected); err != nil {
 			return fmt.Errorf("file %s can't be unmarshaled : %s", expectedResultsFile, err)
@@ -170,72 +180,26 @@ func testParser(parsers *parser.Parsers, localConfig ConfigTest) error {
 	linesUnparsed := 0
 
 	parser.ParseDump = true
-	ptomb = tomb.Tomb{}
-	acquisTomb = tomb.Tomb{}
 
-	ptomb.Go(func() error {
-		log.Printf("Processing logs")
-		for {
-			select {
-			case event, ok := <-inputLineChan:
-				if !ok {
-					return nil
-				}
-				log.Debugf("about to add one line")
-				linesRead++
-				test_ok, parsed_ok, parsed, err := parseMatchLine(event, parsers.Ctx, parsers.Nodes)
-				bucketsInput = append(bucketsInput, parsed)
-				log.Printf("one line done")
-				if !parsed_ok {
-					if err != nil {
-						log.Errorf("parser error : %s", err)
-					}
-					linesUnparsed++
-				}
-				if !test_ok {
-					failure = true
-					// TODO: estsFailed++
-					log.Errorf("test %d failed", linesRead)
-					if err != nil {
-						log.Errorf("test failure: %s", err)
-					}
-				}
-			case <-ptomb.Dying():
-				return nil
+	for _, event := range events {
+		test_ok, parsed_ok, parsed, err := parseMatchLine(event, parsers.Ctx, parsers.Nodes)
+		linesRead++
+		bucketsInput = append(bucketsInput, parsed)
+		log.Printf("one line done")
+		if !parsed_ok {
+			if err != nil {
+				log.Errorf("parser error : %s", err)
+			}
+			linesUnparsed++
+		}
+		if !test_ok {
+			failure = true
+			// TODO: estsFailed++
+			log.Errorf("test %d failed", linesRead)
+			if err != nil {
+				log.Errorf("test failure: %s", err)
 			}
 		}
-	})
-	wg := sync.WaitGroup{}
-	wg.Add(1)
-	if localConfig.ParserInputFile == "" {
-		go acquisition.StartAcquisition(dataSrc, inputLineChan, &acquisTomb)
-		log.Printf("waiting for acquis tomb to die")
-		if err := acquisTomb.Wait(); err != nil {
-			return errors.Wrap(err, "acquisition returned error : %s")
-		}
-		log.Printf("acquis tomb died")
-		wg.Done()
-
-	} else {
-		parserInput := make([]types.Event, 0)
-		if err := retrieveAndUnmarshal(localConfig.target_dir+"/"+localConfig.ParserInputFile, &parserInput); err != nil {
-			return errors.Wrap(err, "Couldn't load serialized parser input")
-		}
-		go func() {
-			for _, event := range parserInput {
-				inputLineChan <- event
-			}
-			wg.Done()
-		}()
-	}
-
-	//We close the log chan, and waiting the tomb to die, to be sure not to forget event in the cloud
-	wg.Wait()
-	close(inputLineChan)
-
-	log.Printf("Waiting for parsers tomb to die")
-	if err := ptomb.Wait(); err != nil {
-		return errors.Wrap(err, "acquisition returned error : %s")
 	}
 
 	//parser result analysis
@@ -284,7 +248,7 @@ func testParser(parsers *parser.Parsers, localConfig ConfigTest) error {
 	}
 	log.Infof("parser tests are finished.")
 
-	if err := marshalAndStore(bucketsInput, localConfig.target_dir+"/"+localConfig.BucketInputFile); err != nil {
+	if err := marshalAndStore(bucketsInput, tp.LocalConfig.target_dir+"/"+tp.LocalConfig.BucketInputFile); err != nil {
 		return errors.Wrap(err, "marshaling failed")
 	}
 	return nil
