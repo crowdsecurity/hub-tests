@@ -82,12 +82,15 @@ func testBucketsOutput(target_dir string, AllBucketsResult []types.Event) error 
 	opt := getCmpOptions()
 	origAllBucketsResult := AllBucketsResult // get a copy of the original results
 
+Loop:
+
 	for i, expectedEvent := range AllBucketsExpected {
 		for j, happenedEvent := range AllBucketsResult {
 			if cmp.Equal(expectedEvent, happenedEvent, opt) {
 				AllBucketsExpected = append(AllBucketsExpected[:i], AllBucketsExpected[i+1:]...)
 				AllBucketsResult = append(AllBucketsResult[:j], AllBucketsResult[j+1:]...)
-				break
+				goto Loop
+
 			}
 		}
 	}
@@ -189,7 +192,12 @@ func cleanBucketOutput(events []types.Event) []types.Event {
 			alerts = append(alerts, alert)
 		}
 		event.Overflow.APIAlerts = alerts
-		event.Overflow.Alert = &event.Overflow.APIAlerts[0]
+		// In some cases the alerts slice can be empty:
+		// * blackhole
+		// * unusual scope
+		if len(event.Overflow.APIAlerts) > 0 {
+			event.Overflow.Alert = &event.Overflow.APIAlerts[0]
+		}
 		event.MarshaledTime = (time.Time{}).Format(time.RFC3339)
 		output = append(output, event)
 	}
