@@ -27,14 +27,25 @@ type Overall struct {
 	overall map[string]map[string]SingleItemTested
 }
 
-func TestResults(expected []types.Event, results []types.Event, failFile string, testName string) error {
+func TestResults(e interface{}, r interface{}, failFile string, testName string) error {
 	var (
-		err error
+		err      error
+		ok       bool
+		expected []interface{}
+		results  []interface{}
 	)
 
 	//from here we will deal with postoverflow
 	opt := getCmpOptions()
 	origResults := results // get a copy of the original results
+
+	if expected, ok = e.([]interface{}); !ok {
+		log.Fatalf("expected result is not a slice")
+	}
+
+	if results, ok = e.([]interface{}); !ok {
+		log.Fatalf("expected result is not a slice")
+	}
 
 Loop:
 	for i, expectedEvent := range expected {

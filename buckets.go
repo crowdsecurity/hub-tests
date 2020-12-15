@@ -87,8 +87,12 @@ func testBuckets(cConfig *csconfig.GlobalConfig, localConfig ConfigTest) error {
 
 	// Retrieve value from yaml
 	// And once again we would have done better with generics...
-	if err = retrieveAndUnmarshal(localConfig.target_dir+"/"+localConfig.BucketInputFile, &bucketsInput); err != nil {
-		return fmt.Errorf("Error unmarshaling %s: %s", localConfig.BucketInputFile, err)
+	if err = retrieveAndUnmarshal(localConfig.targetDir+"/"+localConfig.BucketInputFile, &bucketsInput); err != nil {
+		var tmp ParserResults
+		if err2 := retrieveAndUnmarshal(localConfig.targetDir+"/"+localConfig.ParserResultFile, &tmp); err2 != nil {
+			return errors.New(fmt.Sprintf("unable to find any data to feed to the buckets: %s, %s", err, err2))
+		}
+		bucketsInput = tmp.FinalResults
 	}
 
 	overflow := 0
@@ -133,11 +137,11 @@ func testBuckets(cConfig *csconfig.GlobalConfig, localConfig ConfigTest) error {
 	}
 
 	bucketsOutput = cleanBucketOutput(bucketsOutput)
-	if err := testBucketsResults(localConfig.target_dir+"/"+localConfig.BucketResultFile, bucketsOutput); err != nil {
+	if err := testBucketsResults(localConfig.targetDir+"/"+localConfig.BucketResultFile, bucketsOutput); err != nil {
 		return errors.Wrap(err, "Buckets error: %s")
 	}
 
-	if err := marshalAndStore(bucketsOutput, localConfig.target_dir+"/"+localConfig.PoInputFile); err != nil {
+	if err := marshalAndStore(bucketsOutput, localConfig.targetDir+"/"+localConfig.PoInputFile); err != nil {
 		return errors.Wrap(err, "marshaling failed")
 	}
 

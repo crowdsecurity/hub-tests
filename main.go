@@ -21,10 +21,10 @@ import (
 )
 
 var (
-	AllResults    []LineParseResult
-	AllExpected   []LineParseResult
-	AllPoResults  []LineParsePoResult
-	AllPoExpected []LineParsePoResult
+	// AllResults    []LineParseResult
+	// AllExpected   []LineParseResult
+	// AllPoResults  []LineParsePoResult
+	// AllPoExpected []LineParsePoResult
 
 	holders []leaky.BucketFactory
 	buckets *leaky.Buckets
@@ -58,17 +58,7 @@ type ConfigTest struct {
 	//configuration list. For now sorting by type is mandatory
 	Configurations map[string][]string `yaml:"configurations"`
 
-	target_dir string
-}
-
-type LineParseResult struct {
-	Line          string
-	ParserResults map[string]map[string]types.Event
-}
-
-type LineParsePoResult struct {
-	Overflow      types.RuntimeAlert
-	ParserResults map[string]map[string]types.Event
+	targetDir string
 }
 
 type Flags struct {
@@ -223,7 +213,7 @@ func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) (map[strin
 		StoreIntermediateStates: true,
 		ReprocessInputFile:      "",
 		IndexFile:               ".index.json",
-		target_dir:              target_dir,
+		targetDir:               target_dir,
 	}
 	fcontent, err := ioutil.ReadFile(path)
 	if err != nil {
@@ -296,7 +286,8 @@ func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) (map[strin
 	if _, ok := localConfig.Configurations["parsers"]; ok {
 		var events []types.Event
 		testParsers := &TestParsers{
-			LocalConfig: localConfig,
+			LocalConfig: &localConfig,
+			current:     "parsers",
 		}
 		if events, err = testParsers.LaunchAcquisition(); err != nil {
 			log.Fatalf("error at acquisition: %s", err)
@@ -325,7 +316,15 @@ func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) (map[strin
 
 	_, ok := localConfig.Configurations["postoverflows"]
 	if ok || localConfig.ReprocessInputFile != "" && scenarios {
-		err = testPwfl(csParsers, localConfig)
+		var events []types.Event
+		testParsers := &TestParsers{
+			LocalConfig: &localConfig,
+			current:     "postoverflows",
+		}
+		if events, err = testParsers.LaunchAcquisition(); err != nil {
+			log.Fatalf("error at acquisition: %s", err)
+		}
+		err := testParsers.Parse(csParsers, events)
 		if err != nil {
 			log.Errorf("Error: %s", err)
 			failure = true

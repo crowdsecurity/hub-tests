@@ -1,8 +1,6 @@
 package main
 
 import (
-	"crypto/sha256"
-	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -13,9 +11,64 @@ import (
 	"github.com/crowdsecurity/crowdsec/pkg/cwhub"
 	"github.com/crowdsecurity/crowdsec/pkg/parser"
 	"github.com/crowdsecurity/crowdsec/pkg/types"
-	"github.com/google/go-cmp/cmp"
 	log "github.com/sirupsen/logrus"
 )
+
+func (tp *TestParsers) LoadResults() error {
+	var (
+		err error
+	)
+	tp.ExpectedPresent = false
+
+	log.Debugf("looking for testresults in %s", tp.ResultFile)
+	_, err = ioutil.ReadFile(tp.ResultFile)
+
+	tp.ParserResult = &ParserResults{}
+	if err != nil {
+		log.Warningf("no result in %s, will dump data instead!", tp.ResultFile)
+	} else {
+		err = retrieveAndUnmarshal(tp.ResultFile, tp.ParserResult)
+		if err == nil {
+			tp.ExpectedPresent = true
+		} else {
+			return errors.Wrapf(err, "Unable to unmarsharl %s", tp.ResultFile)
+		}
+		//there was no data present, just dump
+	}
+	return nil
+
+}
+
+func (tp *TestParsers) CheckAndStoreResults(results ParserResults) error {
+	var (
+		err error
+	)
+	if !tp.ExpectedPresent {
+		log.Warningf("result file missing dump and bailing out")
+		if err = marshalAndStore(results, tp.LocalConfig.ParserResultFile); err != nil {
+			log.Fatalf("unable to marshal and store %s", tp.ResultFile)
+		}
+		return errors.New(fmt.Sprintf("result file %s missing dump", tp.ResultFile))
+	}
+
+	//First check the Final results
+	//TODO avoid having TestResults writing its own failure file. For now we let it write it, and we overfwrite
+	if err = TestResults(tp.ParserResult.FinalResults, results.FinalResults, tp.ResultFile, tp.current); err != nil {
+		//final result is not validated bailing output
+		if err = marshalAndStore(results, tp.LocalConfig.ParserResultFile+".fail"); err != nil {
+			log.Fatalf("unable to marshal and store %s", tp.ResultFile)
+		}
+		return err
+	}
+
+	//second check the provisional results
+	if err = TestResults(tp.ParserResult.ProvisionalResults, results.ProvisionalResults, tp.ResultFile, tp.current); err != nil {
+		//provisional result is not validated bailing output
+		return err
+	}
+
+	return nil
+}
 
 func addFakeNodes(ctx *parser.UnixParserCtx, nodes []parser.Node, parserDir string) (*parser.UnixParserCtx, []parser.Node) {
 	var (
@@ -99,157 +152,151 @@ func newParsers(index map[string]map[string]cwhub.Item, local ConfigTest) *parse
 }
 
 //ret : test_ok, parsed_ok, error
-func parseMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parserNodes []parser.Node) (bool, bool, types.Event, error) {
-	var (
-		err    error
-		parsed types.Event
-	)
-	oneResult := LineParseResult{}
-	h := sha256.New()
+// func parseMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parserNodes []parser.Node) (bool, bool, types.Event, error) {
+// 	var (
+// 		err    error
+// 		parsed types.Event
+// 	)
+// 	oneResult := LineParseResult{}
+// 	h := sha256.New()
 
-	h.Write([]byte(event.Line.Raw))
-	//parse
-	parsed, err = parser.Parse(*parserCTX, event, parserNodes)
-	if err != nil {
-		return false, false, types.Event{}, fmt.Errorf("failed parsing : %v\n", err) //parser.Parse truly never return err != nil
-	}
+// 	h.Write([]byte(event.Line.Raw))
+// 	//parse
 
-	if !parsed.Process {
-		return true, false, types.Event{}, fmt.Errorf("unparsed line %s", parsed.Line.Raw)
-	}
+// 	//marshal current result
+// 	oneResult.Line = parsed.Line.Raw
+// 	//we need to clean Line's timestamp
+// 	oneResult.ParserResults = cleanForMatch(parser.StageParseCache)
 
-	//marshal current result
-	oneResult.Line = parsed.Line.Raw
-	//we need to clean Line's timestamp
-	oneResult.ParserResults = cleanForMatch(parser.StageParseCache)
-
-	opt := getCmpOptions()
-	/*
-		Iterate over the list of expected results and try to find back
-	*/
-	AllResults = append(AllResults, oneResult)
-	matched := false
-	for idx, candidate := range AllExpected {
-		//not our line
-		if candidate.Line != event.Line.Raw {
-			continue
-		}
-		if cmp.Equal(candidate, oneResult, opt) {
-			matched = true
-			//we go an exact match
-			AllExpected = append(AllExpected[:idx], AllExpected[idx+1:]...)
-		} else {
-			return false, true, types.Event{}, fmt.Errorf("mismatch diff (-want +got) : %s", cmp.Diff(candidate, oneResult, opt))
-		}
-		break
-	}
-	if !matched && len(AllExpected) != 0 {
-		return false, true, types.Event{}, fmt.Errorf("Result is not in the %d expected results", len(AllExpected))
-	}
-	return matched, true, parsed, nil
-}
+// 	opt := getCmpOptions()
+// 	/*
+// 		Iterate over the list of expected results and try to find back
+// 	*/
+// 	AllResults = append(AllResults, oneResult)
+// 	matched := false
+// 	for idx, candidate := range AllExpected {
+// 		//not our line
+// 		if candidate.Line != event.Line.Raw {
+// 			continue
+// 		}
+// 		if cmp.Equal(candidate, oneResult, opt) {
+// 			matched = true
+// 			//we go an exact match
+// 			AllExpected = append(AllExpected[:idx], AllExpected[idx+1:]...)
+// 		} else {
+// 			return false, true, types.Event{}, fmt.Errorf("mismatch diff (-want +got) : %s", cmp.Diff(candidate, oneResult, opt))
+// 		}
+// 		break
+// 	}
+// 	if !matched && len(AllExpected) != 0 {
+// 		return false, true, types.Event{}, fmt.Errorf("Result is not in the %d expected results", len(AllExpected))
+// 	}
+// 	return matched, true, parsed, nil
 
 func (tp *TestParsers) Parse(parsers *parser.Parsers, events []types.Event) error {
 	var (
-		err             error
-		failure         bool
-		OrigExpectedLen int
-		bucketsInput    []types.Event = []types.Event{}
+		err     error
+		results ParserResults = ParserResults{
+			FinalResults:       make([]types.Event, 0),
+			ProvisionalResults: make([]map[string]map[string]types.Event, 0),
+		}
+		parsed        types.Event
+		unparsedLines int = 0
+		readLines     int = 0
 	)
-	AllResults = make([]LineParseResult, 0)
-	AllExpected = make([]LineParseResult, 0)
-
 	//load parsers
 	log.Infof("Loading parsers")
 	//load the expected results
-	ExpectedPresent := false
-	expectedResultsFile := tp.LocalConfig.target_dir + "/" + tp.LocalConfig.ParserResultFile
-	expected_bytes, err := ioutil.ReadFile(expectedResultsFile)
-	if err != nil {
-		log.Warningf("no results in %s, will dump data instead!", tp.LocalConfig.target_dir)
-	} else {
-		if err := json.Unmarshal(expected_bytes, &AllExpected); err != nil {
-			return fmt.Errorf("file %s can't be unmarshaled : %s", expectedResultsFile, err)
-		} else {
-			ExpectedPresent = true
-			OrigExpectedLen = len(AllExpected)
-		}
+
+	if tp.current == "parsers" {
+		tp.ResultFile = tp.LocalConfig.targetDir + "/" + tp.LocalConfig.ParserResultFile
 	}
 
-	linesRead := 0
-	linesUnparsed := 0
+	if tp.current == "postoverflows" {
+		tp.ResultFile = tp.LocalConfig.targetDir + "/" + tp.LocalConfig.PoResultFile
+	}
 
+	if err = tp.LoadResults(); err != nil {
+		log.Fatalf("error unmarshalling %s: %s", tp.ResultFile, err)
+	}
 	parser.ParseDump = true
+	results.FinalResults = make([]types.Event, 0)
 
 	for _, event := range events {
-		test_ok, parsed_ok, parsed, err := parseMatchLine(event, parsers.Ctx, parsers.Nodes)
-		linesRead++
-		bucketsInput = append(bucketsInput, parsed)
+		switch tp.current {
+		case "parsers":
+			parsed, err = parser.Parse(*parsers.Ctx, event, parsers.Nodes) //add a switch for postoverflow here
+		case "postoverflows":
+			parsed, err = parser.Parse(*parsers.Povfwctx, event, parsers.Povfwnodes) //add a switch for postoverflow here
+		default:
+			log.Fatalf("don't know what to do, test parsers or postoverflows ?")
+		}
+
+		if err != nil {
+			log.Fatalf("parsing error: %s", err) //useless: parser.Parse truly never return err != nil
+		}
+
+		if !parsed.Process {
+			unparsedLines++
+			log.Errorf("Unparsed line: %s", parsed.Line.Raw)
+		}
+
+		readLines++
+		results.FinalResults = append(results.FinalResults, parsed)
+		results.ProvisionalResults = append(results.ProvisionalResults, parser.StageParseCache)
 		log.Printf("one line done")
-		if !parsed_ok {
-			if err != nil {
-				log.Errorf("parser error : %s", err)
-			}
-			linesUnparsed++
-		}
-		if !test_ok {
-			failure = true
-			// TODO: estsFailed++
-			log.Errorf("test %d failed", linesRead)
-			if err != nil {
-				log.Errorf("test failure: %s", err)
-			}
-		}
 	}
 
 	//parser result analysis
-	log.Infof("%d lines read", linesRead)
-	log.Infof("%d parser results, %d UNPARSED", len(AllResults), linesUnparsed)
+	log.Infof("%d/%d lines parsed successfully, %d UNPARSED", readLines-unparsedLines, unparsedLines)
 
-	if linesRead != len(AllResults) {
-		log.Warningf("%d out of %d lines didn't yeld result", linesRead-len(AllResults), linesRead)
-	}
-	log.Infof("%d/%d matched results", OrigExpectedLen-len(AllExpected), OrigExpectedLen)
-	if len(AllExpected) > 0 {
-		log.Warningf("%d out of %d expected results unmatched", len(AllExpected), OrigExpectedLen)
-	}
-
-	if linesRead == linesUnparsed {
+	// in case all lines are not parsed, bail out
+	if readLines == unparsedLines {
 		return errors.New("No line was successfully parsed")
 	}
 
-	//there was no data present, just dump
-	if !ExpectedPresent {
-		log.Warningf("No expected results loaded, dump.")
-		dump_bytes, err := json.MarshalIndent(AllResults, "", " ")
-		if err != nil {
-			return errors.Wrap(err, "failed to marshal results")
-		}
-		if err := ioutil.WriteFile(expectedResultsFile, dump_bytes, 0644); err != nil {
-			return errors.Wrapf(err, "failed to dump data to %s", expectedResultsFile)
-		}
-	} else {
-		if len(AllExpected) > 0 {
-			log.Errorf("Left-over results in expected : %d", len(AllExpected))
-		}
-	}
-	if failure {
-		expectedResultsFile = expectedResultsFile + ".fail"
-		log.Errorf("tests failed, writting results to %s", expectedResultsFile)
-		dump_bytes, err := json.MarshalIndent(AllResults, "", " ")
-		if err != nil {
-			log.Fatalf("failed to marshal results : %s", err)
-		}
-		if err := ioutil.WriteFile(expectedResultsFile, dump_bytes, 0644); err != nil {
-			log.Fatalf("failed to dump data to %s : %s", expectedResultsFile, err)
-		}
-		log.Printf("done")
-		return errors.New("Parsers test failed, bailing out")
-	}
-	log.Infof("parser tests are finished.")
+	return tp.CheckAndStoreResults(results)
 
-	if err := marshalAndStore(bucketsInput, tp.LocalConfig.target_dir+"/"+tp.LocalConfig.BucketInputFile); err != nil {
-		return errors.Wrap(err, "marshaling failed")
-	}
+	// if readLines != len(AllResults) {
+	// 	log.Warningf("%d out of %d lines didn't yeld result", linesRead-len(AllResults), linesRead)
+	// }
+	// log.Infof("%d/%d matched results", OrigExpectedLen-len(AllExpected), OrigExpectedLen)
+	// if len(AllExpected) > 0 {
+	// 	log.Warningf("%d out of %d expected results unmatched", len(AllExpected), OrigExpectedLen)
+	// }
+
+	//there was no data present, just dump
+	// if !ExpectedPresent {
+	// 	log.Warningf("No expected results loaded, dump.")
+	// 	dump_bytes, err := json.MarshalIndent(AllResults, "", " ")
+	// 	if err != nil {
+	// 		return errors.Wrap(err, "failed to marshal results")
+	// 	}
+	// 	if err := ioutil.WriteFile(expectedResultsFile, dump_bytes, 0644); err != nil {
+	// 		return errors.Wrapf(err, "failed to dump data to %s", expectedResultsFile)
+	// 	}
+	// } else {
+	// 	if len(AllExpected) > 0 {
+	// 		log.Errorf("Left-over results in expected : %d", len(AllExpected))
+	// 	}
+	// }
+	// if failure {
+	// 	expectedResultsFile = expectedResultsFile + ".fail"
+	// 	log.Errorf("tests failed, writting results to %s", expectedResultsFile)
+	// 	dump_bytes, err := json.MarshalIndent(AllResults, "", " ")
+	// 	if err != nil {
+	// 		log.Fatalf("failed to marshal results : %s", err)
+	// 	}
+	// 	if err := ioutil.WriteFile(expectedResultsFile, dump_bytes, 0644); err != nil {
+	// 		log.Fatalf("failed to dump data to %s : %s", expectedResultsFile, err)
+	// 	}
+	// 	log.Printf("done")
+	// 	return errors.New("Parsers test failed, bailing out")
+	// }
+	// log.Infof("parser tests are finished.")
+
+	// if err := marshalAndStore(results, tp.LocalConfig.target_dir+"/"+tp.LocalConfig.BucketInputFile); err != nil {
+	// 	return errors.Wrap(err, "marshaling failed")
+	// }
 	return nil
 }
