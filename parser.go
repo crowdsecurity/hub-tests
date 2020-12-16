@@ -45,7 +45,7 @@ func (tp *TestParsers) CheckAndStoreResults(results ParserResults) error {
 	)
 	if !tp.ExpectedPresent {
 		log.Warningf("result file missing dump and bailing out")
-		if err = marshalAndStore(results, tp.LocalConfig.ParserResultFile); err != nil {
+		if err = marshalAndStore(results, tp.ResultFile); err != nil {
 			log.Fatalf("unable to marshal and store %s", tp.ResultFile)
 		}
 		return errors.New(fmt.Sprintf("result file %s missing dump", tp.ResultFile))
