@@ -16,4 +16,4 @@ require (
 	gopkg.in/yaml.v2 v2.3.0
 	mvdan.cc/gofumpt v0.0.0-20201107090320-a024667a00f1 // indirect
 )
-x
+
