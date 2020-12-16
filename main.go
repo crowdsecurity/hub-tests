@@ -205,7 +205,7 @@ func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) (map[strin
 	target_dir = filepath.Dir(targetFile)
 	localConfig = ConfigTest{
 		LogFile:                 "acquis.log",
-		ParserResultFile:        "parser_result.json",
+		ParserResultFile:        "parser_results.yaml",
 		BucketInputFile:         "bucket_input.yaml",
 		BucketResultFile:        "bucket_result.json",
 		PoInputFile:             "po_input.yaml",

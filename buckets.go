@@ -74,7 +74,7 @@ func testBucketsResults(testFile string, results []types.Event) error {
 		return nil
 	}
 
-	return TestResults(expected, results, testFile+".fail", "buckets")
+	return TestResults(expected, results, testFile+".fail", "buckets", true)
 }
 
 func testBuckets(cConfig *csconfig.GlobalConfig, localConfig ConfigTest) error {

@@ -19,11 +19,11 @@ func (tp *TestParsers) LoadResults() error {
 		err error
 	)
 	tp.ExpectedPresent = false
+	tp.ParserResult = &ParserResults{}
 
-	log.Debugf("looking for testresults in %s", tp.ResultFile)
+	log.Debugf("looking for test results in %s", tp.ResultFile)
 	_, err = ioutil.ReadFile(tp.ResultFile)
 
-	tp.ParserResult = &ParserResults{}
 	if err != nil {
 		log.Warningf("no result in %s, will dump data instead!", tp.ResultFile)
 	} else {
@@ -41,7 +41,7 @@ func (tp *TestParsers) LoadResults() error {
 
 func (tp *TestParsers) CheckAndStoreResults(results ParserResults) error {
 	var (
-		err error
+		err, err2 error
 	)
 	if !tp.ExpectedPresent {
 		log.Warningf("result file missing dump and bailing out")
@@ -53,16 +53,16 @@ func (tp *TestParsers) CheckAndStoreResults(results ParserResults) error {
 
 	//First check the Final results
 	//TODO avoid having TestResults writing its own failure file. For now we let it write it, and we overfwrite
-	if err = TestResults(tp.ParserResult.FinalResults, results.FinalResults, tp.ResultFile, tp.current); err != nil {
+	if err = TestResults(tp.ParserResult.FinalResults, results.FinalResults, tp.ResultFile+".fail", tp.current, false); err != nil {
 		//final result is not validated bailing output
-		if err = marshalAndStore(results, tp.LocalConfig.ParserResultFile+".fail"); err != nil {
+		if err2 = marshalAndStore(results, tp.ResultFile+".fail"); err2 != nil {
 			log.Fatalf("unable to marshal and store %s", tp.ResultFile)
 		}
 		return err
 	}
 
 	//second check the provisional results
-	if err = TestResults(tp.ParserResult.ProvisionalResults, results.ProvisionalResults, tp.ResultFile, tp.current); err != nil {
+	if err = TestProvisionalResults(tp.ParserResult.ProvisionalResults, results.ProvisionalResults, tp.ResultFile+".fail", tp.current); err != nil {
 		//provisional result is not validated bailing output
 		return err
 	}
@@ -105,8 +105,9 @@ func addFakeNodes(ctx *parser.UnixParserCtx, nodes []parser.Node, parserDir stri
 
 func createFakeNode(stage string) parser.Node {
 	return parser.Node{
-		Stage:  stage,
-		Logger: log.NewEntry(log.StandardLogger()),
+		Stage:     stage,
+		Logger:    log.NewEntry(log.StandardLogger()),
+		OnSuccess: "next_stage",
 	}
 }
 
@@ -150,48 +151,6 @@ func newParsers(index map[string]map[string]cwhub.Item, local ConfigTest) *parse
 
 	return parsers
 }
-
-//ret : test_ok, parsed_ok, error
-// func parseMatchLine(event types.Event, parserCTX *parser.UnixParserCtx, parserNodes []parser.Node) (bool, bool, types.Event, error) {
-// 	var (
-// 		err    error
-// 		parsed types.Event
-// 	)
-// 	oneResult := LineParseResult{}
-// 	h := sha256.New()
-
-// 	h.Write([]byte(event.Line.Raw))
-// 	//parse
-
-// 	//marshal current result
-// 	oneResult.Line = parsed.Line.Raw
-// 	//we need to clean Line's timestamp
-// 	oneResult.ParserResults = cleanForMatch(parser.StageParseCache)
-
-// 	opt := getCmpOptions()
-// 	/*
-// 		Iterate over the list of expected results and try to find back
-// 	*/
-// 	AllResults = append(AllResults, oneResult)
-// 	matched := false
-// 	for idx, candidate := range AllExpected {
-// 		//not our line
-// 		if candidate.Line != event.Line.Raw {
-// 			continue
-// 		}
-// 		if cmp.Equal(candidate, oneResult, opt) {
-// 			matched = true
-// 			//we go an exact match
-// 			AllExpected = append(AllExpected[:idx], AllExpected[idx+1:]...)
-// 		} else {
-// 			return false, true, types.Event{}, fmt.Errorf("mismatch diff (-want +got) : %s", cmp.Diff(candidate, oneResult, opt))
-// 		}
-// 		break
-// 	}
-// 	if !matched && len(AllExpected) != 0 {
-// 		return false, true, types.Event{}, fmt.Errorf("Result is not in the %d expected results", len(AllExpected))
-// 	}
-// 	return matched, true, parsed, nil
 
 func (tp *TestParsers) Parse(parsers *parser.Parsers, events []types.Event) error {
 	var (
@@ -238,65 +197,24 @@ func (tp *TestParsers) Parse(parsers *parser.Parsers, events []types.Event) erro
 
 		if !parsed.Process {
 			unparsedLines++
-			log.Errorf("Unparsed line: %s", parsed.Line.Raw)
+			log.Errorf("unparsed line: %s", event.Line.Raw)
 		}
 
 		readLines++
-		results.FinalResults = append(results.FinalResults, parsed)
-		results.ProvisionalResults = append(results.ProvisionalResults, parser.StageParseCache)
+		results.FinalResults = append(results.FinalResults, cleanForMatchEvent(parsed))
+		results.ProvisionalResults = append(results.ProvisionalResults, cleanForMatch(parser.StageParseCache))
 		log.Printf("one line done")
 	}
 
 	//parser result analysis
-	log.Infof("%d/%d lines parsed successfully, %d UNPARSED", readLines-unparsedLines, unparsedLines)
+	log.Infof("%d/%d lines parsed successfully, %d UNPARSED", readLines-unparsedLines, readLines, unparsedLines)
 
 	// in case all lines are not parsed, bail out
 	if readLines == unparsedLines {
 		return errors.New("No line was successfully parsed")
 	}
-
-	return tp.CheckAndStoreResults(results)
-
-	// if readLines != len(AllResults) {
-	// 	log.Warningf("%d out of %d lines didn't yeld result", linesRead-len(AllResults), linesRead)
-	// }
-	// log.Infof("%d/%d matched results", OrigExpectedLen-len(AllExpected), OrigExpectedLen)
-	// if len(AllExpected) > 0 {
-	// 	log.Warningf("%d out of %d expected results unmatched", len(AllExpected), OrigExpectedLen)
-	// }
-
-	//there was no data present, just dump
-	// if !ExpectedPresent {
-	// 	log.Warningf("No expected results loaded, dump.")
-	// 	dump_bytes, err := json.MarshalIndent(AllResults, "", " ")
-	// 	if err != nil {
-	// 		return errors.Wrap(err, "failed to marshal results")
-	// 	}
-	// 	if err := ioutil.WriteFile(expectedResultsFile, dump_bytes, 0644); err != nil {
-	// 		return errors.Wrapf(err, "failed to dump data to %s", expectedResultsFile)
-	// 	}
-	// } else {
-	// 	if len(AllExpected) > 0 {
-	// 		log.Errorf("Left-over results in expected : %d", len(AllExpected))
-	// 	}
-	// }
-	// if failure {
-	// 	expectedResultsFile = expectedResultsFile + ".fail"
-	// 	log.Errorf("tests failed, writting results to %s", expectedResultsFile)
-	// 	dump_bytes, err := json.MarshalIndent(AllResults, "", " ")
-	// 	if err != nil {
-	// 		log.Fatalf("failed to marshal results : %s", err)
-	// 	}
-	// 	if err := ioutil.WriteFile(expectedResultsFile, dump_bytes, 0644); err != nil {
-	// 		log.Fatalf("failed to dump data to %s : %s", expectedResultsFile, err)
-	// 	}
-	// 	log.Printf("done")
-	// 	return errors.New("Parsers test failed, bailing out")
-	// }
-	// log.Infof("parser tests are finished.")
-
-	// if err := marshalAndStore(results, tp.LocalConfig.target_dir+"/"+tp.LocalConfig.BucketInputFile); err != nil {
-	// 	return errors.Wrap(err, "marshaling failed")
-	// }
-	return nil
+	if err = tp.CheckAndStoreResults(results); err != nil {
+		log.Errorf("Diff error: %s", err)
+	}
+	return err
 }

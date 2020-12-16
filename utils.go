@@ -27,25 +27,51 @@ type Overall struct {
 	overall map[string]map[string]SingleItemTested
 }
 
-func TestResults(e interface{}, r interface{}, failFile string, testName string) error {
+func TestResults(expected []types.Event, results []types.Event, failFile string, testName string, write bool) error {
 	var (
-		err      error
-		ok       bool
-		expected []interface{}
-		results  []interface{}
+		err error
+	)
+
+	opt := getCmpOptions()
+	origResults := results // get a copy of the original results
+
+Loop:
+	for i, expectedEvent := range expected {
+		for j, happenedEvent := range results {
+			if cmp.Equal(expectedEvent, happenedEvent, opt) {
+				expected = append(expected[:i], expected[i+1:]...)
+				results = append(results[:j], results[j+1:]...)
+				goto Loop
+			}
+		}
+	}
+
+	if len(expected) != 0 || len(results) != 0 {
+		if write {
+			log.Errorf("tests failed, writing results to %s", failFile)
+			err = marshalAndStore(origResults, failFile)
+			if err != nil {
+				return errors.Wrapf(err, "failed to marshal result in %s", failFile)
+			}
+		}
+		return errors.WithMessage(errors.New(cmp.Diff(expected, results, opt)), "mismatch diff (-want +got)")
+	}
+
+	log.Infof("%d/%d matched results", len(origResults)-len(results), len(origResults))
+	log.Infof("%s tests are finished", testName)
+	return nil
+
+}
+
+//generics, generics, generics, we lack youuuuuuuu
+func TestProvisionalResults(expected []map[string]map[string]types.Event, results []map[string]map[string]types.Event, failFile string, testName string) error {
+	var (
+		err error
 	)
 
 	//from here we will deal with postoverflow
 	opt := getCmpOptions()
 	origResults := results // get a copy of the original results
-
-	if expected, ok = e.([]interface{}); !ok {
-		log.Fatalf("expected result is not a slice")
-	}
-
-	if results, ok = e.([]interface{}); !ok {
-		log.Fatalf("expected result is not a slice")
-	}
 
 Loop:
 	for i, expectedEvent := range expected {
@@ -64,7 +90,7 @@ Loop:
 		if err != nil {
 			return errors.Wrapf(err, "failed to marshal result in %s", failFile)
 		}
-		return errors.WithMessage(errors.New(cmp.Diff(expected, results, opt)), "mismatch diff (-want +got)")
+		return errors.WithMessage(errors.New(cmp.Diff(expected, results, opt)), "provisional results mismatch diff (-want +got)")
 	}
 
 	log.Infof("%d/%d matched results", len(origResults)-len(results), len(origResults))
@@ -98,6 +124,12 @@ func cleanForMatch(in map[string]map[string]types.Event) map[string]map[string]t
 			in[stage][parser] = evt
 		}
 	}
+	return in
+}
+
+func cleanForMatchEvent(in types.Event) types.Event {
+	in.Line.Time = time.Time{}
+	in.Time = time.Time{}
 	return in
 }
 
