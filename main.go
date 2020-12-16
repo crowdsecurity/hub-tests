@@ -209,7 +209,7 @@ func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) (map[strin
 		BucketInputFile:         "bucket_input.yaml",
 		BucketResultFile:        "bucket_result.json",
 		PoInputFile:             "po_input.yaml",
-		PoResultFile:            "postoverflow_result.json",
+		PoResultFile:            "postoverflow_results.yaml",
 		StoreIntermediateStates: true,
 		ReprocessInputFile:      "",
 		IndexFile:               ".index.json",
