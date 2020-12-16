@@ -75,15 +75,17 @@ func main() {
 				lineResult.ParserResults["s02-enrich"] = make(map[string]types.Event)
 				lineResult.ParserResults["s02-enrich"][""] = lastEvent
 			}
-
 			if finalStage == "s01-parse" {
 				lastEvent := lineResult.ParserResults[finalStage][finalParser]
 				lastEvent.Stage = "s02-enrich"
-				lineResult.ParserResults["s01-parse"][""] = lastEvent
+				lineResult.ParserResults[finalStage][finalParser] = lastEvent
 				lineResult.ParserResults["s02-enrich"] = make(map[string]types.Event)
 				lineResult.ParserResults["s02-enrich"][""] = lastEvent
 			}
+			if _, ok := lineResult.ParserResults["s00-raw"]; !ok {
+				lineResult.ParserResults["s00-raw"] = make(map[string]types.Event)
 
+			}
 			ProvisionalResults = append(ProvisionalResults, lineResult.ParserResults)
 		}
 		for ind := range FinalResults {

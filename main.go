@@ -168,7 +168,7 @@ func main() {
 		for item, testResult := range m {
 			err = nil
 			if testResult.failure > 0 {
-				err = errors.New("The test failed %d times")
+				err = errors.New(fmt.Sprintf("The test failed %d times", testResult.failure))
 			}
 			if testResult.count == 0 {
 				err = errors.New("The test wasn't performed on this configuration item")
