@@ -21,11 +21,6 @@ import (
 )
 
 var (
-	// AllResults    []LineParseResult
-	// AllExpected   []LineParseResult
-	// AllPoResults  []LineParsePoResult
-	// AllPoExpected []LineParsePoResult
-
 	holders []leaky.BucketFactory
 	buckets *leaky.Buckets
 
