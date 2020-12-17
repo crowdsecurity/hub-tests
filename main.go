@@ -21,11 +21,6 @@ import (
 )
 
 var (
-	AllResults    []LineParseResult
-	AllExpected   []LineParseResult
-	AllPoResults  []LineParsePoResult
-	AllPoExpected []LineParsePoResult
-
 	holders []leaky.BucketFactory
 	buckets *leaky.Buckets
 
@@ -53,21 +48,12 @@ type ConfigTest struct {
 	AcquisitionFile    string `yaml:"acquisition_file"`
 	ReprocessInputFile string `yaml:"reprocess_file"`
 
-	IndexFile string `yaml:"index"`
+	StoreIntermediateStates bool   `yaml:"store_intermediate_states"`
+	IndexFile               string `yaml:"index"`
 	//configuration list. For now sorting by type is mandatory
 	Configurations map[string][]string `yaml:"configurations"`
 
-	target_dir string
-}
-
-type LineParseResult struct {
-	Line          string
-	ParserResults map[string]map[string]types.Event
-}
-
-type LineParsePoResult struct {
-	Overflow      types.RuntimeAlert
-	ParserResults map[string]map[string]types.Event
+	targetDir string
 }
 
 type Flags struct {
@@ -75,6 +61,7 @@ type Flags struct {
 	SingleFile    string
 	JUnitFilename string
 	GlobFiles     string
+	LogLevel      string
 	Overall       bool
 }
 
@@ -83,6 +70,7 @@ func (f *Flags) Parse() {
 	flag.StringVar(&f.SingleFile, "single", "", "target test dir")
 	flag.StringVar(&f.JUnitFilename, "junit", "", "junit file name")
 	flag.StringVar(&f.GlobFiles, "glob", "config.yaml", "globing over all subdirs")
+	flag.StringVar(&f.LogLevel, "loglevel", "info", "defining default loglevel")
 	flag.BoolVar(&f.Overall, "overall", false, "adding a overall checkup to tests")
 	flag.Parse()
 }
@@ -117,12 +105,14 @@ func main() {
 		OverallResult *Overall
 	)
 
-	log.SetLevel(log.InfoLevel)
-	log.SetOutput(os.Stdout)
-
 	log.Infof("built against %s", cwversion.VersionStr())
 	flags = &Flags{}
 	flags.Parse()
+
+	if lvl, err := log.ParseLevel(flags.LogLevel); err == nil {
+		log.SetLevel(lvl)
+	}
+	log.SetOutput(os.Stdout)
 
 	if flags.JUnitFilename != "" {
 		report = &JUnitTestSuites{}
@@ -173,7 +163,7 @@ func main() {
 		for item, testResult := range m {
 			err = nil
 			if testResult.failure > 0 {
-				err = errors.New("The test failed %d times")
+				err = errors.New(fmt.Sprintf("The test failed %d times", testResult.failure))
 			}
 			if testResult.count == 0 {
 				err = errors.New("The test wasn't performed on this configuration item")
@@ -201,6 +191,7 @@ func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) (map[strin
 		localConfig ConfigTest
 		index       map[string]map[string]cwhub.Item
 		target_dir  string
+		csParsers   *parser.Parsers
 	)
 	cConfig = csconfig.NewConfig()
 
@@ -208,15 +199,16 @@ func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) (map[strin
 	path := targetFile
 	target_dir = filepath.Dir(targetFile)
 	localConfig = ConfigTest{
-		LogFile:            "acquis.log",
-		ParserResultFile:   "parser_result.json",
-		BucketInputFile:    "bucket_input.yaml",
-		BucketResultFile:   "bucket_result.json",
-		PoInputFile:        "po_input.yaml",
-		PoResultFile:       "postoverflow_result.json",
-		ReprocessInputFile: "",
-		IndexFile:          ".index.json",
-		target_dir:         target_dir,
+		LogFile:                 "acquis.log",
+		ParserResultFile:        "parser_results.yaml",
+		BucketInputFile:         "bucket_input.yaml",
+		BucketResultFile:        "bucket_result.json",
+		PoInputFile:             "po_input.yaml",
+		PoResultFile:            "postoverflow_results.yaml",
+		StoreIntermediateStates: true,
+		ReprocessInputFile:      "",
+		IndexFile:               ".index.json",
+		targetDir:               target_dir,
 	}
 	fcontent, err := ioutil.ReadFile(path)
 	if err != nil {
@@ -263,11 +255,14 @@ func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) (map[strin
 		log.Fatalf("failed to read index file: %s", err)
 	}
 
-	csParsers := newParsers(index, localConfig)
+	csParsers = newParsers(index, localConfig)
 
 	if csParsers, err = parser.LoadParsers(cConfig, csParsers); err != nil {
 		log.Fatalf("Failed to load parsers: %s", err)
 	}
+
+	csParsers.Ctx, csParsers.Nodes = addFakeNodes(csParsers.Ctx, csParsers.Nodes, "parsers")
+	csParsers.Povfwctx, csParsers.Povfwnodes = addFakeNodes(csParsers.Povfwctx, csParsers.Povfwnodes, "postoverflows")
 
 	files = newBuckets(index, localConfig)
 	log.Infof("scenarios files: %+v", files)
@@ -284,7 +279,15 @@ func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) (map[strin
 
 	failure := false
 	if _, ok := localConfig.Configurations["parsers"]; ok {
-		err := testParser(csParsers, localConfig)
+		var events []types.Event
+		testParsers := &TestParsers{
+			LocalConfig: &localConfig,
+			current:     "parsers",
+		}
+		if events, err = testParsers.LaunchAcquisition(); err != nil {
+			log.Fatalf("error at acquisition: %s", err)
+		}
+		err := testParsers.Parse(csParsers, events)
 		if err != nil {
 			log.Errorf("Error: %s", err)
 			failure = true
@@ -308,7 +311,15 @@ func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) (map[strin
 
 	_, ok := localConfig.Configurations["postoverflows"]
 	if ok || localConfig.ReprocessInputFile != "" && scenarios {
-		err = testPwfl(csParsers, localConfig)
+		var events []types.Event
+		testParsers := &TestParsers{
+			LocalConfig: &localConfig,
+			current:     "postoverflows",
+		}
+		if events, err = testParsers.LaunchAcquisition(); err != nil {
+			log.Fatalf("error at acquisition: %s", err)
+		}
+		err := testParsers.Parse(csParsers, events)
 		if err != nil {
 			log.Errorf("Error: %s", err)
 			failure = true

@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"sort"
@@ -12,7 +11,6 @@ import (
 	leaky "github.com/crowdsecurity/crowdsec/pkg/leakybucket"
 	"github.com/crowdsecurity/crowdsec/pkg/models"
 	"github.com/crowdsecurity/crowdsec/pkg/types"
-	"github.com/google/go-cmp/cmp"
 	"github.com/pkg/errors"
 	log "github.com/sirupsen/logrus"
 	"gopkg.in/tomb.v2"
@@ -49,74 +47,39 @@ func newBuckets(index map[string]map[string]cwhub.Item, local ConfigTest) []stri
 }
 
 // for now we still use the bool to say if the test was ok
-func testBucketsOutput(target_dir string, AllBucketsResult []types.Event) error {
+func testBucketsResults(testFile string, results []types.Event) error {
 	var (
-		AllBucketsExpected []types.Event = []types.Event{}
+		expected []types.Event = []types.Event{}
+		err      error
 	)
 	//load the expected results
 	ExpectedPresent := false
-	expectedResultsFile := target_dir + "/buckets_results.json"
-	expected_bytes, err := ioutil.ReadFile(expectedResultsFile)
+	log.Debugf("looking for testresults in %s", testFile)
+	_, err = ioutil.ReadFile(testFile)
 	if err != nil {
-		log.Warningf("no buckets result in %s, will dump data instead!", target_dir)
+		log.Warningf("no result in %s, will dump data instead!", testFile)
 	} else {
-		if err := json.Unmarshal(expected_bytes, &AllBucketsExpected); err != nil {
-			return errors.Wrapf(err, "file %s can't be unmarshaled", expectedResultsFile)
-		} else {
+		err = retrieveAndUnmarshal(testFile, &expected)
+		if err == nil {
 			ExpectedPresent = true
+		} else {
+			return errors.Wrapf(err, "Unable to unmarsharl %s", testFile)
 		}
+		//there was no data present, just dump
 	}
-	//there was no data present, just dump
+
 	if !ExpectedPresent {
 		log.Warningf("No expected results loaded, dump.")
-		dump_bytes, err := json.MarshalIndent(AllBucketsResult, "", " ")
-		if err != nil {
-			return errors.Wrap(err, "failed to marshal results")
-		}
-		if err := ioutil.WriteFile(expectedResultsFile, dump_bytes, 0644); err != nil {
-			return errors.Wrapf(err, "failed to dump data to %s", expectedResultsFile)
-		}
+		marshalAndStore(results, testFile)
+		return nil
 	}
 
-	//from here we will deal with postoverflow
-	opt := getCmpOptions()
-	origAllBucketsResult := AllBucketsResult // get a copy of the original results
-
-Loop:
-	for i, expectedEvent := range AllBucketsExpected {
-		for j, happenedEvent := range AllBucketsResult {
-			if cmp.Equal(expectedEvent, happenedEvent, opt) {
-				AllBucketsExpected = append(AllBucketsExpected[:i], AllBucketsExpected[i+1:]...)
-				AllBucketsResult = append(AllBucketsResult[:j], AllBucketsResult[j+1:]...)
-				goto Loop
-			}
-		}
-	}
-
-	if len(AllBucketsExpected) != 0 || len(AllBucketsResult) != 0 {
-		expectedResultsFile = expectedResultsFile + ".fail"
-		log.Errorf("tests failed, writing results to %s", expectedResultsFile)
-		dump_bytes, err := json.MarshalIndent(origAllBucketsResult, "", " ")
-		if err != nil {
-			return errors.Wrap(err, "failed to marshal result")
-		}
-		if err := ioutil.WriteFile(expectedResultsFile, dump_bytes, 0644); err != nil {
-			return errors.Wrapf(err, "failed to dump data to %s", expectedResultsFile)
-		}
-		log.Printf("done")
-		err = errors.New(cmp.Diff(AllBucketsExpected, AllBucketsResult, opt))
-		return errors.WithMessage(err, "mismatch diff (-want +got)")
-	}
-
-	log.Infof("%d/%d matched results", len(origAllBucketsResult)-len(AllBucketsResult), len(origAllBucketsResult))
-	log.Infof("Bucket tets are finished")
-	return nil
-
+	return TestResults(expected, results, testFile+".fail", "buckets", true)
 }
 
 func testBuckets(cConfig *csconfig.GlobalConfig, localConfig ConfigTest) error {
 	var (
-		potomb        tomb.Tomb
+		btomb         tomb.Tomb
 		bucketsOutput []types.Event = []types.Event{}
 		bucketsInput  []types.Event = []types.Event{}
 		err           error
@@ -124,13 +87,17 @@ func testBuckets(cConfig *csconfig.GlobalConfig, localConfig ConfigTest) error {
 
 	// Retrieve value from yaml
 	// And once again we would have done better with generics...
-	if err = retrieveAndUnmarshal(localConfig.target_dir+"/"+localConfig.BucketInputFile, &bucketsInput); err != nil {
-		return fmt.Errorf("Error unmarshaling %s: %s", localConfig.BucketInputFile, err)
+	if err = retrieveAndUnmarshal(localConfig.targetDir+"/"+localConfig.BucketInputFile, &bucketsInput); err != nil {
+		var tmp ParserResults
+		if err2 := retrieveAndUnmarshal(localConfig.targetDir+"/"+localConfig.ParserResultFile, &tmp); err2 != nil {
+			return errors.New(fmt.Sprintf("unable to find any data to feed to the buckets: %s, %s", err, err2))
+		}
+		bucketsInput = tmp.FinalResults
 	}
 
 	overflow := 0
-	//	unparsedOverflow := 0
-	potomb.Go(func() error {
+	//bucket goroutine
+	btomb.Go(func() error {
 		for {
 			select {
 			case event, ok := <-outputEventChan:
@@ -140,7 +107,7 @@ func testBuckets(cConfig *csconfig.GlobalConfig, localConfig ConfigTest) error {
 				log.Printf("An overflow happened")
 				overflow++
 				bucketsOutput = append(bucketsOutput, sortAlerts(event))
-			case <-potomb.Dying():
+			case <-btomb.Dying():
 				return nil
 			}
 
@@ -155,22 +122,26 @@ func testBuckets(cConfig *csconfig.GlobalConfig, localConfig ConfigTest) error {
 		}
 	}
 
-	//this should be taken care of
-	time.Sleep(5 * time.Second)
-
-	bucketsOutput = cleanBucketOutput(bucketsOutput)
-	if err := testBucketsOutput(localConfig.target_dir, bucketsOutput); err != nil {
-		return errors.Wrap(err, "Buckets error: %s")
+	time.Sleep(5 * time.Second) // get rid of this later, but this ensure pr
+	//Ensure all the LeakRoutine are dead and that overflow had enough time to happened
+	// TODO: fix the race by adding a way to know how much Leakroutine are alive
+	for leaky.LeakyRoutineCount > 1 {
+		time.Sleep(50 * time.Millisecond)
 	}
 
-	close(outputEventChan)
-
+	//kill and wait for the bucket goroutine
+	btomb.Kill(nil)
 	log.Printf("Waiting for bucket tomb to die")
-	if err := potomb.Wait(); err != nil {
+	if err := btomb.Wait(); err != nil {
 		log.Warningf("acquisition returned error : %s", err)
 	}
 
-	if err := marshalAndStore(bucketsOutput, localConfig.target_dir+"/"+localConfig.PoInputFile); err != nil {
+	bucketsOutput = cleanBucketOutput(bucketsOutput)
+	if err := testBucketsResults(localConfig.targetDir+"/"+localConfig.BucketResultFile, bucketsOutput); err != nil {
+		return errors.Wrap(err, "Buckets error: %s")
+	}
+
+	if err := marshalAndStore(bucketsOutput, localConfig.targetDir+"/"+localConfig.PoInputFile); err != nil {
 		return errors.Wrap(err, "marshaling failed")
 	}
 
