@@ -138,6 +138,10 @@ func marshalAndStore(in interface{}, filename string) error {
 		out []byte
 		err error
 	)
+
+	if filename == "" {
+		return nil
+	}
 	if out, err = yaml.Marshal(in); err != nil {
 		return fmt.Errorf("Marshal %s error: %s, filename", filename, err)
 	}

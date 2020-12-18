@@ -203,7 +203,7 @@ func (tp *TestParsers) Parse(parsers *parser.Parsers, events []types.Event) erro
 		readLines++
 		results.FinalResults = append(results.FinalResults, cleanForMatchEvent(parsed))
 		results.ProvisionalResults = append(results.ProvisionalResults, cleanForMatch(parser.StageParseCache))
-		log.Printf("one line done")
+		log.Debugf("one line done")
 	}
 
 	//parser result analysis

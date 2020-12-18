@@ -58,6 +58,7 @@ func testBucketsResults(testFile string, results []types.Event) error {
 	_, err = ioutil.ReadFile(testFile)
 	if err != nil {
 		log.Warningf("no result in %s, will dump data instead!", testFile)
+		err = fmt.Errorf("non existing results %s", testFile)
 	} else {
 		err = retrieveAndUnmarshal(testFile, &expected)
 		if err == nil {
@@ -71,7 +72,7 @@ func testBucketsResults(testFile string, results []types.Event) error {
 	if !ExpectedPresent {
 		log.Warningf("No expected results loaded, dump.")
 		marshalAndStore(results, testFile)
-		return nil
+		return err
 	}
 
 	return TestResults(expected, results, testFile+".fail", "buckets", true)
@@ -114,8 +115,7 @@ func testBuckets(cConfig *csconfig.GlobalConfig, localConfig ConfigTest) error {
 		}
 	})
 
-	for index, parsed := range bucketsInput {
-		log.Printf("Pouring item %d", index+1)
+	for _, parsed := range bucketsInput {
 		_, err = leaky.PourItemToHolders(parsed, holders, buckets)
 		if err != nil {
 			return errors.New(fmt.Sprintf("bucketify failed for: %v", parsed))
@@ -136,13 +136,17 @@ func testBuckets(cConfig *csconfig.GlobalConfig, localConfig ConfigTest) error {
 		log.Warningf("acquisition returned error : %s", err)
 	}
 
-	bucketsOutput = cleanBucketOutput(bucketsOutput)
-	if err := testBucketsResults(localConfig.targetDir+"/"+localConfig.BucketResultFile, bucketsOutput); err != nil {
-		return errors.Wrap(err, "Buckets error: %s")
+	if localConfig.BucketResultFile != "" {
+		bucketsOutput = cleanBucketOutput(bucketsOutput)
+		if err := testBucketsResults(localConfig.targetDir+"/"+localConfig.BucketResultFile, bucketsOutput); err != nil {
+			return errors.Wrap(err, "Buckets error: %s")
+		}
 	}
 
-	if err := marshalAndStore(bucketsOutput, localConfig.targetDir+"/"+localConfig.PoInputFile); err != nil {
-		return errors.Wrap(err, "marshaling failed")
+	if localConfig.PoInputFile != "" {
+		if err := marshalAndStore(bucketsOutput, localConfig.targetDir+"/"+localConfig.PoInputFile); err != nil {
+			return errors.Wrap(err, "marshaling failed")
+		}
 	}
 
 	return nil
@@ -153,6 +157,10 @@ func cleanBucketOutput(events []types.Event) []types.Event {
 		output []types.Event = []types.Event{}
 	)
 	for _, event := range events {
+		if event.Overflow.Mapkey != "" && len(event.Overflow.APIAlerts) == 0 {
+			continue
+		}
+
 		var alerts []models.Alert = []models.Alert{}
 		for _, alert := range event.Overflow.APIAlerts {
 			*alert.Message = ""
