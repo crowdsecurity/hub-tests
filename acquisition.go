@@ -29,13 +29,15 @@ func (tp *TestParsers) LaunchAcquisition() ([]types.Event, error) {
 	}
 
 	if tp.current == "parsers" {
-		if tp.LocalConfig.ParserInputFile == "" {
-			acquisMode = true
-			log.Infof("currently loading acquis.yaml: looking for %s", tp.LocalConfig.targetDir)
-		} else {
+		if tp.LocalConfig.ParserInputFile != "" {
 			acquisMode = false
 			inputFile = tp.LocalConfig.targetDir + "/" + tp.LocalConfig.ParserInputFile
 			log.Infof("currently loading parser config.yaml: looking for %s", inputFile)
+		} else if tp.LocalConfig.AcquisitionFile != "" {
+			acquisMode = true
+			log.Infof("currently loading acquis.yaml: looking for %s", tp.LocalConfig.AcquisitionFile)
+		} else {
+			log.Fatalf("no parser input file, no acquis file")
 		}
 	}
 
@@ -48,7 +50,7 @@ func (tp *TestParsers) LaunchAcquisition() ([]types.Event, error) {
 				DataDir:   "./data/",
 			},
 			Crowdsec: &csconfig.CrowdsecServiceCfg{
-				AcquisitionFilePath: tp.LocalConfig.targetDir + "/acquis.yaml",
+				AcquisitionFilePath: tp.LocalConfig.targetDir + "/" + tp.LocalConfig.AcquisitionFile,
 			},
 		}
 		log.Infof("starting acquisition")

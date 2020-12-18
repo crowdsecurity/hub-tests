@@ -122,7 +122,7 @@ func main() {
 	if flags.SingleFile != "" {
 		if tested, failure := doTest(flags, flags.SingleFile, report); tested != nil {
 			OverallResult.AddSingleResult(tested, failure)
-			if !failure {
+			if failure {
 				log.Fatalf("test of %s failed", flags.SingleFile)
 			}
 		}
@@ -136,8 +136,8 @@ func main() {
 			log.Printf("Doing test on %s", match)
 			if tested, failure := doTest(flags, match, report); tested != nil {
 				OverallResult.AddSingleResult(tested, failure)
-				if !failure {
-					log.Fatalf("test of %s failed", flags.SingleFile)
+				if failure {
+					log.Fatalf("test of %s failed", match)
 				}
 			}
 		}
