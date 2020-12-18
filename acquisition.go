@@ -36,8 +36,6 @@ func (tp *TestParsers) LaunchAcquisition() ([]types.Event, error) {
 		} else if tp.LocalConfig.AcquisitionFile != "" {
 			acquisMode = true
 			log.Infof("currently loading acquis.yaml: looking for %s", tp.LocalConfig.AcquisitionFile)
-		} else {
-			log.Fatalf("no parser input file, no acquis file")
 		}
 	}
 
