@@ -122,6 +122,9 @@ func main() {
 	if flags.SingleFile != "" {
 		if tested, failure := doTest(flags, flags.SingleFile, report); tested != nil {
 			OverallResult.AddSingleResult(tested, failure)
+			if !failure {
+				log.Fatalf("test of %s failed", flags.SingleFile)
+			}
 		}
 	} else {
 		//we are globbing :)
@@ -133,6 +136,9 @@ func main() {
 			log.Printf("Doing test on %s", match)
 			if tested, failure := doTest(flags, match, report); tested != nil {
 				OverallResult.AddSingleResult(tested, failure)
+				if !failure {
+					log.Fatalf("test of %s failed", flags.SingleFile)
+				}
 			}
 		}
 	}
@@ -199,12 +205,6 @@ func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) (map[strin
 	path := targetFile
 	target_dir = filepath.Dir(targetFile)
 	localConfig = ConfigTest{
-		LogFile:                 "acquis.log",
-		ParserResultFile:        "parser_results.yaml",
-		BucketInputFile:         "bucket_input.yaml",
-		BucketResultFile:        "bucket_result.json",
-		PoInputFile:             "po_input.yaml",
-		PoResultFile:            "postoverflow_results.yaml",
 		StoreIntermediateStates: true,
 		ReprocessInputFile:      "",
 		IndexFile:               ".index.json",

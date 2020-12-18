@@ -58,6 +58,7 @@ func testBucketsResults(testFile string, results []types.Event) error {
 	_, err = ioutil.ReadFile(testFile)
 	if err != nil {
 		log.Warningf("no result in %s, will dump data instead!", testFile)
+		err = fmt.Errorf("non existing results %s", testFile)
 	} else {
 		err = retrieveAndUnmarshal(testFile, &expected)
 		if err == nil {
@@ -71,7 +72,7 @@ func testBucketsResults(testFile string, results []types.Event) error {
 	if !ExpectedPresent {
 		log.Warningf("No expected results loaded, dump.")
 		marshalAndStore(results, testFile)
-		return nil
+		return err
 	}
 
 	return TestResults(expected, results, testFile+".fail", "buckets", true)
