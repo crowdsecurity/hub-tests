@@ -31,6 +31,9 @@ func sortAlerts(event types.Event) types.Event {
 			event.Overflow.APIAlerts[index].Events[i].Meta = meta
 		}
 	}
+	sort.Slice(event.Overflow.APIAlerts, func(i, j int) bool {
+		return event.Overflow.APIAlerts[i].Source.IP < event.Overflow.APIAlerts[j].Source.IP
+	})
 	return event
 }
 
