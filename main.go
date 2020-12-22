@@ -17,6 +17,7 @@ import (
 	"github.com/crowdsecurity/crowdsec/pkg/types"
 	"github.com/pkg/errors"
 	log "github.com/sirupsen/logrus"
+	"gopkg.in/tomb.v2"
 	"gopkg.in/yaml.v2"
 )
 
@@ -275,7 +276,8 @@ func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) (map[strin
 		}
 
 	}
-	holders, outputEventChan, err = leaky.LoadBuckets(cConfig.Crowdsec, files)
+	bucketsTomb := &tomb.Tomb{}
+	holders, outputEventChan, err = leaky.LoadBuckets(cConfig.Crowdsec, files, bucketsTomb, buckets)
 
 	failure := false
 	if _, ok := localConfig.Configurations["parsers"]; ok {
@@ -299,14 +301,17 @@ func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) (map[strin
 
 	_, scenarios := localConfig.Configurations["scenarios"]
 	if scenarios {
-		err = testBuckets(cConfig, localConfig)
-		if err != nil {
-			log.Errorf("Error: %s", err)
-			failure = true
-		}
-		if flags.JUnitFilename != "" {
-			report.AddSingleResult(cwhub.SCENARIOS, err, strings.Join(localConfig.Configurations[cwhub.SCENARIOS], ", "))
-		}
+		bucketsTomb.Go(func() error {
+			err = testBuckets(cConfig, localConfig)
+			if err != nil {
+				log.Errorf("Error: %s", err)
+				failure = true
+			}
+			if flags.JUnitFilename != "" {
+				report.AddSingleResult(cwhub.SCENARIOS, err, strings.Join(localConfig.Configurations[cwhub.SCENARIOS], ", "))
+			}
+			return nil
+		})
 	}
 
 	_, ok := localConfig.Configurations["postoverflows"]
