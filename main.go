@@ -162,19 +162,33 @@ func main() {
 			tmp := overall[itemType][item]
 			tmp.count = testResult.count
 			tmp.failure = testResult.failCount
+			log.Debugf("adding %s/%s : md:%t count:%d fail:%d", itemType, item, tmp.markdown, tmp.count,
+				tmp.failure)
 			overall[itemType][item] = tmp
 		}
 	}
-	for itemType, m := range overall {
-		for item, testResult := range m {
-			err = nil
-			if testResult.failure > 0 {
-				err = errors.New(fmt.Sprintf("The test failed %d times", testResult.failure))
+	if report != nil {
+		for itemType, m := range overall {
+			for item, testResult := range m {
+				err = nil
+				if testResult.failure > 0 {
+					err = errors.New(fmt.Sprintf("The test failed %d times", testResult.failure))
+					report.AddSingleResult("0.Tests failure", err, fmt.Sprintf("%s/%s passed %d times", itemType, item, testResult.count))
+				}
+				if testResult.count == 0 {
+					err = errors.New("The test wasn't performed on this configuration item")
+					report.AddSingleResult("1.Missing tests", err, fmt.Sprintf("%s/%s isn't tested", itemType, item))
+				}
+				if !testResult.markdown {
+					err = errors.New("The item has no doc (.md file)")
+					report.AddSingleResult("2.Missing documentation", err, fmt.Sprintf("%s/%s has no documentation", itemType, item))
+				} else if testResult.markdownNotEmpty {
+					err = errors.New("The item has empty doc (.md file)")
+					report.AddSingleResult("2.Missing documentation", err, fmt.Sprintf("%s/%s has empty documentation", itemType, item))
+				}
+				report.AddSingleResult("Overall tests", nil, fmt.Sprintf("%s/%s tested %d times", itemType, item, testResult.count))
+
 			}
-			if testResult.count == 0 {
-				err = errors.New("The test wasn't performed on this configuration item")
-			}
-			report.AddSingleResult("Overall test", err, fmt.Sprintf("%s/%s passed %d times", itemType, item, testResult.count))
 		}
 	}
 
@@ -293,7 +307,12 @@ func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) (map[strin
 			failure = true
 		}
 		if flags.JUnitFilename != "" {
-			report.AddSingleResult(cwhub.PARSERS, err, strings.Join(localConfig.Configurations[cwhub.PARSERS], ", "))
+			if err != nil {
+				report.AddSingleResult(cwhub.PARSERS, err, strings.Join(localConfig.Configurations[cwhub.PARSERS], ", "))
+			}
+			// } else { //xxxx
+			// 	report.AddSingleResult("successful "+cwhub.PARSERS+" tests", err, strings.Join(localConfig.Configurations[cwhub.PARSERS], ", ")+fmt.Sprintf(" : %d ok tests", testResult.count))
+			// }
 		}
 	}
 
@@ -305,7 +324,13 @@ func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) (map[strin
 			failure = true
 		}
 		if flags.JUnitFilename != "" {
-			report.AddSingleResult(cwhub.SCENARIOS, err, strings.Join(localConfig.Configurations[cwhub.SCENARIOS], ", "))
+			if err != nil {
+				report.AddSingleResult(cwhub.SCENARIOS, err, strings.Join(localConfig.Configurations[cwhub.SCENARIOS], ", "))
+			}
+			// else {
+			// 	report.AddSingleResult("successful "+cwhub.SCENARIOS+" tests", err, strings.Join(localConfig.Configurations[cwhub.SCENARIOS], ", "))
+
+			// }
 		}
 	}
 
@@ -325,7 +350,12 @@ func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) (map[strin
 			failure = true
 		}
 		if flags.JUnitFilename != "" {
-			report.AddSingleResult(cwhub.PARSERS_OVFLW, err, strings.Join(localConfig.Configurations[cwhub.PARSERS_OVFLW], ", "))
+			if err != nil {
+				report.AddSingleResult(cwhub.PARSERS_OVFLW, err, strings.Join(localConfig.Configurations[cwhub.PARSERS_OVFLW], ", "))
+			}
+			//  else {
+			// 	report.AddSingleResult("successful "+cwhub.PARSERS_OVFLW+" tests", err, strings.Join(localConfig.Configurations[cwhub.PARSERS_OVFLW], ", "))
+			// }
 		}
 	}
 	log.Infof("tests are finished.")
