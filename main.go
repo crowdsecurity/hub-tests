@@ -7,7 +7,6 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
-	"sync"
 
 	"github.com/crowdsecurity/crowdsec/pkg/csconfig"
 	"github.com/crowdsecurity/crowdsec/pkg/cwhub"
@@ -302,21 +301,14 @@ func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) (map[strin
 
 	_, scenarios := localConfig.Configurations["scenarios"]
 	if scenarios {
-		var wg *sync.WaitGroup = &sync.WaitGroup{}
-		wg.Add(1)
-		bucketsTomb.Go(func() error {
-			defer wg.Done()
-			err = testBuckets(cConfig, localConfig)
-			if err != nil {
-				log.Errorf("Error: %s", err)
-				failure = true
-			}
-			if flags.JUnitFilename != "" {
-				report.AddSingleResult(cwhub.SCENARIOS, err, strings.Join(localConfig.Configurations[cwhub.SCENARIOS], ", "))
-			}
-			return nil
-		})
-		wg.Wait()
+		err = testBuckets(cConfig, localConfig, bucketsTomb)
+		if err != nil {
+			log.Errorf("Error: %s", err)
+			failure = true
+		}
+		if flags.JUnitFilename != "" {
+			report.AddSingleResult(cwhub.SCENARIOS, err, strings.Join(localConfig.Configurations[cwhub.SCENARIOS], ", "))
+		}
 	}
 
 	_, ok := localConfig.Configurations["postoverflows"]
