@@ -5,6 +5,9 @@ import (
 	"io/ioutil"
 	"os"
 	"sort"
+	"strconv"
+	"strings"
+	"time"
 
 	"github.com/pkg/errors"
 
@@ -201,6 +204,26 @@ func (tp *TestParsers) Parse(parsers *parser.Parsers, events []types.Event) erro
 		}
 
 		readLines++
+		if tp.LocalConfig.MashaledTimeYear != "" {
+			year := strconv.Itoa(time.Now().Year())
+			if _, ok := parsed.Enriched["MarshaledTime"]; ok {
+				parsed.Enriched["MarshaledTime"] = strings.ReplaceAll(parsed.Enriched["MarshaledTime"], year, tp.LocalConfig.MashaledTimeYear)
+			}
+			parsed.MarshaledTime = strings.ReplaceAll(parsed.MarshaledTime, year, tp.LocalConfig.MashaledTimeYear)
+			for stage, entries := range parser.StageParseCache {
+				for p, entry := range entries {
+					tmp := parser.StageParseCache[stage][p]
+					tmp.MarshaledTime = strings.ReplaceAll(tmp.MarshaledTime, year, tp.LocalConfig.MashaledTimeYear)
+					parser.StageParseCache[stage][p] = tmp
+
+					if _, ok := entry.Enriched["MarshaledTime"]; ok {
+						parser.StageParseCache[stage][p].Enriched["MarshaledTime"] = strings.ReplaceAll(entry.Enriched["MarshaledTime"], year, tp.LocalConfig.MashaledTimeYear)
+					}
+
+				}
+			}
+		}
+
 		results.FinalResults = append(results.FinalResults, cleanForMatchEvent(parsed))
 		results.ProvisionalResults = append(results.ProvisionalResults, cleanForMatch(parser.StageParseCache))
 		log.Debugf("one line done")
@@ -213,6 +236,7 @@ func (tp *TestParsers) Parse(parsers *parser.Parsers, events []types.Event) erro
 	if readLines == unparsedLines {
 		return errors.New("No line was successfully parsed")
 	}
+
 	if err = tp.CheckAndStoreResults(results); err != nil {
 		log.Errorf("Diff error: %s", err)
 	}

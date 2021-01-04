@@ -3,11 +3,12 @@ package main
 import "github.com/crowdsecurity/crowdsec/pkg/types"
 
 type TestParsers struct {
-	current         string //meant to be parsers or postoverflows
-	LocalConfig     *ConfigTest
-	ParserResult    *ParserResults
-	ResultFile      string
-	ExpectedPresent bool
+	current           string //meant to be parsers or postoverflows
+	LocalConfig       *ConfigTest
+	ParserResult      *ParserResults
+	ResultFile        string
+	ExpectedPresent   bool
+	MarshaledTimeYear string
 }
 
 type ParserResults struct {
