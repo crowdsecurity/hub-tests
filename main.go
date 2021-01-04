@@ -51,6 +51,9 @@ type ConfigTest struct {
 
 	StoreIntermediateStates bool   `yaml:"store_intermediate_states"`
 	IndexFile               string `yaml:"index"`
+
+	MashaledTimeYear string `yaml:"marshaled_time_year"`
+
 	//configuration list. For now sorting by type is mandatory
 	Configurations map[string][]string `yaml:"configurations"`
 
