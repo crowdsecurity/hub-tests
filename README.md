@@ -1,13 +1,14 @@
 # hub and hub-tests
 
-This repository hosting the software tool used for testing each
-configurations hosted in the [hub](https://hub.crowdsec.net) or in its
+This repository hosts the software tool used to test each
+configuration hosted in the [hub](https://hub.crowdsec.net) or in its
 [repository](https://github.com/crowdsecurity/hub/). More precisely,
 each configuration item consists of a yaml configuration file used to
 describe crowdsec behaviour. The format of the configuration item
 depends the type of configuration item. There're two types of
 configuration item:
-* parser (for parsers and postoverflows)
+
+* parsers (for parsers and postoverflows)
 * scenarios 
 
 # Hub and continuous integration
@@ -18,7 +19,7 @@ repository, in the
 in the [crowdsec](https://github.com/crowdsecurity/crowdsec)
 repository fires a continuous integration test.
 
-For now, these changes on mastere branches are carelessly pushed on
+The results of those tests on master branch are carelessly pushed on
 our [github pages](https://crowdsecurity.github.io/hub/)
 
 ## Create tests
@@ -37,17 +38,15 @@ follow the steps:
 name>`. You have to store logs in this directory to trigger the tested
 configuration item. The easiest way to do so is to craft a
 `parser_input.yaml` marshaled file representing a list of events
-([types.Events
-](https://github.com/crowdsecurity/crowdsec/blob/eda9c03c82a2aa35d07053986c3d70fe15dd4b4e/pkg/types/event.go#L17)). (if
+([types.Events](https://github.com/crowdsecurity/crowdsec/blob/eda9c03c82a2aa35d07053986c3d70fe15dd4b4e/pkg/types/event.go#L17)). (if
 you are creating a test for a postoverflow, the file would be
 po_input.yaml, and if you are creating a scenario the file is
-bucket_input.yaml)) You can help you with already existing tests to
+bucket_input.yaml)) Have a look at existing tests to
 get inspiration.
 5. Check the `config.yaml` file (defaults should be ok)
 6. Run `./tests.sh --single <item type>/<stage name>/<provider
    name>/.tests/<configuration name>`. When run the first time, this
-   will create a result file that will be used to compare results with
-   all the following run. If you're happy with it, you can now create
+   will create a result file that will be used as a reference for future runs. If you're happy with it, you can now create
    a pull request to merge the configuration item alonside with all
    the files needed to test it.
 
@@ -55,22 +54,23 @@ get inspiration.
 
 ## Directory tree
 
-Each `config.yaml` in the hub repository subdirectories trigger a
+Each `config.yaml` in the hub repository subdirectories triggers a
 test. It's meant to be stored in under a directory: `<item
 type>/<stage name if applicable>/<provider name>/.tests/<configuration name>/config.yaml`
 
 Example:
-The first written test was for `crowdsecurity/sshd-logs`. This sshd configuration is `./parsers/s01-parse/crowdsecurity/sshd-logs.yaml`, thus the test should takes place in the directory `./parsers/s01-parse/crowdsecurity/.tests/sshd-logs`. The test configuration file named `config.yaml`is in this directory.
+The first written test was for `crowdsecurity/sshd-logs` : the configuration being tested is `./parsers/s01-parse/crowdsecurity/sshd-logs.yaml`, thus the test should takes place in the directory `./parsers/s01-parse/crowdsecurity/.tests/sshd-logs`, with the tests configuration file being ./parsers/s01-parse/crowdsecurity/.tests/sshd-logs/config.yaml`
+
 
 ## configuration file format
 
-```
+```yaml
 parser_input: parser_input.yaml
 parser_results: parser_results.yaml
-bucket_input: bucket_input.yaml                 #unused in our example
-bucket_results: bucket_result.json              #unused in our example
-postoverflow_input: postoverflow_input.yaml     #unused in our example
-postoverflow_results: postoverflow_results.yaml #unused in our example
+bucket_input: bucket_input.yaml                 
+bucket_results: bucket_result.json              
+postoverflow_input: postoverflow_input.yaml     
+postoverflow_results: postoverflow_results.yaml 
 reprocess: true
 
 #configuration
@@ -99,12 +99,14 @@ The paths of these of files are defined from the same directory as the config.ya
 * `configurations`: This is dict of lists of configurations we want to load. Valid keys for the dict are `parsers`, `scenarios` and `postoverflows`. 
 
 ### Caveats or known bugs
+
 For now a config directory is still needed with:
+
  * `simulation.yaml` this file can be empty
  * patterns directory with all parsers/groks patterns
  * `config/hub/.index.json` I suspect a small bug in pkg/cwversion that makes this requirement happen.
 
-# Howto creation of a new configuration test
+# Creation of a new configuration test
 
 In the root of hub repository there's a `tests.sh` provided as a tool to help write some tests.
 ```
