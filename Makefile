@@ -2,4 +2,4 @@ GOCMD=go
 
 all: build
 build:
-	$(GOCMD) build
+	$(GOCMD) build -race
