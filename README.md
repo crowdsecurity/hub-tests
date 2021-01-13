@@ -1,4 +1,4 @@
-# hub and hub-tests
+# Hub and Hub-tests
 
 This repository hosts the software tool used to test each
 configuration hosted in the [hub](https://hub.crowdsec.net) or in its
@@ -19,8 +19,8 @@ repository, in the
 in the [crowdsec](https://github.com/crowdsecurity/crowdsec)
 repository fires a continuous integration test.
 
-The results of those tests on master branch are carelessly pushed on
-our [github pages](https://crowdsecurity.github.io/hub/)
+<mark>The results of those tests on master branch are carelessly pushed on
+our [github pages](https://crowdsecurity.github.io/hub/)</mark>
 
 ## Create tests
 
