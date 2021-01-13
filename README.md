@@ -19,12 +19,10 @@ repository, in the
 in the [crowdsec](https://github.com/crowdsecurity/crowdsec)
 repository fires a continuous integration test.
 
-<mark>The results of those tests on master branch are carelessly pushed on
-our [github pages](https://crowdsecurity.github.io/hub/)</mark>
+__**The results of those tests on master branch are carelessly pushed on
+our [github pages](https://crowdsecurity.github.io/hub/)**__
 
-## Create tests
-
-### Create a basic test
+# Create a basic test
 
 To create such a test you'll need the the configuration item and
 follow the steps:
@@ -81,7 +79,7 @@ configurations:
   - crowdsecurity/syslog-logs
 ```
 
-### File involved for the test
+## File involved for the test
 The paths of these of files are defined from the same directory as the config.yaml
 * `parser_input.yaml`: file holding serialized events fed to the parser engine. If this configuration field is empty or missing, hub-tests will look for an `acquis.yaml` in the test directory, and will follow its directive.
 * `parser_results.yaml`: file holding parser result. The test results will be compared to this file, and fail if it differs. If the file doesn't exist, it is automatically generated (this is useful to create a new test). 
@@ -94,11 +92,11 @@ The paths of these of files are defined from the same directory as the config.ya
   enforces postoverflows to pass even if no postoverflow is
   configured, to be able to repour it in the buckets.
 
-### Other part of the configuration
+## Other part of the configuration
 * `index`: where to find the `.index.json` from the root directory of the hub repository
 * `configurations`: This is dict of lists of configurations we want to load. Valid keys for the dict are `parsers`, `scenarios` and `postoverflows`. 
 
-### Caveats or known bugs
+## Caveats or known bugs
 
 For now a config directory is still needed with:
 
@@ -106,7 +104,7 @@ For now a config directory is still needed with:
  * patterns directory with all parsers/groks patterns
  * `config/hub/.index.json` I suspect a small bug in pkg/cwversion that makes this requirement happen.
 
-# Creation of a new configuration test
+## Creation of a new configuration test
 
 In the root of hub repository there's a `tests.sh` provided as a tool to help write some tests.
 ```
