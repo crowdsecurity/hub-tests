@@ -237,11 +237,13 @@ func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) (map[strin
 	}
 
 	log.Printf("Acquisition file : %s", target_dir+"/acquis.yaml")
-
+	cConfig.Crowdsec.AcquisitionDirPath = "./data" // ugly workaround to avoid an error check in pkg/csconfig/config.go
+	// any directory without yaml will do
 	err = cConfig.LoadConfiguration()
 	if err != nil {
 		log.Fatalf("Failed to load configuration : %s", err)
 	}
+	cConfig.Crowdsec.AcquisitionFiles = nil //ugly workaround to avoid an error check in pkg/csconfig/config.go
 
 	err = exprhelpers.Init()
 	if err != nil {
