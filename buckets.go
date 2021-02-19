@@ -43,6 +43,9 @@ func newBuckets(index map[string]map[string]cwhub.Item, local ConfigTest) []stri
 	)
 	for _, itemType := range []string{cwhub.SCENARIOS} {
 		for _, hubParserName := range local.Configurations[itemType] {
+			if _, ok := index[itemType][hubParserName]; !ok {
+				log.Fatalf("Item %s doesn't exist. Do you have an updated .index.json ?", hubParserName)
+			}
 			files = append(files, index[itemType][hubParserName].RemotePath)
 		}
 	}
