@@ -1,0 +1,16 @@
+name: Create branch from external dispatch
+
+on:
+  repository_dispatch:
+    types: ['create_branch']
+
+jobs:
+  create_branch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: peterjgrainger/action-create-branch@v1.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          branch: ${{ github.event.client_payload.version }}
