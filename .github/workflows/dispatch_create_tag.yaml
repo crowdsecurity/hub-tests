@@ -1,18 +1,23 @@
-name: Create tag from external dispatch
+name: Create branch from external dispatch
 
 on:
-  repository_dispatch:
-    types: ['create_tag']
+  - repository_dispatch
 
 jobs:
-  create_tag:
+  create_branch:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: set env
-        run: echo ::set-env name=TAG::$(echo "${{ github.event.client_payload.ref }}" | cut -d "/" -f3)
-      - name: Run a one-line script
+      # - uses: peterjgrainger/action-create-branch@v1.0.0
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     branch: ${{ github.event.client_payload.version }}
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+      - name: tag hub-tests with crowdsec tag
         uses: tvdias/github-tagger@v0.0.1
         with:
-          tag: "${{ env.TAG }}"
-          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+          repo_token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          tag: ${{ steps.get_version.outputs.VERSION }}

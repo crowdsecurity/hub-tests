@@ -15,3 +15,4 @@ jobs:
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
           repository: crowdsecurity/hub
           event-type: trigger_ci_hub
+          client-payload: '{"version": "master"}'
