@@ -61,7 +61,7 @@
               "Process": true
             },
             "Parsed": {
-              "agent": "\"-\"",
+              "http_user_agent": "\"-\"",
               "auth": "-",
               "bytes": "803",
               "clientip": "93.43.209.58",
@@ -123,7 +123,7 @@
               "Process": true
             },
             "Parsed": {
-              "agent": "\"-\"",
+              "http_user_agent": "\"-\"",
               "auth": "-",
               "bytes": "803",
               "clientip": "93.43.209.58",
@@ -186,7 +186,7 @@
               "Process": true
             },
             "Parsed": {
-              "agent": "\"-\"",
+              "http_user_agent": "\"-\"",
               "auth": "-",
               "bytes": "803",
               "clientip": "93.43.209.58",
@@ -261,7 +261,7 @@
               "Process": true
             },
             "Parsed": {
-              "agent": "\"-\"",
+              "http_user_agent": "\"-\"",
               "auth": "-",
               "bytes": "803",
               "clientip": "93.43.209.58",
@@ -386,7 +386,7 @@
               "Process": true
             },
             "Parsed": {
-              "agent": "\"masscan/1.0 (https://github.com/robertdavidgraham/masscan)\"",
+              "http_user_agent": "\"masscan/1.0 (https://github.com/robertdavidgraham/masscan)\"",
               "auth": "-",
               "bytes": "799",
               "clientip": "164.68.112.178",
@@ -448,7 +448,7 @@
               "Process": true
             },
             "Parsed": {
-              "agent": "\"masscan/1.0 (https://github.com/robertdavidgraham/masscan)\"",
+              "http_user_agent": "\"masscan/1.0 (https://github.com/robertdavidgraham/masscan)\"",
               "auth": "-",
               "bytes": "799",
               "clientip": "164.68.112.178",
@@ -511,7 +511,7 @@
               "Process": true
             },
             "Parsed": {
-              "agent": "\"masscan/1.0 (https://github.com/robertdavidgraham/masscan)\"",
+              "http_user_agent": "\"masscan/1.0 (https://github.com/robertdavidgraham/masscan)\"",
               "auth": "-",
               "bytes": "799",
               "clientip": "164.68.112.178",
@@ -586,7 +586,7 @@
               "Process": true
             },
             "Parsed": {
-              "agent": "\"masscan/1.0 (https://github.com/robertdavidgraham/masscan)\"",
+              "http_user_agent": "\"masscan/1.0 (https://github.com/robertdavidgraham/masscan)\"",
               "auth": "-",
               "bytes": "799",
               "clientip": "164.68.112.178",
@@ -711,7 +711,7 @@
               "Process": true
             },
             "Parsed": {
-              "agent": "\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
+              "http_user_agent": "\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
               "auth": "-",
               "bytes": "803",
               "clientip": "195.54.160.135",
@@ -773,7 +773,7 @@
               "Process": true
             },
             "Parsed": {
-              "agent": "\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
+              "http_user_agent": "\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
               "auth": "-",
               "bytes": "803",
               "clientip": "195.54.160.135",
@@ -836,7 +836,7 @@
               "Process": true
             },
             "Parsed": {
-              "agent": "\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
+              "http_user_agent": "\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
               "auth": "-",
               "bytes": "803",
               "clientip": "195.54.160.135",
@@ -907,7 +907,7 @@
               "Process": true
             },
             "Parsed": {
-              "agent": "\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
+              "http_user_agent": "\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
               "auth": "-",
               "bytes": "803",
               "clientip": "195.54.160.135",
@@ -986,7 +986,7 @@
               "Process": true
             },
             "Parsed": {
-              "agent": "\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
+              "http_user_agent": "\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
               "auth": "-",
               "bytes": "803",
               "clientip": "195.54.160.135",
@@ -1114,7 +1114,7 @@
               "Process": true
             },
             "Parsed": {
-              "agent": "\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
+              "http_user_agent": "\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
               "auth": "-",
               "bytes": "803",
               "clientip": "1.2.3.4",
@@ -1176,7 +1176,7 @@
               "Process": true
             },
             "Parsed": {
-              "agent": "\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
+              "http_user_agent": "\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
               "auth": "-",
               "bytes": "803",
               "clientip": "1.2.3.4",
@@ -1239,7 +1239,7 @@
               "Process": true
             },
             "Parsed": {
-              "agent": "\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
+              "http_user_agent": "\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
               "auth": "-",
               "bytes": "803",
               "clientip": "1.2.3.4",
@@ -1311,7 +1311,7 @@
               "Process": true
             },
             "Parsed": {
-              "agent": "\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
+              "http_user_agent": "\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
               "auth": "-",
               "bytes": "803",
               "clientip": "1.2.3.4",
@@ -1391,7 +1391,7 @@
               "Process": true
             },
             "Parsed": {
-              "agent": "\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
+              "http_user_agent": "\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36\"",
               "auth": "-",
               "bytes": "803",
               "clientip": "1.2.3.4",
@@ -2135,7 +2135,7 @@
               "http_user_agent": "Go-http-client/1.1",
               "http_version": "1.1",
               "message": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJ5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
-              "method": "GET",
+              "verb": "GET",
               "program": "nginx",
               "remote_addr": "5.5.8.5",
               "remote_user": "-",
@@ -2195,7 +2195,7 @@
               "http_user_agent": "Go-http-client/1.1",
               "http_version": "1.1",
               "message": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJ5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
-              "method": "GET",
+              "verb": "GET",
               "program": "nginx",
               "remote_addr": "5.5.8.5",
               "remote_user": "-",
@@ -2256,7 +2256,7 @@
               "http_user_agent": "Go-http-client/1.1",
               "http_version": "1.1",
               "message": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJ5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
-              "method": "GET",
+              "verb": "GET",
               "program": "nginx",
               "remote_addr": "5.5.8.5",
               "remote_user": "-",
@@ -2334,7 +2334,7 @@
               "http_version": "1.1",
               "impact_completion": "false",
               "message": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJ5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
-              "method": "GET",
+              "verb": "GET",
               "program": "nginx",
               "remote_addr": "5.5.8.5",
               "remote_user": "-",
@@ -2414,7 +2414,7 @@
               "http_version": "1.1",
               "impact_completion": "false",
               "message": "5.5.8.5 - - [04/Jan/2020:07:25:02 +0000] \"GET /.well-known/acme-challenge/FMuukC2JOJ5HKmLBujjE_BkDo HTTP/1.1\" 404 522 \"-\" \"Go-http-client/1.1\"",
-              "method": "GET",
+              "verb": "GET",
               "program": "nginx",
               "remote_addr": "5.5.8.5",
               "remote_user": "-",
@@ -2538,7 +2538,7 @@
               "http_user_agent": "-",
               "http_version": "1.1",
               "message": "2.30.19.10 - - [04/Jan/2020:08:29:17 +0000] \"GET / HTTP/1.1\" 400 0 \"-\" \"-\"",
-              "method": "GET",
+              "verb": "GET",
               "program": "nginx",
               "remote_addr": "2.30.19.10",
               "remote_user": "-",
@@ -2598,7 +2598,7 @@
               "http_user_agent": "-",
               "http_version": "1.1",
               "message": "2.30.19.10 - - [04/Jan/2020:08:29:17 +0000] \"GET / HTTP/1.1\" 400 0 \"-\" \"-\"",
-              "method": "GET",
+              "verb": "GET",
               "program": "nginx",
               "remote_addr": "2.30.19.10",
               "remote_user": "-",
@@ -2659,7 +2659,7 @@
               "http_user_agent": "-",
               "http_version": "1.1",
               "message": "2.30.19.10 - - [04/Jan/2020:08:29:17 +0000] \"GET / HTTP/1.1\" 400 0 \"-\" \"-\"",
-              "method": "GET",
+              "verb": "GET",
               "program": "nginx",
               "remote_addr": "2.30.19.10",
               "remote_user": "-",
@@ -2733,7 +2733,7 @@
               "http_version": "1.1",
               "impact_completion": "true",
               "message": "2.30.19.10 - - [04/Jan/2020:08:29:17 +0000] \"GET / HTTP/1.1\" 400 0 \"-\" \"-\"",
-              "method": "GET",
+              "verb": "GET",
               "program": "nginx",
               "remote_addr": "2.30.19.10",
               "remote_user": "-",
@@ -2855,7 +2855,7 @@
               "http_user_agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
               "http_version": "1.1",
               "message": "52.59.61.4 - - [04/Jan/2020:08:41:43 +0000] \"GET /index.php/nous-contacter/ HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
-              "method": "GET",
+              "verb": "GET",
               "program": "nginx",
               "remote_addr": "52.59.61.4",
               "remote_user": "-",
@@ -2915,7 +2915,7 @@
               "http_user_agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
               "http_version": "1.1",
               "message": "52.59.61.4 - - [04/Jan/2020:08:41:43 +0000] \"GET /index.php/nous-contacter/ HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
-              "method": "GET",
+              "verb": "GET",
               "program": "nginx",
               "remote_addr": "52.59.61.4",
               "remote_user": "-",
@@ -2976,7 +2976,7 @@
               "http_user_agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
               "http_version": "1.1",
               "message": "52.59.61.4 - - [04/Jan/2020:08:41:43 +0000] \"GET /index.php/nous-contacter/ HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
-              "method": "GET",
+              "verb": "GET",
               "program": "nginx",
               "remote_addr": "52.59.61.4",
               "remote_user": "-",
@@ -3054,7 +3054,7 @@
               "http_version": "1.1",
               "impact_completion": "true",
               "message": "52.59.61.4 - - [04/Jan/2020:08:41:43 +0000] \"GET /index.php/nous-contacter/ HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
-              "method": "GET",
+              "verb": "GET",
               "program": "nginx",
               "remote_addr": "52.59.61.4",
               "remote_user": "-",
@@ -3134,7 +3134,7 @@
               "http_version": "1.1",
               "impact_completion": "true",
               "message": "52.59.61.4 - - [04/Jan/2020:08:41:43 +0000] \"GET /index.php/nous-contacter/ HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
-              "method": "GET",
+              "verb": "GET",
               "program": "nginx",
               "remote_addr": "52.59.61.4",
               "remote_user": "-",
@@ -3258,7 +3258,7 @@
               "http_user_agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
               "http_version": "1.1",
               "message": "www.mydomain.com 52.59.61.4 - - [04/Jan/2020:08:41:43 +0000] \"GET /index.php/nous-contacter/ HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
-              "method": "GET",
+              "verb": "GET",
               "program": "nginx",
               "remote_addr": "52.59.61.4",
               "remote_user": "-",
@@ -3318,7 +3318,7 @@
               "http_user_agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
               "http_version": "1.1",
               "message": "www.mydomain.com 52.59.61.4 - - [04/Jan/2020:08:41:43 +0000] \"GET /index.php/nous-contacter/ HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
-              "method": "GET",
+              "verb": "GET",
               "program": "nginx",
               "remote_addr": "52.59.61.4",
               "remote_user": "-",
@@ -3379,7 +3379,7 @@
               "http_user_agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
               "http_version": "1.1",
               "message": "www.mydomain.com 52.59.61.4 - - [04/Jan/2020:08:41:43 +0000] \"GET /index.php/nous-contacter/ HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
-              "method": "GET",
+              "verb": "GET",
               "program": "nginx",
               "remote_addr": "52.59.61.4",
               "remote_user": "-",
@@ -3457,7 +3457,7 @@
               "http_version": "1.1",
               "impact_completion": "true",
               "message": "www.mydomain.com 52.59.61.4 - - [04/Jan/2020:08:41:43 +0000] \"GET /index.php/nous-contacter/ HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
-              "method": "GET",
+              "verb": "GET",
               "program": "nginx",
               "remote_addr": "52.59.61.4",
               "remote_user": "-",
@@ -3537,7 +3537,7 @@
               "http_version": "1.1",
               "impact_completion": "true",
               "message": "www.mydomain.com 52.59.61.4 - - [04/Jan/2020:08:41:43 +0000] \"GET /index.php/nous-contacter/ HTTP/1.1\" 500 550 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\"",
-              "method": "GET",
+              "verb": "GET",
               "program": "nginx",
               "remote_addr": "52.59.61.4",
               "remote_user": "-",

@@ -49,6 +49,7 @@ func (tp *TestParsers) LaunchAcquisition() ([]types.Event, error) {
 			},
 			Crowdsec: &csconfig.CrowdsecServiceCfg{
 				AcquisitionFilePath: tp.LocalConfig.targetDir + "/" + tp.LocalConfig.AcquisitionFile,
+				AcquisitionFiles:    []string{tp.LocalConfig.targetDir + "/" + tp.LocalConfig.AcquisitionFile},
 			},
 		}
 		log.Infof("starting acquisition")
@@ -70,6 +71,7 @@ func (tp *TestParsers) LaunchAcquisition() ([]types.Event, error) {
 			wg.Done()
 		}()
 
+		log.Printf("dataSrc: %+v", dataSrc)
 		go acquisition.StartAcquisition(dataSrc, inputLineChan, acquisTomb)
 		log.Printf("waiting for acquis tomb to die")
 
