@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"sort"
+	"sync"
 	"time"
 
 	"github.com/crowdsecurity/crowdsec/pkg/csconfig"
@@ -84,11 +85,12 @@ func testBucketsResults(testFile string, results []types.Event) error {
 	return TestResults(expected, results, testFile+".fail", "buckets", true)
 }
 
-func testBuckets(cConfig *csconfig.GlobalConfig, localConfig ConfigTest) error {
+func testBuckets(cConfig *csconfig.GlobalConfig, localConfig ConfigTest, bucketsTomb *tomb.Tomb) error {
 	var (
-		btomb         tomb.Tomb
-		bucketsOutput []types.Event = []types.Event{}
-		bucketsInput  []types.Event = []types.Event{}
+		wg            *sync.WaitGroup = &sync.WaitGroup{}
+		btomb         *tomb.Tomb      = &tomb.Tomb{}
+		bucketsOutput []types.Event   = []types.Event{}
+		bucketsInput  []types.Event   = []types.Event{}
 		err           error
 	)
 
@@ -120,22 +122,24 @@ func testBuckets(cConfig *csconfig.GlobalConfig, localConfig ConfigTest) error {
 
 		}
 	})
-
-	for _, parsed := range bucketsInput {
-		_, err = leaky.PourItemToHolders(parsed, holders, buckets)
-		if err != nil {
-			return errors.New(fmt.Sprintf("bucketify failed for: %v", parsed))
+	wg.Add(1)
+	bucketsTomb.Go(func() error {
+		defer wg.Done()
+		for _, parsed := range bucketsInput {
+			_, err = leaky.PourItemToHolders(parsed, holders, buckets)
+			if err != nil {
+				return errors.New(fmt.Sprintf("bucketify failed for: %v", parsed))
+			}
 		}
-	}
-
-	time.Sleep(5 * time.Second) // get rid of this later, but this ensure pr
+		return nil
+	})
 	//Ensure all the LeakRoutine are dead and that overflow had enough time to happened
 	// TODO: fix the race by adding a way to know how much Leakroutine are alive
-	for leaky.LeakyRoutineCount > 1 {
-		time.Sleep(50 * time.Millisecond)
-	}
 
 	//kill and wait for the bucket goroutine
+	wg.Wait()
+	bucketsTomb.Kill(nil)
+	bucketsTomb.Wait()
 	btomb.Kill(nil)
 	log.Printf("Waiting for bucket tomb to die")
 	if err := btomb.Wait(); err != nil {
