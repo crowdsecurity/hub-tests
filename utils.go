@@ -273,7 +273,9 @@ func getDataFromFile(filename string, dataFolder string) error {
 		err error
 		buf []byte
 	)
-
+	if filename == "" {
+		log.Fatalf("provided with empty filename")
+	}
 	if buf, err = ioutil.ReadFile(filename); err != nil {
 		log.Fatalf("unable to open read %s", filename)
 	}

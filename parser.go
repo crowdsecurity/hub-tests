@@ -125,6 +125,13 @@ func newParsers(index map[string]map[string]cwhub.Item, local ConfigTest) *parse
 	}
 	for _, itemType := range []string{cwhub.PARSERS, cwhub.PARSERS_OVFLW} {
 		for _, hubParserName := range local.Configurations[itemType] {
+			if _, ok := index[itemType][hubParserName]; !ok {
+				log.Errorf("item %s of type %s is missing", hubParserName, itemType)
+				log.Errorf("Available entries :")
+				for v := range index[itemType] {
+					log.Printf(" %s", v)
+				}
+			}
 			hubParserItem := index[itemType][hubParserName]
 			hubParserItem.LocalPath = hubParserItem.RemotePath
 
@@ -138,7 +145,10 @@ func newParsers(index map[string]map[string]cwhub.Item, local ConfigTest) *parse
 			if itemType == cwhub.PARSERS_OVFLW {
 				parsers.PovfwStageFiles = append(parsers.PovfwStageFiles, stagefile)
 			}
-
+			if hubParserItem.LocalPath == "" {
+				log.Errorf("invalid %s of type %s", hubParserName, itemType)
+				log.Errorf("item might be missing or misnamed")
+			}
 			if err := getDataFromFile(hubParserItem.LocalPath, "./data"); err != nil { //TODO have a way to fix this hardcoded direcotry
 				log.Errorf("Unable to get data for %s", hubParserItem.LocalPath)
 			}
