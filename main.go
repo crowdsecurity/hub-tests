@@ -234,11 +234,12 @@ func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) (map[strin
 		},
 		Crowdsec: &csconfig.CrowdsecServiceCfg{
 			ConfigDir: "./config",
+			DataDir:   "./data/",
 		},
 	}
 
 	log.Printf("Acquisition file : %s", target_dir+"/acquis.yaml")
-	cConfig.Crowdsec.AcquisitionDirPath = "./data" // ugly workaround to avoid an error check in pkg/csconfig/config.go
+	//cConfig.Crowdsec.AcquisitionDirPath = "./data" // ugly workaround to avoid an error check in pkg/csconfig/config.go
 	// any directory without yaml will do
 	err = cConfig.LoadConfigurationPaths()
 	if err != nil {
