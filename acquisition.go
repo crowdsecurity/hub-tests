@@ -42,7 +42,7 @@ func (tp *TestParsers) LaunchAcquisition() ([]types.Event, error) {
 	if acquisMode {
 		var wg *sync.WaitGroup = &sync.WaitGroup{}
 
-		fakeCrowdsecServicecfg := csconfig.GlobalConfig{
+		fakeCrowdsecServicecfg := csconfig.Config{
 			ConfigPaths: &csconfig.ConfigurationPaths{
 				ConfigDir: "./config",
 				DataDir:   "./data/",

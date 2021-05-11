@@ -196,14 +196,14 @@ func main() {
 func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) (map[string][]string, bool) {
 	var (
 		err         error
-		cConfig     *csconfig.GlobalConfig
+		cConfig     *csconfig.Config
 		files       []string
 		localConfig ConfigTest
 		index       map[string]map[string]cwhub.Item
 		target_dir  string
 		csParsers   *parser.Parsers
 	)
-	cConfig = csconfig.NewConfig()
+	cConfig = csconfig.NewDefaultConfig()
 
 	//fill localConfig with default
 	path := targetFile
@@ -225,7 +225,7 @@ func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) (map[strin
 
 	//Minimal configuration loading
 	//TODO move this to a specific function
-	cConfig = &csconfig.GlobalConfig{
+	cConfig = &csconfig.Config{
 		API: &csconfig.APICfg{},
 		ConfigPaths: &csconfig.ConfigurationPaths{
 			ConfigDir:    "./config",
@@ -240,7 +240,7 @@ func doTest(flags *Flags, targetFile string, report *JUnitTestSuites) (map[strin
 	log.Printf("Acquisition file : %s", target_dir+"/acquis.yaml")
 	cConfig.Crowdsec.AcquisitionDirPath = "./data" // ugly workaround to avoid an error check in pkg/csconfig/config.go
 	// any directory without yaml will do
-	err = cConfig.LoadConfiguration()
+	err = cConfig.LoadConfigurationPaths()
 	if err != nil {
 		log.Fatalf("Failed to load configuration : %s", err)
 	}
