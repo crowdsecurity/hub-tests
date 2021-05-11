@@ -85,7 +85,7 @@ func testBucketsResults(testFile string, results []types.Event) error {
 	return TestResults(expected, results, testFile+".fail", "buckets", true)
 }
 
-func testBuckets(cConfig *csconfig.GlobalConfig, localConfig ConfigTest, bucketsTomb *tomb.Tomb) error {
+func testBuckets(cConfig *csconfig.Config, localConfig ConfigTest, bucketsTomb *tomb.Tomb) error {
 	var (
 		wg            *sync.WaitGroup = &sync.WaitGroup{}
 		btomb         *tomb.Tomb      = &tomb.Tomb{}
@@ -113,7 +113,11 @@ func testBuckets(cConfig *csconfig.GlobalConfig, localConfig ConfigTest, buckets
 				if !ok {
 					return nil
 				}
-				log.Printf("An overflow happened")
+				if event.Overflow.Alert != nil {
+					log.Printf("An overflow happened : %s", *event.Overflow.Alert.Scenario)
+				} else {
+					log.Printf("overflow (bucket delete)")
+				}
 				overflow++
 				bucketsOutput = append(bucketsOutput, sortAlerts(event))
 			case <-btomb.Dying():
