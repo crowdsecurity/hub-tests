@@ -120,7 +120,6 @@ func testBuckets(cConfig *csconfig.Config, localConfig ConfigTest, bucketsTomb *
 				}
 				overflow++
 				bucketsOutput = append(bucketsOutput, sortAlerts(event))
-				log.Printf("bucketOutput len : %d", len(bucketsOutput))
 			case <-btomb.Dying():
 				return nil
 			}
@@ -152,9 +151,7 @@ func testBuckets(cConfig *csconfig.Config, localConfig ConfigTest, bucketsTomb *
 	}
 
 	if localConfig.BucketResultFile != "" {
-		log.Printf("before clean bucket, len: %d", len(bucketsOutput))
 		bucketsOutput = cleanBucketOutput(bucketsOutput)
-		log.Printf("after clean bucket, len: %d", len(bucketsOutput))
 		if err := testBucketsResults(localConfig.targetDir+"/"+localConfig.BucketResultFile, bucketsOutput); err != nil {
 			return errors.Wrap(err, "Buckets error: %s")
 		}
