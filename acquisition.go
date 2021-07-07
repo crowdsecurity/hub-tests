@@ -59,7 +59,7 @@ func (tp *TestParsers) LaunchAcquisition() ([]types.Event, error) {
 			errors.Wrap(err, "not able to init acquisition")
 		}
 		for _, filectx := range dataSrc {
-			if filectx.Mode() != "cat" {
+			if filectx.GetMode() != "cat" {
 				log.Warning("the mode of reading the log file is not 'cat': the whole thing is doomed to fail")
 			}
 		}
