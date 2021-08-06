@@ -75,8 +75,10 @@ func (tp *TestParsers) LaunchAcquisition() ([]types.Event, error) {
 		go acquisition.StartAcquisition(dataSrc, inputLineChan, acquisTomb)
 		log.Printf("waiting for acquis tomb to die")
 
-		if err := acquisTomb.Wait(); err != nil {
-			return nil, errors.Wrap(err, "acquisition returned error : %s")
+		if len(dataSrc) > 0 {
+			if err := acquisTomb.Wait(); err != nil {
+				return nil, errors.Wrap(err, "acquisition returned error : %s")
+			}
 		}
 		close(inputLineChan)
 		log.Printf("acquisition is finished")
