@@ -144,6 +144,7 @@ func testBuckets(cConfig *csconfig.Config, localConfig ConfigTest, bucketsTomb *
 	wg.Wait()
 	bucketsTomb.Kill(nil)
 	bucketsTomb.Wait()
+	time.Sleep(300 * time.Millisecond)
 	btomb.Kill(nil)
 	log.Printf("Waiting for bucket tomb to die")
 	if err := btomb.Wait(); err != nil {
