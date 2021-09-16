@@ -5,7 +5,7 @@ go 1.13
 require (
 	github.com/asaskevich/govalidator v0.0.0-20210307081110-f21760c49a8d // indirect
 	github.com/aws/aws-sdk-go v1.39.1 // indirect
-	github.com/crowdsecurity/crowdsec v1.1.1
+	github.com/crowdsecurity/crowdsec v1.2.0
 	github.com/facebook/ent v0.5.4 // indirect
 	github.com/go-openapi/analysis v0.20.1 // indirect
 	github.com/go-openapi/errors v0.20.0 // indirect
@@ -18,6 +18,7 @@ require (
 	github.com/google/go-cmp v0.5.6
 	github.com/google/go-querystring v1.1.0 // indirect
 	github.com/hashicorp/go-version v1.3.0 // indirect
+	github.com/logrusorgru/grokky v0.0.0-20180829062225-47edf017d42c // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/nxadm/tail v1.4.8 // indirect
 	github.com/oschwald/geoip2-golang v1.5.0 // indirect
