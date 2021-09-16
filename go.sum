@@ -131,6 +131,7 @@ github.com/crowdsecurity/crowdsec v1.1.1 h1:Cl50/RnTA8ginkB/yDyU9WyCq1kN0thsdA8X
 github.com/crowdsecurity/crowdsec v1.1.1/go.mod h1:QTwn61ovcur0RWRjbpyWMcmLtR92Nmli373pB6vjIR0=
 github.com/crowdsecurity/crowdsec v1.2.0 h1:tVyE2YczFVqHI+2k8qgnRleVVwIIlwdIo1HsCM5eIi4=
 github.com/crowdsecurity/crowdsec v1.2.0/go.mod h1:qPjm7NpE8oE0o1o+trVprKye4U5TapNchlzfGoqw/Ec=
+github.com/crowdsecurity/grokky v0.0.0-20210908095311-0b3373925934 h1:3kpyoNXTVgfqvpnpy5S8n8hNicgStCK7CiUc4IlYs2s=
 github.com/crowdsecurity/grokky v0.0.0-20210908095311-0b3373925934/go.mod h1:fx5UYUYAFIrOUNAkFCUOM2wJcsp9EWSQE9R0/9kaFJg=
 github.com/davecgh/go-spew v0.0.0-20161028175848-04cdfd42973b/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
